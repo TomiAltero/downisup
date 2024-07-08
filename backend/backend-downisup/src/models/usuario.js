@@ -45,6 +45,10 @@ Usuario.init(
       type: DataTypes.STRING,
       allowNull: true,
     },
+    tipoUsuarioId: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
   },
   {
     sequelize,
@@ -52,6 +56,13 @@ Usuario.init(
     tableName: "Usuarios",
     timestamps: true,
   },
+
+  (Usuario.associate = (models) => {
+    Usuario.belongsTo(models.TipoUsuario, {
+      foreignKey: "tipoUsuarioId",
+      as: "TipoUsuario",
+    });
+  }),
 );
 
 module.exports = Usuario;
