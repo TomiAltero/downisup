@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useRef, useEffect, RefObject } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import ProfileImage from "../../../public/no-photo.webp";
 import { Logout, Setting2, ArrowDown2, ArrowUp2, Profile } from "iconsax-react";
@@ -10,6 +10,7 @@ interface Usuario {
   nombre: string;
   apellido: string;
   username: string;
+  tipoUsuarioId: number;
 }
 
 function HeadBar() {
@@ -133,12 +134,24 @@ function HeadBar() {
               className="rounded-full border border-green-600"
             />
             <div className="ml-2">
-              <p className="text-sm font-semibold text-gray-800">
+              <p
+                className={`text-sm font-semibold ${
+                  usuario && usuario.tipoUsuarioId === 3
+                    ? "text-blue-900"
+                    : "text-gray-800"
+                }`}
+              >
                 {usuario
                   ? `${usuario.nombre} ${usuario.apellido}`
                   : "Cargando..."}
               </p>
-              <p className="text-xs font-medium text-gray-500">
+              <p
+                className={`text-xs font-medium ${
+                  usuario && usuario.tipoUsuarioId === 3
+                    ? "text-blue-900"
+                    : "text-gray-500"
+                }`}
+              >
                 {usuario ? usuario.username : ""}
               </p>
             </div>
@@ -179,7 +192,6 @@ function HeadBar() {
           )}
           {showAjustes && (
             <div ref={ajustesRef}>
-              {" "}
               <Ajustes onClose={toggleAjustes} />
             </div>
           )}

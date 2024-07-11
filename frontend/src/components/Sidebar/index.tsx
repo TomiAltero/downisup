@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Calendar,
   Document,
@@ -10,11 +10,40 @@ import {
 import Link, { LinkProps } from "next/link";
 import { usePathname } from "next/navigation";
 import { useCentralStore } from "@/Store";
+import axios from "axios";
 
 function Sidebar() {
   const pathname = usePathname();
   const { setIsSidebarOpen, isSidebarOpen } = useCentralStore();
   const [isDropdownOpen, setIsDropdownOpen] = useState<boolean>(false);
+  const [usuario, setUsuario] = useState<any>(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    const obtenerPerfilUsuario = async () => {
+      try {
+        const token = localStorage.getItem("token");
+        if (token) {
+          const response = await axios.get(
+            "http://localhost:5000/api/usuarios/perfil",
+            {
+              headers: {
+                Authorization: `Bearer ${token}`,
+              },
+            },
+          );
+          setUsuario(response.data.usuario);
+        }
+        setLoading(false);
+      } catch (error) {
+        setError("Error al obtener el perfil del usuario");
+        setLoading(false);
+      }
+    };
+
+    obtenerPerfilUsuario();
+  }, []);
 
   return (
     <div className="w-60 shrink-0 md:block h-screen sticky top-0 overflow-hidden">
@@ -43,32 +72,69 @@ function Sidebar() {
               Inicio
             </Link>
 
-            <div>
-              <button
-                onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-                className={`flex justify-between items-center ${
-                  pathname === "/app/teams" ? "text-blue-700" : ""
-                } hover:text-blue-700 duration-200 px-6 py-2 w-full transition-all ease-in-out`}
-              >
-                <div className="flex items-center gap-2">
-                  <Profile2User size={16} />
-                  Mis Hijos
-                </div>
-                <ArrowDown2 size={16} />
-              </button>
-              {isDropdownOpen && (
-                <div className="pl-10 mt-2 space-y-2">
-                  <Link
-                    href="/panel-hijos"
-                    className={`block ${
-                      pathname === "/panel-hijos" ? "text-blue-700" : ""
-                    } hover:text-blue-700 duration-200 py-1 transition-all ease-in-out`}
-                  >
-                    Ver Hijos
-                  </Link>
-                </div>
-              )}
-            </div>
+            {usuario && usuario.tipoUsuarioId === 3 ? (
+              <div>
+                <button
+                  onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+                  className={`flex justify-between items-center ${
+                    pathname === "/app/pacientes" ? "text-blue-700" : ""
+                  } hover:text-blue-700 duration-200 px-6 py-2 w-full transition-all ease-in-out`}
+                >
+                  <div className="flex items-center gap-2">
+                    <Profile2User size={16} />
+                    Pacientes
+                  </div>
+                  <ArrowDown2 size={16} />
+                </button>
+                {isDropdownOpen && (
+                  <div className="pl-10 mt-2 space-y-2">
+                    <Link
+                      href="/ver-pacientes"
+                      className={`block ${
+                        pathname === "/ver-pacientes" ? "text-blue-700" : ""
+                      } hover:text-blue-700 duration-200 py-1 transition-all ease-in-out`}
+                    >
+                      Ver Pacientes
+                    </Link>
+                    <Link
+                      href="/agregar-paciente"
+                      className={`block ${
+                        pathname === "/agregar-paciente" ? "text-blue-700" : ""
+                      } hover:text-blue-700 duration-200 py-1 transition-all ease-in-out`}
+                    >
+                      Agregar Paciente
+                    </Link>
+                  </div>
+                )}
+              </div>
+            ) : (
+              <div>
+                <button
+                  onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+                  className={`flex justify-between items-center ${
+                    pathname === "/app/teams" ? "text-blue-700" : ""
+                  } hover:text-blue-700 duration-200 px-6 py-2 w-full transition-all ease-in-out`}
+                >
+                  <div className="flex items-center gap-2">
+                    <Profile2User size={16} />
+                    Mis Hijos
+                  </div>
+                  <ArrowDown2 size={16} />
+                </button>
+                {isDropdownOpen && (
+                  <div className="pl-10 mt-2 space-y-2">
+                    <Link
+                      href="/panel-hijos"
+                      className={`block ${
+                        pathname === "/panel-hijos" ? "text-blue-700" : ""
+                      } hover:text-blue-700 duration-200 py-1 transition-all ease-in-out`}
+                    >
+                      Ver Hijos
+                    </Link>
+                  </div>
+                )}
+              </div>
+            )}
 
             <Link
               href="#"

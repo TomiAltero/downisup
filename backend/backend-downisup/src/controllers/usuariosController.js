@@ -36,8 +36,16 @@ class UsuarioController {
 
   async agregarUsuario(req, res) {
     try {
-      const { username, email, dni, password, nombre, apellido, imagen } =
-        req.body;
+      const {
+        username,
+        email,
+        dni,
+        password,
+        nombre,
+        apellido,
+        imagen,
+        tipoUsuarioId,
+      } = req.body;
 
       const hashedPassword = await bcrypt.hash(password, 10);
 
@@ -49,6 +57,7 @@ class UsuarioController {
         nombre,
         apellido,
         imagen,
+        tipoUsuarioId: 1,
       });
 
       console.log("Usuario creado:", nuevoUsuario.toJSON());
