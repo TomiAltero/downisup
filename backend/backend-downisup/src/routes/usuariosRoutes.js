@@ -41,4 +41,16 @@ router.get(
   usuarioController.obtenerPresionArterial,
 );
 
+router.get(
+  "/hijo/:hijoId/temperatura",
+  verificarToken,
+  usuarioController.obtenerTemperaturas,
+);
+
+router.get(
+  "/hijo/:hijoId/peso",
+  verificarToken,
+  usuarioController.obtenerPesos,
+);
+
 module.exports = router;

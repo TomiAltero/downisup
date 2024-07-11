@@ -6,14 +6,21 @@ import { Logout, Setting2, ArrowDown2, ArrowUp2, Profile } from "iconsax-react";
 import axios from "axios";
 import Ajustes from "@/components/ajustes";
 
+interface Usuario {
+  nombre: string;
+  apellido: string;
+  username: string;
+  tipoUsuarioId: number;
+}
+
 function HeadBar() {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [showAjustes, setShowAjustes] = useState(false);
-  const dropdownRef = useRef(null);
-  const ajustesRef = useRef(null); // Referencia para el componente Ajustes
-  const [usuario, setUsuario] = useState(null);
+  const dropdownRef = useRef<HTMLDivElement>(null);
+  const ajustesRef = useRef<HTMLDivElement>(null);
+  const [usuario, setUsuario] = useState<Usuario | null>(null);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     const obtenerPerfilUsuario = async () => {
@@ -49,14 +56,15 @@ function HeadBar() {
     setIsDropdownOpen(false);
   };
 
-  const handleOutsideClick = (event) => {
+  const handleOutsideClick = (event: MouseEvent) => {
     if (
       dropdownRef.current &&
-      !dropdownRef.current.contains(event.target) &&
-      !ajustesRef.current.contains(event.target) // Comprobar si el clic no está dentro de Ajustes
+      !dropdownRef.current.contains(event.target as Node) &&
+      ajustesRef.current &&
+      !ajustesRef.current.contains(event.target as Node)
     ) {
       setIsDropdownOpen(false);
-      setShowAjustes(false); // Cerrar Ajustes al hacer clic fuera de él
+      setShowAjustes(false);
     }
   };
 
@@ -126,12 +134,24 @@ function HeadBar() {
               className="rounded-full border border-green-600"
             />
             <div className="ml-2">
-              <p className="text-sm font-semibold text-gray-800">
+              <p
+                className={`text-sm font-semibold ${
+                  usuario && usuario.tipoUsuarioId === 3
+                    ? "text-blue-900"
+                    : "text-gray-800"
+                }`}
+              >
                 {usuario
                   ? `${usuario.nombre} ${usuario.apellido}`
                   : "Cargando..."}
               </p>
-              <p className="text-xs font-medium text-gray-500">
+              <p
+                className={`text-xs font-medium ${
+                  usuario && usuario.tipoUsuarioId === 3
+                    ? "text-blue-900"
+                    : "text-gray-500"
+                }`}
+              >
                 {usuario ? usuario.username : ""}
               </p>
             </div>
@@ -172,8 +192,6 @@ function HeadBar() {
           )}
           {showAjustes && (
             <div ref={ajustesRef}>
-              {" "}
-              {/* Establecer la referencia para Ajustes */}
               <Ajustes onClose={toggleAjustes} />
             </div>
           )}

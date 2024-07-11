@@ -1,7 +1,6 @@
 "use client";
-
+import React, { useState, FormEvent } from "react";
 import axios from "axios";
-import { useState } from "react";
 import {
   CardTitle,
   CardHeader,
@@ -18,12 +17,21 @@ import "toastify-js/src/toastify.css";
 import "react-toastify/dist/ReactToastify.css";
 import Link from "next/link";
 
+declare global {
+  interface Window {
+    Toastify: any;
+  }
+}
+
+window.Toastify = Toastify;
+
 export function LogIn() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
+  const redirectDelay = 1500;
 
-  const handleLogin = async (event) => {
+  const handleLogin = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     try {
@@ -39,7 +47,9 @@ export function LogIn() {
       localStorage.setItem("token", token);
       setMessage("Inicio de sesión exitoso");
 
-      window.location.href = "/inicio";
+      setTimeout(() => {
+        window.location.href = "/inicio";
+      }, redirectDelay);
 
       Toastify({
         text: "Haz iniciado sesión exitosamente",
@@ -79,7 +89,7 @@ export function LogIn() {
   return (
     <div className="flex items-center justify-center min-h-screen">
       <form onSubmit={handleLogin}>
-        <Card className="mt-8 w-[400px] h-[520px] border-b-4 border-blue-800">
+        <Card className="mt-8 w-[400px] h-[520px] ">
           <CardHeader className="flex flex-col items-center">
             <Image src="/favicon.ico" width={72} height={50} alt="Logo DiU" />
             <CardTitle className="mt-4 text-xl font-bold text-blue-900">

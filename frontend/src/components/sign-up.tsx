@@ -9,17 +9,20 @@ import React, { useState } from "react";
 import axios from "axios";
 import Toastify from "toastify-js";
 import "react-toastify/dist/ReactToastify.css";
+import Link from "next/link";
 
 export function SignUp() {
   const [showPassword, setShowPassword] = useState<boolean>(false);
   const [email, setEmail] = useState<string>("");
   const [username, setUsername] = useState<string>("");
+  const [dni, setDni] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [confirmPassword, setConfirmPassword] = useState<string>("");
   const [nombre, setNombre] = useState<string>("");
   const [apellido, setApellido] = useState<string>("");
   const [isMatch, setIsMatch] = useState<boolean>(true);
   const [errors, setErrors] = useState<{ msg: string }[]>([]);
+  const redirectDelay = 2000;
   const [successfulMessage, setSuccessfulMessage] = useState<string | null>(
     null,
   );
@@ -45,6 +48,7 @@ export function SignUp() {
       const response = await axios.post("http://localhost:5000/api/usuarios", {
         username,
         email,
+        dni,
         password,
         nombre,
         apellido,
@@ -65,7 +69,9 @@ export function SignUp() {
         },
       }).showToast();
 
-      window.location.href = "/login";
+      setTimeout(() => {
+        window.location.href = "/login";
+      }, redirectDelay);
 
       console.log("User registration successful:", response.data);
       setErrors([]);
@@ -75,6 +81,7 @@ export function SignUp() {
       setApellido("");
       setUsername("");
       setEmail("");
+      setDni("");
       setPassword("");
       setConfirmPassword("");
     } catch (error: any) {
@@ -111,7 +118,7 @@ export function SignUp() {
 
   return (
     <form onSubmit={handleFormSubmit}>
-      <Card className="mt-8 w-[400px] border-b-4 border-blue-800">
+      <Card className="mt-8 w-[400px] ">
         <CardHeader className="flex flex-col items-center">
           <Image src="/favicon.ico" width={72} height={50} alt="Logo DiU" />
           <CardTitle className="mt-4 text-xl font-bold text-blue-900">
@@ -190,6 +197,24 @@ export function SignUp() {
                 onChange={(e) => setUsername(e.target.value)}
               />
             </article>
+            <article className="space-y-2 my-2">
+              <Label
+                className="block text-xs font-bold leading-6 text-blue-900"
+                htmlFor="email"
+              >
+                DNI
+              </Label>
+              <Input
+                className="rounded-xl border-t-0 border-l-0 border-r-0 border-b-2 border-blue-800 outline-none focus:ring-0 focus:border-blue-700" // Borde solo inferior
+                id="dni"
+                name="dni"
+                placeholder="Ingrese su DNI"
+                required
+                type="text"
+                value={dni}
+                onChange={(e) => setDni(e.target.value)}
+              />
+            </article>
 
             <article className="space-y-2 my-2">
               <Label
@@ -209,6 +234,7 @@ export function SignUp() {
                 onChange={(e) => setEmail(e.target.value)}
               />
             </article>
+
             <article className="space-y-2 my-2">
               <Label
                 className="block text-xs font-bold leading-6 text-blue-900"
@@ -258,7 +284,7 @@ export function SignUp() {
                   id="show"
                 />
                 <Label
-                  className="block text-xs font-medium leading-6 text-gray-900"
+                  className="block text-xs font-medium leading-6  text-gray-900"
                   htmlFor="show"
                 >
                   Mostrar contraseña
@@ -269,11 +295,22 @@ export function SignUp() {
               <Button
                 disabled={!isMatch}
                 variant={"primary"}
-                className="w-full rounded-2xl bg-custom-blue px-3 py-2 text-sm font-semi bold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 "
+                className="w-full rounded-2xl bg-custom-blue px-3 py-2 text-sm font-semi bold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2  "
                 type="submit"
               >
                 Continuar
               </Button>
+            </article>
+            <article className="flex justify-center w-full mt-7">
+              <p className="text-sm text-blue-900">
+                ¿Ya tienes cuenta?{" "}
+                <Link
+                  href="/login"
+                  className="text-blue-700 font-bold hover:underline"
+                >
+                  Inicia sesion
+                </Link>
+              </p>
             </article>
           </section>
         </CardContent>

@@ -1,37 +1,32 @@
 "use strict";
 
-const { DataTypes } = require("sequelize");
-
+/** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable("presiones_arteriales", {
+    await queryInterface.createTable("Temperatura", {
       id: {
-        type: DataTypes.INTEGER,
+        type: Sequelize.INTEGER,
         autoIncrement: true,
         primaryKey: true,
       },
-      sistolica: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-      },
-      diastolica: {
-        type: DataTypes.INTEGER,
+      valor: {
+        type: Sequelize.DECIMAL,
         allowNull: false,
       },
       descripcion: {
-        type: DataTypes.TEXT,
+        type: Sequelize.TEXT,
         allowNull: true,
       },
       fecha: {
-        type: DataTypes.DATE,
+        type: Sequelize.DATE,
         allowNull: false,
       },
       hora: {
-        type: DataTypes.TIME,
+        type: Sequelize.TIME,
         allowNull: false,
       },
       hijoId: {
-        type: DataTypes.INTEGER,
+        type: Sequelize.INTEGER,
         allowNull: false,
         references: {
           model: "hijo",
@@ -40,8 +35,7 @@ module.exports = {
       },
     });
   },
-
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable("presiones_arteriales");
+    await queryInterface.dropTable("Temperatura");
   },
 };

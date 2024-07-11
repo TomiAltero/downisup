@@ -5,6 +5,9 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const FrecuenciaCardiaca = require("../models/frecuenciaCardiaca");
 const PresionArterial = require("../models/presionArterial");
+const Temperatura = require("../models/temperatura");
+const Peso = require("../models/peso");
+const upload = require("../config/upload");
 
 class UsuarioController {
   async obtenerUsuarios(req, res) {
@@ -33,16 +36,28 @@ class UsuarioController {
 
   async agregarUsuario(req, res) {
     try {
-      const { username, email, password, nombre, apellido } = req.body;
+      const {
+        username,
+        email,
+        dni,
+        password,
+        nombre,
+        apellido,
+        imagen,
+        tipoUsuarioId,
+      } = req.body;
 
       const hashedPassword = await bcrypt.hash(password, 10);
 
       const nuevoUsuario = await Usuario.create({
         username,
         email,
+        dni,
         password: hashedPassword,
         nombre,
         apellido,
+        imagen,
+        tipoUsuarioId: 1,
       });
 
       console.log("Usuario creado:", nuevoUsuario.toJSON());
@@ -250,6 +265,67 @@ class UsuarioController {
       res
         .status(500)
         .json({ error: "Hubo un error al obtener las presiones arteriales" });
+    }
+  }
+  async obtenerTemperaturas(req, res) {
+    try {
+      const { hijoId } = req.params;
+      const usuario = await Usuario.findByPk(req.userId, {
+        include: {
+          model: Hijo,
+          through: UsuarioXHijo,
+          as: "Hijos",
+          where: { id: hijoId },
+          include: {
+            model: Temperatura,
+            as: "Temperatura",
+          },
+        },
+      });
+      if (!usuario) {
+        return res.status(404).json({ error: "Hijo no encontrado" });
+      }
+      const hijo = usuario.Hijos[0];
+      if (!hijo) {
+        return res.status(404).json({ error: "Hijo no encontrado" });
+      }
+      const temperaturas = await hijo.getTemperatura();
+      res.json(temperaturas);
+    } catch (error) {
+      console.error("Error al obtener las temperaturas:", error);
+      res
+        .status(500)
+        .json({ error: "Hubo un error al obtener las temperaturas" });
+    }
+  }
+
+  async obtenerPesos(req, res) {
+    try {
+      const { hijoId } = req.params;
+      const usuario = await Usuario.findByPk(req.userId, {
+        include: {
+          model: Hijo,
+          through: UsuarioXHijo,
+          as: "Hijos",
+          where: { id: hijoId },
+          include: {
+            model: Peso,
+            as: "Peso",
+          },
+        },
+      });
+      if (!usuario) {
+        return res.status(404).json({ error: "Hijo no encontrado" });
+      }
+      const hijo = usuario.Hijos[0];
+      if (!hijo) {
+        return res.status(404).json({ error: "Hijo no encontrado" });
+      }
+      const pesos = await hijo.getPeso();
+      res.json(pesos);
+    } catch (error) {
+      console.error("Error al obtener los pesos:", error);
+      res.status(500).json({ error: "Hubo un error al obtener los pesos" });
     }
   }
 }

@@ -1,17 +1,18 @@
 const { DataTypes, Model } = require("sequelize");
 const sequelize = require("../config/database");
+const Hijo = require("./hijo");
 
-class FrecuenciaCardiaca extends Model {}
+class Temperatura extends Model {}
 
-FrecuenciaCardiaca.init(
+Temperatura.init(
   {
     id: {
       type: DataTypes.INTEGER,
       autoIncrement: true,
       primaryKey: true,
     },
-    frecuencia: {
-      type: DataTypes.INTEGER,
+    valor: {
+      type: DataTypes.DECIMAL,
       allowNull: false,
     },
     descripcion: {
@@ -26,28 +27,20 @@ FrecuenciaCardiaca.init(
       type: DataTypes.TIME,
       allowNull: false,
     },
-    hijoId: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      references: {
-        model: "hijo",
-        key: "id",
-      },
-    },
   },
   {
     sequelize,
-    modelName: "FrecuenciaCardiaca",
-    tableName: "frecuencia_cardiacas",
+    modelName: "Temperatura",
+    tableName: "Temperatura",
     timestamps: false,
   },
 );
 
-FrecuenciaCardiaca.associate = (models) => {
-  FrecuenciaCardiaca.belongsTo(models.Hijo, {
+Temperatura.associate = (models) => {
+  Temperatura.belongsTo(models.Hijo, {
     foreignKey: "hijoId",
-    as: "hijo",
+    as: "Hijos",
   });
 };
 
-module.exports = FrecuenciaCardiaca;
+module.exports = Temperatura;
