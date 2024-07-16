@@ -1,13 +1,7 @@
 "use client";
 import React, { useState, FormEvent } from "react";
-import axios from "axios";
-import {
-  CardTitle,
-  CardHeader,
-  CardContent,
-  CardFooter,
-  Card,
-} from "@/components/ui/card";
+import axios, { AxiosError } from "axios";
+import { CardTitle, CardHeader, CardContent, Card } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import Image from "next/image";
@@ -65,24 +59,97 @@ export function LogIn() {
           marginTop: "70px",
         },
       }).showToast();
-    } catch (error) {
+    } catch (error: unknown) {
       console.error("Error en el login:", error);
-      setMessage("Credenciales inválidas");
 
-      Toastify({
-        text: "Credenciales inválidas",
-        duration: 6000,
-        position: "right",
-        style: {
-          background: "#FF0000",
-          color: "#FFFFFF",
-          fontSize: "14px",
-          padding: "10px",
-          borderRadius: "4px",
-          fontWeight: "bold",
-          marginTop: "70px",
-        },
-      }).showToast();
+      if (axios.isAxiosError(error)) {
+        // Error de respuesta del servidor
+        if (error.response) {
+          if (error.response.status === 401) {
+            setMessage("Credenciales inválidas");
+            Toastify({
+              text: "Credenciales inválidas",
+              duration: 6000,
+              position: "right",
+              style: {
+                background: "#FF0000",
+                color: "#FFFFFF",
+                fontSize: "14px",
+                padding: "10px",
+                borderRadius: "4px",
+                fontWeight: "bold",
+                marginTop: "70px",
+              },
+            }).showToast();
+          } else {
+            setMessage("Error en el servidor, por favor intenta nuevamente");
+            Toastify({
+              text: "Error en el servidor, por favor intenta nuevamente",
+              duration: 6000,
+              position: "right",
+              style: {
+                background: "#FF0000",
+                color: "#FFFFFF",
+                fontSize: "14px",
+                padding: "10px",
+                borderRadius: "4px",
+                fontWeight: "bold",
+                marginTop: "70px",
+              },
+            }).showToast();
+          }
+        } else if (error.request) {
+          setMessage(
+            "No se pudo contactar al servidor, por favor verifica tu conexión",
+          );
+          Toastify({
+            text: "No se pudo contactar al servidor, por favor verifica tu conexión",
+            duration: 6000,
+            position: "right",
+            style: {
+              background: "#FF0000",
+              color: "#FFFFFF",
+              fontSize: "14px",
+              padding: "10px",
+              borderRadius: "4px",
+              fontWeight: "bold",
+              marginTop: "70px",
+            },
+          }).showToast();
+        } else {
+          setMessage("Ocurrió un error, por favor intenta nuevamente");
+          Toastify({
+            text: "Ocurrió un error, por favor intenta nuevamente",
+            duration: 6000,
+            position: "right",
+            style: {
+              background: "#FF0000",
+              color: "#FFFFFF",
+              fontSize: "14px",
+              padding: "10px",
+              borderRadius: "4px",
+              fontWeight: "bold",
+              marginTop: "70px",
+            },
+          }).showToast();
+        }
+      } else {
+        setMessage("Ocurrió un error inesperado, por favor intenta nuevamente");
+        Toastify({
+          text: "Ocurrió un error inesperado, por favor intenta nuevamente",
+          duration: 6000,
+          position: "right",
+          style: {
+            background: "#FF0000",
+            color: "#FFFFFF",
+            fontSize: "14px",
+            padding: "10px",
+            borderRadius: "4px",
+            fontWeight: "bold",
+            marginTop: "70px",
+          },
+        }).showToast();
+      }
     }
   };
 
