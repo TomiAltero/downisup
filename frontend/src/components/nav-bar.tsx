@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
+
 const routes = [
   {
     name: "Inicio",
@@ -37,6 +38,7 @@ const routes = [
 
 export default function NavBar() {
   const pathname = usePathname();
+
   return (
     <nav className="bg-custom-blue">
       <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
@@ -50,7 +52,6 @@ export default function NavBar() {
             >
               <span className="absolute -inset-0.5"></span>
               <span className="sr-only">Open main menu</span>
-
               <svg
                 className="block h-6 w-6"
                 fill="none"
@@ -93,13 +94,15 @@ export default function NavBar() {
             <div className="hidden sm:ml-10 sm:block">
               <div className="flex items-center space-x-3">
                 {routes.map((route) => (
-                  <a
+                  <Link
                     key={route.name}
                     href={route.route}
-                    className={`${pathname === route.route ? "bg-gray-500" : ""} text-white rounded-md px-2 py-2 text-sm font-medium hover:bg-blue-800`}
+                    className={`relative inline-flex items-center justify-center rounded-md px-2 py-2 text-sm font-medium ${pathname === route.route ? "bg-blue-600 text-white" : "text-gray-400"} hover:text-white`}
                   >
-                    {route.name}
-                  </a>
+                    <span className="text-white after:absolute after:w-0 after:h-0.5 after:bg-blue-600 after:transition-all after:duration-300 after:bottom-0 after:left-0 hover:after:w-full">
+                      {route.name}
+                    </span>
+                  </Link>
                 ))}
               </div>
             </div>
@@ -108,13 +111,13 @@ export default function NavBar() {
             <Link href="/donar">
               <Button
                 variant="destructive"
-                className="rounded-full text-base px-4 py-2 font-semibold"
+                className="rounded-full text-base px-4 py-2 font-semibold hover:bg-blue-600"
               >
                 Donar Aquí
               </Button>
             </Link>
             <Link href="/login">
-              <Button className="bg-custom-white text-black text-base px-4 py-2  font-semibold">
+              <Button className="bg-custom-white text-black text-base px-4 py-2 font-semibold hover:text-blue-600">
                 Iniciar Sesión
               </Button>
             </Link>
@@ -124,13 +127,13 @@ export default function NavBar() {
       <div className="sm:hidden" id="mobile-menu">
         <div className="space-y-1 px-2 pb-3 pt-2">
           {routes.map((route) => (
-            <a
+            <Link
               key={route.name}
               href={route.route}
-              className={`${pathname === route.route ? "bg-gray-900" : ""} block rounded-md px-3 py-2 text-base font-medium`}
+              className={`block rounded-md px-3 py-2 text-base font-medium ${pathname === route.route ? "bg-gray-900 text-white" : "text-gray-400"} hover:text-white`}
             >
               {route.name}
-            </a>
+            </Link>
           ))}
         </div>
       </div>
