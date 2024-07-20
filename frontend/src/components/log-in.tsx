@@ -1,6 +1,6 @@
 "use client";
 import React, { useState, FormEvent } from "react";
-import axios, { AxiosError } from "axios";
+import axios from "axios";
 import { CardTitle, CardHeader, CardContent, Card } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
@@ -20,7 +20,7 @@ declare global {
 window.Toastify = Toastify;
 
 export function LogIn() {
-  const [username, setUsername] = useState("");
+  const [usernameOrEmail, setUsernameOrEmail] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
   const redirectDelay = 1500;
@@ -32,7 +32,7 @@ export function LogIn() {
       const response = await axios.post(
         "http://localhost:5000/api/usuarios/login",
         {
-          username,
+          usernameOrEmail,
           password,
         },
       );
@@ -63,7 +63,6 @@ export function LogIn() {
       console.error("Error en el login:", error);
 
       if (axios.isAxiosError(error)) {
-        // Error de respuesta del servidor
         if (error.response) {
           if (error.response.status === 401) {
             setMessage("Credenciales inválidas");
@@ -168,20 +167,20 @@ export function LogIn() {
               <article className="space-y-4 my-4">
                 <Label
                   className="block text-xs font-bold leading-6 text-blue-900"
-                  htmlFor="username"
+                  htmlFor="usernameOrEmail"
                 >
-                  Nombre de Usuario
+                  Nombre de Usuario o Correo Electrónico
                 </Label>
                 <div className="relative">
                   <Input
                     className="rounded-xl border-t-0 border-l-0 border-r-0 border-b-2 border-blue-800 outline-none focus:ring-0 focus:border-blue-700 mb-6"
-                    id="username"
-                    name="username"
-                    placeholder="Ingrese su nombre de usuario"
+                    id="usernameOrEmail"
+                    name="usernameOrEmail"
+                    placeholder="Ingrese su usuario o correo electrónico"
                     required
                     type="text"
-                    value={username}
-                    onChange={(e) => setUsername(e.target.value)}
+                    value={usernameOrEmail}
+                    onChange={(e) => setUsernameOrEmail(e.target.value)}
                   />
                 </div>
               </article>
@@ -196,7 +195,7 @@ export function LogIn() {
                   <Input
                     id="password"
                     name="password"
-                    className="rounded-xl border-t-0 border-l-0 border-r-0 border-b-2 border-blue-800 outline-none focus:ring-0 focus:border-blue-700" // Borde solo inferior
+                    className="rounded-xl border-t-0 border-l-0 border-r-0 border-b-2 border-blue-800 outline-none focus:ring-0 focus:border-blue-700"
                     placeholder="Ingrese su contraseña"
                     required
                     type="password"
