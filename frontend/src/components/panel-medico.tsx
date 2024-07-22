@@ -173,8 +173,8 @@ export default function PanelMedico() {
         )}
       </div>
       <div className="flex justify-center mt-6 space-x-4">
-        {peso && <PesoChart hijoId={6} />}
-        {temperatura && <PesoChartTemperatura hijoId={6} />}
+        {peso && <PesoChart hijoId={1} />}
+        {temperatura && <PesoChartTemperatura hijoId={1} />}
       </div>
     </section>
   );
