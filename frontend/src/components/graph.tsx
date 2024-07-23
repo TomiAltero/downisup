@@ -47,6 +47,7 @@ const PesoChart: React.FC<Props> = ({ hijoId }) => {
               },
             },
           );
+          console.log(response.data);
           setPesos(response.data);
         }
       } catch (error) {
