@@ -117,7 +117,7 @@ export default function NavBar() {
               </Button>
             </Link>
             <Link href="/login">
-              <Button className="bg-custom-white text-black text-base px-4 py-2 font-semibold hover:text-blue-600">
+              <Button className="bg-custom-white text-black text-base px-4 py-2 font-semibold hover:text-blue-900">
                 Iniciar Sesión
               </Button>
             </Link>

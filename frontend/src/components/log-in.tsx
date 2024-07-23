@@ -169,7 +169,7 @@ export function LogIn() {
                   className="block text-xs font-bold leading-6 text-blue-900"
                   htmlFor="usernameOrEmail"
                 >
-                  Nombre de Usuario o Correo Electrónico
+                  Usuario o Correo Electrónico
                 </Label>
                 <div className="relative">
                   <Input
