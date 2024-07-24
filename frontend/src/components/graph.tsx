@@ -70,10 +70,24 @@ const PesoChart: React.FC<Props> = ({ hijoId }) => {
       },
     ],
   };
+  const options = {
+    plugins: {
+      title: {
+        display: true,
+        text: "Datos de peso por semana",
+        font: {
+          size: 16,
+        },
+      },
+      legend: {
+        position: "top" as const,
+      },
+    },
+  };
 
   return (
     <div className="md:w-1/2 lg:w-3/4 xl:w-2/3 mt-6">
-      <Line data={data} />
+      <Line data={data} options={options} />
     </div>
   );
 };
