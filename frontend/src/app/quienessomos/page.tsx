@@ -46,9 +46,11 @@ export default function QuienesSomos() {
           </article>
         </section>
         <section className="flex flex-col text-sm space-y-2 justify">
+          <br />
           <h1 className="w-full text-center text-custom-blue font-extrabold text-3xl mb-2">
             Objetivos
           </h1>
+          <br />
           <section className="flex flex-col space-y-2">
             <article className="flex gap-x-2">
               <Image
