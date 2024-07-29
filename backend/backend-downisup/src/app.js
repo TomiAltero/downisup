@@ -4,6 +4,7 @@ require("dotenv").config();
 const express = require("express");
 const sequelize = require("./config/database");
 const usuariosRoutes = require("./routes/usuariosRoutes");
+const hijosRoutes = require("./routes/hijosRoutes");
 const cors = require("cors");
 
 const app = express();
@@ -23,7 +24,7 @@ app.get("/", (req, res) => {
 });
 
 app.use("/api/usuarios", usuariosRoutes);
-app.use("/uploads", express.static(path.join(__dirname, "uploads")));
+app.use("/api/hijos", hijosRoutes);
 
 sequelize
   .sync()
