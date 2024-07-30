@@ -157,7 +157,7 @@ export function LogIn() {
   return (
     <div className="flex items-center justify-center min-h-screen">
       <form onSubmit={handleLogin}>
-        <Card className="mt-8 w-[400px] h-[520px]">
+        <Card className="mt-8 w-[400px] h-[530px]">
           <CardHeader className="flex flex-col items-center">
             <Image src="/favicon.ico" width={72} height={50} alt="Logo DiU" />
             <CardTitle className="mt-4 text-xl font-bold text-blue-900">
@@ -236,6 +236,14 @@ export function LogIn() {
                   </Link>
                 </p>
               </article>
+              <article className="flex justify-center mt-3">
+              <Link 
+                href="/"
+                className="text-blue-700 text-sm font-bold mb-2"
+              >
+                Volver al inicio  
+              </Link>
+            </article>  
             </section>
           </CardContent>
         </Card>

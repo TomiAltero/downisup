@@ -135,7 +135,7 @@ export function SignUp() {
 
   return (
     <form onSubmit={handleFormSubmit}>
-      <Card className="mt-8 w-[400px]">
+      <Card className="mt-8 w-[500px]">
         <CardHeader className="flex flex-col items-center">
           <Image src="/favicon.ico" width={72} height={50} alt="Logo DiU" />
           <CardTitle className="mt-4 text-xl font-bold text-blue-900">
@@ -214,6 +214,7 @@ export function SignUp() {
                 onChange={(e) => setUsername(e.target.value)}
               />
             </article>
+            <section className="flex flex-row gap-x-2">
             <article className="space-y-2 my-2">
               <Label
                 className="block text-xs font-bold leading-6 text-blue-900"
@@ -251,81 +252,88 @@ export function SignUp() {
                 onChange={(e) => setEmail(e.target.value)}
               />
             </article>
+            </section>
+            
 
-            <article className="space-y-2 my-2">
-              <Label
-                className="block text-xs font-bold leading-6 text-blue-900"
-                htmlFor="password"
-              >
-                Contraseña
-              </Label>
-              <div className="relative">
-                <Input
-                  id="password"
-                  name="password"
-                  className={`rounded-xl border-t-0 border-l-0 border-r-0 border-b-2 ${
-                    isMatch ? "border-blue-800" : "border-red-600"
-                  } outline-none focus:ring-0 focus:border-blue-700`}
-                  placeholder="Ingrese su contraseña"
-                  required
-                  type={showPassword ? "text" : "password"}
-                  value={password}
-                  onChange={handlePasswordChange}
-                />
-                <button
-                  type="button"
-                  onClick={() => setShowPassword(!showPassword)}
-                  className="absolute inset-y-0 right-0 flex items-center pr-3"
+            <section className="my-2  gap-x-4 flex flex-row">
+              <article>
+                <Label
+                  className="block text-xs font-bold leading-6 text-blue-900"
+                  htmlFor="password"
                 >
-                  {showPassword ? (
-                    <FaEyeSlash className="text-gray-400" />
-                  ) : (
-                    <FaEye className="text-gray-400" />
-                  )}
-                </button>
-              </div>
-              <Label
-                className="block text-xs font-bold leading-6 text-blue-900"
-                htmlFor="password2"
-              >
-                Confirmar Contraseña
-              </Label>
-              <div className="relative">
-                <Input
-                  id="password2"
-                  className={`rounded-xl border-t-0 border-l-0 border-r-0 border-b-2 ${
-                    isMatch ? "border-blue-800" : "border-red-600"
-                  } outline-none focus:ring-0 focus:border-blue-700`}
-                  placeholder="Repita la contraseña"
-                  required
-                  type={showPassword ? "text" : "password"}
-                  value={confirmPassword}
-                  onChange={handleConfirmPasswordChange}
-                />
-                <button
-                  type="button"
-                  onClick={() => setShowPassword(!showPassword)}
-                  className="absolute inset-y-0 right-0 flex items-center pr-3"
+                  Contraseña
+                </Label>
+                <div className="relative">
+                  <Input
+                    id="password"
+                    name="password"
+                    className={`rounded-xl border-t-0 border-l-0 border-r-0 border-b-2 ${
+                      isMatch ? "border-blue-800" : "border-red-600"
+                    } outline-none focus:ring-0 focus:border-blue-700`}
+                    placeholder="Ingrese su contraseña"
+                    required
+                    type={showPassword ? "text" : "password"}
+                    value={password}
+                    onChange={handlePasswordChange}
+                  />
+                  <button
+                    type="button"
+                    onClick={() => setShowPassword(!showPassword)}
+                    className="absolute inset-y-0 right-0 flex items-center pr-3"
+                  >
+                    {showPassword ? (
+                      <FaEyeSlash className="text-gray-400" />
+                    ) : (
+                      <FaEye className="text-gray-400" />
+                    )}
+                  </button>
+                </div>
+              </article>
+              <article>
+                <Label
+                  className="block text-xs font-bold leading-6 text-blue-900"
+                  htmlFor="password2"
                 >
-                  {showPassword ? (
-                    <FaEyeSlash className="text-gray-400" />
-                  ) : (
-                    <FaEye className="text-gray-400" />
-                  )}
-                </button>
-              </div>
-            </article>
+                  Confirmar Contraseña
+                </Label>
+                <div className="relative">
+                  <Input
+                    id="password2"
+                    className={`rounded-xl border-t-0 border-l-0 border-r-0 border-b-2 ${
+                      isMatch ? "border-blue-800" : "border-red-600"
+                    } outline-none focus:ring-0 focus:border-blue-700`}
+                    placeholder="Repita la contraseña"
+                    required
+                    type={showPassword ? "text" : "password"}
+                    value={confirmPassword}
+                    onChange={handleConfirmPasswordChange}
+                  />
+                  <button
+                    type="button"
+                    onClick={() => setShowPassword(!showPassword)}
+                    className="absolute inset-y-0 right-0 flex items-center pr-3"
+                  >
+                    {showPassword ? (
+                      <FaEyeSlash className="text-gray-400" />
+                    ) : (
+                      <FaEye className="text-gray-400" />
+                    )}
+                  </button>
+                </div>
+              </article>
+              
+            </section>
             <article className="flex justify-center w-full mt-5">
               <Button
                 disabled={!isMatch}
-                variant={"primary"}
+                variant={"default"}
                 className="w-full rounded-2xl bg-custom-blue px-3 py-2 text-sm font-semi bold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2"
                 type="submit"
               >
                 Continuar
               </Button>
             </article>
-            <article className="flex justify-center w-full mt-7">
+            <article className="flex justify-center w-full mt-7 -mb-2">
               <p className="text-sm text-blue-900">
                 ¿Ya tienes cuenta?{" "}
                 <Link
