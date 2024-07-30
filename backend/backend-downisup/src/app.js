@@ -26,6 +26,8 @@ app.get("/", (req, res) => {
 app.use("/api/usuarios", usuariosRoutes);
 app.use("/api/hijos", hijosRoutes);
 
+app.use("/uploads", express.static(path.join(__dirname, "uploads")));
+
 sequelize
   .sync()
   .then(() => {
