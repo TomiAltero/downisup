@@ -135,10 +135,10 @@ export function SignUp() {
 
   return (
     <form onSubmit={handleFormSubmit}>
-      <Card className="mt-8 w-[500px]">
+      <Card className="mt-8 w-[450px]">
         <CardHeader className="flex flex-col items-center">
           <Image src="/favicon.ico" width={72} height={50} alt="Logo DiU" />
-          <CardTitle className="mt-4 text-xl font-bold text-blue-900">
+          <CardTitle className="-mt-2 my-2 text-xl font-bold text-blue-900">
             Regístrate
           </CardTitle>
         </CardHeader>
@@ -333,12 +333,12 @@ export function SignUp() {
                 Continuar
               </Button>
             </article>
-            <article className="flex justify-center w-full mt-7 -mb-2">
+            <article className="flex justify-center w-full mt-5 -mb-2">
               <p className="text-sm text-blue-900">
                 ¿Ya tienes cuenta?{" "}
                 <Link
                   href="/login"
-                  className="text-blue-700 font-bold hover:underline"
+                  className="text-blue-900 font-bold hover:underline"
                 >
                   Inicia sesión
                 </Link>
