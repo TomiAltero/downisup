@@ -10,6 +10,7 @@ import Toastify from "toastify-js";
 import "toastify-js/src/toastify.css";
 import "react-toastify/dist/ReactToastify.css";
 import Link from "next/link";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 declare global {
   interface Window {
@@ -23,6 +24,7 @@ export function LogIn() {
   const [usernameOrEmail, setUsernameOrEmail] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
   const redirectDelay = 1500;
 
   const handleLogin = async (event: FormEvent<HTMLFormElement>) => {
@@ -155,7 +157,7 @@ export function LogIn() {
   return (
     <div className="flex items-center justify-center min-h-screen">
       <form onSubmit={handleLogin}>
-        <Card className="mt-8 w-[400px] h-[520px] ">
+        <Card className="mt-8 w-[400px] h-[530px]">
           <CardHeader className="flex flex-col items-center">
             <Image src="/favicon.ico" width={72} height={50} alt="Logo DiU" />
             <CardTitle className="mt-4 text-xl font-bold text-blue-900">
@@ -198,10 +200,21 @@ export function LogIn() {
                     className="rounded-xl border-t-0 border-l-0 border-r-0 border-b-2 border-blue-800 outline-none focus:ring-0 focus:border-blue-700"
                     placeholder="Ingrese su contraseña"
                     required
-                    type="password"
+                    type={showPassword ? "text" : "password"}
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                   />
+                  <button
+                    type="button"
+                    onClick={() => setShowPassword(!showPassword)}
+                    className="absolute inset-y-0 right-0 flex items-center pr-3"
+                  >
+                    {showPassword ? (
+                      <FaEyeSlash className="text-gray-500" />
+                    ) : (
+                      <FaEye className="text-gray-500" />
+                    )}
+                  </button>
                 </div>
               </article>
               <article className="flex justify-center w-full mt-8">
@@ -223,6 +236,14 @@ export function LogIn() {
                   </Link>
                 </p>
               </article>
+              <article className="flex justify-center mt-3">
+              <Link 
+                href="/"
+                className="text-blue-700 text-sm font-bold mb-2"
+              >
+                Volver al inicio  
+              </Link>
+            </article>  
             </section>
           </CardContent>
         </Card>

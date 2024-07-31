@@ -27,30 +27,4 @@ router.post("/", validationDataUser, async (req, res, next) => {
 router.put("/:id", verificarToken, usuarioController.actualizarUsuario);
 router.delete("/:id", verificarToken, usuarioController.eliminarUsuario);
 
-router.get("/hijo", verificarToken, usuarioController.obtenerHijos);
-
-router.get(
-  "/hijo/:hijoId",
-  verificarToken,
-  usuarioController.obtenerFrecuenciaCardiacas,
-);
-
-router.get(
-  "/hijo/:hijoId/presionArterial",
-  verificarToken,
-  usuarioController.obtenerPresionArterial,
-);
-
-router.get(
-  "/hijo/:hijoId/temperatura",
-  verificarToken,
-  usuarioController.obtenerTemperaturas,
-);
-
-router.get(
-  "/hijo/:hijoId/peso",
-  verificarToken,
-  usuarioController.obtenerPesos,
-);
-
 module.exports = router;

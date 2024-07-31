@@ -10,6 +10,7 @@ import axios from "axios";
 import Toastify from "toastify-js";
 import "react-toastify/dist/ReactToastify.css";
 import Link from "next/link";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 export function SignUp() {
   const [showPassword, setShowPassword] = useState<boolean>(false);
@@ -27,8 +28,6 @@ export function SignUp() {
     null,
   );
 
-  const handleCheckBoxChange = () => setShowPassword(!showPassword);
-
   const handlePasswordChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setPassword(event.target.value);
     setIsMatch(event.target.value === confirmPassword);
@@ -43,6 +42,24 @@ export function SignUp() {
 
   const handleFormSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+
+    if (!isMatch) {
+      Toastify({
+        text: "Las contraseñas no coinciden",
+        duration: 5000,
+        position: "right",
+        style: {
+          background: "#FF0000",
+          color: "#FFFFFF",
+          fontSize: "14px",
+          padding: "10px",
+          borderRadius: "4px",
+          fontWeight: "bold",
+          marginTop: "70px",
+        },
+      }).showToast();
+      return; // Evitar el envío del formulario
+    }
 
     try {
       const response = await axios.post("http://localhost:5000/api/usuarios", {
@@ -118,11 +135,11 @@ export function SignUp() {
 
   return (
     <form onSubmit={handleFormSubmit}>
-      <Card className="mt-8 w-[400px] ">
+      <Card className="mt-8 w-[500px]">
         <CardHeader className="flex flex-col items-center">
           <Image src="/favicon.ico" width={72} height={50} alt="Logo DiU" />
           <CardTitle className="mt-4 text-xl font-bold text-blue-900">
-            Registrate
+            Regístrate
           </CardTitle>
         </CardHeader>
 
@@ -149,7 +166,7 @@ export function SignUp() {
                   Nombre
                 </Label>
                 <Input
-                  className="rounded-xl border-t-0 border-l-0 border-r-0 border-b-2 border-blue-800 outline-none focus:ring-0 focus:border-blue-700" // Borde solo inferior
+                  className="rounded-xl border-t-0 border-l-0 border-r-0 border-b-2 border-blue-800 outline-none focus:ring-0 focus:border-blue-700"
                   id="nombre"
                   name="nombre"
                   placeholder="Ingrese su nombre"
@@ -167,7 +184,7 @@ export function SignUp() {
                   Apellido
                 </Label>
                 <Input
-                  className="rounded-xl border-t-0 border-l-0 border-r-0 border-b-2 border-blue-800 outline-none focus:ring-0 focus:border-blue-700" // Borde solo inferior
+                  className="rounded-xl border-t-0 border-l-0 border-r-0 border-b-2 border-blue-800 outline-none focus:ring-0 focus:border-blue-700"
                   id="apellido"
                   name="apellido"
                   placeholder="Ingrese su apellido"
@@ -187,7 +204,7 @@ export function SignUp() {
                 Nombre de Usuario
               </Label>
               <Input
-                className="rounded-xl border-t-0 border-l-0 border-r-0 border-b-2 border-blue-800 outline-none focus:ring-0 focus:border-blue-700" // Borde solo inferior
+                className="rounded-xl border-t-0 border-l-0 border-r-0 border-b-2 border-blue-800 outline-none focus:ring-0 focus:border-blue-700"
                 id="username"
                 name="username"
                 placeholder="Ingrese su nombre de usuario"
@@ -197,15 +214,16 @@ export function SignUp() {
                 onChange={(e) => setUsername(e.target.value)}
               />
             </article>
+            <section className="flex flex-row gap-x-2">
             <article className="space-y-2 my-2">
               <Label
                 className="block text-xs font-bold leading-6 text-blue-900"
-                htmlFor="email"
+                htmlFor="dni"
               >
                 DNI
               </Label>
               <Input
-                className="rounded-xl border-t-0 border-l-0 border-r-0 border-b-2 border-blue-800 outline-none focus:ring-0 focus:border-blue-700" // Borde solo inferior
+                className="rounded-xl border-t-0 border-l-0 border-r-0 border-b-2 border-blue-800 outline-none focus:ring-0 focus:border-blue-700"
                 id="dni"
                 name="dni"
                 placeholder="Ingrese su DNI"
@@ -224,7 +242,7 @@ export function SignUp() {
                 Email
               </Label>
               <Input
-                className="rounded-xl border-t-0 border-l-0 border-r-0 border-b-2 border-blue-800 outline-none focus:ring-0 focus:border-blue-700" // Borde solo inferior
+                className="rounded-xl border-t-0 border-l-0 border-r-0 border-b-2 border-blue-800 outline-none focus:ring-0 focus:border-blue-700"
                 id="email"
                 name="email"
                 placeholder="Ingrese su correo electrónico"
@@ -234,81 +252,95 @@ export function SignUp() {
                 onChange={(e) => setEmail(e.target.value)}
               />
             </article>
+            </section>
+            
 
-            <article className="space-y-2 my-2">
-              <Label
-                className="block text-xs font-bold leading-6 text-blue-900"
-                htmlFor="password"
-              >
-                Contraseña
-              </Label>
-              <article className="space-y-3">
-                <Input
-                  id="password"
-                  name="password"
-                  className="rounded-xl border-t-0 border-l-0 border-r-0 border-b-2 border-blue-800 outline-none focus:ring-0 focus:border-blue-700" // Borde solo inferior
-                  placeholder="Ingrese su contraseña"
-                  required
-                  type={showPassword ? "text" : "password"}
-                  value={password}
-                  onChange={handlePasswordChange}
-                />
+            <section className="my-2  gap-x-4 flex flex-row">
+              <article>
+                <Label
+                  className="block text-xs font-bold leading-6 text-blue-900"
+                  htmlFor="password"
+                >
+                  Contraseña
+                </Label>
+                <div className="relative">
+                  <Input
+                    id="password"
+                    name="password"
+                    className={`rounded-xl border-t-0 border-l-0 border-r-0 border-b-2 ${
+                      isMatch ? "border-blue-800" : "border-red-600"
+                    } outline-none focus:ring-0 focus:border-blue-700`}
+                    placeholder="Ingrese su contraseña"
+                    required
+                    type={showPassword ? "text" : "password"}
+                    value={password}
+                    onChange={handlePasswordChange}
+                  />
+                  <button
+                    type="button"
+                    onClick={() => setShowPassword(!showPassword)}
+                    className="absolute inset-y-0 right-0 flex items-center pr-3"
+                  >
+                    {showPassword ? (
+                      <FaEyeSlash className="text-gray-400" />
+                    ) : (
+                      <FaEye className="text-gray-400" />
+                    )}
+                  </button>
+                </div>
+              </article>
+              <article>
                 <Label
                   className="block text-xs font-bold leading-6 text-blue-900"
                   htmlFor="password2"
                 >
                   Confirmar Contraseña
                 </Label>
-                <Input
-                  id="password2"
-                  className="rounded-xl border-t-0 border-l-0 border-r-0 border-b-2 border-blue-800 outline-none focus:ring-0 focus:border-blue-700" // Borde solo inferior
-                  placeholder="Repita la contraseña"
-                  required
-                  type={showPassword ? "text" : "password"}
-                  value={confirmPassword}
-                  onChange={handleConfirmPasswordChange}
-                />
-                <article>
-                  {!isMatch && (
-                    <p className="transition-all rounded-2xl border ease-in-out delay-200 text-sm text-center font-bold bg-red-600 p-2 my-2">
-                      Las contraseñas no coinciden
-                    </p>
-                  )}
-                </article>
+                <div className="relative">
+                  <Input
+                    id="password2"
+                    className={`rounded-xl border-t-0 border-l-0 border-r-0 border-b-2 ${
+                      isMatch ? "border-blue-800" : "border-red-600"
+                    } outline-none focus:ring-0 focus:border-blue-700`}
+                    placeholder="Repita la contraseña"
+                    required
+                    type={showPassword ? "text" : "password"}
+                    value={confirmPassword}
+                    onChange={handleConfirmPasswordChange}
+                  />
+                  <button
+                    type="button"
+                    onClick={() => setShowPassword(!showPassword)}
+                    className="absolute inset-y-0 right-0 flex items-center pr-3"
+                  >
+                    {showPassword ? (
+                      <FaEyeSlash className="text-gray-400" />
+                    ) : (
+                      <FaEye className="text-gray-400" />
+                    )}
+                  </button>
+                </div>
               </article>
-              <article className="flex gap-x-2 items-center">
-                <Input
-                  type="checkbox"
-                  className="w-auto h-auto"
-                  onChange={handleCheckBoxChange}
-                  id="show"
-                />
-                <Label
-                  className="block text-xs font-medium leading-6  text-gray-900"
-                  htmlFor="show"
-                >
-                  Mostrar contraseña
-                </Label>
-              </article>
-            </article>
+              
+            </section>
             <article className="flex justify-center w-full mt-5">
               <Button
                 disabled={!isMatch}
-                variant={"primary"}
-                className="w-full rounded-2xl bg-custom-blue px-3 py-2 text-sm font-semi bold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2  "
+                variant={"default"}
+                className="w-full rounded-2xl bg-custom-blue px-3 py-2 text-sm font-semi bold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2"
                 type="submit"
               >
                 Continuar
               </Button>
             </article>
-            <article className="flex justify-center w-full mt-7">
+            <article className="flex justify-center w-full mt-7 -mb-2">
               <p className="text-sm text-blue-900">
                 ¿Ya tienes cuenta?{" "}
                 <Link
                   href="/login"
                   className="text-blue-700 font-bold hover:underline"
                 >
-                  Inicia sesion
+                  Inicia sesión
                 </Link>
               </p>
             </article>
