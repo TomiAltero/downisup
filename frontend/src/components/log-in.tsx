@@ -1,14 +1,7 @@
 "use client";
-
+import React, { useState, FormEvent } from "react";
 import axios from "axios";
-import { useState } from "react";
-import {
-  CardTitle,
-  CardHeader,
-  CardContent,
-  CardFooter,
-  Card,
-} from "@/components/ui/card";
+import { CardTitle, CardHeader, CardContent, Card } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import Image from "next/image";
@@ -17,20 +10,31 @@ import Toastify from "toastify-js";
 import "toastify-js/src/toastify.css";
 import "react-toastify/dist/ReactToastify.css";
 import Link from "next/link";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
+
+declare global {
+  interface Window {
+    Toastify: any;
+  }
+}
+
+window.Toastify = Toastify;
 
 export function LogIn() {
-  const [username, setUsername] = useState("");
+  const [usernameOrEmail, setUsernameOrEmail] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
+  const redirectDelay = 1500;
 
-  const handleLogin = async (event) => {
+  const handleLogin = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     try {
       const response = await axios.post(
         "http://localhost:5000/api/usuarios/login",
         {
-          username,
+          usernameOrEmail,
           password,
         },
       );
@@ -39,7 +43,9 @@ export function LogIn() {
       localStorage.setItem("token", token);
       setMessage("Inicio de sesión exitoso");
 
-      window.location.href = "/inicio";
+      setTimeout(() => {
+        window.location.href = "/inicio";
+      }, redirectDelay);
 
       Toastify({
         text: "Haz iniciado sesión exitosamente",
@@ -55,31 +61,103 @@ export function LogIn() {
           marginTop: "70px",
         },
       }).showToast();
-    } catch (error) {
+    } catch (error: unknown) {
       console.error("Error en el login:", error);
-      setMessage("Credenciales inválidas");
 
-      Toastify({
-        text: "Credenciales inválidas",
-        duration: 6000,
-        position: "right",
-        style: {
-          background: "#FF0000",
-          color: "#FFFFFF",
-          fontSize: "14px",
-          padding: "10px",
-          borderRadius: "4px",
-          fontWeight: "bold",
-          marginTop: "70px",
-        },
-      }).showToast();
+      if (axios.isAxiosError(error)) {
+        if (error.response) {
+          if (error.response.status === 401) {
+            setMessage("Credenciales inválidas");
+            Toastify({
+              text: "Credenciales inválidas",
+              duration: 6000,
+              position: "right",
+              style: {
+                background: "#FF0000",
+                color: "#FFFFFF",
+                fontSize: "14px",
+                padding: "10px",
+                borderRadius: "4px",
+                fontWeight: "bold",
+                marginTop: "70px",
+              },
+            }).showToast();
+          } else {
+            setMessage("Error en el servidor, por favor intenta nuevamente");
+            Toastify({
+              text: "Error en el servidor, por favor intenta nuevamente",
+              duration: 6000,
+              position: "right",
+              style: {
+                background: "#FF0000",
+                color: "#FFFFFF",
+                fontSize: "14px",
+                padding: "10px",
+                borderRadius: "4px",
+                fontWeight: "bold",
+                marginTop: "70px",
+              },
+            }).showToast();
+          }
+        } else if (error.request) {
+          setMessage(
+            "No se pudo contactar al servidor, por favor verifica tu conexión",
+          );
+          Toastify({
+            text: "No se pudo contactar al servidor, por favor verifica tu conexión",
+            duration: 6000,
+            position: "right",
+            style: {
+              background: "#FF0000",
+              color: "#FFFFFF",
+              fontSize: "14px",
+              padding: "10px",
+              borderRadius: "4px",
+              fontWeight: "bold",
+              marginTop: "70px",
+            },
+          }).showToast();
+        } else {
+          setMessage("Ocurrió un error, por favor intenta nuevamente");
+          Toastify({
+            text: "Ocurrió un error, por favor intenta nuevamente",
+            duration: 6000,
+            position: "right",
+            style: {
+              background: "#FF0000",
+              color: "#FFFFFF",
+              fontSize: "14px",
+              padding: "10px",
+              borderRadius: "4px",
+              fontWeight: "bold",
+              marginTop: "70px",
+            },
+          }).showToast();
+        }
+      } else {
+        setMessage("Ocurrió un error inesperado, por favor intenta nuevamente");
+        Toastify({
+          text: "Ocurrió un error inesperado, por favor intenta nuevamente",
+          duration: 6000,
+          position: "right",
+          style: {
+            background: "#FF0000",
+            color: "#FFFFFF",
+            fontSize: "14px",
+            padding: "10px",
+            borderRadius: "4px",
+            fontWeight: "bold",
+            marginTop: "70px",
+          },
+        }).showToast();
+      }
     }
   };
 
   return (
     <div className="flex items-center justify-center min-h-screen">
       <form onSubmit={handleLogin}>
-        <Card className="mt-8 w-[400px] h-[520px] ">
+        <Card className="mt-8 w-[400px] h-[530px]">
           <CardHeader className="flex flex-col items-center">
             <Image src="/favicon.ico" width={72} height={50} alt="Logo DiU" />
             <CardTitle className="mt-4 text-xl font-bold text-blue-900">
@@ -91,20 +169,20 @@ export function LogIn() {
               <article className="space-y-4 my-4">
                 <Label
                   className="block text-xs font-bold leading-6 text-blue-900"
-                  htmlFor="username"
+                  htmlFor="usernameOrEmail"
                 >
-                  Nombre de Usuario
+                  Usuario o Correo Electrónico
                 </Label>
                 <div className="relative">
                   <Input
                     className="rounded-xl border-t-0 border-l-0 border-r-0 border-b-2 border-blue-800 outline-none focus:ring-0 focus:border-blue-700 mb-6"
-                    id="username"
-                    name="username"
-                    placeholder="Ingrese su nombre de usuario"
+                    id="usernameOrEmail"
+                    name="usernameOrEmail"
+                    placeholder="Ingrese su usuario o correo electrónico"
                     required
                     type="text"
-                    value={username}
-                    onChange={(e) => setUsername(e.target.value)}
+                    value={usernameOrEmail}
+                    onChange={(e) => setUsernameOrEmail(e.target.value)}
                   />
                 </div>
               </article>
@@ -119,13 +197,24 @@ export function LogIn() {
                   <Input
                     id="password"
                     name="password"
-                    className="rounded-xl border-t-0 border-l-0 border-r-0 border-b-2 border-blue-800 outline-none focus:ring-0 focus:border-blue-700" // Borde solo inferior
+                    className="rounded-xl border-t-0 border-l-0 border-r-0 border-b-2 border-blue-800 outline-none focus:ring-0 focus:border-blue-700"
                     placeholder="Ingrese su contraseña"
                     required
-                    type="password"
+                    type={showPassword ? "text" : "password"}
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                   />
+                  <button
+                    type="button"
+                    onClick={() => setShowPassword(!showPassword)}
+                    className="absolute inset-y-0 right-0 flex items-center pr-3"
+                  >
+                    {showPassword ? (
+                      <FaEyeSlash className="text-gray-500" />
+                    ) : (
+                      <FaEye className="text-gray-500" />
+                    )}
+                  </button>
                 </div>
               </article>
               <article className="flex justify-center w-full mt-8">
@@ -147,6 +236,14 @@ export function LogIn() {
                   </Link>
                 </p>
               </article>
+              <article className="flex justify-center mt-3">
+              <Link 
+                href="/"
+                className="text-blue-700 text-sm font-bold mb-2"
+              >
+                Volver al inicio  
+              </Link>
+            </article>  
             </section>
           </CardContent>
         </Card>

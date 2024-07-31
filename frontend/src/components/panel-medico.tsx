@@ -37,7 +37,7 @@ export default function PanelMedico() {
                 },
               }),
               axios.get(
-                `http://localhost:5000/api/usuarios/hijo/${hijo.id}/presionArterial`,
+                `http://localhost:5000/api/hijos/${hijo.id}/presionArterial`,
                 {
                   headers: {
                     Authorization: `Bearer ${token}`,
@@ -45,21 +45,18 @@ export default function PanelMedico() {
                 },
               ),
               axios.get(
-                `http://localhost:5000/api/usuarios/hijo/${hijo.id}/temperatura`,
+                `http://localhost:5000/api/hijos/${hijo.id}/temperatura`,
                 {
                   headers: {
                     Authorization: `Bearer ${token}`,
                   },
                 },
               ),
-              axios.get(
-                `http://localhost:5000/api/usuarios/hijo/${hijo.id}/peso`,
-                {
-                  headers: {
-                    Authorization: `Bearer ${token}`,
-                  },
+              axios.get(`http://localhost:5000/api/hijos/${hijo.id}/peso`, {
+                headers: {
+                  Authorization: `Bearer ${token}`,
                 },
-              ),
+              }),
             ]);
 
           if (frecuencias.data.length > 0) {
@@ -173,8 +170,8 @@ export default function PanelMedico() {
         )}
       </div>
       <div className="flex justify-center mt-6 space-x-4">
-        {peso && <PesoChart hijoId={6} />}
-        {temperatura && <PesoChartTemperatura hijoId={6} />}
+        {peso && <PesoChart hijoId={1} />}
+        {temperatura && <PesoChartTemperatura hijoId={1} />}
       </div>
     </section>
   );

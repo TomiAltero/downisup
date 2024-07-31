@@ -7,6 +7,7 @@ Usuario.init(
   {
     username: {
       type: DataTypes.STRING,
+      UNIQUE: true,
       allowNull: false,
     },
     email: {
@@ -40,6 +41,14 @@ Usuario.init(
       allowNull: false,
       defaultValue: null,
     },
+    imagen: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
+    tipoUsuarioId: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
   },
   {
     sequelize,
@@ -47,6 +56,13 @@ Usuario.init(
     tableName: "Usuarios",
     timestamps: true,
   },
+
+  (Usuario.associate = (models) => {
+    Usuario.belongsTo(models.TipoUsuario, {
+      foreignKey: "tipoUsuarioId",
+      as: "TipoUsuario",
+    });
+  }),
 );
 
 module.exports = Usuario;

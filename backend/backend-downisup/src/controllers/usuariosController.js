@@ -7,6 +7,8 @@ const FrecuenciaCardiaca = require("../models/frecuenciaCardiaca");
 const PresionArterial = require("../models/presionArterial");
 const Temperatura = require("../models/temperatura");
 const Peso = require("../models/peso");
+const upload = require("../config/upload");
+const { Op } = require("sequelize");
 
 class UsuarioController {
   async obtenerUsuarios(req, res) {
@@ -35,7 +37,16 @@ class UsuarioController {
 
   async agregarUsuario(req, res) {
     try {
-      const { username, email, dni, password, nombre, apellido } = req.body;
+      const {
+        username,
+        email,
+        dni,
+        password,
+        nombre,
+        apellido,
+        imagen,
+        tipoUsuarioId,
+      } = req.body;
 
       const hashedPassword = await bcrypt.hash(password, 10);
 
@@ -46,6 +57,8 @@ class UsuarioController {
         password: hashedPassword,
         nombre,
         apellido,
+        imagen,
+        tipoUsuarioId: 1,
       });
 
       console.log("Usuario creado:", nuevoUsuario.toJSON());
@@ -90,7 +103,6 @@ class UsuarioController {
       const usuario = await Usuario.findByPk(id);
       if (!usuario) {
         return res.status(404).json({ error: "Usuario no encontrado" });
-        await usuario.destroy();
       }
       console.log("Usuario eliminado:", usuario.toJSON());
       res.json({ message: "Usuario eliminado correctamente" });
@@ -101,10 +113,14 @@ class UsuarioController {
   }
 
   async loginUsuario(req, res) {
-    const { username, password } = req.body;
+    const { usernameOrEmail, password } = req.body;
 
     try {
-      const usuario = await Usuario.findOne({ where: { username } });
+      const usuario = await Usuario.findOne({
+        where: {
+          [Op.or]: [{ username: usernameOrEmail }, { email: usernameOrEmail }],
+        },
+      });
 
       if (!usuario) {
         return res.status(404).json({ error: "Usuario no encontrado" });

@@ -2,12 +2,23 @@ import { opensans } from "@/components/ui/fonts";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import LandingLayout from "@/app/landinglyout";
+import Image from "next/image";
+
 export default function Home() {
   return (
     <LandingLayout>
-      <main className="h-full flex flex-col justify-center items-center space-y-8">
-        <section className="h-full w-full flex flex-col justify-center items-center space-y-10 bg-[url('/bg1.png')] bg-cover bg-center">
-          <section className={`${opensans.className} font-semibold`}>
+      <main className="h-screen flex flex-col justify-center items-center space-y-8 ">
+        <section className="relative h-full w-full flex flex-col justify-center items-center space-y-10 overflow-hidden">
+          <div className="absolute inset-0">
+            <Image
+              src="/background.png"
+              alt="Background"
+              layout="fill"
+              objectFit="cover"
+              className="z-[-1] opacity-95"
+            />
+          </div>
+          <section className={`${opensans.className} font-semibold z-10`}>
             <h1 className="text-center my-4 text-4xl text-white">
               Bienvenidos a
             </h1>
@@ -16,9 +27,11 @@ export default function Home() {
               <h1 className="text-white">Córdoba</h1>
             </article>
           </section>
-          <section className="flex flex-col items-center">
-            <Link href="contactanos">
-              <Button variant="secondary">Contáctanos</Button>
+          <section className="flex flex-col items-center z-10">
+            <Link href="/contactanos">
+              <Button className="bg-custom-white text-black text-base px-4 py-2 font-semibold animate-pulse hover:text-white hover:bg-custom-blue" variant="secondary">
+                Contáctanos
+              </Button>
             </Link>
           </section>
         </section>

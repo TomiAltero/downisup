@@ -1,7 +1,10 @@
+const path = require("path");
+
 require("dotenv").config();
 const express = require("express");
 const sequelize = require("./config/database");
 const usuariosRoutes = require("./routes/usuariosRoutes");
+const hijosRoutes = require("./routes/hijosRoutes");
 const cors = require("cors");
 
 const app = express();
@@ -9,7 +12,7 @@ const port = process.env.PORT || 5000;
 
 app.use(
   cors({
-    origin: "http://localhost:3000", // Reemplaza con el origen correcto si es necesario
+    origin: "http://localhost:3000",
     credentials: true,
   }),
 );
@@ -21,6 +24,9 @@ app.get("/", (req, res) => {
 });
 
 app.use("/api/usuarios", usuariosRoutes);
+app.use("/api/hijos", hijosRoutes);
+
+app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
 sequelize
   .sync()
