@@ -17,6 +17,7 @@ classDiagram
         -String ciudad
         -String pais
         -Date fechaNacimiento
+<<<<<<< HEAD
         
         +getNombreCompleto(): String
         +setNombre(nombre: String): void
@@ -28,6 +29,16 @@ classDiagram
         +setCiudad(ciudad: String): void
         +setPais(pais: String): void
         +setFechaNacimiento(fechaNacimiento: Date): void
+=======
+
+        -crearCuenta()
+        -login()
+        -logout()
+        -solicitarTurno()
+        -cancelarTurno()
+        -verHistoriaClinica()
+
+>>>>>>> main
     }
 
 
@@ -38,6 +49,7 @@ classDiagram
         -String paciente
         -Estado estado
 
+<<<<<<< HEAD
         +getFecha(): Date
         +setFecha(fecha: Date): void
         +getHora(): Time
@@ -48,6 +60,13 @@ classDiagram
         +setPaciente(paciente: String): void
         +getEstado(): Estado
         +setEstado(estado: Estado): void
+=======
+        -crearTurno()
+        -confirmarTurno()
+        -verTurno()
+        -cancelarTurno()
+        -reprogramarTurno()
+>>>>>>> main
     }
 
     class Estado {
@@ -60,10 +79,17 @@ classDiagram
         -String apellido
         -Int dni
 
+<<<<<<< HEAD
         +getNombre(): String
         +setNombre(nombre: String): void
         +setApellido(apellido: String): void
         +setDni(dni: Int): void
+=======
+        -verFichaMedica()
+        -verHistoriaClinica()
+        -verTurno()
+        -solicitarTurno()
+>>>>>>> main
     }
 
     class Especialista {
@@ -71,10 +97,15 @@ classDiagram
         -String apellido
         -String especialidad
 
+<<<<<<< HEAD
         +getNombre(): String
         +setNombre(nombre: String): void
         +setApellido(apellido: String): void
         +setEspecialidad(especialidad: String): void
+=======
+        -verFichaMedica()
+        -verHistoriaClinica()
+>>>>>>> main
     }
 
 
@@ -89,6 +120,7 @@ classDiagram
         -String pais
         -Date fechaNacimiento
 
+<<<<<<< HEAD
         +getNombreCompleto(): String
         +setNombre(nombre: String): void
         +setApellido(apellido: String): void
@@ -99,6 +131,11 @@ classDiagram
         +setCiudad(ciudad: String): void
         +setPais(pais: String): void
         +setFechaNacimiento(fechaNacimiento: Date): void
+=======
+        -verFichaMedica()
+        -verHistoriaClinica()
+        -verTurno()
+>>>>>>> main
     }
 
     class fichaMedica {
@@ -111,6 +148,7 @@ classDiagram
         -String diagnostico
         -String observaciones
 
+<<<<<<< HEAD
         +getPaciente(): Paciente
         +setPaciente(paciente: Paciente): void
         +getEspecialista(): Especialista
@@ -127,6 +165,42 @@ classDiagram
         +setDiagnostico(diagnostico: String): void
         +getObservaciones(): String
         +setObservaciones(observaciones: String): void
+=======
+        -crearFichaMedica()
+        -verFichaMedica()
+        -guardarFichaMedica()
+
+    }
+
+    class Medicameto {
+        -String nombre
+        -String descripcion
+        -String dosis
+        -String frecuencia
+        -String duracion
+    }
+
+    class antecedentes {
+        -String enfermedades
+        -String alergias
+        -String cirugias
+        -String traumatismos
+        -String hospitalizaciones
+    }
+
+    class examenFisico {
+        -String peso
+        -String altura
+        -String temperatura
+        -String presionArterial
+        -String frecuenciaCardiaca
+        -String frecuenciaRespiratoria
+    }
+
+    class diagnostico {
+        -String diagnostico
+        -String tratamiento
+>>>>>>> main
     }
 
     class HistoriaClinica {
@@ -137,6 +211,7 @@ classDiagram
         -String examenFisico
         -String diagnostico
         -String observaciones
+<<<<<<< HEAD
 
         +getPaciente(): Paciente
         +setPaciente(paciente: Paciente): void
@@ -152,4 +227,9 @@ classDiagram
         +setDiagnostico(diagnostico: String): void
         +getObservaciones(): String
         +setObservaciones(observaciones: String): void
+=======
+        -Medicameto medicameto
+
+        
+>>>>>>> main
     }
