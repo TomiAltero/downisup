@@ -58,7 +58,7 @@ export function SignUp() {
           marginTop: "70px",
         },
       }).showToast();
-      return; // Evitar el envío del formulario
+      return;
     }
 
     try {
@@ -215,45 +215,44 @@ export function SignUp() {
               />
             </article>
             <section className="flex flex-row gap-x-2">
-            <article className="space-y-2 my-2">
-              <Label
-                className="block text-xs font-bold leading-6 text-blue-900"
-                htmlFor="dni"
-              >
-                DNI
-              </Label>
-              <Input
-                className="rounded-xl border-t-0 border-l-0 border-r-0 border-b-2 border-blue-800 outline-none focus:ring-0 focus:border-blue-700"
-                id="dni"
-                name="dni"
-                placeholder="Ingrese su DNI"
-                required
-                type="text"
-                value={dni}
-                onChange={(e) => setDni(e.target.value)}
-              />
-            </article>
+              <article className="space-y-2 my-2">
+                <Label
+                  className="block text-xs font-bold leading-6 text-blue-900"
+                  htmlFor="dni"
+                >
+                  DNI
+                </Label>
+                <Input
+                  className="rounded-xl border-t-0 border-l-0 border-r-0 border-b-2 border-blue-800 outline-none focus:ring-0 focus:border-blue-700"
+                  id="dni"
+                  name="dni"
+                  placeholder="Ingrese su DNI"
+                  required
+                  type="text"
+                  value={dni}
+                  onChange={(e) => setDni(e.target.value)}
+                />
+              </article>
 
-            <article className="space-y-2 my-2">
-              <Label
-                className="block text-xs font-bold leading-6 text-blue-900"
-                htmlFor="email"
-              >
-                Email
-              </Label>
-              <Input
-                className="rounded-xl border-t-0 border-l-0 border-r-0 border-b-2 border-blue-800 outline-none focus:ring-0 focus:border-blue-700"
-                id="email"
-                name="email"
-                placeholder="Ingrese su correo electrónico"
-                required
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-              />
-            </article>
+              <article className="space-y-2 my-2">
+                <Label
+                  className="block text-xs font-bold leading-6 text-blue-900"
+                  htmlFor="email"
+                >
+                  Email
+                </Label>
+                <Input
+                  className="rounded-xl border-t-0 border-l-0 border-r-0 border-b-2 border-blue-800 outline-none focus:ring-0 focus:border-blue-700"
+                  id="email"
+                  name="email"
+                  placeholder="Ingrese su correo electrónico"
+                  required
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                />
+              </article>
             </section>
-            
 
             <section className="my-2  gap-x-4 flex flex-row">
               <article>
@@ -321,7 +320,6 @@ export function SignUp() {
                   </button>
                 </div>
               </article>
-              
             </section>
             <article className="flex justify-center w-full mt-5">
               <Button
