@@ -332,6 +332,10 @@ class UsuarioController {
       res.status(500).json({ error: "Hubo un error al obtener los pesos" });
     }
   }
+
+  async validarusuario(req, res) {
+    
+  }
 }
 
 module.exports = new UsuarioController();
