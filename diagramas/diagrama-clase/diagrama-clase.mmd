@@ -17,19 +17,6 @@ classDiagram
         -String ciudad
         -String pais
         -Date fechaNacimiento
-<<<<<<< HEAD
-        
-        +getNombreCompleto(): String
-        +setNombre(nombre: String): void
-        +setApellido(apellido: String): void
-        +setCorreo(correo: String): void
-        +setContraseña(contraseña: String): void
-        +setTelefono(telefono: Int): void
-        +setDireccion(direccion: String): void
-        +setCiudad(ciudad: String): void
-        +setPais(pais: String): void
-        +setFechaNacimiento(fechaNacimiento: Date): void
-=======
 
         -crearCuenta()
         -login()
@@ -38,7 +25,6 @@ classDiagram
         -cancelarTurno()
         -verHistoriaClinica()
 
->>>>>>> main
     }
 
 
@@ -49,24 +35,11 @@ classDiagram
         -String paciente
         -Estado estado
 
-<<<<<<< HEAD
-        +getFecha(): Date
-        +setFecha(fecha: Date): void
-        +getHora(): Time
-        +setHora(hora: Time): void
-        +getEspecialista(): String
-        +setEspecialista(especialista: String): void
-        +getPaciente(): String
-        +setPaciente(paciente: String): void
-        +getEstado(): Estado
-        +setEstado(estado: Estado): void
-=======
         -crearTurno()
         -confirmarTurno()
         -verTurno()
         -cancelarTurno()
         -reprogramarTurno()
->>>>>>> main
     }
 
     class Estado {
@@ -79,17 +52,10 @@ classDiagram
         -String apellido
         -Int dni
 
-<<<<<<< HEAD
-        +getNombre(): String
-        +setNombre(nombre: String): void
-        +setApellido(apellido: String): void
-        +setDni(dni: Int): void
-=======
         -verFichaMedica()
         -verHistoriaClinica()
         -verTurno()
         -solicitarTurno()
->>>>>>> main
     }
 
     class Especialista {
@@ -97,15 +63,8 @@ classDiagram
         -String apellido
         -String especialidad
 
-<<<<<<< HEAD
-        +getNombre(): String
-        +setNombre(nombre: String): void
-        +setApellido(apellido: String): void
-        +setEspecialidad(especialidad: String): void
-=======
         -verFichaMedica()
         -verHistoriaClinica()
->>>>>>> main
     }
 
 
@@ -120,22 +79,9 @@ classDiagram
         -String pais
         -Date fechaNacimiento
 
-<<<<<<< HEAD
-        +getNombreCompleto(): String
-        +setNombre(nombre: String): void
-        +setApellido(apellido: String): void
-        +setCorreo(correo: String): void
-        +setContraseña(contraseña: String): void
-        +setTelefono(telefono: Int): void
-        +setDireccion(direccion: String): void
-        +setCiudad(ciudad: String): void
-        +setPais(pais: String): void
-        +setFechaNacimiento(fechaNacimiento: Date): void
-=======
         -verFichaMedica()
         -verHistoriaClinica()
         -verTurno()
->>>>>>> main
     }
 
     class fichaMedica {
@@ -148,24 +94,6 @@ classDiagram
         -String diagnostico
         -String observaciones
 
-<<<<<<< HEAD
-        +getPaciente(): Paciente
-        +setPaciente(paciente: Paciente): void
-        +getEspecialista(): Especialista
-        +setEspecialista(especialista: Especialista): void
-        +getFecha(): Date
-        +setFecha(fecha: Date): void
-        +getMotivoConsulta(): String
-        +setMotivoConsulta(motivoConsulta: String): void
-        +getAntecedentes(): String
-        +setAntecedentes(antecedentes: String): void
-        +getExamenFisico(): String
-        +setExamenFisico(examenFisico: String): void
-        +getDiagnostico(): String
-        +setDiagnostico(diagnostico: String): void
-        +getObservaciones(): String
-        +setObservaciones(observaciones: String): void
-=======
         -crearFichaMedica()
         -verFichaMedica()
         -guardarFichaMedica()
@@ -200,7 +128,6 @@ classDiagram
     class diagnostico {
         -String diagnostico
         -String tratamiento
->>>>>>> main
     }
 
     class HistoriaClinica {
@@ -211,25 +138,7 @@ classDiagram
         -String examenFisico
         -String diagnostico
         -String observaciones
-<<<<<<< HEAD
-
-        +getPaciente(): Paciente
-        +setPaciente(paciente: Paciente): void
-        +getEspecialista(): Especialista
-        +setEspecialista(especialista: Especialista): void
-        +getFecha(): Date
-        +setFecha(fecha: Date): void
-        +getAntecedentes(): String
-        +setAntecedentes(antecedentes: String): void
-        +getExamenFisico(): String
-        +setExamenFisico(examenFisico: String): void
-        +getDiagnostico(): String
-        +setDiagnostico(diagnostico: String): void
-        +getObservaciones(): String
-        +setObservaciones(observaciones: String): void
-=======
         -Medicameto medicameto
 
         
->>>>>>> main
     }
