@@ -6,43 +6,22 @@ import { usePathname } from "next/navigation";
 import Link from "next/link";
 
 const routes = [
-  {
-    name: "Inicio",
-    route: "/",
-  },
-  {
-    name: "Quienes Somos",
-    route: "/quienessomos",
-  },
-  {
-    name: "Contáctanos",
-    route: "/contactanos",
-  },
-  {
-    name: "Club de Amigos",
-    route: "/clubdeamigos",
-  },
-  {
-    name: "Consultorios",
-    route: "/consultorios",
-  },
-  {
-    name: "Tienda",
-    route: "/tienda",
-  },
-  {
-    name: "Acciones",
-    route: "/acciones",
-  },
+  { name: "Inicio", route: "/" },
+  { name: "Quienes Somos", route: "/quienessomos" },
+  { name: "Club de Amigos", route: "/clubdeamigos" },
+  { name: "Consultorios", route: "/consultorios" },
+  { name: "Contáctanos", route: "/contactanos" },
+  { name: "Tienda", route: "/tienda" },
+  { name: "Acciones", route: "/acciones" },
 ];
 
 export default function NavBar() {
   const pathname = usePathname();
 
   return (
-    <nav className="bg-custom-blue">
-      <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
-        <div className="relative flex h-16 items-center justify-between">
+    <nav className="bg-custom-blue h-16">
+      <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8 h-full">
+        <div className="relative flex h-full items-center justify-between">
           <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
             <button
               type="button"
@@ -82,8 +61,8 @@ export default function NavBar() {
               </svg>
             </button>
           </div>
-          <div className="flex flex-1 items-center justify-between sm:justify-start">
-            <div className="flex flex-shrink-0 items-center">
+          <div className="flex flex-1 items-center justify-between sm:justify-start h-full">
+            <div className="flex flex-shrink-0 items-center h-full">
               <Image
                 width={50}
                 height={50}
@@ -91,15 +70,21 @@ export default function NavBar() {
                 alt="Your Company"
               />
             </div>
-            <div className="hidden sm:ml-10 sm:block">
-              <div className="flex items-center space-x-3">
+            <div className="hidden sm:ml-10 sm:block h-full">
+              <div className="flex items-center space-x-3 h-full">
                 {routes.map((route) => (
                   <Link
                     key={route.name}
                     href={route.route}
-                    className={`relative inline-flex items-center justify-center rounded-md px-2 py-2 text-sm font-medium ${pathname === route.route ? "bg-blue-600 text-white" : "text-gray-400"} hover:text-white`}
+                    className={`relative inline-flex items-center justify-center rounded-md px-2 py-2 text-sm font-medium text-white ${
+                      pathname === route.route ? "after:w-full" : ""
+                    }`}
                   >
-                    <span className="text-white after:absolute after:w-0 after:h-0.5 after:bg-blue-600 after:transition-all after:duration-300 after:bottom-0 after:left-0 hover:after:w-full">
+                    <span
+                      className={`relative after:absolute after:w-0 after:h-0.5 after:bg-blue-600 after:transition-all after:duration-300 after:bottom-0 after:left-0 hover:after:w-full text-white ${
+                        pathname === route.route ? "after:w-full" : ""
+                      } whitespace-nowrap`}
+                    >
                       {route.name}
                     </span>
                   </Link>
@@ -107,7 +92,7 @@ export default function NavBar() {
               </div>
             </div>
           </div>
-          <div className="flex gap-x-3 items-center">
+          <div className="flex gap-x-3 items-center h-full">
             <Link href="/donar">
               <Button
                 variant="destructive"
@@ -130,9 +115,17 @@ export default function NavBar() {
             <Link
               key={route.name}
               href={route.route}
-              className={`block rounded-md px-3 py-2 text-base font-medium ${pathname === route.route ? "bg-gray-900 text-white" : "text-gray-400"} hover:text-white`}
+              className={`block rounded-md px-3 py-2 text-base font-medium text-white ${
+                pathname === route.route ? "after:w-full" : ""
+              }`}
             >
-              {route.name}
+              <span
+                className={`relative after:absolute after:w-0 after:h-0.5 after:bg-blue-600 after:transition-all after:duration-300 after:bottom-0 after:left-0 hover:after:w-full ${
+                  pathname === route.route ? "after:w-full" : ""
+                }`}
+              >
+                {route.name}
+              </span>
             </Link>
           ))}
         </div>
