@@ -69,7 +69,7 @@ export default function QuienesSomos() {
             QUIENES SOMOS?
           </h1>
         </section>
-        <section className="flex justify-between px-16 -mt-6">
+        <section className="flex justify-between px-16 -mt-15">
           <article
             className={`flex flex-col items-center gap-y-2 p-6 rounded-3xl bg-white cursor-pointer border-2 transition-shadow duration-300 ease-in-out ${
               activeSection === "mission" ? "shadow-2xl border-blue-500" : "hover:shadow-lg"
@@ -77,8 +77,8 @@ export default function QuienesSomos() {
             onClick={() => setActiveSection("mission")}
           >
             <Image
-              width={138}
-              height={131}
+              width={167}
+              height={150}
               src="/mision.png"
               alt="Mision Log"
             />
@@ -90,8 +90,8 @@ export default function QuienesSomos() {
             onClick={() => setActiveSection("vision")}
           >
             <Image
-              width={219}
-              height={129}
+              width={167}
+              height={150}
               src="/vision.png"
               alt="Vision Log"
             />
