@@ -1,9 +1,11 @@
-"use client"; // Añadir esta línea
+"use client";
 
 import Image from "next/image";
 import { useState } from "react";
 import { Label } from "@/components/ui/label";
 import LandingLayout from "@/app/landinglyout";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCheck } from '@fortawesome/free-solid-svg-icons';
 
 type SectionKey = 'mission' | 'vision' | 'history';
 
@@ -12,9 +14,9 @@ const sections: Record<SectionKey, { title: string; content: JSX.Element }> = {
     title: "Nuestra Misión",
     content: (
       <>
-        <p>- Promover los derechos reconocidos en la Convención Internacional sobre los Derechos de las Personas con Discapacidad.</p>
-        <p>- Visibilizar el Síndrome de Down, mediante acciones de educación, formación y actividades sociales y culturales, fortaleciendo la convivencia.</p>
-        <p>- Fomentar la vida independiente y la autonomía de las personas con síndrome de Down.</p>
+        <p><FontAwesomeIcon icon={faCheck} className="text-custom-blue" /> Promover los derechos reconocidos en la Convención Internacional sobre los Derechos de las Personas con Discapacidad.</p>
+        <p><FontAwesomeIcon icon={faCheck} className="text-custom-blue" /> Visibilizar el Síndrome de Down, mediante acciones de educación, formación y actividades sociales y culturales, fortaleciendo la convivencia.</p>
+        <p><FontAwesomeIcon icon={faCheck} className="text-custom-blue" /> Fomentar la vida independiente y la autonomía de las personas con síndrome de Down.</p>
       </>
     )
   },
@@ -22,11 +24,11 @@ const sections: Record<SectionKey, { title: string; content: JSX.Element }> = {
     title: "Nuestra Visión",
     content: (
       <>
-        <p>- Informar y capacitar a la sociedad en general en temas referidos a la diversidad.</p>
-        <p>- Impulsar la generación de políticas públicas, para el sector.</p>
-        <p>- Cooperar técnicamente y articular con instituciones públicas y privadas, nacionales e internacionales, para el logro de nuestros objetivos</p>
-        <p>- Generar programas de contención, de desarrollo y autonomía.</p>
-        <p>- Formar a las personas con síndrome de Down para ejercer su derecho a la vida independiente en su entorno comunitario.</p>
+        <p><FontAwesomeIcon icon={faCheck} className="text-custom-blue" /> Informar y capacitar a la sociedad en general en temas referidos a la diversidad.</p>
+        <p><FontAwesomeIcon icon={faCheck} className="text-custom-blue" /> Impulsar la generación de políticas públicas, para el sector.</p>
+        <p><FontAwesomeIcon icon={faCheck} className="text-custom-blue" /> Cooperar técnicamente y articular con instituciones públicas y privadas, nacionales e internacionales, para el logro de nuestros objetivos</p>
+        <p><FontAwesomeIcon icon={faCheck} className="text-custom-blue" /> Generar programas de contención, de desarrollo y autonomía.</p>
+        <p><FontAwesomeIcon icon={faCheck} className="text-custom-blue" /> Formar a las personas con síndrome de Down para ejercer su derecho a la vida independiente en su entorno comunitario.</p>
       </>
     )
   },
@@ -34,7 +36,7 @@ const sections: Record<SectionKey, { title: string; content: JSX.Element }> = {
     title: "Nuestra Historia",
     content: (
       <>
-        <p>Somos una Fundación creada por familias que acompañamos a otras familias en el camino de la inclusión de nuestros hijos. Tenemos como eje informar, compartir y motivar a todos los que quieran participar en este cambio de mirada sobre discapacidad.Nuestra historia comenzó en 2015 cuando decidimos comenzar organizar charlas, acciones y más, trabajando para lograr el cambio que buscábamos. Basándonos en la existencia de un movimiento nacional llamado Down is Up, con sede en varias provincias, nace esta comunidad con el fin de satisfacer la necesidad de contención, atención e información sobre el Síndrome de Down.</p>
+        <p><FontAwesomeIcon icon={faCheck} className="text-custom-blue" /> Somos una Fundación creada por familias que acompañamos a otras familias en el camino de la inclusión de nuestros hijos. Tenemos como eje informar, compartir y motivar a todos los que quieran participar en este cambio de mirada sobre discapacidad. Nuestra historia comenzó en 2015 cuando decidimos comenzar organizar charlas, acciones y más, trabajando para lograr el cambio que buscábamos. Basándonos en la existencia de un movimiento nacional llamado Down is Up, con sede en varias provincias, nace esta comunidad con el fin de satisfacer la necesidad de contención, atención e información sobre el Síndrome de Down.</p>
       </>
     )
   }
@@ -67,31 +69,37 @@ export default function QuienesSomos() {
             QUIENES SOMOS?
           </h1>
         </section>
-        <section className="flex justify-between px-16 -mt-6">
+        <section className="flex justify-between px-16 -mt-15">
           <article
-            className="flex flex-col items-center gap-y-2 p-6 rounded-3xl bg-white cursor-pointer transition-shadow duration-300 ease-in-out hover:shadow-2xl animate-pulse"
+            className={`flex flex-col items-center gap-y-2 p-6 rounded-3xl bg-white cursor-pointer border-2 transition-shadow duration-300 ease-in-out ${
+              activeSection === "mission" ? "shadow-2xl border-blue-500" : "hover:shadow-lg"
+            }`}
             onClick={() => setActiveSection("mission")}
           >
             <Image
-              width={138}
-              height={131}
+              width={167}
+              height={150}
               src="/mision.png"
               alt="Mision Log"
             />
           </article>
           <article
-            className="flex flex-col items-center gap-y-2 p-6 rounded-3xl bg-white cursor-pointer transition-shadow duration-300 ease-in-out hover:shadow-2xl animate-pulse"
+            className={`flex flex-col items-center gap-y-2 p-6 rounded-3xl bg-white cursor-pointer border-2 transition-shadow duration-300 ease-in-out ${
+              activeSection === "vision" ? "shadow-2xl border-blue-500" : "hover:shadow-lg"
+            }`}
             onClick={() => setActiveSection("vision")}
           >
             <Image
-              width={219}
-              height={129}
+              width={167}
+              height={150}
               src="/vision.png"
               alt="Vision Log"
             />
           </article>
           <article
-            className="flex flex-col items-center gap-y-2 p-6 rounded-3xl bg-white cursor-pointer transition-shadow duration-300 ease-in-out hover:shadow-2xl animate-pulse"
+            className={`flex flex-col items-center gap-y-2 p-6 rounded-3xl bg-white cursor-pointer border-2 transition-shadow duration-300 ease-in-out ${
+              activeSection === "history" ? "shadow-2xl border-blue-500" : "hover:shadow-lg"
+            }`}
             onClick={() => setActiveSection("history")}
           >
             <Image

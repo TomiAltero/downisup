@@ -40,7 +40,7 @@ const PesoChart: React.FC<Props> = ({ hijoId }) => {
         const token = localStorage.getItem("token");
         if (token) {
           const response = await axios.get<Peso[]>(
-            `http://localhost:5000/api/usuarios/hijo/${hijoId}/peso`,
+            `http://localhost:5000/api/hijos/${hijoId}/peso`,
             {
               headers: {
                 Authorization: `Bearer ${token}`,

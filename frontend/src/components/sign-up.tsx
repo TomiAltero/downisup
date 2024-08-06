@@ -11,6 +11,7 @@ import Toastify from "toastify-js";
 import "react-toastify/dist/ReactToastify.css";
 import Link from "next/link";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { FcGoogle } from "react-icons/fc";
 
 export function SignUp() {
   const [showPassword, setShowPassword] = useState<boolean>(false);
@@ -331,6 +332,16 @@ export function SignUp() {
                 Continuar
               </Button>
             </article>
+            <article className="flex justify-center w-full mt-4">
+              <Button
+                className="-mt-2 w-full rounded-2xl bg-white border px-3 py-2 text-sm font-semi bold text-gray-700 shadow-sm hover:bg-gray-100 focus:outline-none flex items-center justify-center"
+                type="button"
+              >
+                <FcGoogle className="mr-2" size={20} />
+                Registrarse con Google
+              </Button>
+            </article>
+
             <article className="flex justify-center w-full mt-5 -mb-2">
               <p className="text-sm text-blue-900">
                 ¿Ya tienes cuenta?{" "}

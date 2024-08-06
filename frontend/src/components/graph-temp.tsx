@@ -41,7 +41,7 @@ const PesoChartTemperatura: React.FC<Props> = ({ hijoId }) => {
         const token = localStorage.getItem("token");
         if (token) {
           const response = await axios.get<TemperaturaData[]>(
-            `http://localhost:5000/api/usuarios/hijo/${hijoId}/temperatura`,
+            `http://localhost:5000/api/hijos/${hijoId}/temperatura`,
             {
               headers: {
                 Authorization: `Bearer ${token}`,

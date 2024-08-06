@@ -3,6 +3,7 @@ const router = express.Router();
 const usuarioController = require("../controllers/users/usuariosController");
 const usuarioManagment = require("../controllers/users/userManagment/userManagementController");
 const usuarioAuth = require("../controllers/users/auth/authUserController.js");
+const userResetPass = require("../controllers/users/auth/resetPassController.js");
 const verificarToken = require("../middlewars/authentification");
 const { validationResult } = require("express-validator");
 const validationDataUser =
