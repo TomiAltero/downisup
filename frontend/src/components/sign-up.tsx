@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import React, { useState } from "react";
 import axios from "axios";
-import Toastify from "toastify-js";
+import Toastify from "toastify-js"; // eslint-disable-line
 import "react-toastify/dist/ReactToastify.css";
 import Link from "next/link";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
@@ -88,7 +88,7 @@ export function SignUp() {
       }).showToast();
 
       setTimeout(() => {
-        window.location.href = "/login";
+        window.location.href = "/auth/login";
       }, redirectDelay);
 
       console.log("User registration successful:", response.data);
@@ -346,7 +346,7 @@ export function SignUp() {
               <p className="text-sm text-blue-900">
                 ¿Ya tienes cuenta?{" "}
                 <Link
-                  href="/login"
+                  href="/auth/login"
                   className="text-blue-900 font-bold hover:underline"
                 >
                   Inicia sesión

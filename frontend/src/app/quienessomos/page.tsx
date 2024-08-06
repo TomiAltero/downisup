@@ -2,8 +2,7 @@
 
 import Image from "next/image";
 import { useState } from "react";
-import { Label } from "@/components/ui/label";
-import LandingLayout from "@/app/landinglyout";
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheck } from '@fortawesome/free-solid-svg-icons';
 
@@ -62,7 +61,6 @@ export default function QuienesSomos() {
   };
 
   return (
-    <LandingLayout>
       <main className="flex flex-col justify-center mx-14">
         <section className="mt-14 mb-24">
           <h1 className="text-custom-blue -mt-3 text-3xl font-bold text-center">
@@ -112,6 +110,5 @@ export default function QuienesSomos() {
         </section>
         {renderSectionContent()}
       </main>
-    </LandingLayout>
   );
 }

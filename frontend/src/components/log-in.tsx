@@ -19,14 +19,12 @@ declare global {
   }
 }
 
-window.Toastify = Toastify;
-
 export function LogIn() {
   const [usernameOrEmail, setUsernameOrEmail] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
   const [showPassword, setShowPassword] = useState(false);
-  const redirectDelay = 1500;
+  const redirectDelay = 1000;
 
   const handleLogin = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -45,7 +43,7 @@ export function LogIn() {
       setMessage("Inicio de sesión exitoso");
 
       setTimeout(() => {
-        window.location.href = "/inicio";
+        window.location.href = "/application/";
       }, redirectDelay);
 
       Toastify({
@@ -239,7 +237,7 @@ export function LogIn() {
                 <p className="text-sm text-blue-900">
                   ¿No tienes cuenta?{" "}
                   <Link
-                    href="/signup"
+                    href="/auth/signup"
                     className="text-blue-900 font-bold hover:underline"
                   >
                     Regístrate

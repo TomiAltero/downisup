@@ -1,12 +1,10 @@
 import { opensans } from "@/components/ui/fonts";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import LandingLayout from "@/app/landinglyout";
 import Image from "next/image";
 
 export default function Home() {
   return (
-    <LandingLayout>
       <main className="h-screen flex flex-col justify-center items-center space-y-8 ">
         <section className="relative h-full w-full flex flex-col justify-center items-center space-y-10 overflow-hidden">
           <div className="absolute inset-0">
@@ -29,13 +27,12 @@ export default function Home() {
           </section>
           <section className="flex flex-col items-center z-10">
             <Link href="/contactanos">
-              <Button className="bg-custom-white text-black text-base px-4 py-2 font-semibold animate-pulse hover:text-white hover:bg-custom-blue" variant="secondary">
+              <Button className="bg-custom-white text-black text-base px-4 py-2 font-semibold animate-pulse hover:text-white hover:bg-custom-blue">
                 Contáctanos
               </Button>
             </Link>
           </section>
         </section>
       </main>
-    </LandingLayout>
   );
 }
