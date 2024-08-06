@@ -58,7 +58,7 @@ export function SignUp() {
           marginTop: "70px",
         },
       }).showToast();
-      return; // Evitar el envío del formulario
+      return;
     }
 
     try {
@@ -135,10 +135,10 @@ export function SignUp() {
 
   return (
     <form onSubmit={handleFormSubmit}>
-      <Card className="mt-8 w-[500px]">
+      <Card className="mt-8 w-[450px]">
         <CardHeader className="flex flex-col items-center">
           <Image src="/favicon.ico" width={72} height={50} alt="Logo DiU" />
-          <CardTitle className="mt-4 text-xl font-bold text-blue-900">
+          <CardTitle className="-mt-2 my-2 text-xl font-bold text-blue-900">
             Regístrate
           </CardTitle>
         </CardHeader>
@@ -215,45 +215,44 @@ export function SignUp() {
               />
             </article>
             <section className="flex flex-row gap-x-2">
-            <article className="space-y-2 my-2">
-              <Label
-                className="block text-xs font-bold leading-6 text-blue-900"
-                htmlFor="dni"
-              >
-                DNI
-              </Label>
-              <Input
-                className="rounded-xl border-t-0 border-l-0 border-r-0 border-b-2 border-blue-800 outline-none focus:ring-0 focus:border-blue-700"
-                id="dni"
-                name="dni"
-                placeholder="Ingrese su DNI"
-                required
-                type="text"
-                value={dni}
-                onChange={(e) => setDni(e.target.value)}
-              />
-            </article>
+              <article className="space-y-2 my-2">
+                <Label
+                  className="block text-xs font-bold leading-6 text-blue-900"
+                  htmlFor="dni"
+                >
+                  DNI
+                </Label>
+                <Input
+                  className="rounded-xl border-t-0 border-l-0 border-r-0 border-b-2 border-blue-800 outline-none focus:ring-0 focus:border-blue-700"
+                  id="dni"
+                  name="dni"
+                  placeholder="Ingrese su DNI"
+                  required
+                  type="text"
+                  value={dni}
+                  onChange={(e) => setDni(e.target.value)}
+                />
+              </article>
 
-            <article className="space-y-2 my-2">
-              <Label
-                className="block text-xs font-bold leading-6 text-blue-900"
-                htmlFor="email"
-              >
-                Email
-              </Label>
-              <Input
-                className="rounded-xl border-t-0 border-l-0 border-r-0 border-b-2 border-blue-800 outline-none focus:ring-0 focus:border-blue-700"
-                id="email"
-                name="email"
-                placeholder="Ingrese su correo electrónico"
-                required
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-              />
-            </article>
+              <article className="space-y-2 my-2">
+                <Label
+                  className="block text-xs font-bold leading-6 text-blue-900"
+                  htmlFor="email"
+                >
+                  Email
+                </Label>
+                <Input
+                  className="rounded-xl border-t-0 border-l-0 border-r-0 border-b-2 border-blue-800 outline-none focus:ring-0 focus:border-blue-700"
+                  id="email"
+                  name="email"
+                  placeholder="Ingrese su correo electrónico"
+                  required
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                />
+              </article>
             </section>
-            
 
             <section className="my-2  gap-x-4 flex flex-row">
               <article>
@@ -321,24 +320,23 @@ export function SignUp() {
                   </button>
                 </div>
               </article>
-              
             </section>
             <article className="flex justify-center w-full mt-5">
               <Button
                 disabled={!isMatch}
                 variant={"default"}
-                className="w-full rounded-2xl bg-custom-blue px-3 py-2 text-sm font-semi bold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2"
+                className="w-full rounded-2xl bg-custom-blue px-3 py-2 text-sm font-semi bold text-white shadow-sm hover:bg-indigo-950 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2"
                 type="submit"
               >
                 Continuar
               </Button>
             </article>
-            <article className="flex justify-center w-full mt-7 -mb-2">
+            <article className="flex justify-center w-full mt-5 -mb-2">
               <p className="text-sm text-blue-900">
                 ¿Ya tienes cuenta?{" "}
                 <Link
                   href="/login"
-                  className="text-blue-700 font-bold hover:underline"
+                  className="text-blue-900 font-bold hover:underline"
                 >
                   Inicia sesión
                 </Link>
