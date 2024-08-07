@@ -1,9 +1,9 @@
-const Usuario = require("../models/usuario");
-const Hijo = require("../models/hijo");
-const UsuarioXHijo = require("../models/usuarioXHijo");
+const Usuario = require("../../models/usuario");
+const Hijo = require("../../models/hijo");
+const UsuarioXHijo = require("../../models/usuarioXHijo");
 
 class ChildrensManagmentController {
-  async obtenerHijos(req, res) {
+  async getChildren(req, res) {
     try {
       const hijos = await Hijo.findAll();
 
@@ -20,7 +20,7 @@ class ChildrensManagmentController {
     }
   }
 
-  async obtenerHijosPorUsuario(req, res) {
+  async getChildrenForUser(req, res) {
     try {
       const usuario = await Usuario.findByPk(req.userId, {
         include: {
@@ -36,12 +36,15 @@ class ChildrensManagmentController {
 
       const hijos = usuario.Hijos.map((hijo) => hijo.toJSON());
 
-      res.json(hijos);
+      res.json({
+        usuario: usuario.toJSON(),
+        hijos: hijos,
+      });
     } catch (error) {
-      console.error("Error al obtener los hijos del usuario:", error);
+      console.error("Error al obtener el perfil del usuario:", error);
       res
         .status(500)
-        .json({ error: "Hubo un error al obtener los hijos del usuario" });
+        .json({ error: "Hubo un error al obtener el perfil del usuario" });
     }
   }
 }

@@ -1,11 +1,8 @@
 "use client";
 
 import Image from "next/image";
-import { useState, useEffect } from "react";
-import { useInView } from 'react-intersection-observer';
-import { Label } from "@/components/ui/label";
-import { motion, useAnimation } from 'framer-motion';
-import LandingLayout from "@/app/landinglyout";
+import { useState } from "react";
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheck } from '@fortawesome/free-solid-svg-icons';
 
@@ -82,7 +79,6 @@ export default function QuienesSomos() {
   };
 
   return (
-    <LandingLayout>
       <main className="flex flex-col justify-center mx-14">
         <section className="mt-14 mb-24">
           <h1 className="text-custom-blue -mt-3 text-3xl text-center">
@@ -140,6 +136,5 @@ export default function QuienesSomos() {
         </motion.div>
         {renderSectionContent()}
       </main>
-    </LandingLayout>
   );
 }

@@ -7,7 +7,7 @@ Usuario.init(
   {
     username: {
       type: DataTypes.STRING,
-      UNIQUE: true,
+      unique: true,
       allowNull: false,
     },
     email: {
@@ -56,13 +56,6 @@ Usuario.init(
     tableName: "Usuarios",
     timestamps: true,
   },
-
-  (Usuario.associate = (models) => {
-    Usuario.belongsTo(models.TipoUsuario, {
-      foreignKey: "tipoUsuarioId",
-      as: "TipoUsuario",
-    });
-  }),
 );
 
 module.exports = Usuario;

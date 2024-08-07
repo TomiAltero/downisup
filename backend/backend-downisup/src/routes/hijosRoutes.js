@@ -1,28 +1,31 @@
 const express = require("express");
 const router = express.Router();
-const hijoController = require("../controllers/hijosController");
+const childrenController = require("../controllers/hijosController");
+const childrenForUser = require("../controllers/childrens/childrensManagmentController.js");
 const verificarToken = require("../middlewars/authentification");
 
-router.get("/", verificarToken, hijoController.obtenerHijos);
+router.get("/", verificarToken, childrenController.obtenerHijos);
 
 router.get(
   "/:hijoId/frecuenciaCardiaca",
   verificarToken,
-  hijoController.obtenerFrecuenciaCardiacas,
+  childrenController.obtenerFrecuenciaCardiacas,
 );
 
 router.get(
   "/:hijoId/presionArterial",
   verificarToken,
-  hijoController.obtenerPresionArterial,
+  childrenController.obtenerPresionArterial,
 );
 
 router.get(
   "/:hijoId/temperatura",
   verificarToken,
-  hijoController.obtenerTemperaturas,
+  childrenController.obtenerTemperaturas,
 );
 
-router.get("/:hijoId/peso", verificarToken, hijoController.obtenerPesos);
+router.get("/:hijoId/peso", verificarToken, childrenController.obtenerPesos);
+
+router.get("/profiles", verificarToken, childrenForUser.getChildrenForUser);
 
 module.exports = router;

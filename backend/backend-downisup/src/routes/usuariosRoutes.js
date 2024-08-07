@@ -3,6 +3,7 @@ const router = express.Router();
 const usuarioController = require("../controllers/users/usuariosController");
 const usuarioManagment = require("../controllers/users/userManagment/userManagementController");
 const usuarioAuth = require("../controllers/users/auth/authUserController.js");
+const userProfile = require("../controllers/users/userManagment/profileController.js");
 const verificarToken = require("../middlewars/authentification");
 const { validationResult } = require("express-validator");
 const validationDataUser =
@@ -21,7 +22,7 @@ router.post("/", validationDataUser, async (req, res, next) => {
 });
 
 router.post("/login", usuarioAuth.loginUsuario);
-router.get("/perfil", verificarToken, usuarioController.obtenerPerfilUsuario);
+router.get("/perfil", verificarToken, userProfile.getProfileUser);
 
 router.get("/", verificarToken, usuarioController.obtenerUsuarios);
 router.get("/:id", verificarToken, usuarioController.obtenerUsuarioPorId);

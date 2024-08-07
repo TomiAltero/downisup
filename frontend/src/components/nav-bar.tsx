@@ -101,7 +101,7 @@ export default function NavBar() {
                 DONAR
               </Button>
             </Link>
-            <Link href="/login">
+            <Link href="/auth/login">
               <Button className="bg-custom-white text-black text-base px-4 py-2 font-semibold hover:text-blue-900">
                 Iniciar Sesión
               </Button>

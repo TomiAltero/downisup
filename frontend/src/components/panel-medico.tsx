@@ -26,12 +26,13 @@ export default function PanelMedico() {
           },
         );
         const hijos = response.data.hijos;
+        console.log(hijos);
         if (hijos.length > 0) {
           const hijo = hijos[0];
 
           const [frecuencias, presiones, temperaturas, pesos] =
             await Promise.all([
-              axios.get(`http://localhost:5000/api/usuarios/hijo/${hijo.id}`, {
+              axios.get(`http://localhost:5000/api/usuarios/perfil`, {
                 headers: {
                   Authorization: `Bearer ${token}`,
                 },
@@ -57,6 +58,14 @@ export default function PanelMedico() {
                   Authorization: `Bearer ${token}`,
                 },
               }),
+              axios.get(
+                `http://localhost:5000/api/hijos/${hijo.id}/frecuenciaCardiaca`,
+                {
+                  headers: {
+                    Authorization: `Bearer ${token}`,
+                  },
+                },
+              ),
             ]);
 
           if (frecuencias.data.length > 0) {

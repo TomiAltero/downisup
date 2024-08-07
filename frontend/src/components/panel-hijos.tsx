@@ -29,7 +29,7 @@ export function PanelHijo() {
       try {
         const token = localStorage.getItem("token");
         const response = await axios.get(
-          "http://localhost:5000/api/usuarios/perfil",
+          "http://localhost:5000/api/hijos/profiles",
           {
             headers: {
               Authorization: `Bearer ${token}`,
