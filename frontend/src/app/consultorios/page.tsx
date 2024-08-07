@@ -1,8 +1,11 @@
 import Consultorios from "@/components/consultorios";
+import LandingLayout from "@/layouts/LandingLayout";
 
 export default function ConsultoriosPage() {
   return (
-    <Consultorios />
+    <LandingLayout>
+      <Consultorios />
+    </LandingLayout>
   );
 }
 

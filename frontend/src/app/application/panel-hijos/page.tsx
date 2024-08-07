@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import { PanelHijo } from "@/components/panel-hijos";
 import { useRouter } from "next/navigation";
-
+import AppLayout from "@/layouts/AppLayout";
 const Page = () => {
   const router = useRouter();
   const [isAuthorized, setIsAuthorized] = useState(true);
@@ -20,9 +20,11 @@ const Page = () => {
   }
 
   return (
-    <main className="flex justify-center items-center h-full">
-      <PanelHijo />
-    </main>
+    <AppLayout>
+      <main className="flex justify-center items-center h-full">
+        <PanelHijo />
+      </main>
+    </AppLayout>
   );
 };
 

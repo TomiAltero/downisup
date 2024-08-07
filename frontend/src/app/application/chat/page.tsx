@@ -1,6 +1,7 @@
+'use client'
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-
+import AppLayout from "@/layouts/AppLayout";
 export default function Page() {
   const router = useRouter();
   const [isAuthorized, setIsAuthorized] = useState(true);
@@ -18,10 +19,12 @@ export default function Page() {
   }
 
   return (
-    <section className="flex justify-center items-center h-full">
-      <h1 className="text-xl text-center text-gray-500">
-        Sistema de chat (proximamente)
-      </h1>
-    </section>
+    <AppLayout>
+      <section className="flex justify-center items-center h-full">
+        <h1 className="text-xl text-center text-gray-500">
+          Sistema de chat (proximamente)
+        </h1>
+      </section>
+    </AppLayout>
   );
 }

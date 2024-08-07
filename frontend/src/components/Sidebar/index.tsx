@@ -137,7 +137,7 @@ function Sidebar() {
             )}
 
             <Link
-              href="application/terapias"
+              href="/application/terapias"
               className={`flex ${
                 pathname === "/app/calendar" ? "text-blue-700" : ""
               } hover:text-blue-700 duration-200 px-6 py-2 items-center gap-2 transition-all ease-in-out`}
@@ -147,7 +147,7 @@ function Sidebar() {
             </Link>
             
             <Link
-              href="application/chat"
+              href="/application/chat"
               className={`flex ${
                 pathname === "/app/documents" ? "text-blue-700" : ""
               } hover:text-blue-700 duration-200 px-6 py-2 items-center gap-2 transition-all ease-in-out`}

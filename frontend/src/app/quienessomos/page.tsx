@@ -6,7 +6,8 @@ import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheck } from '@fortawesome/free-solid-svg-icons';
-
+import { useInView } from "react-intersection-observer";
+import LandingLayout from "@/layouts/LandingLayout";
 type SectionKey = 'mission' | 'vision' | 'history';
 
 const sections: Record<SectionKey, { title: string; content: JSX.Element }> = {
@@ -80,6 +81,7 @@ export default function QuienesSomos() {
   };
 
   return (
+    <LandingLayout>
       <main className="flex flex-col justify-center mx-14">
         <section className="mt-14 mb-24">
           <h1 className="text-custom-blue -mt-3 text-3xl text-center">
@@ -137,5 +139,6 @@ export default function QuienesSomos() {
         </motion.div>
         {renderSectionContent()}
       </main>
+    </LandingLayout>
   );
 }

@@ -9,20 +9,19 @@ export const metadata: Metadata = {
   icons: "/favicon.ico",
 };
 
-export default function Layout({
+export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <main className="flex h-screen">
-        <Sidebar />
-        <div className="flex flex-col w-full">
-          <HeadBar />
-          <div className="flex-grow p-4">{children}</div>
-        </div>
-      </main>
-    </html>
+    <main className="flex h-screen">
+      <Sidebar />
+      <div className="flex flex-col w-full">
+        <HeadBar />
+        <div className="flex-grow p-4">{children}</div>
+      </div>
+    </main>
+
   );
 }

@@ -2,9 +2,10 @@ import { opensans } from "@/components/ui/fonts";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import Image from "next/image";
-
+import LandingLayout from "@/layouts/LandingLayout"
 export default function Home() {
   return (
+    <LandingLayout>
       <main className="h-screen flex flex-col justify-center items-center space-y-8 ">
         <section className="relative h-full w-full flex flex-col justify-center items-center space-y-10 overflow-hidden">
           <div className="absolute inset-0">
@@ -34,5 +35,6 @@ export default function Home() {
           </section>
         </section>
       </main>
+    </LandingLayout>
   );
 }
