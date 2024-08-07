@@ -1,13 +1,22 @@
-const { body, validationResult } = require('express-validator');
+const { body, validationResult } = require("express-validator");
+const User = require("../models/usuario");
 
 class Validator {
   constructor(field) {
     this.field = field;
-    this.validators = [body(field).isString().notEmpty().withMessage(`${field} es obligatorio`)];
+    this.validators = [
+      body(field).isString().notEmpty().withMessage(`${field} es obligatorio`),
+    ];
   }
 
   isLength(min, max) {
-    this.validators.push(body(this.field).isLength({ min, max }).withMessage(`${this.field} debe tener entre ${min} y ${max} caracteres`));
+    this.validators.push(
+      body(this.field)
+        .isLength({ min, max })
+        .withMessage(
+          `${this.field} debe tener entre ${min} y ${max} caracteres`,
+        ),
+    );
     return this;
   }
 
@@ -17,7 +26,9 @@ class Validator {
   }
 
   custom(validationFn, message) {
-    this.validators.push(body(this.field).custom(validationFn).withMessage(message));
+    this.validators.push(
+      body(this.field).custom(validationFn).withMessage(message),
+    );
     return this;
   }
 
@@ -38,48 +49,78 @@ class Validator {
     return this.validators;
   }
 }
+const checkUserExists = async (field, value) => {
+  const user = await User.findOne({
+    where: { [field]: value },
+  });
+  return !!user;
+};
 
 const validateUserRegistration = [
-  ...new Validator('username')
-    .isLength(3, 20, 'El nombre de usuario debe tener entre 3 y 20 caracteres')
-    .matches(/^[A-Za-z0-9_]+$/, 'El nombre de usuario solo puede contener letras, números y guiones bajos')
+  ...new Validator("username")
+    .isLength(3, 20)
+    .matches(
+      /^[A-Za-z0-9_]+$/,
+      "El nombre de usuario solo puede contener letras, números y guiones bajos",
+    )
+    .custom(async (value) => {
+      if (await checkUserExists("username", value)) {
+        throw new Error("Ya existe una cuenta con ese nombre de usuario");
+      }
+    })
     .getValidators(),
 
-  ...new Validator('nombre')
-    .isLength(2, 20, 'El nombre debe tener entre 2 y 20 caracteres')
-    .matches(/^[A-Za-z]+$/, 'El nombre solo puede contener letras')
-    .custom(value => value.charAt(0) === value.charAt(0).toUpperCase(), 'La primera letra del nombre debe ser mayúscula')
+  ...new Validator("nombre")
+    .isLength(2, 20)
+    .matches(/^[A-Za-z]+$/, "El nombre solo puede contener letras")
+    .custom(
+      (value) => value.charAt(0) === value.charAt(0).toUpperCase(),
+      "La primera letra del nombre debe ser mayúscula",
+    )
     .getValidators(),
 
-  ...new Validator('apellido')
-    .isLength(2, 20, 'El apellido debe tener entre 2 y 20 caracteres')
-    .matches(/^[A-Za-z]+$/, 'El apellido solo puede contener letras')
-    .custom(value => value.charAt(0) === value.charAt(0).toUpperCase(), 'La primera letra del apellido debe ser mayúscula')
+  ...new Validator("apellido")
+    .isLength(2, 20)
+    .matches(/^[A-Za-z]+$/, "El apellido solo puede contener letras")
+    .custom(
+      (value) => value.charAt(0) === value.charAt(0).toUpperCase(),
+      "La primera letra del apellido debe ser mayúscula",
+    )
     .getValidators(),
 
-  ...new Validator('email')
-    .addValidator(body('email').isEmail().withMessage('El email es inválido').normalizeEmail())
+  ...new Validator("email")
+    .addValidator(
+      body("email")
+        .isEmail()
+        .withMessage("El email es inválido")
+        .normalizeEmail()
+        .custom(async (value) => {
+          if (await checkUserExists("email", value)) {
+            throw new Error("Ya existe una cuenta con ese correo electrónico");
+          }
+        }),
+    )
     .getValidators(),
 
-  ...new Validator('password')
-    .matches(/[A-Z]/, 'La contraseña debe contener al menos una letra mayúscula')
-    .matches(/[a-z]/, 'La contraseña debe contener al menos una letra minúscula')
-    .matches(/[0-9]/, 'La contraseña debe contener al menos un número')
-    .matches(/[@$!%*?&#]/, 'La contraseña debe contener al menos un carácter especial (@, $, !, %, *, ?, &, #)')
+  ...new Validator("password")
+    .matches(
+      /[A-Z]/,
+      "La contraseña debe contener al menos una letra mayúscula",
+    )
+    .matches(
+      /[a-z]/,
+      "La contraseña debe contener al menos una letra minúscula",
+    )
+    .matches(/[0-9]/, "La contraseña debe contener al menos un número")
+    .matches(
+      /[@$!%*?&#]/,
+      "La contraseña debe contener al menos un carácter especial (@, $, !, %, *, ?, &, #)",
+    )
     .getValidators(),
 
-  Validator.validate
+  Validator.validate,
 ];
 
 module.exports = {
-  validateUserRegistration
+  validateUserRegistration,
 };
-
-
-
-
-
-
-
-
-

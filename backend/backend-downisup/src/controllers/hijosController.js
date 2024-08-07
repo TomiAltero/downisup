@@ -1,8 +1,3 @@
-const bcrypt = require("bcrypt");
-const jwt = require("jsonwebtoken");
-const upload = require("../config/upload");
-const { Op } = require("sequelize");
-
 const Usuario = require("../models/usuario");
 const Hijo = require("../models/hijo");
 const UsuarioXHijo = require("../models/usuarioXHijo");

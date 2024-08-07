@@ -48,7 +48,7 @@ function Sidebar() {
   return (
     <div className="w-60 shrink-0 md:block h-screen sticky top-0 overflow-hidden">
       <div className="w-full h-full bg-white border-r">
-        <Link href="/inicio">
+        <Link href="/application">
           <div className="p-3 md:p-6 flex cursor-pointer group items-center gap-2 h-1/8">
             <div>
               <h1 className="text-xl font-bold text-blue-800 text-center mx-5">
@@ -63,9 +63,9 @@ function Sidebar() {
         <div className="flex flex-col h-full justify-between">
           <div className="pt-6 text-gray-500 font-medium space-y-2 md:px-2 text-sm">
             <Link
-              href="/inicio"
+              href="/application"
               className={`flex ${
-                pathname === "/inicio" ? "text-blue-700" : ""
+                pathname === "/application" ? "text-blue-700" : ""
               } hover:text-blue-700 duration-200 px-6 py-2 items-center gap-2 transition-all ease-in-out`}
             >
               <Home variant="Outline" size={16} />
@@ -124,7 +124,7 @@ function Sidebar() {
                 {isDropdownOpen && (
                   <div className="pl-10 mt-2 space-y-2">
                     <Link
-                      href="/panel-hijos"
+                      href="/application/panel-hijos"
                       className={`block ${
                         pathname === "/panel-hijos" ? "text-blue-700" : ""
                       } hover:text-blue-700 duration-200 py-1 transition-all ease-in-out`}
@@ -137,7 +137,7 @@ function Sidebar() {
             )}
 
             <Link
-              href="#"
+              href="application/terapias"
               className={`flex ${
                 pathname === "/app/calendar" ? "text-blue-700" : ""
               } hover:text-blue-700 duration-200 px-6 py-2 items-center gap-2 transition-all ease-in-out`}
@@ -145,8 +145,9 @@ function Sidebar() {
               <Calendar size={16} />
               Calendario Terapias
             </Link>
+            
             <Link
-              href="/chat"
+              href="application/chat"
               className={`flex ${
                 pathname === "/app/documents" ? "text-blue-700" : ""
               } hover:text-blue-700 duration-200 px-6 py-2 items-center gap-2 transition-all ease-in-out`}

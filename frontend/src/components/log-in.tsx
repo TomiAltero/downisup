@@ -11,6 +11,7 @@ import "toastify-js/src/toastify.css";
 import "react-toastify/dist/ReactToastify.css";
 import Link from "next/link";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { FcGoogle } from "react-icons/fc";
 
 declare global {
   interface Window {
@@ -18,14 +19,12 @@ declare global {
   }
 }
 
-window.Toastify = Toastify;
-
 export function LogIn() {
   const [usernameOrEmail, setUsernameOrEmail] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
   const [showPassword, setShowPassword] = useState(false);
-  const redirectDelay = 1500;
+  const redirectDelay = 1000;
 
   const handleLogin = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -44,7 +43,7 @@ export function LogIn() {
       setMessage("Inicio de sesión exitoso");
 
       setTimeout(() => {
-        window.location.href = "/inicio";
+        window.location.href = "/application/";
       }, redirectDelay);
 
       Toastify({
@@ -157,7 +156,7 @@ export function LogIn() {
   return (
     <div className="flex items-center justify-center min-h-screen">
       <form onSubmit={handleLogin}>
-        <Card className="mt-8 w-[400px] h-[530px]">
+        <Card className="-mt-4 w-[400px] h-[570px]">
           <CardHeader className="flex flex-col items-center">
             <Image src="/favicon.ico" width={72} height={50} alt="Logo DiU" />
             <CardTitle className="mt-4 text-xl font-bold text-blue-900">
@@ -165,7 +164,7 @@ export function LogIn() {
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <section className="my-5">
+            <section className="my-5 -mt-2">
               <article className="space-y-4 my-4">
                 <Label
                   className="block text-xs font-bold leading-6 text-blue-900"
@@ -225,25 +224,37 @@ export function LogIn() {
                   Continuar
                 </Button>
               </article>
-              <article className="flex justify-center w-full mt-7">
+              <article className="flex justify-center w-full mt-4">
+                <Button
+                  className="-mt-2 w-full rounded-2xl bg-white border px-3 py-2 text-sm font-semi bold text-gray-700 shadow-sm hover:bg-gray-100 focus:outline-none flex items-center justify-center"
+                  type="button"
+                >
+                  <FcGoogle className="mr-2" size={20} />
+                  Continuar con Google
+                </Button>
+              </article>
+              <article className="flex justify-center w-full mt-5">
                 <p className="text-sm text-blue-900">
                   ¿No tienes cuenta?{" "}
                   <Link
-                    href="/signup"
-                    className="text-blue-700 font-bold hover:underline"
+                    href="/auth/signup"
+                    className="text-blue-900 font-bold hover:underline"
                   >
                     Regístrate
                   </Link>
                 </p>
               </article>
-              <article className="flex justify-center mt-3">
-              <Link 
-                href="/"
-                className="text-blue-700 text-sm font-bold mb-2"
-              >
-                Volver al inicio  
-              </Link>
-            </article>  
+              <article className="flex justify-center w-full mt-2">
+                <p className="text-sm text-blue-900">
+                  ¿Olvidaste tu contraseña?{" "}
+                  <Link
+                    href="/reset-password"
+                    className="text-blue-900 font-bold hover:underline"
+                  >
+                    Recupera tu contraseña
+                  </Link>
+                </p>
+              </article>
             </section>
           </CardContent>
         </Card>

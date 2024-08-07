@@ -96,7 +96,7 @@ function HeadBar() {
       onClick: () => {
         setIsDropdownOpen(false);
         setShowAjustes(false);
-        window.location.href = "/perfil";
+        window.location.href = "/application/perfil";
       },
     },
     {

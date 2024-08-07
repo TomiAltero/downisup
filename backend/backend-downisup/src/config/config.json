@@ -1,21 +1,21 @@
 {
   "development": {
-    "username": "octa",
-    "password": "octi123",
+    "username": "fran",
+    "password": "7896",
     "database": "downisupDB",
     "host": "127.0.0.1",
     "dialect": "mysql"
   },
   "test": {
-    "username": "octa",
-    "password": "octi123",
+    "username": "fran",
+    "password": "7896",
     "database": "downisupDB",
     "host": "127.0.0.1",
     "dialect": "mysql"
   },
   "production": {
-    "username": "octa",
-    "password": "octi123",
+    "username": "fran",
+    "password": "7896",
     "database": "downisupDB",
     "host": "127.0.0.1",
     "dialect": "mysql"
