@@ -6,13 +6,13 @@ import { usePathname } from "next/navigation";
 import Link from "next/link";
 
 const routes = [
-  { name: "Inicio", route: "/" },
-  { name: "Quienes Somos", route: "/quienessomos" },
-  { name: "Club de Amigos", route: "/clubdeamigos" },
-  { name: "Consultorios", route: "/consultorios" },
-  { name: "Contáctanos", route: "/contactanos" },
-  { name: "Tienda", route: "/tienda" },
-  { name: "Acciones", route: "/acciones" },
+  { name: "INCIO", route: "/" },
+  { name: "QUIENES SOMOS", route: "/quienessomos" },
+  { name: "CLUB DE AMIGOS", route: "/clubdeamigos" },
+  { name: "CONSULTORIOS", route: "/consultorios" },
+  { name: "CONTÁCTANOS", route: "/contactanos" },
+  { name: "ACCIONES", route: "/acciones" },
+  { name: "TIENDA", route: "/tienda" }
 ];
 
 export default function NavBar() {
@@ -98,7 +98,7 @@ export default function NavBar() {
                 variant="destructive"
                 className="rounded-full text-base px-4 py-2 font-semibold hover:bg-red"
               >
-                Donar Aquí
+                DONAR
               </Button>
             </Link>
             <Link href="/login">

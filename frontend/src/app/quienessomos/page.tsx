@@ -1,8 +1,10 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useInView } from 'react-intersection-observer';
 import { Label } from "@/components/ui/label";
+import { motion, useAnimation } from 'framer-motion';
 import LandingLayout from "@/app/landinglyout";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheck } from '@fortawesome/free-solid-svg-icons';
@@ -61,14 +63,39 @@ export default function QuienesSomos() {
     return null;
   };
 
+  const controls = useAnimation();
+  const { ref, inView } = useInView();
+
+  useEffect(() => {
+    if (inView) {
+      controls.start('visible');
+    }
+  }, [controls, inView]);
+
+  const textVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.5 }
+    }
+  };
+
   return (
     <LandingLayout>
       <main className="flex flex-col justify-center mx-14">
         <section className="mt-14 mb-24">
-          <h1 className="text-custom-blue -mt-3 text-3xl font-bold text-center">
+          <h1 className="text-custom-blue -mt-3 text-3xl text-center">
             QUIENES SOMOS?
           </h1>
         </section>
+
+        <motion.div
+          ref={ref}
+          initial="hidden"
+          animate={controls}
+          variants={textVariants}
+        >
         <section className="flex justify-between px-16 -mt-15">
           <article
             className={`flex flex-col items-center gap-y-2 p-6 rounded-3xl bg-white cursor-pointer border-2 transition-shadow duration-300 ease-in-out ${
@@ -110,6 +137,7 @@ export default function QuienesSomos() {
             />
           </article>
         </section>
+        </motion.div>
         {renderSectionContent()}
       </main>
     </LandingLayout>
