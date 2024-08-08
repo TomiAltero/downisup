@@ -1,3 +1,4 @@
+```mermaid
 erDiagram
     Usuario {
         int idUsuario PK
@@ -33,7 +34,7 @@ erDiagram
         int idObraSocial FK
         int idDireccion FK
     }
-    
+
     Especialidad {
         int idEspecialidad PK
         varchar especialidad
@@ -48,13 +49,12 @@ erDiagram
         int idPaciente FK
         int idEstadoTurno FK
     }
-    
+
     EstadoTurno {
         int idEstadoTurno PK
         varchar estado
         text descripcion
     }
-
 
 
     Alergia {
@@ -314,3 +314,4 @@ erDiagram
     Usuario }o--|| Provincia: ""
     Usuario }o--|| Ciudad: ""
     Usuario }o--|| Direccion: ""
+```
