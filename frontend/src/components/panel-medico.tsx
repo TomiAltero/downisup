@@ -2,11 +2,8 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import CardDataStats from "@/components/ui/cardMedical";
-import PesoChart from "@/components/graph";
-import PesoChartTemperatura from "@/components/graph-temp";
 
 export default function PanelMedico() {
-  const [frecuenciaCardiaca, setFrecuenciaCardiaca] = useState(null);
   const [presionArterial, setPresionArterial] = useState(null);
   const [temperatura, setTemperatura] = useState(null);
   const [peso, setPeso] = useState(null);
@@ -18,7 +15,7 @@ export default function PanelMedico() {
       try {
         const token = localStorage.getItem("token");
         const response = await axios.get(
-          "http://localhost:5000/api/usuarios/perfil",
+          "http://localhost:5000/api/hijos/profiles",
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -30,47 +27,29 @@ export default function PanelMedico() {
         if (hijos.length > 0) {
           const hijo = hijos[0];
 
-          const [frecuencias, presiones, temperaturas, pesos] =
-            await Promise.all([
-              axios.get(`http://localhost:5000/api/usuarios/perfil`, {
+          const [presiones, temperaturas, pesos] = await Promise.all([
+            axios.get(
+              `http://localhost:5000/api/hijos/${hijo.id}/presionArterial`,
+              {
                 headers: {
                   Authorization: `Bearer ${token}`,
                 },
-              }),
-              axios.get(
-                `http://localhost:5000/api/hijos/${hijo.id}/presionArterial`,
-                {
-                  headers: {
-                    Authorization: `Bearer ${token}`,
-                  },
-                },
-              ),
-              axios.get(
-                `http://localhost:5000/api/hijos/${hijo.id}/temperatura`,
-                {
-                  headers: {
-                    Authorization: `Bearer ${token}`,
-                  },
-                },
-              ),
-              axios.get(`http://localhost:5000/api/hijos/${hijo.id}/peso`, {
+              },
+            ),
+            axios.get(
+              `http://localhost:5000/api/hijos/${hijo.id}/temperatura`,
+              {
                 headers: {
                   Authorization: `Bearer ${token}`,
                 },
-              }),
-              axios.get(
-                `http://localhost:5000/api/hijos/${hijo.id}/frecuenciaCardiaca`,
-                {
-                  headers: {
-                    Authorization: `Bearer ${token}`,
-                  },
-                },
-              ),
-            ]);
-
-          if (frecuencias.data.length > 0) {
-            setFrecuenciaCardiaca(frecuencias.data[0]);
-          }
+              },
+            ),
+            axios.get(`http://localhost:5000/api/hijos/${hijo.id}/peso`, {
+              headers: {
+                Authorization: `Bearer ${token}`,
+              },
+            }),
+          ]);
 
           if (presiones.data.length > 0) {
             setPresionArterial(presiones.data[0]);
@@ -124,24 +103,6 @@ export default function PanelMedico() {
           />
         )}
 
-        {frecuenciaCardiaca ? (
-          <CardDataStats
-            category="Frecuencia Cardiaca"
-            value={frecuenciaCardiaca.frecuencia}
-            description={frecuenciaCardiaca.descripcion}
-            improved={true}
-            worsened={false}
-          />
-        ) : (
-          <CardDataStats
-            category="Frecuencia Cardiaca"
-            value="N/A"
-            description="No hay datos de frecuencia cardíaca disponibles."
-            improved={false}
-            worsened={false}
-          />
-        )}
-
         {temperatura ? (
           <CardDataStats
             category="Temperatura"
@@ -177,10 +138,6 @@ export default function PanelMedico() {
             worsened={false}
           />
         )}
-      </div>
-      <div className="flex justify-center mt-6 space-x-4">
-        {peso && <PesoChart hijoId={1} />}
-        {temperatura && <PesoChartTemperatura hijoId={1} />}
       </div>
     </section>
   );

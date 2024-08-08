@@ -109,7 +109,7 @@ export function PanelHijo() {
                 <Button
                   size="small"
                   onClick={() => handleClickVerMas(hijo.id)}
-                  href="/panel-medico"
+                  href="/application/panel-medico"
                 >
                   Ver más
                 </Button>
