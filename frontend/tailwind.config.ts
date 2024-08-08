@@ -11,8 +11,10 @@ const config: Config = {
   theme: {
     fontFamily: {
       satoshi: ["Satoshi", "sans-serif"],
+      'playfair': ['Playfair Display', 'serif'],
+      'raleway': ['Raleway', 'open sans'],
     },
-
+  
     extend: {
       colors: {
         "custom-blue": "#303487",

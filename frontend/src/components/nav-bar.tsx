@@ -76,7 +76,7 @@ export default function NavBar() {
                   <Link
                     key={route.name}
                     href={route.route}
-                    className={`relative inline-flex items-center justify-center rounded-md px-2 py-2 text-sm font-medium text-white ${
+                    className={`relative inline-flex items-center justify-center rounded-md px-2 py-2 text-sm font-bold font-playfair text-white ${
                       pathname === route.route ? "after:w-full" : ""
                     }`}
                   >
