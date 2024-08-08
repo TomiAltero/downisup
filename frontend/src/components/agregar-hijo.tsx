@@ -10,7 +10,7 @@ import axios from "axios";
 import Toastify from "toastify-js";
 import "react-toastify/dist/ReactToastify.css";
 
-export function FormHijo() {
+export function FormChildren() {
   const [nombre, setNombre] = useState<string>("");
   const [apellido, setApellido] = useState<string>("");
   const [edad, setEdad] = useState<string>("");
@@ -93,11 +93,11 @@ export function FormHijo() {
 
   return (
     <form onSubmit={handleFormSubmit}>
-      <Card className="w-[400px] border-b-4 border-blue-800">
+      <Card className="w-[400px] border-b-4 ">
         <CardHeader className="flex flex-col items-center ">
           <Image src="/favicon.ico" width={72} height={50} alt="Logo DiU" />
           <CardTitle className="text-2xl font-bold text-blue-900 p-3">
-            Agregar hijo
+            Agregar paciente
           </CardTitle>
         </CardHeader>
         <CardContent>

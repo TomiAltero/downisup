@@ -47,6 +47,29 @@ class ChildrensManagmentController {
         .json({ error: "Hubo un error al obtener el perfil del usuario" });
     }
   }
+
+  async addChildren(req, res) {
+    const { nombre, apellido, dni, edad } = req.body;
+    if (!nombre || !apellido || !dni || !edad) {
+      return res.status(400).json({ error: "Faltan campos obligatorios" });
+    }
+    try {
+      const hijo = await Hijo.create({
+        nombre,
+        apellido,
+        dni,
+        edad,
+      });
+      await UsuarioXHijo.create({
+        usuarioId: req.userId,
+        hijoId: hijo.id,
+      });
+      res.json(hijo.toJSON());
+    } catch (error) {
+      console.error("Error al agregar hijo:", error);
+      res.status(500).json({ error: "Hubo un error al agregar hijo" });
+    }
+  }
 }
 
 module.exports = new ChildrensManagmentController();

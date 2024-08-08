@@ -21,7 +21,7 @@ class AuthUserController {
       }
 
       const token = jwt.sign({ id: usuario.id }, process.env.TOKEN_SECRET, {
-        expiresIn: "30d",
+        expiresIn: "1d",
       });
 
       return res.json({

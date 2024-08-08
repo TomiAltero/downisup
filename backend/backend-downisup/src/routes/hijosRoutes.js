@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const childrenController = require("../controllers/hijosController");
+const childrensManagmentController = require("../controllers/childrens/childrensManagmentController");
 const childrenForUser = require("../controllers/childrens/childrensManagmentController.js");
 const verificarToken = require("../middlewars/authentification");
 
@@ -28,4 +29,5 @@ router.get("/:hijoId/peso", verificarToken, childrenController.obtenerPesos);
 
 router.get("/profiles", verificarToken, childrenForUser.getChildrenForUser);
 
+router.post("/", verificarToken, childrenController.agregarHijo);
 module.exports = router;

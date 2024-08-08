@@ -97,7 +97,7 @@ function Sidebar() {
                       Ver Pacientes
                     </Link>
                     <Link
-                      href="/agregar-paciente"
+                      href="/application/agregar-paciente"
                       className={`block ${
                         pathname === "/agregar-paciente" ? "text-blue-700" : ""
                       } hover:text-blue-700 duration-200 py-1 transition-all ease-in-out`}
@@ -145,7 +145,7 @@ function Sidebar() {
               <Calendar size={16} />
               Calendario Terapias
             </Link>
-            
+
             <Link
               href="/application/chat"
               className={`flex ${
