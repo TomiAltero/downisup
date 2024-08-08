@@ -21,7 +21,7 @@ const Page = () => {
 
   return (
     <AppLayout>
-      <main className="flex justify-center items-center h-full">
+      <main className="flex items-center h-full">
         <PanelHijo />
       </main>
     </AppLayout>

@@ -6,7 +6,6 @@ import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheck } from '@fortawesome/free-solid-svg-icons';
-import { useInView } from "react-intersection-observer";
 import LandingLayout from "@/layouts/LandingLayout";
 type SectionKey = 'mission' | 'vision' | 'history';
 
