@@ -1,9 +1,10 @@
-'use client'
-import Perfil from "@/components/perfil";
+"use client";
 import React, { useEffect, useState } from "react";
+import Perfil from "@/components/perfil";
 import { useRouter } from "next/navigation";
 import AppLayout from "@/layouts/AppLayout";
-export default function Page() {
+
+const Page = () => {
   const router = useRouter();
   const [isAuthorized, setIsAuthorized] = useState(true);
 
@@ -18,14 +19,14 @@ export default function Page() {
   if (!isAuthorized) {
     return null;
   }
+
   return (
-    Array.isArray([]) ? null :
-      <AppLayout>
-        <main className="bg-custom-white h-full flex flex-col items-center">
-          <section>
-            <Perfil />
-          </section>
-        </main>
+    <AppLayout>
+      <main className="flex items-center h-full">
+        <Perfil />
+      </main>
     </AppLayout>
   );
-}
+};
+
+export default Page;

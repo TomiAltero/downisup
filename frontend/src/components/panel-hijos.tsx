@@ -69,32 +69,52 @@ export function PanelHijo() {
       ) : (
         hijos.map((hijo) => (
           <div key={hijo.id} className="mb-4">
-            <Card sx={{ width: 350, borderRadius: 4, margin: 2 }}>
-              {hijo.imagen ? (
-                <CardMedia
-                  component="img"
-                  className="h-70"
-                  image={hijo.imagen}
-                  alt={`${hijo.nombre} ${hijo.apellido}`}
-                  style={{ borderRadius: "4px 4px 0 0" }}
-                />
-              ) : (
-                <div
-                  style={{
-                    height: 200,
-                    backgroundColor: "#f3f4f6",
-                    borderRadius: "4px 4px 0 0",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                  }}
-                >
-                  <Typography variant="body2" color="text.secondary">
-                    No hay foto disponible
-                  </Typography>
-                </div>
-              )}
-              <CardContent>
+            <Card
+              sx={{
+                width: 350,
+                borderRadius: 4,
+                margin: 2,
+                display: "flex",
+                flexDirection: "column",
+                height: "400px",
+              }}
+            >
+              <div
+                style={{
+                  height: 300,
+                  overflow: "hidden",
+                  borderRadius: "4px 4px 0 0",
+                }}
+              >
+                {hijo.imagen ? (
+                  <CardMedia
+                    component="img"
+                    image={hijo.imagen}
+                    alt={`${hijo.nombre} ${hijo.apellido}`}
+                    style={{
+                      height: "100%",
+                      width: "100%",
+                      objectFit: "cover",
+                    }}
+                  />
+                ) : (
+                  <div
+                    style={{
+                      height: "100%",
+                      width: "100%",
+                      backgroundColor: "#f3f4f6",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                    }}
+                  >
+                    <Typography variant="body2" color="text.secondary">
+                      No hay foto disponible
+                    </Typography>
+                  </div>
+                )}
+              </div>
+              <CardContent sx={{ flexGrow: 1 }}>
                 <Typography gutterBottom variant="h5" component="div">
                   {hijo.nombre} {hijo.apellido}
                 </Typography>

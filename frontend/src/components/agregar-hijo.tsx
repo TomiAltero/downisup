@@ -15,7 +15,6 @@ export function FormChildren() {
   const [apellido, setApellido] = useState<string>("");
   const [edad, setEdad] = useState<string>("");
   const [dni, setDni] = useState<string>("");
-  const [nacimiento, setNacimiento] = useState<string>("");
   const [errors, setErrors] = useState<{ msg: string }[]>([]);
   const [successfulMessage, setSuccessfulMessage] = useState<string | null>(
     null,
@@ -25,15 +24,12 @@ export function FormChildren() {
     event.preventDefault();
 
     try {
-      const response = await axios.post(
-        "http://localhost:5000/api/usuarios/hijo",
-        {
-          nombre,
-          apellido,
-          edad,
-          dni,
-        },
-      );
+      const response = await axios.post("http://localhost:5000/api/hijos", {
+        nombre,
+        apellido,
+        edad,
+        dni,
+      });
 
       Toastify({
         text: "Usuario registrado exitosamente",
@@ -190,22 +186,6 @@ export function FormChildren() {
                 onChange={(e) => setDni(e.target.value)}
               />
             </article>
-            <Label
-              className="block text-xs font-bold leading-6 text-blue-900"
-              htmlFor="username"
-            >
-              Nacimiento
-            </Label>
-            <Input
-              className="rounded-xl border-t-0 border-l-0 border-r-0 border-b-2 border-blue-800 outline-none focus:ring-0 focus:border-blue-700 mb-6" // Borde solo inferior
-              id="nacimiento"
-              name="nacimiento"
-              required
-              type="date"
-              value={nacimiento}
-              onChange={(e) => setNacimiento(e.target.value)}
-            />
-            <article></article>
             <article className="flex justify-center w-full mt-5">
               <Button
                 variant={"ghost"}

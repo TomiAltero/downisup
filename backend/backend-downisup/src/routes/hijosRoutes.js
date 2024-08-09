@@ -29,5 +29,5 @@ router.get("/:hijoId/peso", verificarToken, childrenController.obtenerPesos);
 
 router.get("/profiles", verificarToken, childrenForUser.getChildrenForUser);
 
-router.post("/", verificarToken, childrenController.agregarHijo);
+router.post("/", verificarToken, childrensManagmentController.addChildren);
 module.exports = router;
