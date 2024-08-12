@@ -6,3 +6,10 @@ export enum PasswordStrength {
     Strong = "Fuerte",
 }
 
+export interface Usuario {
+    nombre: string;
+    apellido: string;
+    username: string;
+    email: string;
+    dni: string;
+  }

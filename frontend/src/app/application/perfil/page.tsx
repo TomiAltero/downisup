@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import Perfil from "@/components/perfil";
 import { useRouter } from "next/navigation";
 import AppLayout from "@/layouts/AppLayout";
+import { Suspense } from "react";
 
 const Page = () => {
   const router = useRouter();
@@ -23,7 +24,9 @@ const Page = () => {
   return (
     <AppLayout>
       <main className="flex items-center h-full">
-        <Perfil />
+        <Suspense fallback={<p>Cargando...</p>}>
+          <Perfil />
+        </Suspense>
       </main>
     </AppLayout>
   );
