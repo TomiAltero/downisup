@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "@/app/globals.css";
 import Sidebar from "@/components/Sidebar/index";
 import HeadBar from "@/components/Headbar/index";
+
 export const metadata: Metadata = {
   title: "Down Is Up",
   description:

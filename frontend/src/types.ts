@@ -1,10 +1,3 @@
-export type PasswordStrengthType = "Débil" | "Medio" | "Fuerte";
-
-export enum PasswordStrength {
-    Weak = "Débil",
-    Medium = "Medio",
-    Strong = "Fuerte",
-}
 
 export interface Usuario {
     nombre: string;
@@ -13,3 +6,12 @@ export interface Usuario {
     email: string;
     dni: string;
   }
+
+export interface Hijo {
+    id: number;
+    nombre: string;
+    apellido: string;
+    edad: number;
+    dni: string;
+    imagen: string | null;
+}

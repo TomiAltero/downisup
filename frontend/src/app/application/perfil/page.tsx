@@ -5,31 +5,31 @@ import { useRouter } from "next/navigation";
 import AppLayout from "@/layouts/AppLayout";
 import { Suspense } from "react";
 
-const Page = () => {
+export default function Page() {
   const router = useRouter();
-  const [isAuthorized, setIsAuthorized] = useState(true);
-
+  const [isAuthorized, setIsAuthorized] = useState<Boolean>(true);
+  const [token, setToken] = useState<string | null>("");
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (!token) {
       setIsAuthorized(false);
       router.push("/notfound");
     }
+    setToken(token);
   }, [router]);
 
   if (!isAuthorized) {
-    return null;
+    return
   }
 
+  // Add ProfileTableSkeleton component to Suspense fallback
   return (
     <AppLayout>
       <main className="flex items-center h-full">
         <Suspense fallback={<p>Cargando...</p>}>
-          <Perfil />
+          <Perfil token={token}/>
         </Suspense>
       </main>
     </AppLayout>
   );
 };
-
-export default Page;
