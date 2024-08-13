@@ -1,9 +1,9 @@
 const { DataTypes, Model } = require("sequelize");
-const sequelize = require("../config/database");
-const FrecuenciaCardiaca = require("./frecuenciaCardiaca");
-const PresionArterial = require("./presionArterial");
-const Temperatura = require("./temperatura");
-const Peso = require("./peso");
+const sequelize = require("../../config/database");
+const FrecuenciaCardiaca = require("../medical-data/frecuenciaCardiaca");
+const PresionArterial = require("../medical-data/presionArterial");
+const Temperatura = require("../medical-data/temperatura");
+const Peso = require("../medical-data/peso");
 
 class Hijo extends Model {}
 

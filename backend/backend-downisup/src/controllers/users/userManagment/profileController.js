@@ -1,4 +1,4 @@
-const Usuario = require("../../../models/usuario");
+const Usuario = require("../../../models/users/usuario");
 
 class ProfileController {
   async getProfileUser(req, res) {

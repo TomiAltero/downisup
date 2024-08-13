@@ -1,6 +1,6 @@
-const Usuario = require("../../models/usuario");
-const Hijo = require("../../models/hijo");
-const UsuarioXHijo = require("../../models/usuarioXHijo");
+const Usuario = require("../../models/users/usuario");
+const Hijo = require("../../models/childrens/hijo");
+const UsuarioXHijo = require("../../models/users/usuarioXHijo");
 
 class ChildrensManagmentController {
   async getChildren(req, res) {

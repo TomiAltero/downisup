@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import React, { useState } from "react";
 import axios from "axios";
-import Toastify from "toastify-js"; // eslint-disable-line
+import Toastify from "toastify-js";
 import "react-toastify/dist/ReactToastify.css";
 import Link from "next/link";
 import { FaEye, FaEyeSlash } from "react-icons/fa";

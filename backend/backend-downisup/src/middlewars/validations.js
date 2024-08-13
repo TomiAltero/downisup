@@ -1,5 +1,5 @@
 const { body, validationResult } = require("express-validator");
-const User = require("../models/usuario");
+const User = require("../models/users/usuario");
 
 class Validator {
   constructor(field) {

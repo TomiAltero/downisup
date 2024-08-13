@@ -1,12 +1,12 @@
-const Usuario = require("../../models/usuario");
-const UsuarioXHijo = require("../../models/usuarioXHijo");
-const Hijo = require("../../models/hijo");
+const Usuario = require("../../models/users/usuario");
+const UsuarioXHijo = require("../../models/users/usuarioXHijo");
+const Hijo = require("../../models/childrens/hijo");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
-const FrecuenciaCardiaca = require("../../models/frecuenciaCardiaca");
-const PresionArterial = require("../../models/presionArterial");
-const Temperatura = require("../../models/temperatura");
-const Peso = require("../../models/peso");
+const FrecuenciaCardiaca = require("../../models/medical-data/frecuenciaCardiaca");
+const PresionArterial = require("../../models/medical-data/presionArterial");
+const Temperatura = require("../../models/medical-data/temperatura");
+const Peso = require("../../models/medical-data/peso");
 const upload = require("../../config/upload");
 const { Op } = require("sequelize");
 

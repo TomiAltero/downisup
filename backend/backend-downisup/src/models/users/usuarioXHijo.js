@@ -1,7 +1,7 @@
 const { DataTypes, Model } = require("sequelize");
-const sequelize = require("../config/database");
-const Usuario = require("./usuario");
-const Hijo = require("./hijo");
+const sequelize = require("../../config/database");
+const Usuario = require("../users/usuario");
+const Hijo = require("../childrens/hijo");
 
 class UsuarioXHijo extends Model {}
 

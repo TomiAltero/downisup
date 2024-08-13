@@ -1,6 +1,6 @@
 const { DataTypes, Model } = require("sequelize");
-const sequelize = require("../config/database");
-const Hijo = require("./hijo");
+const sequelize = require("../../config/database");
+const Hijo = require("../childrens/hijo");
 
 class PresionArterial extends Model {}
 

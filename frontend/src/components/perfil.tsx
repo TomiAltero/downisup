@@ -4,7 +4,6 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { Usuario } from "@/types";
 
-
 export default function Perfil() {
   const [usuario, setUsuario] = useState<Usuario | null>(null);
   const [loading, setLoading] = useState(true);
@@ -117,7 +116,24 @@ export default function Perfil() {
             </article>
           </article>
         </article>
+
+        <article>
+          <div className="flex justify-center space-x-10 py-4">
+            <button
+              type="button"
+              className="inline-flex items-center px-8 py-2 border border-transparent text-xl font-medium rounded-md  bg-blue-900"
+            >
+              Editar Perfil
+            </button>
+            <button
+              type="button"
+              className="inline-flex items-center px-8 border border-transparent text-xl font-bold rounded-md text-blue-900"
+            >
+              Ver mas
+            </button>
+          </div>
+        </article>
       </article>
     </section>
   );
-};
+}
