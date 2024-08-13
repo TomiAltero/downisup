@@ -8,7 +8,7 @@ export default function PanelMedico() {
   const [temperatura, setTemperatura] = useState(null);
   const [peso, setPeso] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const [error, setError] = useState("");
 
   useEffect(() => {
     const obtenerDatosMedicos = async () => {
@@ -22,6 +22,7 @@ export default function PanelMedico() {
             },
           },
         );
+        
         const hijos = response.data.hijos;
         console.log(hijos);
         if (hijos.length > 0) {

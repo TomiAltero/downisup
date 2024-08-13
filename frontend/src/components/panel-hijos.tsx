@@ -1,65 +1,21 @@
-"use client";
-import React, { useEffect, useState } from "react";
-import axios from "axios";
+import React from "react";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
+import { Hijo } from "@/types";
+import { getHijoProfile } from "@/lib/utils";
 
-interface Hijo {
-  id: number;
-  nombre: string;
-  apellido: string;
-  edad: number;
-  dni: string;
-  imagen: string | null;
-}
 
-export function PanelHijo() {
-  const [usuario, setUsuario] = useState<any>(null);
-  const [hijos, setHijos] = useState<Hijo[]>([]);
-  const [error, setError] = useState<string | null>(null);
-  const [selectedHijoId, setSelectedHijoId] = useState<number | null>(null);
-  const [isLoading, setIsLoading] = useState(true);
+export async function PanelHijo({token}: { token: string }) {
 
-  useEffect(() => {
-    const obtenerPerfilUsuario = async () => {
-      try {
-        const token = localStorage.getItem("token");
-        const response = await axios.get(
-          "http://localhost:5000/api/hijos/profiles",
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          },
-        );
-        setUsuario(response.data.usuario);
-        setHijos(response.data.hijos);
-        setIsLoading(false);
-      } catch (error) {
-        setIsLoading(false);
-        setError("Error al obtener el perfil del usuario");
-      }
-    };
-
-    obtenerPerfilUsuario();
-  }, []);
-
-  const handleClickVerMas = (hijoId: number) => {
-    setSelectedHijoId(hijoId);
-  };
-
-  if (isLoading) {
-    return <p style={{ color: "black" }}>Cargando...</p>;
+  if (!token ) {
+    return
   }
-
-  if (error) {
-    return <p style={{ color: "black" }}>Error: {error}</p>;
-  }
-
+  const {hijos, usuario} = await getHijoProfile({ token });
+  
   return (
     <div className="flex flex-wrap">
       {hijos.length === 0 ? (
@@ -67,7 +23,7 @@ export function PanelHijo() {
           No tienes hijos registrados.
         </Typography>
       ) : (
-        hijos.map((hijo) => (
+        hijos.map((hijo: Hijo) => (
           <div key={hijo.id} className="mb-4">
             <Card
               sx={{
@@ -128,7 +84,7 @@ export function PanelHijo() {
               <CardActions>
                 <Button
                   size="small"
-                  onClick={() => handleClickVerMas(hijo.id)}
+                  onClick={() => {}}
                   href="/application/panel-medico"
                 >
                   Ver más

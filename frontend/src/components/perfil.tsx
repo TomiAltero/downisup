@@ -1,54 +1,20 @@
-"use client";
 import Image from "next/image";
-import { useState, useEffect } from "react";
-import axios from "axios";
 import { Usuario } from "@/types";
+import { getUserProfile } from "@/lib/utils";
 
-
-export default function Perfil() {
-  const [usuario, setUsuario] = useState<Usuario | null>(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
-
-  useEffect(() => {
-    const obtenerPerfilUsuario = async () => {
-      try {
-        const token = localStorage.getItem("token");
-        if (token) {
-          const response = await axios.get(
-            "http://localhost:5000/api/usuarios/perfil",
-            {
-              headers: {
-                Authorization: `Bearer ${token}`,
-              },
-            },
-          );
-          setUsuario(response.data.usuario);
-        }
-      } catch (error) {
-        setError("Error al obtener el perfil del usuario");
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    obtenerPerfilUsuario();
-  }, []);
-
-  if (loading) {
-    return <p>Cargando...</p>;
+export default async function Perfil({ token }: { token: string | null}) {
+  
+  if (!token ) {
+    return
   }
-
-  if (error) {
-    return <p>{error}</p>;
-  }
+  const usuario: Usuario = await getUserProfile({ token });
 
   const nombreCompleto = usuario ? `${usuario.nombre} ${usuario.apellido}` : "";
 
   return (
     <section className="mx-auto max-w-4xl mt-10">
       <article className="overflow-hidden rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark">
-        <article className="relative z-10 h-35 md:h-65">
+        <article className="relative h-35 md:h-65">
           <Image
             src={"/DownisupCBA.jpg"}
             alt="profile cover"

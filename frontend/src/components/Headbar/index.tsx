@@ -1,7 +1,6 @@
 "use client";
 import React, { useState, useRef, useEffect } from "react";
 import Image from "next/image";
-import ProfileImage from "../../../public/no-photo.webp";
 import { Logout, Setting2, ArrowDown2, ArrowUp2, Profile } from "iconsax-react";
 import axios from "axios";
 import Ajustes from "@/components/ajustes";
@@ -127,7 +126,7 @@ function HeadBar() {
             onClick={toggleDropdown}
           >
             <Image
-              src={ProfileImage}
+              src={"/no-photo.webp"}
               alt="User"
               width={40}
               height={40}
