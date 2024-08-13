@@ -1,104 +1,114 @@
+"use client";
+
 import Image from "next/image";
-import { Label } from "@/components/ui/label";
-import LandingLayout from "@/app/landinglyout";
+import { useState } from "react";
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCheck } from '@fortawesome/free-solid-svg-icons';
+
+type SectionKey = 'mission' | 'vision' | 'history';
+
+const sections: Record<SectionKey, { title: string; content: JSX.Element }> = {
+  mission: {
+    title: "Nuestra Misión",
+    content: (
+      <>
+        <p><FontAwesomeIcon icon={faCheck} className="text-custom-blue" /> Promover los derechos reconocidos en la Convención Internacional sobre los Derechos de las Personas con Discapacidad.</p>
+        <p><FontAwesomeIcon icon={faCheck} className="text-custom-blue" /> Visibilizar el Síndrome de Down, mediante acciones de educación, formación y actividades sociales y culturales, fortaleciendo la convivencia.</p>
+        <p><FontAwesomeIcon icon={faCheck} className="text-custom-blue" /> Fomentar la vida independiente y la autonomía de las personas con síndrome de Down.</p>
+      </>
+    )
+  },
+  vision: {
+    title: "Nuestra Visión",
+    content: (
+      <>
+        <p><FontAwesomeIcon icon={faCheck} className="text-custom-blue" /> Informar y capacitar a la sociedad en general en temas referidos a la diversidad.</p>
+        <p><FontAwesomeIcon icon={faCheck} className="text-custom-blue" /> Impulsar la generación de políticas públicas, para el sector.</p>
+        <p><FontAwesomeIcon icon={faCheck} className="text-custom-blue" /> Cooperar técnicamente y articular con instituciones públicas y privadas, nacionales e internacionales, para el logro de nuestros objetivos</p>
+        <p><FontAwesomeIcon icon={faCheck} className="text-custom-blue" /> Generar programas de contención, de desarrollo y autonomía.</p>
+        <p><FontAwesomeIcon icon={faCheck} className="text-custom-blue" /> Formar a las personas con síndrome de Down para ejercer su derecho a la vida independiente en su entorno comunitario.</p>
+      </>
+    )
+  },
+  history: {
+    title: "Nuestra Historia",
+    content: (
+      <>
+        <p><FontAwesomeIcon icon={faCheck} className="text-custom-blue" /> Somos una Fundación creada por familias que acompañamos a otras familias en el camino de la inclusión de nuestros hijos. Tenemos como eje informar, compartir y motivar a todos los que quieran participar en este cambio de mirada sobre discapacidad. Nuestra historia comenzó en 2015 cuando decidimos comenzar organizar charlas, acciones y más, trabajando para lograr el cambio que buscábamos. Basándonos en la existencia de un movimiento nacional llamado Down is Up, con sede en varias provincias, nace esta comunidad con el fin de satisfacer la necesidad de contención, atención e información sobre el Síndrome de Down.</p>
+      </>
+    )
+  }
+};
+
 export default function QuienesSomos() {
+  const [activeSection, setActiveSection] = useState<SectionKey | "">("");
+
+  const renderSectionContent = () => {
+    if (activeSection && sections[activeSection]) {
+      return (
+        <section className="mt-8">
+          <h2 className="text-custom-blue font-extrabold text-2xl text-center mb-4">
+            {sections[activeSection].title}
+          </h2>
+          <div className="text-sm text-justify text-custom-blue">
+            {sections[activeSection].content}
+          </div>
+        </section>
+      );
+    }
+    return null;
+  };
+
   return (
-    <LandingLayout>
       <main className="flex flex-col justify-center mx-14">
         <section className="mt-14 mb-24">
-          <h1 className="text-custom-blue text-5xl font-bold text-center">
+          <h1 className="text-custom-blue -mt-3 text-3xl font-bold text-center">
             QUIENES SOMOS?
           </h1>
         </section>
-        <section className="flex justify-between px-16">
-          <article className="flex flex-col items-center gap-y-2">
+        <section className="flex justify-between px-16 -mt-15">
+          <article
+            className={`flex flex-col items-center gap-y-2 p-6 rounded-3xl bg-white cursor-pointer border-2 transition-shadow duration-300 ease-in-out ${
+              activeSection === "mission" ? "shadow-2xl border-blue-500" : "hover:shadow-lg"
+            }`}
+            onClick={() => setActiveSection("mission")}
+          >
             <Image
-              width={138}
-              height={131}
+              width={167}
+              height={150}
               src="/mision.png"
               alt="Mision Log"
             />
-            <Label className="text-custom-blue font-extrabold text-2xl">
-              Nuestra Misión
-            </Label>
           </article>
-          <article className="flex flex-col items-center gap-y-2">
+          <article
+            className={`flex flex-col items-center gap-y-2 p-6 rounded-3xl bg-white cursor-pointer border-2 transition-shadow duration-300 ease-in-out ${
+              activeSection === "vision" ? "shadow-2xl border-blue-500" : "hover:shadow-lg"
+            }`}
+            onClick={() => setActiveSection("vision")}
+          >
             <Image
-              width={219}
-              height={129}
+              width={167}
+              height={150}
               src="/vision.png"
-              alt="Mision Log"
+              alt="Vision Log"
             />
-            <Label className="text-custom-blue font-extrabold text-2xl">
-              Nuestra Visión
-            </Label>
           </article>
-          <article className="flex flex-col items-center gap-y-2">
+          <article
+            className={`flex flex-col items-center gap-y-2 p-6 rounded-3xl bg-white cursor-pointer border-2 transition-shadow duration-300 ease-in-out ${
+              activeSection === "history" ? "shadow-2xl border-blue-500" : "hover:shadow-lg"
+            }`}
+            onClick={() => setActiveSection("history")}
+          >
             <Image
               width={167}
               height={150}
               src="/historia.png"
-              alt="Mision Log"
+              alt="Historia Log"
             />
-            <Label className="text-custom-blue font-extrabold text-2xl">
-              Nuestra Historia
-            </Label>
           </article>
         </section>
-        <section className="flex flex-col text-sm space-y-2 justify">
-          <br />
-          <h1 className="w-full text-center text-custom-blue font-extrabold text-3xl mb-2">
-            Objetivos
-          </h1>
-          <br />
-          <section className="flex flex-col space-y-2">
-            <article className="flex gap-x-2">
-              <Image
-                width={20}
-                height={20}
-                src="/Vectorcheck.svg"
-                alt="Check Logo"
-              />
-              <p className="font-light text-custom-blue">
-                <span className="font-normal text-custom-blue">Promover</span>
-                 los derechos reconocidos en la Convención Internacional sobre
-                los Derechos de las Personas con Discapacidad.
-              </p>
-            </article>
-            <article className="flex gap-x-2">
-              <Image
-                width={20}
-                height={20}
-                src="/Vectorcheck.svg"
-                alt="Check Logo"
-              />
-              <p className="font-light text-custom-blue">
-                <span className="font-normal text-custom-blue">
-                  Visibilizar el Síndrome de Down
-                </span>
-                , mediante acciones de educación, formación y actividades
-                sociales y culturales, fortaleciendo la{" "}
-                <span className="font-bold text-custom-blue">convivencia</span>.
-              </p>
-            </article>
-            <article className="flex gap-x-2">
-              <Image
-                width={20}
-                height={20}
-                src="/Vectorcheck.svg"
-                alt="Check Logo"
-              />
-              <p className="font-light text-custom-blue">
-                <span className="font-normal text-custom-blue">
-                  Fomentar la vida independiente
-                </span>{" "}
-                y la autonomía de las personas con síndrome de Down.
-              </p>
-            </article>
-          </section>
-        </section>
+        {renderSectionContent()}
       </main>
-    </LandingLayout>
   );
 }
-

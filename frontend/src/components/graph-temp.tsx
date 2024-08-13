@@ -41,7 +41,7 @@ const PesoChartTemperatura: React.FC<Props> = ({ hijoId }) => {
         const token = localStorage.getItem("token");
         if (token) {
           const response = await axios.get<TemperaturaData[]>(
-            `http://localhost:5000/api/usuarios/hijo/${hijoId}/temperatura`,
+            `http://localhost:5000/api/hijos/${hijoId}/temperatura`,
             {
               headers: {
                 Authorization: `Bearer ${token}`,
@@ -73,9 +73,24 @@ const PesoChartTemperatura: React.FC<Props> = ({ hijoId }) => {
     ],
   };
 
+  const options = {
+    plugins: {
+      title: {
+        display: true,
+        text: "Datos de temperatura por semana",
+        font: {
+          size: 16,
+        },
+      },
+      legend: {
+        position: "top" as const,
+      },
+    },
+  };
+
   return (
     <div className="md:w-1/2 lg:w-3/4 xl:w-2/3 mt-6">
-      <Line data={data} />
+      <Line data={data} options={options} />
     </div>
   );
 };

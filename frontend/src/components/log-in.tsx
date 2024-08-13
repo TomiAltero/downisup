@@ -11,7 +11,7 @@ import "toastify-js/src/toastify.css";
 import "react-toastify/dist/ReactToastify.css";
 import Link from "next/link";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-import { FcGoogle } from "react-icons/fc"; // Importa el icono de Google
+import { FcGoogle } from "react-icons/fc";
 
 declare global {
   interface Window {
@@ -19,14 +19,12 @@ declare global {
   }
 }
 
-window.Toastify = Toastify;
-
 export function LogIn() {
   const [usernameOrEmail, setUsernameOrEmail] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
   const [showPassword, setShowPassword] = useState(false);
-  const redirectDelay = 1500;
+  const redirectDelay = 1000;
 
   const handleLogin = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -45,7 +43,7 @@ export function LogIn() {
       setMessage("Inicio de sesión exitoso");
 
       setTimeout(() => {
-        window.location.href = "/inicio";
+        window.location.href = "/application/";
       }, redirectDelay);
 
       Toastify({
@@ -158,7 +156,7 @@ export function LogIn() {
   return (
     <div className="flex items-center justify-center min-h-screen">
       <form onSubmit={handleLogin}>
-        <Card className="-mt-4 w-[400px] h-[540px]">
+        <Card className="-mt-4 w-[400px] h-[570px]">
           <CardHeader className="flex flex-col items-center">
             <Image src="/favicon.ico" width={72} height={50} alt="Logo DiU" />
             <CardTitle className="mt-4 text-xl font-bold text-blue-900">
@@ -235,14 +233,25 @@ export function LogIn() {
                   Continuar con Google
                 </Button>
               </article>
-              <article className="flex justify-center w-full mt-5 ">
+              <article className="flex justify-center w-full mt-5">
                 <p className="text-sm text-blue-900">
                   ¿No tienes cuenta?{" "}
                   <Link
-                    href="/signup"
+                    href="/auth/signup"
                     className="text-blue-900 font-bold hover:underline"
                   >
                     Regístrate
+                  </Link>
+                </p>
+              </article>
+              <article className="flex justify-center w-full mt-2">
+                <p className="text-sm text-blue-900">
+                  ¿Olvidaste tu contraseña?{" "}
+                  <Link
+                    href="/reset-password"
+                    className="text-blue-900 font-bold hover:underline"
+                  >
+                    Recupera tu contraseña
                   </Link>
                 </p>
               </article>
