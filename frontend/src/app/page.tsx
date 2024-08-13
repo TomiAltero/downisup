@@ -18,17 +18,17 @@ export default function Home() {
             />
           </div>
           <section className={`${opensans.className} font-semibold z-10`}>
-            <h1 className="text-center my-4 text-4xl text-white">
+            <h1 className="text-center my-4 text-4xl text-white font-raleway">
               Bienvenidos a
             </h1>
             <article className="text-6xl text-center text-white">
-              <h1 className="mb-4 text-white">DownIsUp</h1>
-              <h1 className="text-white">Córdoba</h1>
+              <h1 className="mb-4 text-white font-raleway">DownIsUp</h1>
+              <h1 className="text-white font-raleway">Córdoba</h1>
             </article>
           </section>
           <section className="flex flex-col items-center z-10">
             <Link href="/contactanos">
-              <Button className="bg-custom-white text-black text-base px-4 py-2 font-semibold animate-pulse hover:text-white hover:bg-custom-blue">
+              <Button className="bg-custom-white text-black text-base px-4 py-2 font-semibold font-raleway animate-pulse hover:text-white hover:bg-custom-blue">
                 Contáctanos
               </Button>
             </Link>

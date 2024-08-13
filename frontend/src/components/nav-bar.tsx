@@ -6,13 +6,13 @@ import { usePathname } from "next/navigation";
 import Link from "next/link";
 
 const routes = [
-  { name: "INCIO", route: "/" },
-  { name: "QUIENES SOMOS", route: "/quienessomos" },
-  { name: "CLUB DE AMIGOS", route: "/clubdeamigos" },
-  { name: "CONSULTORIOS", route: "/consultorios" },
-  { name: "CONTÁCTANOS", route: "/contactanos" },
-  { name: "ACCIONES", route: "/acciones" },
-  { name: "TIENDA", route: "/tienda" }
+  { name: "Inicio", route: "/" },
+  { name: "Quienes Somos", route: "/quienessomos" },
+  { name: "Club De Amigos", route: "/clubdeamigos" },
+  { name: "Consultorios", route: "/consultorios" },
+  { name: "Contactanos", route: "/contactanos" },
+  { name: "Acciones", route: "/acciones" },
+  { name: "Tienda", route: "/tienda" }
 ];
 
 export default function NavBar() {
@@ -102,7 +102,7 @@ export default function NavBar() {
               </Button>
             </Link>
             <Link href="/auth/login">
-              <Button className="bg-custom-white text-black text-base px-4 py-2 font-semibold hover:text-blue-900">
+              <Button className="bg-custom-white text-black text-base px-4 py-2 font-semibold font-raleway hover:text-blue-900">
                 Iniciar Sesión
               </Button>
             </Link>
