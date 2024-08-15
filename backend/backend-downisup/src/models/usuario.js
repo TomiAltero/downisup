@@ -8,15 +8,16 @@ Usuario.init(
     username: {
       type: DataTypes.STRING,
       unique: true,
-      allowNull: false,
+      allowNull: true, // Cambiado a true para que los usuarios de Google no necesiten username
     },
     email: {
       type: DataTypes.STRING,
+      unique: true,
       allowNull: false,
     },
     password: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true, // Cambiado a true para que los usuarios de Google no necesiten password
     },
     nombre: {
       type: DataTypes.STRING,
@@ -38,8 +39,7 @@ Usuario.init(
     },
     dni: {
       type: DataTypes.STRING,
-      allowNull: false,
-      defaultValue: null,
+      allowNull: true, // Cambiado a true para que los usuarios de Google no necesiten dni
     },
     imagen: {
       type: DataTypes.STRING,
@@ -48,6 +48,12 @@ Usuario.init(
     tipoUsuarioId: {
       type: DataTypes.INTEGER,
       allowNull: false,
+      defaultValue: 1,
+    },
+    authProvider: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      defaultValue: "local", // "local" para registros manuales, "google" para registros con Google
     },
   },
   {
@@ -55,7 +61,7 @@ Usuario.init(
     modelName: "Usuario",
     tableName: "Usuarios",
     timestamps: true,
-  },
+  }
 );
 
 module.exports = Usuario;

@@ -3,8 +3,8 @@ const bcrypt = require("bcrypt");
 
 class UserManagementController {
   async obtenerUsuarios(req, res) {
-    const usuarios = await Usuario.findAll();
     try {
+      const usuarios = await Usuario.findAll();
       res.json(usuarios);
     } catch (error) {
       console.error("Error al obtener usuarios:", error);
@@ -37,9 +37,13 @@ class UserManagementController {
         apellido,
         imagen,
         tipoUsuarioId,
+        authProvider = "local", 
       } = req.body;
 
-      const hashedPassword = await bcrypt.hash(password, 10);
+      let hashedPassword = null;
+      if (authProvider === "local") {
+        hashedPassword = await bcrypt.hash(password, 10);
+      }
 
       const nuevoUsuario = await Usuario.create({
         username,
@@ -49,7 +53,8 @@ class UserManagementController {
         nombre,
         apellido,
         imagen,
-        tipoUsuarioId: 1,
+        tipoUsuarioId,
+        authProvider,
       });
 
       console.log("Usuario creado:", nuevoUsuario.toJSON());
@@ -95,6 +100,7 @@ class UserManagementController {
       if (!usuario) {
         return res.status(404).json({ error: "Usuario no encontrado" });
       }
+      await usuario.destroy();
       console.log("Usuario eliminado:", usuario.toJSON());
       res.json({ message: "Usuario eliminado correctamente" });
     } catch (error) {
