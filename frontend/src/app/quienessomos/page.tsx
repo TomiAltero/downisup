@@ -89,15 +89,17 @@ export default function QuienesSomos() {
         </section>
 
         <section className="flex justify-center items-center mb-22">
+        <div className="w-4/12 ml-4">
           <Image
-            width={300}
-            height={300}
-            src="/persona2.webp"
-            alt="Quienes Somos"
-            className="rounded-3xl"
-          />
-          <div className="ml-4"> 
-            <h1 className="text-custom-blue text-4xl font-medium mb-5">
+              width={300}
+              height={300}
+              src="/persona2.webp"
+              alt="Quienes Somos"
+              className="rounded-3xl"
+            />
+        </div>
+          <div className="w-8/12 ml-4"> 
+            <h1 className="text-custom-blue text-4xl font-semibold mb-5">
               Como comenzamos?
             </h1>
             <p className="text-custom-blue text-lg">
@@ -105,21 +107,29 @@ export default function QuienesSomos() {
               </p>
           </div>
         </section>
-        <section className="flex justify-center items-center mb-22 ">
-          <div className="mr-4"> {/* Ajusta el margen derecho para separar el texto de la imagen */}
-            <h1 className="text-custom-blue text-4xl">Como comenzamos?</h1>
+        <section className="flex justify-center items-center mb-22">
+          <div className="w-8/12 mr-4"> 
+            <h1 className="text-custom-blue text-4xl mb-5 font-semibold">
+              Nuestros Objetivos
+            </h1>
             <p className="text-custom-blue text-lg">
-              Comenzó en 2015 cuando decidimos comenzar a organizar charlas, acciones y más, trabajando para lograr el cambio que buscábamos. Nos basamos en la existencia de un movimiento nacional llamado Down is Up, con sede en varias provincias, con el fin de satisfacer la necesidad de contención, atención e información sobre el Síndrome de Down.
-              </p>
+              <img src="/tick.png" alt="Tick" className="inline-block mr-2" width={20} height={20}/> Promover los derechos reconocidos en la Convención Internacional sobre los Derechos de las Personas con Discapacidad.<br/>
+              <img src="/tick.png" alt="Tick" className="inline-block mr-2" width={20} height={20}/> Visibilizar el Síndrome de Down, mediante acciones de educación, formación y actividades sociales y culturales, fortaleciendo la convivencia.<br/>
+              <img src="/tick.png" alt="Tick" className="inline-block mr-2" width={20} height={20}/> Fomentar la vida independiente y la autonomía de las personas con síndrome de Down.
+            </p>
           </div>
-          <Image
-            width={300}  
-            height={300} 
-            src="/persona2.webp"
-            alt="Quienes Somos"
-            className="rounded-3xl" 
-          />
+          <div className="w-4/12 ml-4">
+            <Image
+              width={300}  
+              height={300} 
+              src="/persona2.webp"
+              alt="Quienes Somos"
+              className="rounded-3xl" 
+            />
+          </div>
         </section>
+
+
 
 
         <motion.div
