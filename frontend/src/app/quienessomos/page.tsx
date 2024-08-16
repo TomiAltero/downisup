@@ -82,11 +82,20 @@ export default function QuienesSomos() {
   return (
     <LandingLayout>
       <main className="flex flex-col justify-center mx-14">
-        <section className="mt-14 mb-24">
-          <h1 className="text-custom-blue -mt-3 text-3xl text-center">
-            QUIENES SOMOS?
-          </h1>
-        </section>
+      <section className="relative mb-24">
+        <h1 className="text-custom-blue text-3xl text-center mb-4">
+          QUIENES SOMOS?
+        </h1>
+        <div className="relative w-full" style={{ height: "300px" }}>
+          <img 
+            src="background.png" 
+            alt="Imagen de fondo" 
+            className="absolute inset-0 w-full h-full object-cover"
+          />
+        </div>
+      </section>
+
+
 
         <section className="flex justify-center items-center mb-22">
         <div className="w-4/12 ml-4">
