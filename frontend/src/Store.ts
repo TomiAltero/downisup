@@ -13,6 +13,7 @@ type pageOptions =
   | "SUPPORT";
 
 interface centralStore {
+  darkMode: any;
   activePage: pageOptions;
   setActivePage: (page: pageOptions) => void;
 

@@ -1,14 +1,29 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const Ajustes = ({ onClose }: { onClose: () => void }) => {
-  const [darkMode, setDarkMode] = useState(false);
+  const [darkMode, setDarkMode] = useState<boolean>(() => {
+    // Retrieve the stored value or default to false
+    const storedDarkMode = localStorage.getItem("darkMode");
+    return storedDarkMode === "true";
+  });
   const [notificationsEnabled, setNotificationsEnabled] = useState(false);
   const [language, setLanguage] = useState("es");
 
-  const toggleDarkMode = () => {
+  useEffect(() => {
     const body = document.body;
-    setDarkMode(!darkMode);
-    body.classList.toggle("dark-mode", !darkMode);
+    if (darkMode) {
+      body.classList.add("dark");
+    } else {
+      body.classList.remove("dark");
+    }
+  }, [darkMode]);
+
+  const toggleDarkMode = () => {
+    setDarkMode((prevMode) => {
+      const newMode = !prevMode;
+      localStorage.setItem("darkMode", newMode.toString());
+      return newMode;
+    });
   };
 
   const toggleNotifications = () => {
@@ -28,7 +43,7 @@ const Ajustes = ({ onClose }: { onClose: () => void }) => {
         >
           ✕
         </button>
-        <h2 className="text-xl font-semibold -mt-4 mb-4 text-blue-900">
+        <h2 className="text-xl font-semibold -mt-4 mb-4 text-blue-900 dark:text-white">
           Ajustes
         </h2>
         <div className="mt-2 space-y-4 text-left items-center">
