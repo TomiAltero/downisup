@@ -49,7 +49,7 @@ export default function Home() {
               </SwiperSlide>
               <SwiperSlide>
                 <Image
-                  src="/chicos.jpg"
+                  src="/chicos.jpeg"
                   alt="Background 3"
                   layout="fill"
                   objectFit="cover"
@@ -76,11 +76,50 @@ export default function Home() {
           </section>
         </section>
 
-        {/* Segunda sección que aparece al hacer scroll */}
-        <section className="h-screen w-full bg-white flex flex-col justify-center items-center snap-start transition-transform duration-700 ease-in-out">
-          <h2 className="text-4xl font-bold">Segunda Sección</h2>
-          <p className="text-lg mt-4">Contenido adicional aquí...</p>
-        </section>
+        <section className="h-screen w-full flex snap-start transition-transform duration-700 ease-in-out relative">
+  {/* Columna izquierda: 3/12 */}
+  <div className="w-4/12 flex flex-col justify-center items-center text-center p-10 z-10 -mt-40">
+  
+    <Image
+      src="/logo-du.png"
+      alt="DownIsUp Córdoba Logo"
+      width={125}
+      height={125}
+      className="mb-6"
+    />
+    <p className="text-white text-2xl leading-relaxed">
+      "LOGRAR LA 
+    </p>
+    <p className="text-white text-2xl font-bold leading-relaxed">
+      AUTONOMÍA Y VIDA INDEPENDIENTE
+    </p>
+    <p className="text-white text-2xl leading-relaxed">
+      ES UN DESAFÍO Y UN RETO, TANTO PARA LA PERSONA, COMO PARA SU ENTORNO"
+    </p>
+  </div>
+
+  {/* División diagonal */}
+  <div className="absolute w-full h-full -inset-x-30 z-0 bg-custom-blue" style={{ clipPath: "polygon(0 0, 45% 0, 35% 100%, 0% 100%)" }}></div>
+
+  {/* Columna derecha: 9/12 */}
+  <div className="w-8/12 flex flex-col justify-center items-center p-10 z-10">
+    <h2 className="text-5xl font-bold text-custom-blue mb-6">NUESTRA HISTORIA</h2>
+    <p className="text-xl text-custom-blue mb-10">
+      Comenzó en 2015 cuando decidimos comenzar a organizar charlas, acciones y más, trabajando para lograr el cambio que buscábamos. Nos basamos en la existencia de un movimiento nacional llamado Down is Up, con sede en varias provincias, con el fin de satisfacer la necesidad de contención, atención e información sobre el Síndrome de Down.
+    </p>
+    <p className="text-custom-blue text-lg">
+      <img src="/tick.png" alt="Tick" className="inline-block mr-2" width={20} height={20}/> Promover los derechos reconocidos en la Convención Internacional sobre los Derechos de las Personas con Discapacidad.<br/>
+      <img src="/tick.png" alt="Tick" className="inline-block mr-2" width={20} height={20}/> Visibilizar el Síndrome de Down, mediante acciones de educación, formación y actividades sociales y culturales, fortaleciendo la convivencia.<br/>
+      <img src="/tick.png" alt="Tick" className="inline-block mr-2" width={20} height={20}/> Fomentar la vida independiente y la autonomía de las personas con síndrome de Down.
+    </p>
+    <button className="mt-10 px-4 py-2 bg-pink-500 text-white font-semibold rounded-full hover:bg-pink-600">
+      Ver más
+    </button>
+  </div>
+</section>
+
+
+
       </main>
     </LandingLayout>
   );
