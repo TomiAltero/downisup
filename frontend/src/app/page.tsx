@@ -40,7 +40,7 @@ export default function Home() {
               </SwiperSlide>
               <SwiperSlide>
                 <Image
-                  src="/background.png"
+                  src="/chicasPlaza.jpg"
                   alt="Background 2"
                   layout="fill"
                   objectFit="cover"
@@ -49,7 +49,7 @@ export default function Home() {
               </SwiperSlide>
               <SwiperSlide>
                 <Image
-                  src="/background.png"
+                  src="/chicos.jpg"
                   alt="Background 3"
                   layout="fill"
                   objectFit="cover"
