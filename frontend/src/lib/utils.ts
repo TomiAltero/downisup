@@ -26,7 +26,6 @@ export async function getHijoProfile({ token }: { token: string }) {
         Authorization: `Bearer ${token}`,
       },})
     const data = await profile.json()
-    console.log("Usuario Hijo", data.usuario)
     
     return data
 

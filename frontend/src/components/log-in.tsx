@@ -13,11 +13,7 @@ import Link from "next/link";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
 
-declare global {
-  interface Window {
-    Toastify: any;
-  }
-}
+
 
 export function LogIn() {
   const [usernameOrEmail, setUsernameOrEmail] = useState("");
@@ -248,7 +244,7 @@ export function LogIn() {
                 <p className="text-sm text-blue-900">
                   ¿Olvidaste tu contraseña?{" "}
                   <Link
-                    href="/reset-password"
+                    href="/auth/reset-password"
                     className="text-blue-900 font-bold hover:underline"
                   >
                     Recupera tu contraseña
