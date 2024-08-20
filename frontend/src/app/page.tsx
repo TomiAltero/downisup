@@ -9,6 +9,7 @@ import { Navigation } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
 
+
 export default function Home() {
   return (
     <LandingLayout>
@@ -87,14 +88,14 @@ export default function Home() {
               height={125}
               className="mb-6"
             />
-            <p className="text-white text-2xl leading-relaxed">
-              &quotLOGRAR LA 
+            <p className="text-white text-xl leading-relaxed">
+              "LOGRAR LA 
             </p>
-            <p className="text-white text-2xl font-bold leading-relaxed">
+            <p className="text-white text-2xl font-extrabold leading-relaxed">
               AUTONOMÍA Y VIDA INDEPENDIENTE
             </p>
-            <p className="text-white text-2xl leading-relaxed">
-              ES UN DESAFÍO Y UN RETO, TANTO PARA LA PERSONA, COMO PARA SU ENTORNO&quot
+            <p className="text-white text-xl leading-relaxed">
+              ES UN DESAFÍO Y UN RETO, TANTO PARA LA PERSONA, COMO PARA SU ENTORNO"
             </p>
           </div>
 
@@ -102,18 +103,20 @@ export default function Home() {
           <div className="absolute w-full h-full -inset-x-30 z-0 bg-custom-blue" style={{ clipPath: "polygon(0 0, 45% 0, 35% 100%, 0% 100%)" }}></div>
 
           {/* Columna derecha: 9/12 */}
-          <div className="w-8/12 flex flex-col justify-center items-center p-10 z-10">
+          <div className="w-8/12 flex flex-col justify-center items-center p-10 z-10"><br></br>
             <h2 className="text-5xl font-bold text-custom-blue mb-6">NUESTRA HISTORIA</h2>
-            <p className="text-xl text-custom-blue mb-10">
+            <p className="text-lg text-custom-blue mb-10">
               Comenzó en 2015 cuando decidimos comenzar a organizar charlas, acciones y más, trabajando para lograr el cambio que buscábamos. Nos basamos en la existencia de un movimiento nacional llamado Down is Up, con sede en varias provincias, con el fin de satisfacer la necesidad de contención, atención e información sobre el Síndrome de Down.
-            </p>
+            </p><br></br>
             <p className="text-custom-blue text-lg">
               <Image src="/tick.png" alt="Tick" className="inline-block mr-2" width={20} height={20}/> Promover los derechos reconocidos en la Convención Internacional sobre los Derechos de las Personas con Discapacidad.<br/>
               <Image src="/tick.png" alt="Tick" className="inline-block mr-2" width={20} height={20}/> Visibilizar el Síndrome de Down, mediante acciones de educación, formación y actividades sociales y culturales, fortaleciendo la convivencia.<br/>
               <Image src="/tick.png" alt="Tick" className="inline-block mr-2" width={20} height={20}/> Fomentar la vida independiente y la autonomía de las personas con síndrome de Down.
             </p>
-            <button className="mt-10 px-4 py-2 bg-pink-500 text-white font-semibold rounded-full hover:bg-pink-600">
-              Ver más
+            <button className="mt-10 px-4 text-lg py-2 bg-pink-500 text-white font-semibold rounded-full hover:bg-pink-600">
+              <Link href="/quienessomos/">
+                Ver más
+              </Link>
             </button>
           </div>
         </section>

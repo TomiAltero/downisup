@@ -13,31 +13,31 @@ const sections: Record<SectionKey, { title: string; content: JSX.Element }> = {
   mission: {
     title: "Nuestra Misión",
     content: (
-      <>
-        <p><FontAwesomeIcon icon={faCheck} className="text-custom-blue" /> Promover los derechos reconocidos en la Convención Internacional sobre los Derechos de las Personas con Discapacidad.</p>
-        <p><FontAwesomeIcon icon={faCheck} className="text-custom-blue" /> Visibilizar el Síndrome de Down, mediante acciones de educación, formación y actividades sociales y culturales, fortaleciendo la convivencia.</p>
-        <p><FontAwesomeIcon icon={faCheck} className="text-custom-blue" /> Fomentar la vida independiente y la autonomía de las personas con síndrome de Down.</p>
-      </>
+      <div className="mt-2 mb-4 flex flex-col gap-2 text-">
+        <p className=''><img src="/tick.png" alt="Tick" className=" inline-block mr-2" width={15} height={15}/> Promover los derechos reconocidos en la Convención Internacional sobre los Derechos de las Personas con Discapacidad.</p>
+        <p className=''><img src="/tick.png" alt="Tick" className=" inline-block mr-2" width={15} height={15}/> Visibilizar el Síndrome de Down, mediante acciones de educación, formación y actividades sociales y culturales, fortaleciendo la convivencia.</p>
+        <p className=''><img src="/tick.png" alt="Tick" className=" inline-block mr-2" width={15} height={15}/> Fomentar la vida independiente y la autonomía de las personas con síndrome de Down.</p>
+      </div>
     )
   },
   vision: {
     title: "Nuestra Visión",
     content: (
-      <>
-        <p><FontAwesomeIcon icon={faCheck} className="text-custom-blue" /> Informar y capacitar a la sociedad en general en temas referidos a la diversidad.</p>
-        <p><FontAwesomeIcon icon={faCheck} className="text-custom-blue" /> Impulsar la generación de políticas públicas, para el sector.</p>
-        <p><FontAwesomeIcon icon={faCheck} className="text-custom-blue" /> Cooperar técnicamente y articular con instituciones públicas y privadas, nacionales e internacionales, para el logro de nuestros objetivos</p>
-        <p><FontAwesomeIcon icon={faCheck} className="text-custom-blue" /> Generar programas de contención, de desarrollo y autonomía.</p>
-        <p><FontAwesomeIcon icon={faCheck} className="text-custom-blue" /> Formar a las personas con síndrome de Down para ejercer su derecho a la vida independiente en su entorno comunitario.</p>
-      </>
+      <div className="mt-2 mb-4 flex flex-col gap-2 text-">
+        <p><img src="/tick.png" alt="Tick" className="text-custom-blue inline-block mr-2" width={15} height={15}/> Informar y capacitar a la sociedad en general en temas referidos a la diversidad.</p>
+        <p><img src="/tick.png" alt="Tick" className="text-custom-blue inline-block mr-2" width={15} height={15}/> Impulsar la generación de políticas públicas, para el sector.</p>
+        <p><img src="/tick.png" alt="Tick" className="text-custom-blue inline-block mr-2" width={15} height={15}/> Cooperar técnicamente y articular con instituciones públicas y privadas, nacionales e internacionales, para el logro de nuestros objetivos</p>
+        <p><img src="/tick.png" alt="Tick" className="text-custom-blue inline-block mr-2" width={15} height={15}/> Generar programas de contención, de desarrollo y autonomía.</p>
+        <p><img src="/tick.png" alt="Tick" className="text-custom-blue inline-block mr-2" width={15} height={15}/> Formar a las personas con síndrome de Down para ejercer su derecho a la vida independiente en su entorno comunitario.</p>
+      </div>
     )
   },
   history: {
     title: "Nuestra Historia",
     content: (
-      <>
-        <p><FontAwesomeIcon icon={faCheck} className="text-custom-blue" /> Somos una Fundación creada por familias que acompañamos a otras familias en el camino de la inclusión de nuestros hijos. Tenemos como eje informar, compartir y motivar a todos los que quieran participar en este cambio de mirada sobre discapacidad. Nuestra historia comenzó en 2015 cuando decidimos comenzar organizar charlas, acciones y más, trabajando para lograr el cambio que buscábamos. Basándonos en la existencia de un movimiento nacional llamado Down is Up, con sede en varias provincias, nace esta comunidad con el fin de satisfacer la necesidad de contención, atención e información sobre el Síndrome de Down.</p>
-      </>
+      <div className="mt-2 mb-4 flex flex-col gap-2 text-">
+        <p><img src="/tick.png" alt="Tick" className="text-custom-blue inline-block mr-2" width={15} height={15}/> Somos una Fundación creada por familias que acompañamos a otras familias en el camino de la inclusión de nuestros hijos. Tenemos como eje informar, compartir y motivar a todos los que quieran participar en este cambio de mirada sobre discapacidad. Nuestra historia comenzó en 2015 cuando decidimos comenzar organizar charlas, acciones y más, trabajando para lograr el cambio que buscábamos. Basándonos en la existencia de un movimiento nacional llamado Down is Up, con sede en varias provincias, nace esta comunidad con el fin de satisfacer la necesidad de contención, atención e información sobre el Síndrome de Down.</p>
+      </div>
     )
   }
 };
