@@ -4,6 +4,7 @@ const FrecuenciaCardiaca = require("../medical-data/frecuenciaCardiaca");
 const PresionArterial = require("../medical-data/presionArterial");
 const Temperatura = require("../medical-data/temperatura");
 const Peso = require("../medical-data/peso");
+const PsychologycalTherapies = require('../medical-data/psychologycalTherapies');
 
 class Hijo extends Model {}
 
@@ -73,5 +74,12 @@ Hijo.hasMany(Peso, {
   foreignKey: "hijoId",
   as: "Peso",
 });
+
+Hijo.hasMany(PsychologycalTherapies, 
+  {
+  foreignKey: "hijoId",
+  as: "Psychologycal Therapies",
+  }
+)
 
 module.exports = Hijo;
