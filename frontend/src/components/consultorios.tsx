@@ -23,7 +23,7 @@ const Consultorios = () => {
       transition: { duration: 0.5 }
     }
   };
-
+  
   return (
     <section className="bg-white py-8">
       <div className="container mx-auto px-4">
