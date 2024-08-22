@@ -5,6 +5,8 @@ import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
+import { poppins } from "@/components/ui/fonts";
+
 
 const routes = [
   { name: "Inicio", route: "/" },
@@ -65,7 +67,7 @@ export default function NavBar() {
             <Link
               key={route.name}
               href={route.route}
-              className={`relative text-white inline-flex items-center justify-center px-2 py-2 text-sm font-bold font-playfair whitespace-nowrap ${
+              className={`relative text-white inline-flex items-center justify-center px-2 py-2 text-sm font-bold ${poppins.className} whitespace-nowrap ${
                 pathname === route.route ? "after:w-full" : ""
               }`}
             >
@@ -91,7 +93,7 @@ export default function NavBar() {
             </Button>
           </Link>
           <Link href="/auth/login">
-            <Button className="bg-custom-white text-black text-base px-4 py-2 font-semibold font-raleway hover:text-blue-900">
+            <Button className={`bg-custom-white text-black text-base px-4 py-2 font-semibold ${poppins.className} hover:text-blue-900`}>
               Iniciar Sesión
             </Button>
           </Link>

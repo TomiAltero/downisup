@@ -13,6 +13,7 @@ const config: Config = {
       satoshi: ["Satoshi", "sans-serif"],
       'playfair': ['Playfair Display', 'serif'],
       'raleway': ['Raleway', 'open sans'],
+      "poppins": ["Poppins" ],
     },
   
     extend: {
