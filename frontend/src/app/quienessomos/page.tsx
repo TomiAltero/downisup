@@ -86,7 +86,7 @@ export default function QuienesSomos() {
     <LandingLayout>
       <main className="flex flex-col justify-center mx-18">
         {/* Sección del carrusel de imágenes */}
-        <section className="relative w-full mb-22" style={{ height: "400px" }}>
+        <section className="relative w-full h-screen mb-22" style={{ height: "400px" }}>
           {/* Título sobre el carrusel */}
           <div className="absolute inset-0 z-10 flex items-center justify-center">
             <h1 className="text-white text-4xl font-bold mt-10">QUIENES SOMOS</h1>
@@ -106,32 +106,35 @@ export default function QuienesSomos() {
             allowTouchMove={false} // Deshabilita el arrastre manual
             className="h-full w-full"
           >
-            <SwiperSlide>
+            <SwiperSlide  className="relative h-screen">
               <Image
                 src="/background.png" // Cambia estas rutas por las imágenes que desees usar
                 alt="Background 1"
                 layout="fill"
                 objectFit="cover"
-                className="z-[-1] opacity-95"
-              />
+                className="z-[-1] "
+              />      <div className="absolute inset-0 bg-gradient-to-b from-blue-700 to-blue-700 opacity-50"></div>
+
             </SwiperSlide>
-            <SwiperSlide>
+            <SwiperSlide  className="relative h-screen">
               <Image
                 src="/chicasPlaza.jpg"
                 alt="Background 2"
                 layout="fill"
                 objectFit="cover"
-                className="z-[-1] opacity-95"
-              />
+                className="z-[-1] "
+              />      <div className="absolute inset-0 bg-gradient-to-b from-blue-700 to-blue-700 opacity-50"></div>
+
             </SwiperSlide>
-            <SwiperSlide>
+            <SwiperSlide  className="relative h-screen">
               <Image
                 src="/chicos.jpeg"
                 alt="Background 3"
                 layout="fill"
                 objectFit="cover"
-                className="z-[-1] opacity-95"
-              />
+                className="z-[-1] "
+              />      <div className="absolute inset-0 bg-gradient-to-b from-blue-700 to-blue-700 opacity-50"></div>
+
             </SwiperSlide>
           </Swiper>
         </section>
