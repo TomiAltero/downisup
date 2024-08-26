@@ -49,6 +49,7 @@ function Sidebar() {
   useEffect(() => {
     // Check if dark mode is enabled in localStorage
     const storedDarkMode = localStorage.getItem("dark") === "true";
+    console.log(storedDarkMode);
     setDarkMode(storedDarkMode);
 
     // Set body background based on dark mode
@@ -71,7 +72,7 @@ function Sidebar() {
           }`}
         >
           <div>
-            <h1 className={`text-xl font-bold text-center mx-5 ${darkMode ? "text-white" : "text-blue-900"}`}>
+            <h1 className={`text-xl font-bold text-center mx-5 ${darkMode ? "text-white" : "text-blue-800"}`}>
               DownIsUpApp
             </h1>
           </div>
@@ -82,15 +83,15 @@ function Sidebar() {
 
       <div className="flex flex-col h-full justify-between">
         <div className="pt-6 font-medium space-y-2 md:px-2 text-sm">
-          <Link
-            href="/application"
-            className={`flex ${
-              pathname === "/application" ? `text-blue-700 ${darkMode ? "font-bold" : ""}` : darkMode ? "text-white" : ""
-            } duration-200 px-6 py-2 items-center gap-2 transition-all ease-in-out`}
-          >
-            <Home variant="Outline" size={16} />
-            Inicio
-          </Link>
+        <Link
+    href="/application"
+    className={`flex ${
+        pathname === "/application" ? "text-blue" : `${darkMode ? "text-white" : "text-blue-800"}`
+    } duration-200 px-6 py-2 items-center gap-2 transition-all ease-in-out`}
+>
+    <Home variant="Outline" size={16} />
+    Inicio
+</Link>
 
           {usuario && usuario.tipoUsuarioId === 3 ? (
             <div>
