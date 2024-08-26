@@ -1,4 +1,5 @@
 "use client";
+import { useEffect } from "react";
 import { opensans } from "@/components/ui/fonts";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
@@ -8,12 +9,33 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
+import { FaInstagram, FaYoutube, FaWhatsapp, FaFacebook } from "react-icons/fa";
 
+const handleScrollAnimations = () => {
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+        }
+      });
+    },
+    { threshold: 0.1 }
+  );
+
+  document.querySelectorAll(".animate-on-scroll").forEach((element) => {
+    observer.observe(element);
+  });
+};
 
 export default function Home() {
+  useEffect(() => {
+    handleScrollAnimations();
+  }, []);
+
   return (
     <LandingLayout>
-      <main className="h-screen w-full snap-y snap-mandatory overflow-y-scroll scroll-smooth">
+      <main className="h-screen w-full snap-y snap-mandatory overflow-y-scroll scroll-smooth custom-scrollbar">
         {/* Sección del carrusel de imágenes */}
         <section className="relative h-screen w-full flex flex-col justify-center items-center snap-start overflow-hidden">
           <div className="absolute inset-0">
@@ -59,28 +81,27 @@ export default function Home() {
               </SwiperSlide>
             </Swiper>
           </div>
-          <section className={`${opensans.className} font-semibold z-10`}>
+          <section className={`${opensans.className} font-semibold z-10 animate-on-scroll`}>
             <h1 className="text-center my-4 text-4xl text-white font-raleway">
               Bienvenidos a
             </h1>
-            <article className="text-6xl text-center text-white">
+            <article className="text-6xl text-center text-white animate-on-scroll">
               <h1 className="mb-4 text-white font-raleway">DownIsUp</h1>
               <h1 className="text-white font-raleway mb-10">Córdoba</h1>
             </article>
           </section>
-          <section className="flex flex-col items-center z-10">
+          <section className="flex flex-col items-center z-10 animate-on-scroll">
             <Link href="/contactanos">
-              <Button className="bg-custom-white text-black text-base px-4 py-2 font-semibold font-raleway animate-pulse hover:text-white hover:bg-custom-blue">
+              <Button className="fade-in-button bg-custom-white text-black text-base px-4 py-2 font-semibold font-raleway hover:text-white hover:bg-custom-blue">
                 Contáctanos
               </Button>
             </Link>
           </section>
         </section>
 
-        <section className="h-screen w-full flex snap-start transition-transform duration-700 ease-in-out relative">
+        <section className="h-screen w-full flex snap-start transition-transform duration-1200 ease-in-out relative animate-on-scroll">
           {/* Columna izquierda: 3/12 */}
           <div className="w-4/12 flex flex-col justify-center items-center text-center p-10 z-10 -mt-40">
-          
             <Image
               src="/logo-du.png"
               alt="DownIsUp Córdoba Logo"
@@ -89,7 +110,7 @@ export default function Home() {
               className="mb-6"
             />
             <p className="text-white text-xl leading-relaxed">
-              "LOGRAR LA 
+              "LOGRAR LA
             </p>
             <p className="text-white text-2xl font-extrabold leading-relaxed">
               AUTONOMÍA Y VIDA INDEPENDIENTE
@@ -121,8 +142,23 @@ export default function Home() {
           </div>
         </section>
 
-
-
+        {/* Pie de página con los iconos de redes sociales */}
+        <footer className="w-full py-4 bg-gray-700 mt-auto animate-on-scroll">
+          <div className="flex justify-center space-x-8 flex-wrap">
+            <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer">
+              <FaInstagram className="text-white text-2xl hover:text-gray-400" />
+            </a>
+            <a href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer">
+              <FaYoutube className="text-white text-2xl hover:text-gray-400" />
+            </a>
+            <a href="https://wa.me/" target="_blank" rel="noopener noreferrer">
+              <FaWhatsapp className="text-white text-2xl hover:text-gray-400" />
+            </a>
+            <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer">
+              <FaFacebook className="text-white text-2xl hover:text-gray-400" />
+            </a>
+          </div>
+        </footer>
       </main>
     </LandingLayout>
   );
