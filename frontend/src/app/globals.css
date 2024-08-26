@@ -19,7 +19,6 @@
 }
 
 html, body {
-  overflow-y: hidden;
   scroll-behavior: smooth;
 }
 
