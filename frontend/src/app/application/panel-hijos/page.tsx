@@ -3,16 +3,21 @@ import React, { useEffect, useState, Suspense } from "react";
 import { PanelHijo } from "@/components/panel-hijos";
 import { useRouter } from "next/navigation";
 import AppLayout from "@/layouts/AppLayout";
+import '../page.css'; 
+
 const Page = () => {
   const router = useRouter();
   const [isAuthorized, setIsAuthorized] = useState(true);
   const [token, setToken] = useState<string>("");
+  const [showContent, setShowContent] = useState(false);
+
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (token) {
-    setToken(token);
-    }
-    else {
+      setToken(token);
+      // Delay applying the fade-in class
+      setTimeout(() => setShowContent(true), 100); // Adjust the delay as needed
+    } else {
       setIsAuthorized(false);
       router.push("/notfound");
     }
@@ -24,7 +29,7 @@ const Page = () => {
 
   return (
     <AppLayout>
-      <main className="flex items-center h-full">
+      <main className={`flex items-center h-full ${showContent ? 'fade-in' : 'initial'}`}>
         <Suspense fallback={<p>Cargando...</p>}>
           <PanelHijo token={token}/>
         </Suspense>
@@ -34,3 +39,4 @@ const Page = () => {
 };
 
 export default Page;
+

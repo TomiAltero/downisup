@@ -49,10 +49,10 @@ Hijo.init(
   },
   {
     sequelize,
-    modelName: "hijo",
+    modelName: "Hijo",
     tableName: "hijo",
     timestamps: true,
-  },
+  }
 );
 
 Hijo.hasMany(FrecuenciaCardiaca, {
@@ -75,11 +75,10 @@ Hijo.hasMany(Peso, {
   as: "Peso",
 });
 
-Hijo.hasMany(PsychologycalTherapies, 
-  {
+Hijo.hasMany(PsychologycalTherapies, {
   foreignKey: "hijoId",
-  as: "Psychologycal Therapies",
-  }
-)
+  as: "PsychologycalTherapies", 
+});
 
 module.exports = Hijo;
+

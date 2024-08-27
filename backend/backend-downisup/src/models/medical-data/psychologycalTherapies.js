@@ -5,14 +5,6 @@ class PsychologicalTherapies extends Model {}
 
 PsychologicalTherapies.init(
   {
-    idHijo: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-    },
-    idUsuario: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-    },
     fecha: {
       type: DataTypes.DATE,
       allowNull: false,
@@ -33,19 +25,32 @@ PsychologicalTherapies.init(
       type: DataTypes.INTEGER,
       allowNull: true,
     },
+    idUsuario: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      references: {
+        model: "Usuarios", 
+        key: "id", 
+      },
+    },
   },
   {
     sequelize,
     modelName: "PsychologicalTherapies",
-    tableName: "psychological_therapies",
+    tableName: "psychologhycal_therapie",
     timestamps: false,
   }
 );
 
 PsychologicalTherapies.associate = (models) => {
+  PsychologicalTherapies.belongsTo(models.Usuario, {
+    foreignKey: "idUsuario",
+    as: "Usuario",
+  });
+
   PsychologicalTherapies.belongsTo(models.Hijo, {
     foreignKey: "idHijo",
-    as: "hijo",
+    as: "Hijos",
   });
 };
 

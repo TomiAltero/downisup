@@ -55,7 +55,15 @@ Usuario.init(
     modelName: "Usuario",
     tableName: "Usuarios",
     timestamps: true,
-  },
+  }
 );
 
+Usuario.associate = (models) => {
+  Usuario.hasMany(models.PsychologicalTherapies, {
+    foreignKey: "idUsuario",
+    as: "Therapies", // Asegúrate de que este alias coincida
+  });
+};
+
 module.exports = Usuario;
+

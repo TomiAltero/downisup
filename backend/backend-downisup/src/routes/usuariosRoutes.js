@@ -29,5 +29,4 @@ router.get("/:id", verificarToken, usuarioController.obtenerUsuarioPorId);
 
 router.put("/:id", verificarToken, usuarioController.actualizarUsuario);
 router.delete("/:id", verificarToken, usuarioController.eliminarUsuario);
-
 module.exports = router;
