@@ -24,6 +24,7 @@ function PinIconSvg(){
   </svg>;
 }
 
+
 export default function ContactUsPage() {
   return (
     <LandingLayout>
@@ -34,7 +35,7 @@ export default function ContactUsPage() {
         <div className="flex flex-col lg:flex-row w-full justify-between px-4 lg:px-40">
           
           {/* Información de contacto responsive */}
-          <div className="bg-blue-900 mt-10 lg:mt-20 text-white p-5 pb-15 rounded-3xl w-full lg:w-3/12 font-sans">
+          <div className="bg-blue-900 mt-10 lg:mt-20 text-white p-5 pb-15 rounded-3xl w-[400px] lg:w- font-sans">
             <h2 className={`text-lg mb-10 text-white mt-5 text-center font-semibold`}>Información de Contacto</h2>
             <div className="space-y-3">
               <p>
@@ -77,6 +78,11 @@ export default function ContactUsPage() {
             <article className="mt-5">
               <input type="text" className="w-full rounded-3xl bg-gray-400 border-2 placeholder:text-sm p-6 placeholder:text-white" placeholder="Ingrese un mensaje" />
             </article>
+            <div>
+            <button className="bg-blue-900 mt-5 hover:bg-blue-700 text-base text-white font-bold py-1 px-3 rounded-xl">
+                    Enviar
+            </button>
+            </div>
           </div>
         </div>
         
