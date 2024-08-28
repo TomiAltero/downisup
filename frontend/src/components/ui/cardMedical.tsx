@@ -15,7 +15,7 @@ const MedicalHistoryCard: React.FC<MedicalHistoryCardProps> = ({
   icon,
 }) => {
   return (
-    <div className="rounded-sm border border-gray-200 bg-white px-7.5 py-6 shadow-default dark:border-gray-800 dark:bg-gray-900 shadow-md">
+    <div className="rounded-sm bg-white px-7.5 py-6">
       <div className="flex flex-col h-full justify-between">
         <div className="text-center mb-4">
           {icon && <div className="mb-2 h-16 w-16">{icon}</div>}

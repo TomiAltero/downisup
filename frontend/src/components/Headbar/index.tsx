@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect, useCallback } from "react";
 import Image from "next/image";
 import { Logout, Setting2, ArrowDown2, ArrowUp2, Profile } from "iconsax-react";
 import axios from "axios";
@@ -21,41 +21,41 @@ function HeadBar() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
-  useEffect(() => {
-    const obtenerPerfilUsuario = async () => {
-      try {
-        const token = localStorage.getItem("token");
-        if (token) {
-          const response = await axios.get(
-            "http://localhost:5000/api/usuarios/perfil",
-            {
-              headers: {
-                Authorization: `Bearer ${token}`,
-              },
+  const obtenerPerfilUsuario = useCallback(async () => {
+    try {
+      const token = localStorage.getItem("token");
+      if (token) {
+        const response = await axios.get(
+          "http://localhost:5000/api/usuarios/perfil",
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
             },
-          );
-          setUsuario(response.data.usuario);
-        }
-        setLoading(false);
-      } catch (error) {
-        setError("Error al obtener el perfil del usuario");
-        setLoading(false);
+          }
+        );
+        setUsuario(response.data.usuario);
       }
-    };
-
-    obtenerPerfilUsuario();
+    } catch (error) {
+      setError("Error al obtener el perfil del usuario");
+    } finally {
+      setLoading(false);
+    }
   }, []);
+
+  useEffect(() => {
+    obtenerPerfilUsuario();
+  }, [obtenerPerfilUsuario]);
 
   const toggleDropdown = () => {
     setIsDropdownOpen((prevState) => !prevState);
   };
 
   const toggleAjustes = () => {
-    setShowAjustes(!showAjustes);
+    setShowAjustes((prev) => !prev);
     setIsDropdownOpen(false);
   };
 
-  const handleOutsideClick = (event: MouseEvent) => {
+  const handleOutsideClick = useCallback((event: MouseEvent) => {
     if (
       dropdownRef.current &&
       !dropdownRef.current.contains(event.target as Node) &&
@@ -65,7 +65,7 @@ function HeadBar() {
       setIsDropdownOpen(false);
       setShowAjustes(false);
     }
-  };
+  }, []);
 
   useEffect(() => {
     if (isDropdownOpen || showAjustes) {
@@ -77,7 +77,7 @@ function HeadBar() {
     return () => {
       document.removeEventListener("mousedown", handleOutsideClick);
     };
-  }, [isDropdownOpen, showAjustes]);
+  }, [isDropdownOpen, showAjustes, handleOutsideClick]);
 
   const handleLogout = () => {
     localStorage.removeItem("token");
@@ -111,6 +111,10 @@ function HeadBar() {
     },
   ];
 
+  if (loading) {
+    return <p>Cargando...</p>;
+  }
+
   if (error) {
     return <p>Error: {error}</p>;
   }
@@ -135,14 +139,12 @@ function HeadBar() {
             <div className="ml-2">
               <p
                 className={`text-sm font-semibold ${
-                  usuario && usuario.tipoUsuarioId === 3
+                  usuario && (usuario.tipoUsuarioId === 3 || usuario.tipoUsuarioId === 2)
                     ? "text-blue-900"
                     : "text-gray-800"
                 }`}
               >
-                {usuario
-                  ? `${usuario.nombre} ${usuario.apellido}`
-                  : "Cargando..."}
+                {usuario ? `${usuario.nombre} ${usuario.apellido}` : "Cargando..."}
               </p>
               <p
                 className={`text-xs font-medium ${
@@ -184,7 +186,7 @@ function HeadBar() {
                         <span className="ml-2">{item.text}</span>
                       </div>
                     </div>
-                  ),
+                  )
                 )}
               </div>
             </div>
@@ -201,3 +203,4 @@ function HeadBar() {
 }
 
 export default HeadBar;
+

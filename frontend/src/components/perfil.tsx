@@ -12,9 +12,9 @@ export default async function Perfil({ token }: { token: string | null}) {
   const nombreCompleto = usuario ? `${usuario.nombre} ${usuario.apellido}` : "";
 
   return (
-    <section className="mx-auto max-w-4xl mt-10">
+    <section className="mx-auto mt-10">
       <article className="overflow-hidden rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark">
-        <article className="relative h-35 md:h-65">
+        <article className="relative h-35 md:h-95">
           <Image
             src={"/DownisupCBA.jpg"}
             alt="profile cover"

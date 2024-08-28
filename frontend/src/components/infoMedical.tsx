@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { getAll } from "@/lib/utils";
 
+
 const InfoMedical = ({ onClose, hijoId }: { onClose: () => void, hijoId: number }) => {
   const [sessionData, setSessionData] = useState<any>(null);
 
