@@ -1,13 +1,16 @@
-"use client";
 import React, { useState } from "react";
 import MedicalHistoryCard from "@/components/ui/cardMedical";
 import InfoMedical from './infoMedical';
 
-export default function PanelMedico() {
+interface PanelMedicoProps {
+  idHijo: number; 
+}
+
+export default function PanelMedico({ idHijo }: PanelMedicoProps) {
   const [showInfoMedical, setShowInfoMedical] = useState(false);
-  const [hijoId, setHijoId] = useState(1); 
 
   const handleViewMoreClick = () => {
+    console.log("Ver más clickeado");
     setShowInfoMedical(true);
   };
 
@@ -16,7 +19,7 @@ export default function PanelMedico() {
   };
 
   return (
-   <section>
+    <section>
       <div className="flex flex-wrap justify-center gap-4 md:gap-6 xl:gap-7.5">
         <MedicalHistoryCard
           date="Evaluaciones Psicológicas"
@@ -34,7 +37,7 @@ export default function PanelMedico() {
           category="Ultima actualizacion: 12/08/2024"
         />
       </div>
-      {showInfoMedical && <InfoMedical onClose={handleCloseAjustes} hijoId={hijoId} />}
+      {showInfoMedical && <InfoMedical onClose={handleCloseAjustes} hijoId={idHijo} />}
     </section>
   );
 }

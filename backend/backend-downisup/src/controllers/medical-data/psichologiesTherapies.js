@@ -75,7 +75,7 @@ async getPsychologyTherapiesForChildren(req, res) {
       return res.status(404).json({ error: "Usuario no encontrado" });
     }
 
-    const hijo = usuario.Hijos[0]; // Suponiendo que `Hijos` es un array
+    const hijo = usuario.Hijos[0];
 
     if (!hijo) {
       return res.status(404).json({ error: "Hijo no encontrado" });
@@ -94,13 +94,16 @@ async getPsychologyTherapiesForChildren(req, res) {
         edad: hijo.edad,
         dni: hijo.dni
       },
-      psychologicalTherapies: hijo.PsychologycalTherapies || [], // Asegúrate de devolver un array vacío si no hay terapias
+      psychologicalTherapies: hijo.PsychologycalTherapies, // Devuelve la lista de terapias psicológicas
     });
   } catch (error) {
     console.error("Error al obtener las terapias psicológicas:", error);
     res.status(500).json({ error: "Hubo un error al obtener las terapias psicológicas" });
   }
 }
+
+
+
 }
 
 module.exports = new PsychologicalTherapiesController();

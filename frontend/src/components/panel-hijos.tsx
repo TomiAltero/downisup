@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
@@ -5,17 +6,17 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
+import Link from "next/link";
 import { Hijo } from "@/types";
 import { getHijoProfile } from "@/lib/utils";
 
-
-export async function PanelHijo({token}: { token: string }) {
-
-  if (!token ) {
-    return
+export async function PanelHijo({ token }: { token: string }) {
+  if (!token) {
+    return null;
   }
-  const {hijos, usuario} = await getHijoProfile({ token });
-  
+
+  const { hijos } = await getHijoProfile({ token });
+
   return (
     <div className="flex flex-wrap">
       {hijos.length === 0 ? (
@@ -82,13 +83,11 @@ export async function PanelHijo({token}: { token: string }) {
                 </Typography>
               </CardContent>
               <CardActions>
-                <Button
-                  size="small"
-                  onClick={() => {}}
-                  href="/application/panel-medico"
-                >
-                  Ver más
-                </Button>
+                <Link href={`/application/panel-medico/${hijo.id}`} passHref>
+                  <Button size="small">
+                    Ver más
+                  </Button>
+                </Link>
               </CardActions>
             </Card>
           </div>
@@ -97,3 +96,4 @@ export async function PanelHijo({token}: { token: string }) {
     </div>
   );
 }
+
