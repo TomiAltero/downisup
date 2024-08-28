@@ -119,7 +119,7 @@ export default function Home() {
 
           {/* Sección "Nuestra Historia" */}
           <section className="min-h-[calc(100vh-100px)] w-full flex flex-col md:flex-row snap-start transition-transform duration-1200 ease-in-out relative fade-in">
-            <div className="w-full md:w-4/12 flex flex-col justify-center items-center text-center p-6 md:p-10 z-10 -mt-20 md:-mt-40 bg-custom-blue md:bg-transparent">
+            <div className="w-full md:w-4/12 flex flex-col justify-center items-center text-center p-6 md:p-10 z-10 bg-custom-blue md:bg-transparent">
               <Image
                 src="/logo-du.png"
                 alt="DownIsUp Córdoba Logo"
@@ -142,7 +142,7 @@ export default function Home() {
             <div className="hidden md:block absolute w-full h-full -inset-x-0 z-0 bg-custom-blue" style={{ clipPath: "polygon(0 0, 38% 0, 25% 100%, 0% 100%)" }}></div>
 
             <div className="w-full md:w-8/12 flex flex-col justify-center items-center p-6 md:p-10 z-10">
-              <h2 className="text-4xl md:text-5xl font-bold text-custom-blue mb-4 md:mb-6">NUESTRA HISTORIA</h2>
+              <h2 className="text-4xl md:text-5xl font-bold text-custom-blue mt-5 mb-5 md:mb-6">NUESTRA HISTORIA</h2>
               <p className="text-base md:text-lg text-custom-blue mb-6 md:mb-10">
                 Comenzó en 2015 cuando decidimos comenzar a organizar charlas, acciones y más, trabajando para lograr el cambio que buscábamos. Nos basamos en la existencia de un movimiento nacional llamado Down is Up, con sede en varias provincias, con el fin de satisfacer la necesidad de contención, atención e información sobre el Síndrome de Down.
               </p>
@@ -151,7 +151,7 @@ export default function Home() {
                 <Image src="/tick.png" alt="Tick" className="inline-block mr-2" width={16} height={16} /> Visibilizar el Síndrome de Down, mediante acciones de educación, formación y actividades sociales y culturales, fortaleciendo la convivencia.<br />
                 <Image src="/tick.png" alt="Tick" className="inline-block mr-2" width={16} height={16} /> Fomentar la vida independiente y la autonomía de las personas con síndrome de Down.
               </p>
-              <button className="mt-6 md:mt-10 px-4 text-base md:text-lg py-2 bg-pink-600 text-white font-semibold rounded-full hover:bg-pink-700">
+              <button className="mt-6 mb-10 md:mt-10 px-4 text-base md:text-lg py-2 bg-pink-600 text-white font-semibold rounded-full hover:bg-pink-700">
                 <Link href="/quienessomos/">
                   Ver más
                 </Link>

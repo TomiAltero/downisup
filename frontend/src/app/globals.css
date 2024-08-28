@@ -21,6 +21,9 @@
 html, body {
   scroll-behavior: smooth;
 }
+html {
+  overflow-y: scroll;
+}
 
 
 body {
