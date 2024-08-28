@@ -6,7 +6,7 @@ import { useRouter } from "next/navigation";
 import AppLayout from "@/layouts/AppLayout";
 import PieChart from "@/components/graph";
 import BluePieChart from "@/components/bluegraph";
-import '../page.css'; // Import your custom CSS file
+import '../page.css'; 
 
 const Page = () => {
   const router = useRouter();
@@ -19,8 +19,7 @@ const Page = () => {
       setIsAuthorized(false);
       router.push("/notfound");
     } else {
-      // Delay applying the fade-in class
-      setTimeout(() => setShowContent(true), 100); // Adjust the delay as needed
+      setTimeout(() => setShowContent(true), 100); 
     }
   }, [router]);
 
@@ -32,15 +31,15 @@ const Page = () => {
     <AppLayout>
       <main className={`flex flex-col items-center h-full p-4 space-y-4 ${showContent ? 'fade-in' : 'initial'}`}>
         <div className="w-full max-w-screen-lg mb-8">
-          <div className="bg-gray-100 p-4 rounded-md shadow-md">
+          <div className="bg-gray-50 p-4 rounded-md shadow-md">
             <PanelMedico />
           </div>
         </div>
         <div className="w-full max-w-screen-lg flex justify-start space-x-8 mt-16">
-          <div className="bg-gray-100 p-4 rounded-md shadow-md flex-1">
+          <div className="bg-gray-50 p-4 rounded-md shadow-md flex-1">
             <PieChart />
           </div>
-          <div className="bg-gray-100 p-4 rounded-md shadow-md flex-1">
+          <div className="bg-gray-50 p-4 rounded-md shadow-md flex-1">
             <BluePieChart />
           </div>
         </div>

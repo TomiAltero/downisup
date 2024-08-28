@@ -37,7 +37,7 @@ const FormMedical = () => {
             <label className="block text-xs leading-6 text-blue-900 mb-2 font-semibold">Descripción</label>
             <textarea
               className="w-full rounded-none border-t-0 border-l-0 border-r-0 border-b-2 border-blue-800 bg-gray-50 outline-none focus:ring-0 focus:border-blue-600 text-gray-500 text-base resize-none"
-              rows="3"
+              rows="4"
             ></textarea>
           </article>
         </section>
@@ -47,7 +47,7 @@ const FormMedical = () => {
             <label className="block text-xs leading-6 text-blue-900 mb-2 font-semibold">Objetivos</label>
             <textarea
               className="w-full rounded-none border-t-0 border-l-0 border-r-0 border-b-2 border-blue-800 bg-gray-50 outline-none focus:ring-0 focus:border-blue-600 text-gray-500 text-base resize-none"
-              rows="3"
+              rows="4"
             ></textarea>
           </article>
         </section>
@@ -57,7 +57,7 @@ const FormMedical = () => {
             <label className="block text-xs leading-6 text-blue-900 mb-2 font-semibold">Observaciones</label>
             <textarea
               className="w-full rounded-none border-t-0 border-l-0 border-r-0 border-b-2 border-blue-800 bg-gray-50 outline-none focus:ring-0 focus:border-blue-600 text-gray-500 text-base resize-none"
-              rows="3"
+              rows="4"
             ></textarea>
           </article>
         </section>
