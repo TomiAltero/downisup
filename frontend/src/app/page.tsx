@@ -110,13 +110,13 @@ export default function Home() {
               className="mb-4 md:mb-6"
             />
             <p className="text-white text-lg md:text-xl leading-relaxed">
-              "LOGRAR LA
+              &quotLOGRAR LA
             </p>
             <p className="text-white text-xl md:text-2xl font-extrabold leading-relaxed">
               AUTONOMÍA Y VIDA INDEPENDIENTE
             </p>
             <p className="text-white text-lg md:text-xl leading-relaxed">
-              ES UN DESAFÍO Y UN RETO, TANTO PARA LA PERSONA, COMO PARA SU ENTORNO"
+              ES UN DESAFÍO Y UN RETO, TANTO PARA LA PERSONA, COMO PARA SU ENTORNO&quot
             </p>
           </div>
 

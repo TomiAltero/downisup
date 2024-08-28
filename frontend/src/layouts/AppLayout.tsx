@@ -16,13 +16,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <main className="flex h-screen">
-      <Sidebar />
-      <div className="flex flex-col w-full">
-        <HeadBar />
-        <div className="flex-grow p-4">{children}</div>
-      </div>
-    </main>
+  <main className="flex h-screen">
+    <Sidebar />
+    <div className="flex flex-col w-full">
+      <HeadBar />
+      <div className="flex-grow p-4">{children}</div>
+    </div>
+  </main>
 
   );
 }

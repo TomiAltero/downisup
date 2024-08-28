@@ -57,7 +57,7 @@ export default function ContactUsPage() {
               </article>
             </section>
             <article className="mt-5">
-              <input type="text" className="w-full rounded-3xl bg-gray-400 border-2 placeholder:text-sm p-6 placeholder:text-white" placeholder="Ingrese un mensaje" />
+              <input type="text" className="w-full rounded-3xl bg-gray-400 border-2 placeholder:text-sm p-6 placeholder:text-white focus:ring-0" placeholder="Ingrese un mensaje" />
             </article>
             <div>
             <button className="bg-blue-900 mt-5 hover:bg-blue-700 text-base text-white font-bold py-1 px-3 rounded-xl">
