@@ -1,10 +1,7 @@
 const { DataTypes, Model } = require("sequelize");
 const sequelize = require("../../config/database");
-const FrecuenciaCardiaca = require("../medical-data/frecuenciaCardiaca");
-const PresionArterial = require("../medical-data/presionArterial");
-const Temperatura = require("../medical-data/temperatura");
-const Peso = require("../medical-data/peso");
 const PsychologycalTherapies = require('../medical-data/psychologycalTherapies');
+const speechTherapies = require('../medical-data/speechTherapies');
 
 class Hijo extends Model {}
 
@@ -55,29 +52,15 @@ Hijo.init(
   }
 );
 
-Hijo.hasMany(FrecuenciaCardiaca, {
-  foreignKey: "hijoId",
-  as: "frecuenciasCardiacas",
-});
-
-Hijo.hasMany(PresionArterial, {
-  foreignKey: "hijoId",
-  as: "presionArterial",
-});
-
-Hijo.hasMany(Temperatura, {
-  foreignKey: "hijoId",
-  as: "Temperatura",
-});
-
-Hijo.hasMany(Peso, {
-  foreignKey: "hijoId",
-  as: "Peso",
-});
 
 Hijo.hasMany(PsychologycalTherapies, {
   foreignKey: "hijoId",
   as: "PsychologycalTherapies", 
+});
+
+Hijo.hasMany(speechTherapies, {
+  foreignKey: "hijoId",
+  as: "SpeechTherapies", 
 });
 
 module.exports = Hijo;
