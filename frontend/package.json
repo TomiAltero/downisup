@@ -47,7 +47,7 @@
     "react-scroll": "^1.9.0",
     "react-toastify": "^10.0.5",
     "react-transition-group": "^4.4.5",
-    "swiper": "^11.1.9",
+    "swiper": "^11.1.11",
     "tailwind-merge": "^2.3.0",
     "tailwindcss-animate": "^1.0.7",
     "talkjs": "^0.21.0",
