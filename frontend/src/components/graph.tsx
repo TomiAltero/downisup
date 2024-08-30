@@ -24,7 +24,7 @@ const PieChart = () => {
         label: 'Asistencia',
         data: [7, 3],
         backgroundColor: [
-          'rgba(0, 123, 255, 0.6)',  
+          'rgb(30, 58, 138)',  
           'rgba(173, 216, 230, 0.6)'  
         ],
         borderColor: [

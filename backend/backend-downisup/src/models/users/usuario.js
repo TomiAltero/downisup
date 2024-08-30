@@ -61,9 +61,20 @@ Usuario.init(
 Usuario.associate = (models) => {
   Usuario.hasMany(models.PsychologicalTherapies, {
     foreignKey: "idUsuario",
-    as: "Therapies", // Asegúrate de que este alias coincida
+    as: "Therapies", 
   });
 };
+
+
+Usuario.associate = (models) => {
+  Usuario.hasMany(models.SpeechTherapies, {
+    foreignKey: "idUsuario",
+    as: "Therapies", 
+  });
+};
+
+
+
 
 module.exports = Usuario;
 

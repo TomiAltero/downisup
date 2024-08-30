@@ -1,37 +1,41 @@
-"use client";
-import React, { useEffect, useState } from "react";
-import PanelMedico from "@/components/panel-medico";
-import { useRouter } from "next/navigation";
-import AppLayout from "@/layouts/AppLayout";
+'use client';
+
+import { useParams } from 'next/navigation';
+import React, { useEffect, useState } from 'react';
+import AppLayout from '@/layouts/AppLayout';
+import PanelMedico from '@/components/panel-medico';
 import PieChart from "@/components/graph";
 import BluePieChart from "@/components/bluegraph";
-import '../page.css'; 
 
 const Page = () => {
-  const router = useRouter();
+  const { id } = useParams(); // Utiliza useParams para obtener el parámetro de la ruta
   const [isAuthorized, setIsAuthorized] = useState(true);
   const [showContent, setShowContent] = useState(false);
 
   useEffect(() => {
-    const token = localStorage.getItem("token");
+    const token = localStorage.getItem('token');
     if (!token) {
       setIsAuthorized(false);
-      router.push("/notfound");
+      window.location.href = '/notfound';
     } else {
-      setTimeout(() => setShowContent(true), 100); 
+      setTimeout(() => setShowContent(true), 100);
     }
-  }, [router]);
+  }, []); 
 
   if (!isAuthorized) {
     return null;
+  }
+
+  if (!id) {
+    return <div>No se encontró el ID del hijo.</div>;
   }
 
   return (
     <AppLayout>
       <main className={`flex flex-col items-center h-full p-4 space-y-4 ${showContent ? 'fade-in' : 'initial'}`}>
         <div className="w-full max-w-screen-lg mb-8">
-          <div className="bg-gray-50 p-4 rounded-md ">
-            <PanelMedico />
+          <div className="bg-gray-50 p-4 rounded-md">
+            <PanelMedico idHijo={id as string} /> 
           </div>
         </div>
         <div className="w-full max-w-screen-lg flex justify-start space-x-8 mt-16">
@@ -47,7 +51,7 @@ const Page = () => {
               Ver más
             </button>
           </div>
-        </div>
+          </div>
       </main>
     </AppLayout>
   );

@@ -25,7 +25,16 @@ SpeechTherapies.init(
     observations: {
       type: DataTypes.TEXT,
       allowNull: true,
-    }
+    },
+    idUsuario: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      references: {
+        model: "Usuarios", 
+        key: "id", 
+      },
+    },
+
   },
   {
     sequelize,
@@ -38,12 +47,14 @@ SpeechTherapies.init(
 SpeechTherapies.associate = (models) => {
   SpeechTherapies.belongsTo(models.Usuario, {
     foreignKey: "idUsuario",
-    as: "usuario",
+    as: "Usuario",
   });
+
   SpeechTherapies.belongsTo(models.Hijo, {
-    foreignKey: "idHijo",
-    as: "hijo",
+      foreignKey: "idHijo",
+      as: "Hijos",
   });
+
 };
 
 module.exports = SpeechTherapies;
