@@ -2,13 +2,18 @@
 import { useEffect } from 'react';
 import { motion, useAnimation } from 'framer-motion';
 import Image from 'next/image';
-import ubicacionImage from '../../public/ubicacion.png'; // Ajusta la ruta según sea necesario
+import consultorio from '../../public/consultorio.jpg'; // Ajusta la ruta según sea necesario
 import { useInView } from 'react-intersection-observer';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import { Navigation, Autoplay } from 'swiper/modules';
+import dynamic from 'next/dynamic';
 
+
+const MapComponent = dynamic(() => import('../components/MapComponent'), {
+  ssr: false,
+});
 
 const Consultorios = () => {
   const controls = useAnimation();
@@ -87,20 +92,22 @@ const Consultorios = () => {
       <div className="container mx-auto px-4">
         <div className="mb-8">
 
-          <h1 className="text-center text-xl font-semibold text-blue-900 mb-5 mx-70">
+          <h1 className="text-center text-xl md:text-md font-semibold text-blue-900 mb-10 lg:mx-70 md:10">
           "Arrancamos con este proyecto que nos llena de felicidad ya que es la base para comenzar a diagramar la vivienda de apoyo de la Fundación Down is up Cba."</h1>
-          <h2 className='text-left text-xl text-blue-900 mb-5'>Conoce nuestro consultorio...</h2>
 
-          <Image
-            src={ubicacionImage}
+          <div className="flex justify-center">          
+            <Image
+            src={consultorio}
             alt="Ubicación"
-            className="w-full h-auto rounded-3xl"
-            layout="responsive"
-            width={700}
-            height={400}
+            className="items-center justify-center rounded-3xl"
+            layout=""
           />
+          </div>
 
-        <h1 className="text-sm mt-2 mb-5">Pérez de herrera 2053 B° Cerro de las Rosas</h1>
+
+          <h1 className="text-sm mt-2 mb-5 text-center">Pérez de herrera 2053 B° Cerro de las Rosas</h1>
+
+          <MapComponent />
 
         </div>
         <motion.div
@@ -111,15 +118,15 @@ const Consultorios = () => {
           variants={textVariants}
         >
           
-          <div className="lg:w-1/2">
+          <div className="lg:w-1/2 py-8">
             <h3 className="text-xl font-semibold text-blue-900 mb-2">Programas de tratamiento</h3>
-            <p className="text-gray-700 text-base leading-relaxed">
+            <p className="text-gray-700 text-base md:px-4 leading-relaxed">
               Los programas de tratamiento están diseñados para mejorar la calidad de vida de las personas con discapacidad y su participación activa en los ámbitos familiares, escolares, laborales y comunitarios. Nuestra meta y diferencial en los consultorios, es nuestro motor: a través de un trabajo grupal e integral de nuestros profesionales y la familia de cada paciente, lograr su autonomía; planteándonos objetivos específicos para cada uno, siendo la comunicación y la experiencia fundamentales para el correcto funcionamiento del tratamiento.
             </p>
           </div>
-          <div className="lg:w-1/2">
+          <div className="lg:w-1/2 py-8">
             <h3 className="text-xl font-semibold text-blue-900 mb-2">Profesionales que nos acompañan</h3>
-            <ul className="list-disc list-inside text-base text-gray-700 space-y-1">
+            <ul className="list-disc list-inside text-base md:px-4 text-gray-700 space-y-1">
               <li>Cecilia Cedrola: Lic. en Psicopedagogía / Magister en atención a personas con síndrome de Down.</li>
               <li>Laura Legeren: Lic. en Psicología / Posgrado en Psicoterapia cognitivo conductual.</li>
               <li>Belén Ruiz: Lic. en Psicopedagogía - Especialización en estimulación temprana / Profesora en educación especial.</li>
