@@ -15,8 +15,7 @@ const Page = () => {
     const token = localStorage.getItem("token");
     if (token) {
       setToken(token);
-      // Delay applying the fade-in class
-      setTimeout(() => setShowContent(true), 100); // Adjust the delay as needed
+      setTimeout(() => setShowContent(true), 100); 
     } else {
       setIsAuthorized(false);
       router.push("/notfound");
@@ -29,7 +28,7 @@ const Page = () => {
 
   return (
     <AppLayout>
-      <main className={`flex items-center h-full ${showContent ? 'fade-in' : 'initial'}`}>
+      <main className={`h-full ${showContent ? 'fade-in' : 'initial'}`}>
         <Suspense fallback={<p>Cargando...</p>}>
           <PanelHijo token={token}/>
         </Suspense>

@@ -30,7 +30,7 @@ export default function ResetPage() {
                   className="block text-xs font-bold leading-6 text-blue-900 m-0"
                   htmlFor="usernameOrEmail"
                 >
-                  Correo Electrónico o Usuario
+                  Correo Electrónico
                 </Label>
                 <div className="relative">
                   <Input
@@ -53,16 +53,16 @@ export default function ResetPage() {
                   </Button>
                 </article>
                
-                <article className="flex justify-center w-full mt-5">
+                <article className="flex justify-center items-center w-full mt-5 gap-x-1">
                   <p className="text-sm text-blue-900">
-                    ¿No tienes cuenta?{" "}
-                    <Link
-                      href="/auth/signup"
-                      className="text-blue-900 font-bold hover:underline"
-                    >
-                      Regístrate
-                    </Link>
+                    Haz recibido el email
                   </p>
+                  <Link
+                    href="/auth/signup"
+                    className="text-blue-900 font-bold hover:underline text-sm"
+                  >
+                  Haz click
+                  </Link>
                 </article>
             
               </section>

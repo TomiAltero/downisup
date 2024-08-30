@@ -1,37 +1,51 @@
 import LandingLayout from "@/layouts/LandingLayout";
 import { poppins } from "@/components/ui/fonts";
-import { Label } from "@/components/ui/label";
-import { Input } from "@/components/ui/input";
-import { FaInstagram, FaYoutube, FaWhatsapp, FaFacebook } from "react-icons/fa";
-
+import Image from "next/image";
+import { Button } from "@/components/ui/button";
 const diaSemana = ["Lun", "Mar", "Mie", "Jue", "Vie", "Sab", "Dom"];
 const diaMes = 31;
 
 const eventCards = [
     {
-        title : "Down is Up - event 1",
-        shortDesc : " lorem isdiasidoasdiaisdaosdiasdas",
-
+        title: "Event 1",
+        shortDescription: "Short description for Event 1",
+        longDescription: "Long description for Event 1",
+        image: "/chicasPlaza.jpg"
     },
     {
-
+        title: "Event 2",
+        shortDescription: "Short description for Event 2",
+        longDescription: "Long description for Event 2",
+        image: "/chicasPlaza.jpg"
     },
     {
+        title: "Event 3",
+        shortDescription: "Short description for Event 3",
+        longDescription: "Long description for Event 3",
+        image: "/chicasPlaza.jpg"
+    }
+];
 
-    },
-]
 
-
-export default function Accionespage() {
+export default function AccionesPage() {
     return (
         <LandingLayout>
-            <main className={`h-screen flex flex-col justify-start items-center ${poppins.className}`}>
+            <main className={`h-screen flex flex-col items-center ${poppins.className}`}>
                 <h1 className="text-4xl mt-22 mb-5 text-custom-blue font-semibold">Acciones</h1>
-                <section className="flex justify-between w-full px-30">
-                    <section className="flex flex-col justify-center items-center">
-                        <h1 className="text-black">
-                            Card de evento
-                        </h1>
+                <section className="flex w-full px-30">
+                    <section className="flex flex-col w-full items-center">
+                        {
+                            eventCards.map((event, index) => (
+                                <article key={index} className="flex items-center justify-center w-120 h-96 bg-gray-300 rounded-lg shadow-md p-5 m-5 gap-5">
+                                    <Image src={event.image} alt="Event" className="object-cover rounded-3xl" width={250} height={250}/>
+                                    <article className="flex flex-col">
+                                        <h2 className="text-xl mt-5 mb-2 text-custom-blue font-semibold">{event.title}</h2>
+                                        <p className="text-sm text-center text-gray-700">{event.shortDescription}</p>
+                                        <Button className="mt-5 bg-custom-blue text-white px-5 py-2 rounded-lg">Ver más</Button>
+                                    </article>
+                                </article>
+                            ))
+                        }
                     </section>
 
                     <section>

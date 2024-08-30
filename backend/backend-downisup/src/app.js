@@ -3,8 +3,8 @@ const path = require("path");
 require("dotenv").config();
 const express = require("express");
 const sequelize = require("./config/database");
-const usuariosRoutes = require("./routes/usuariosRoutes");
-const hijosRoutes = require("./routes/hijosRoutes");
+const usersRoutes = require("./routes/usersRoutes");
+const childrenRoutes = require("./routes/childrenRoutes");
 const medicalData = require("./routes/medicalDataRoutes")
 const cors = require("cors");
 
@@ -24,8 +24,8 @@ app.get("/", (req, res) => {
   res.send("¡El servidor está funcionando correctamente!");
 });
 
-app.use("/api/usuarios", usuariosRoutes);
-app.use("/api/hijos", hijosRoutes);
+app.use("/api/usuarios", usersRoutes);
+app.use("/api/hijos", childrenRoutes);
 app.use("/api/medicalData",medicalData);
 
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
