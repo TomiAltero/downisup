@@ -4,7 +4,7 @@ import './contact.css';
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { FaInstagram, FaYoutube, FaWhatsapp, FaFacebook } from "react-icons/fa";
-import { PhoneIconSvg, MessageIconSvg, PinIconSvg} from "@/components/ui/icons/icons"
+import { PhoneIconSvg, MessageIconSvg, PinIconSvg} from "@/components/ui/icons"
 
 export default function ContactUsPage() {
   return (
