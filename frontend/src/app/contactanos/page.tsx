@@ -4,7 +4,7 @@ import './contact.css';
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { FaInstagram, FaYoutube, FaWhatsapp, FaFacebook } from "react-icons/fa";
-import { PhoneIconSvg, MessageIconSvg, PinIconSvg} from "@/components/ui/icons/icons"
+import { PhoneIconSvg, MessageIconSvg, PinIconSvg} from "@/components/ui/icons"
 
 export default function ContactUsPage() {
   return (
@@ -57,7 +57,7 @@ export default function ContactUsPage() {
               </article>
             </section>
             <article className="mt-5">
-              <input type="text" className="w-full rounded-3xl bg-gray-400 border-2 placeholder:text-sm p-6 placeholder:text-white focus:ring-0" placeholder="Ingrese un mensaje" />
+              <input type="text" className="w-full rounded-3xl bg-gray-400 border-2 placeholder:text-sm text-sm p-6 placeholder:text-white focus:ring-0 " placeholder="Ingrese un mensaje" />
             </article>
             <div>
             <button className="bg-blue-900 mt-5 hover:bg-blue-700 text-base text-white font-bold py-1 px-3 rounded-xl">

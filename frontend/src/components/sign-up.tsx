@@ -12,6 +12,7 @@ import "react-toastify/dist/ReactToastify.css";
 import Link from "next/link";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
+import { ArrowLeftIconSvg } from "@/components/ui/icons";
 
 export function SignUp() {
   const [showPassword, setShowPassword] = useState<boolean>(false);
@@ -138,6 +139,11 @@ export function SignUp() {
     <form onSubmit={handleFormSubmit}>
       <Card className="mt-8 w-[450px]">
         <CardHeader className="flex flex-col items-center">
+          <section className="relative">
+            <Link href={"/"}>
+                <ArrowLeftIconSvg className={`absolute top-[-7px] right-40 mx-4 text-custom-blue`} />
+            </Link>
+          </section>  
           <Image src="/favicon.ico" width={72} height={50} alt="Logo DiU" />
           <CardTitle className="-mt-2 my-2 text-xl font-bold text-blue-900">
             Regístrate

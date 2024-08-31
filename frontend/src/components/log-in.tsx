@@ -12,8 +12,7 @@ import "react-toastify/dist/ReactToastify.css";
 import Link from "next/link";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
-
-
+import { ArrowLeftIconSvg } from "@/components/ui/icons";
 
 export function LogIn() {
   const [usernameOrEmail, setUsernameOrEmail] = useState("");
@@ -154,6 +153,11 @@ export function LogIn() {
       <form onSubmit={handleLogin}>
         <Card className="-mt-4 w-[400px] h-[570px]">
           <CardHeader className="flex flex-col items-center">
+            <section className="relative">
+              <Link href={"/"}>
+                  <ArrowLeftIconSvg className={`absolute top-[-7px] right-33 mx-4 text-custom-blue`} />
+              </Link>
+            </section>  
             <Image src="/favicon.ico" width={72} height={50} alt="Logo DiU" />
             <CardTitle className="mt-4 text-xl font-bold text-blue-900">
               Inicio de Sesión

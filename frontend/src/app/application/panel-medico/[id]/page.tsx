@@ -1,6 +1,6 @@
 'use client';
 
-import { useParams } from 'next/navigation';
+import { useParams, useRouter} from 'next/navigation';
 import React, { useEffect, useState } from 'react';
 import AppLayout from '@/layouts/AppLayout';
 import PanelMedico from '@/components/panel-medico';
@@ -8,19 +8,25 @@ import PieChart from "@/components/graph";
 import BluePieChart from "@/components/bluegraph";
 
 const Page = () => {
+<<<<<<< HEAD
   const { id } = useParams(); 
+=======
+  const { id } = useParams();
+  const router = useRouter(); 
+>>>>>>> 40c84eea9bbc7884c0ce9fe52581e08d92ced245
   const [isAuthorized, setIsAuthorized] = useState(true);
   const [showContent, setShowContent] = useState(false);
+
 
   useEffect(() => {
     const token = localStorage.getItem('token');
     if (!token) {
       setIsAuthorized(false);
-      window.location.href = '/notfound';
+      router.push('/notfound');
     } else {
       setTimeout(() => setShowContent(true), 100);
     }
-  }, []); 
+  }, [router]);
 
   if (!isAuthorized) {
     return null;
@@ -29,7 +35,7 @@ const Page = () => {
   if (!id) {
     return <div>No se encontró el ID del hijo.</div>;
   }
-
+  
   return (
     <AppLayout>
       <main className={`flex flex-col items-center h-full p-4 space-y-4 ${showContent ? 'fade-in' : 'initial'}`}>
