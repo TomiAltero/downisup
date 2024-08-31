@@ -4,11 +4,13 @@ import Perfil from "@/components/perfil";
 import { useRouter } from "next/navigation";
 import AppLayout from "@/layouts/AppLayout";
 import { Suspense } from "react";
+import ClipLoader from "react-spinners/ClipLoader";
 
 export default function Page() {
   const router = useRouter();
   const [isAuthorized, setIsAuthorized] = useState<Boolean>(true);
   const [token, setToken] = useState<string | null>("");
+
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (!token) {
@@ -19,17 +21,23 @@ export default function Page() {
   }, [router]);
 
   if (!isAuthorized) {
-    return
+    return null;
   }
 
-  // Add ProfileTableSkeleton component to Suspense fallback
   return (
     <AppLayout>
-      <main className="flex items-center h-full">
-        <Suspense fallback={<p>Cargando...</p>}>
-          <Perfil token={token}/>
+      <main className="flex items-center justify-center h-full">
+        <Suspense
+          fallback={
+            <div className="flex items-center justify-center h-screen">
+              <ClipLoader color="#1e3a8a" size={80} />
+            </div>
+          }
+        >
+          <Perfil token={token} />
         </Suspense>
       </main>
     </AppLayout>
   );
-};
+}
+

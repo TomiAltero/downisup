@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import MedicalHistoryCard from "@/components/ui/cardMedical";
-import InfoMedical from './infoMedical';
+import PopUpPsychologycalSession from './PopUpsMedicalData/popUpPsychologycalSession';
 import Typography from "@mui/material/Typography";
 import { getAll } from "@/lib/utils";
 
@@ -46,7 +46,7 @@ export default function PanelMedico({ idHijo }: PanelMedicoProps) {
       >
         Panel Médico - {userName}
       </Typography>
-      <div className="flex flex-wrap justify-center gap-4 md:gap-6 xl:gap-7.5">
+      <div className="flex justify-between">
         <MedicalHistoryCard
           date="Evaluaciones Psicológicas"
           onViewMoreClick={handleViewMoreClick}
@@ -62,8 +62,13 @@ export default function PanelMedico({ idHijo }: PanelMedicoProps) {
           onViewMoreClick={handleViewMoreClick}
           category="Ultima actualizacion: 12/08/2024"
         />
+        <MedicalHistoryCard
+          date="Evaluaciones Neurológicas"
+          onViewMoreClick={handleViewMoreClick}
+          category="Ultima actualizacion: 12/08/2024"
+        />
       </div>
-      {showInfoMedical && <InfoMedical onClose={handleCloseAjustes} hijoId={idHijo} />}
+      {showInfoMedical && <PopUpPsychologycalSession onClose={handleCloseAjustes} hijoId={idHijo} />}
     </section>
   );
 }

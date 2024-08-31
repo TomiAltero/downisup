@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { getAll } from "@/lib/utils";
 
-const InfoMedical = ({ onClose, hijoId }: { onClose: () => void, hijoId: number }) => {
+const PopUpPsychologycalSession = ({ onClose, hijoId }: { onClose: () => void, hijoId: number }) => {
   const [sessionData, setSessionData] = useState<any>(null);
   const [loading, setLoading] = useState(true);
 
@@ -89,5 +89,5 @@ const InfoMedical = ({ onClose, hijoId }: { onClose: () => void, hijoId: number 
   );
 };
 
-export default InfoMedical;
+export default PopUpPsychologycalSession;
 

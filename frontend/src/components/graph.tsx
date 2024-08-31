@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Pie } from 'react-chartjs-2';
 import { Chart as ChartJS, Title, Tooltip, Legend, ArcElement } from 'chart.js';
-import InfoMedical from '@/components/infoMedical'; 
+import PopUpPsychologycalSession from '@/components/PopUpsMedicalData/popUpPsychologycalSession'; 
 
 ChartJS.register(Title, Tooltip, Legend, ArcElement);
 
@@ -48,7 +48,7 @@ const PieChart = () => {
           }}
         />
       </div>
-      {showInfoMedical && <InfoMedical onClose={handleClose} hijoId={hijoId} />}
+      {showInfoMedical && <PopUpPsychologycalSession  onClose={handleClose} hijoId={hijoId} />}
     </div>
   );
 };

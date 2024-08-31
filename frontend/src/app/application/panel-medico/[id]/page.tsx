@@ -8,7 +8,7 @@ import PieChart from "@/components/graph";
 import BluePieChart from "@/components/bluegraph";
 
 const Page = () => {
-  const { id } = useParams(); // Utiliza useParams para obtener el parámetro de la ruta
+  const { id } = useParams(); 
   const [isAuthorized, setIsAuthorized] = useState(true);
   const [showContent, setShowContent] = useState(false);
 
@@ -33,12 +33,12 @@ const Page = () => {
   return (
     <AppLayout>
       <main className={`flex flex-col items-center h-full p-4 space-y-4 ${showContent ? 'fade-in' : 'initial'}`}>
-        <div className="w-full max-w-screen-lg mb-8">
-          <div className="bg-gray-50 p-4 rounded-md">
+        <div className="w-full max-w-screen-xl mb-8">
+          <div className="bg-gray-50 p-6 rounded-md">
             <PanelMedico idHijo={id as string} /> 
           </div>
         </div>
-        <div className="w-full max-w-screen-lg flex justify-start space-x-8 mt-16">
+        <div className="w-full max-w-screen-xl flex justify-start space-x-8 mt-16">
           <div className="bg-gray-50 p-4 rounded-md flex-1 flex flex-col items-center">
             <PieChart />
             <button className="bg-blue-900 text-white px-6 py-3 rounded shadow hover:bg-blue-950 text-xs mb-7 mt-8">
@@ -51,7 +51,7 @@ const Page = () => {
               Ver más
             </button>
           </div>
-          </div>
+        </div>
       </main>
     </AppLayout>
   );
