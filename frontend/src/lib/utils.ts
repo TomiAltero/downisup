@@ -59,3 +59,25 @@ export const getAll = async (hijoId = 1) => {
     throw error;
   }
 };
+
+
+export async function getSpecialityForUser({ token }: { token: string }) {
+  try {
+    const response = await fetch("http://localhost:5000/api/usuarios/speciality", {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+
+    if (!response.ok) {
+      throw new Error('Error al obtener la especialidad del usuario');
+    }
+
+    const data = await response.json();
+    console.log("Especialidad del Usuario", data);
+    return data;
+  } catch (error) {
+    console.error("Error en getSpecialityForUser:", error);
+    throw error;
+  }
+}

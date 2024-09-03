@@ -11,7 +11,7 @@ import { Navigation, Autoplay } from 'swiper/modules';
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 
-const Donar = () => {
+const Clubdeamigos = () => {
   const controls = useAnimation();
   const { ref, inView } = useInView();
 
@@ -36,7 +36,7 @@ const Donar = () => {
       <section className="relative w-full h-screen mb-10" style={{ height: "300px" }}>
 
         <div className="absolute inset-0 z-10 flex items-center justify-center">
-          <h1 className="text-white text-4xl font-bold mt-10">DONAR</h1>
+          <h1 className="text-white text-4xl font-bold mt-10">CLUB DE AMIGOS</h1>
         </div>
 
         <Swiper
@@ -96,42 +96,10 @@ const Donar = () => {
           variants={textVariants}
         >
         </motion.div>
-      </div>
-
-      <div className="flex flex-col items-center justify-center w-full">
-        <div className="w-8/12 ml-4 text-left"> {/* Cambiado de text-center a text-left */}
-          <h1 className="text-custom-blue text-4xl font-semibold mb-5">
-            Como podes ayudar?
-          </h1>
-          <p className="text-gray-600 text-sm">
-            También podés acercar tu donación por Mercado Pago. Solo tenés que hacer click en el botón que está más abajo y colocar el monto de tu donación, la plataforma te va a guiar en todo el proceso.
-          </p>
-        </div>
-
-        <div className="text-blue-700 text-4xl font-semibold mb-5 mt-2">
-          <Link href="https://link.mercadopago.com.ar/downisup">
-            <Button className="rounded-full text-white px-4 py-2 font-semibold bg-custom-blue hover:bg-blue-700">
-              MercadoPago
-            </Button>
-          </Link>
-        </div>
-
-        <div className="w-8/12 ml-4 text-left"> {/* Cambiado de text-center a text-left */}
-          <p className="text-gray-600 text-sm">
-            También, ya sea que realices una donación mensual o una donación única, te brindamos estos medios de contribución directamente en nuestro sitio web. Podés donar con tarjeta de crédito, débito bancario o mediante Pago Fácil y Rapipago. Para administrar tu donación a través de nuestro sitio web, seleccioná la frecuencia que prefieras y seguí todos los pasos indicados:
-          </p>
-        </div>
-
-        <div className="text-blue-700 text-4xl font-semibold mb-5 mt-2">
-          <Link href="">
-            <Button className="rounded-full text-white px-4 py-2 font-semibold bg-custom-blue hover:bg-blue-700">
-              Donacion Mensual
-            </Button>
-          </Link>
-        </div>
+      
       </div>
     </section>
   );
 };
 
-export default Donar;
+export default Clubdeamigos;

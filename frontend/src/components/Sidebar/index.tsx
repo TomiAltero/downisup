@@ -7,7 +7,7 @@ import {
   Home,
   ArrowDown2,
 } from "iconsax-react";
-import Link, { LinkProps } from "next/link";
+import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useCentralStore } from "@/Store";
 import axios from "axios";
@@ -16,6 +16,7 @@ function Sidebar() {
   const pathname = usePathname();
   const { setIsSidebarOpen, isSidebarOpen } = useCentralStore();
   const [isDropdownOpen, setIsDropdownOpen] = useState<boolean>(false);
+  const [isMedicosDropdownOpen, setIsMedicosDropdownOpen] = useState<boolean>(false);
   const [usuario, setUsuario] = useState<any>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -150,7 +151,7 @@ function Sidebar() {
                   </div>
                 )}
               </div>
-            ) : (
+            ) : usuario && usuario.tipoUsuarioId === 1 ? (
               <div>
                 <button
                   onClick={() => setIsDropdownOpen(!isDropdownOpen)}
@@ -176,8 +177,34 @@ function Sidebar() {
                     </Link>
                   </div>
                 )}
+                <div className="mt-2">
+                  <button
+                    onClick={() => setIsMedicosDropdownOpen(!isMedicosDropdownOpen)}
+                    className={`flex justify-between items-center ${
+                      pathname.startsWith("/application/datos-medicos") ? "text-blue-700" : ""
+                    } hover:text-blue-700 duration-200 px-6 py-2 w-full transition-all ease-in-out`}
+                  >
+                    <div className="flex items-center gap-2">
+                      <Profile2User size={16} />
+                      Datos Médicos
+                    </div>
+                    <ArrowDown2 size={16} />
+                  </button>
+                  {isMedicosDropdownOpen && (
+                    <div className="pl-10 mt-2 space-y-2">
+                      <Link
+                        href="/application/panel-medico"
+                        className={`block ${
+                          pathname === "/application/datos-medicos/ver-panel" ? "text-blue-700" : ""
+                        } hover:text-blue-700 duration-200 py-1 transition-all ease-in-out`}
+                      >
+                        Ver Panel
+                      </Link>
+                    </div>
+                  )}
+                </div>
               </div>
-            )}
+            ) : null}
 
             <Link
               href="/application/terapias"

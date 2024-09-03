@@ -1,15 +1,18 @@
 const Usuario = require('../../models/users/usuario');
 const UsuarioXHijo = require('../../models/users/usuarioXHijo');
 const PsychologicalTherapies = require('../../models/medical-data/psychologycalTherapies');
-const Hijo = require('../../models/childrens/hijo'); 
+const Hijo = require('../../models/childrens/hijo');
 
 class PsychologicalTherapiesController {
   async addPsychologyTherapy(req, res) {
     try {
+      const defaultHijoId = 2;
+      const defaultUsuarioId = 1;
+
       const {
-        idHijo,
-        hijoId,
-        idUsuario,
+        idHijo = defaultHijoId,
+        hijoId = defaultHijoId,
+        idUsuario = defaultUsuarioId,
         fecha,
         descripcion,
         objetivos,
@@ -17,7 +20,7 @@ class PsychologicalTherapiesController {
         duracion,
       } = req.body;
 
-      if (!idHijo || !idUsuario || !fecha) {
+      if (!fecha || !descripcion || !objetivos || !observaciones || !duracion) {
         return res.status(400).json({ error: "Faltan campos obligatorios" });
       }
 
@@ -55,55 +58,52 @@ class PsychologicalTherapiesController {
     }
   }
 
-async getPsychologyTherapiesForChildren(req, res) {
-  try {
-    const { hijoId } = req.params;
+  async getPsychologyTherapiesForChildren(req, res) {
+    try {
+      const { hijoId } = req.params;
 
-    const usuario = await Usuario.findByPk(req.userId, {
-      include: {
-        model: Hijo,
-        as: "Hijos",
-        where: { id: hijoId },
+      const usuario = await Usuario.findByPk(req.userId, {
         include: {
-          model: PsychologicalTherapies,
-          as: "PsychologycalTherapies",
+          model: Hijo,
+          as: "Hijos",
+          where: { id: hijoId },
+          include: {
+            model: PsychologicalTherapies,
+            as: "PsychologycalTherapies",
+          },
         },
-      },
-    });
+      });
 
-    if (!usuario) {
-      return res.status(404).json({ error: "Usuario no encontrado" });
+      if (!usuario) {
+        return res.status(404).json({ error: "Usuario no encontrado" });
+      }
+
+      const hijo = usuario.Hijos[0];
+
+      if (!hijo) {
+        return res.status(404).json({ error: "Hijo no encontrado" });
+      }
+
+      res.json({
+        usuario: {
+          id: usuario.id,
+          nombre: usuario.nombre,
+          email: usuario.email,
+        },
+        hijo: {
+          id: hijo.id,
+          nombre: hijo.nombre,
+          apellido: hijo.apellido,
+          edad: hijo.edad,
+          dni: hijo.dni
+        },
+        psychologicalTherapies: hijo.PsychologycalTherapies,
+      });
+    } catch (error) {
+      console.error("Error al obtener las terapias psicológicas:", error);
+      res.status(500).json({ error: "Hubo un error al obtener las terapias psicológicas" });
     }
-
-    const hijo = usuario.Hijos[0];
-
-    if (!hijo) {
-      return res.status(404).json({ error: "Hijo no encontrado" });
-    }
-
-    res.json({
-      usuario: {
-        id: usuario.id,
-        nombre: usuario.nombre,
-        email: usuario.email,
-      },
-      hijo: {
-        id: hijo.id,
-        nombre: hijo.nombre,
-        apellido: hijo.apellido,
-        edad: hijo.edad,
-        dni: hijo.dni
-      },
-      psychologicalTherapies: hijo.PsychologycalTherapies, // Devuelve la lista de terapias psicológicas
-    });
-  } catch (error) {
-    console.error("Error al obtener las terapias psicológicas:", error);
-    res.status(500).json({ error: "Hubo un error al obtener las terapias psicológicas" });
   }
-}
-
-
-
 }
 
 module.exports = new PsychologicalTherapiesController();
