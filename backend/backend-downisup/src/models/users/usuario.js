@@ -1,5 +1,6 @@
-const { DataTypes, Model } = require("sequelize");
-const sequelize = require("../../config/database");
+const { DataTypes, Model } = require('sequelize');
+const sequelize = require('../../config/database');
+const Specialities = require('../specialists/specialities');
 
 class Usuario extends Model {}
 
@@ -12,6 +13,7 @@ Usuario.init(
     },
     email: {
       type: DataTypes.STRING,
+      unique: true,
       allowNull: false,
     },
     password: {
@@ -38,8 +40,7 @@ Usuario.init(
     },
     dni: {
       type: DataTypes.STRING,
-      allowNull: false,
-      defaultValue: null,
+      allowNull: true,
     },
     imagen: {
       type: DataTypes.STRING,
@@ -47,34 +48,25 @@ Usuario.init(
     },
     tipoUsuarioId: {
       type: DataTypes.INTEGER,
-      allowNull: false,
+      allowNull: true,
     },
+    specialityId: {
+      type: DataTypes.INTEGER,
+      allowNull: true,
+    }
   },
   {
     sequelize,
-    modelName: "Usuario",
-    tableName: "Usuarios",
+    modelName: 'Usuario',
+    tableName: 'Usuarios',
     timestamps: true,
   }
 );
 
-Usuario.associate = (models) => {
-  Usuario.hasMany(models.PsychologicalTherapies, {
-    foreignKey: "idUsuario",
-    as: "Therapies", 
-  });
-};
-
-
-Usuario.associate = (models) => {
-  Usuario.hasMany(models.SpeechTherapies, {
-    foreignKey: "idUsuario",
-    as: "Therapies", 
-  });
-};
-
-
-
+Usuario.belongsTo(Specialities, {
+  foreignKey: 'specialityId',
+  as: 'Speciality',
+})
 
 module.exports = Usuario;
 

@@ -1,33 +1,83 @@
-import React from 'react';
+"use client";
+import React, { useState } from 'react';
 
 const FormMedical = () => {
+  const [idHijo, setIdHijo] = useState('');
+  const [idUsuario, setIdUsuario] = useState('');
+  const [fecha, setFecha] = useState('');
+  const [descripcion, setDescripcion] = useState('');
+  const [objetivos, setObjetivos] = useState('');
+  const [observaciones, setObservaciones] = useState('');
+  const [duracion, setDuracion] = useState('');
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    try {
+      const response = await fetch('http://localhost:5000/api/medicalData/psychologyTherapies', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          idHijo,
+          idUsuario,
+          fecha,
+          descripcion,
+          objetivos,
+          observaciones,
+          duracion,
+        }),
+      });
+
+      const result = await response.json();
+
+      if (response.ok) {
+        console.log('Terapia psicológica agregada:', result);
+      } else {
+        console.error('Error al agregar terapia psicológica:', result);
+      }
+    } catch (error) {
+      console.error('Error al enviar datos:', error);
+    }
+  };
+
   return (
     <div className="bg-gray-100 p-10 rounded-lg shadow-lg w-full lg:w-3/4 xl:w-2/3 mx-auto">
-      <h2 className="text-2xl font-bold text-blue-900 mb-4 text-center">Formulario Sesion Psicologica</h2>
-      <div className="flex flex-col justify-center w-full lg:w-full xl:w-full pt-4 lg:pt-8 mx-auto px-4 bg-white rounded-lg">
+      <h2 className="text-2xl font-bold text-blue-900 mb-4 text-center">Formulario Sesión Psicológica</h2>
+      <form onSubmit={handleSubmit} className="flex flex-col justify-center w-full lg:w-full xl:w-full pt-4 lg:pt-8 mx-auto px-4 bg-white rounded-lg">
         <section className="flex flex-col lg:flex-row gap-4 mb-4">
           <article className="flex-1">
-            <label className="block text-xs leading-6 text-blue-900 mb-2 font-semibold">Fecha de la Sesión</label>
+            <label className="block text-xs leading-6 text-blue-900 mb-2 font-semibold">ID del Hijo</label>
             <input
               className="w-full rounded-none border-t-0 border-l-0 border-r-0 border-b-2 border-blue-800 bg-gray-50 outline-none focus:ring-0 focus:border-blue-600 text-gray-500 text-base p-2"
-              type="date"
+              type="text"
+              value={idHijo}
+              onChange={(e) => setIdHijo(e.target.value)}
+              required
+            />
+          </article>
+          <article className="flex-1">
+            <label className="block text-xs leading-6 text-blue-900 mb-2 font-semibold">ID del Usuario</label>
+            <input
+              className="w-full rounded-none border-t-0 border-l-0 border-r-0 border-b-2 border-blue-800 bg-gray-50 outline-none focus:ring-0 focus:border-blue-600 text-gray-500 text-base p-2"
+              type="text"
+              value={idUsuario}
+              onChange={(e) => setIdUsuario(e.target.value)}
+              required
             />
           </article>
         </section>
 
         <section className="flex flex-col lg:flex-row gap-4 mb-4">
           <article className="flex-1">
-            <label className="block text-xs leading-6 text-blue-900 mb-2 font-semibold">Horario de Inicio</label>
+            <label className="block text-xs leading-6 text-blue-900 mb-2 font-semibold">Fecha de la Sesión</label>
             <input
               className="w-full rounded-none border-t-0 border-l-0 border-r-0 border-b-2 border-blue-800 bg-gray-50 outline-none focus:ring-0 focus:border-blue-600 text-gray-500 text-base p-2"
-              type="time"
-            />
-          </article>
-          <article className="flex-1">
-            <label className="block text-xs leading-6 text-blue-900 mb-2 font-semibold">Horario de Finalización</label>
-            <input
-              className="w-full rounded-none border-t-0 border-l-0 border-r-0 border-b-2 border-blue-800 bg-gray-50 outline-none focus:ring-0 focus:border-blue-600 text-gray-500 text-base p-2"
-              type="time"
+              type="date"
+              value={fecha}
+              onChange={(e) => setFecha(e.target.value)}
+              required
             />
           </article>
         </section>
@@ -38,6 +88,9 @@ const FormMedical = () => {
             <textarea
               className="w-full rounded-none border-t-0 border-l-0 border-r-0 border-b-2 border-blue-800 bg-gray-50 outline-none focus:ring-0 focus:border-blue-600 text-gray-500 text-base resize-none"
               rows="4"
+              value={descripcion}
+              onChange={(e) => setDescripcion(e.target.value)}
+              required
             ></textarea>
           </article>
         </section>
@@ -48,6 +101,9 @@ const FormMedical = () => {
             <textarea
               className="w-full rounded-none border-t-0 border-l-0 border-r-0 border-b-2 border-blue-800 bg-gray-50 outline-none focus:ring-0 focus:border-blue-600 text-gray-500 text-base resize-none"
               rows="4"
+              value={objetivos}
+              onChange={(e) => setObjetivos(e.target.value)}
+              required
             ></textarea>
           </article>
         </section>
@@ -58,16 +114,32 @@ const FormMedical = () => {
             <textarea
               className="w-full rounded-none border-t-0 border-l-0 border-r-0 border-b-2 border-blue-800 bg-gray-50 outline-none focus:ring-0 focus:border-blue-600 text-gray-500 text-base resize-none"
               rows="4"
+              value={observaciones}
+              onChange={(e) => setObservaciones(e.target.value)}
+              required
             ></textarea>
           </article>
         </section>
 
+        <section className="flex flex-col lg:flex-row gap-4 mb-4">
+          <article className="flex-1">
+            <label className="block text-xs leading-6 text-blue-900 mb-2 font-semibold">Duración</label>
+            <input
+              className="w-full rounded-none border-t-0 border-l-0 border-r-0 border-b-2 border-blue-800 bg-gray-50 outline-none focus:ring-0 focus:border-blue-600 text-gray-500 text-base p-2"
+              type="text"
+              value={duracion}
+              onChange={(e) => setDuracion(e.target.value)}
+              required
+            />
+          </article>
+        </section>
+
         <div className="flex justify-start">
-          <button className="bg-blue-900 text-white px-6 py-3 rounded shadow hover:bg-blue-800 text-xs mb-7">
+          <button className="bg-blue-900 text-white px-6 py-3 rounded shadow hover:bg-blue-800 text-xs mb-7" type="submit">
             Enviar Datos
           </button>
         </div>
-      </div>
+      </form>
     </div>
   );
 };

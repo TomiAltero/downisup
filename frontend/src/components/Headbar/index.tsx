@@ -4,6 +4,7 @@ import Image from "next/image";
 import { Logout, Setting2, ArrowDown2, ArrowUp2, Profile } from "iconsax-react";
 import axios from "axios";
 import Ajustes from "@/components/ajustes";
+import { getSpecialityForUser } from "@/lib/utils"; 
 
 interface Usuario {
   nombre: string;
@@ -18,6 +19,7 @@ function HeadBar() {
   const dropdownRef = useRef<HTMLDivElement>(null);
   const ajustesRef = useRef<HTMLDivElement>(null);
   const [usuario, setUsuario] = useState<Usuario | null>(null);
+  const [speciality, setSpeciality] = useState<string | null>(null); // Nuevo estado para la especialización
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -34,6 +36,9 @@ function HeadBar() {
           }
         );
         setUsuario(response.data.usuario);
+        // Obtener la especialización del usuario
+        const specialityResponse = await getSpecialityForUser({ token });
+        setSpeciality(specialityResponse.speciality.name); // Ajusta según la estructura de respuesta
       }
     } catch (error) {
       setError("Error al obtener el perfil del usuario");
@@ -82,6 +87,7 @@ function HeadBar() {
   const handleLogout = () => {
     localStorage.removeItem("token");
     setUsuario(null);
+    setSpeciality(null); // Limpiar especialización al cerrar sesión
     setLoading(true);
     setIsDropdownOpen(false);
     setShowAjustes(false);
@@ -110,6 +116,7 @@ function HeadBar() {
       onClick: handleLogout,
     },
   ];
+
   if (error) {
     return <p>Error: {error}</p>;
   }
@@ -139,16 +146,20 @@ function HeadBar() {
                     : "text-gray-800"
                 }`}
               >
-                {usuario ? `${usuario.nombre} ${usuario.apellido}` : "Cargando..."}
+                {usuario
+                  ? `${usuario.nombre} ${usuario.apellido}`
+                  : "Cargando..."}
               </p>
               <p
                 className={`text-xs font-medium ${
-                  usuario && usuario.tipoUsuarioId === 3
+                  usuario && usuario.tipoUsuarioId === 2
                     ? "text-blue-900"
                     : "text-gray-500"
                 }`}
               >
-                {usuario ? usuario.username : ""}
+                {usuario && usuario.tipoUsuarioId === 2 && speciality
+                  ? speciality
+                  : usuario ? usuario.username : ""}
               </p>
             </div>
             <div className="ml-2">
