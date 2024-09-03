@@ -1,9 +1,11 @@
 
 import LandingLayout from "@/layouts/LandingLayout";
 import { useState } from "react";
+import { CalendarIcon } from "@/components/ui/icons"
 import { poppins } from "@/components/ui/fonts";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
+import { FaInstagram, FaYoutube, FaWhatsapp, FaFacebook } from "react-icons/fa"; 
 
 const diaSemana = ["Lun", "Mar", "Mie", "Jue", "Vie", "Sab", "Dom"];
 const diaMes = 31;
@@ -14,18 +16,23 @@ const eventCards = [
     shortDescription: "Short description for Event 1",
     longDescription: "Long description for Event 1",
     image: "/chicasPlaza.jpg",
+    date : "Martes 3 de Septiembre"
   },
   {
     title: "Event 2",
     shortDescription: "Short description for Event 2",
     longDescription: "Long description for Event 2",
     image: "/chicasPlaza.jpg",
+    date : "Martes 3 de Septiembre"
+
   },
   {
     title: "Event 3",
     shortDescription: "Short description for Event 3",
     longDescription: "Long description for Event 3",
     image: "/chicasPlaza.jpg",
+    date : "Martes 3 de Septiembre"
+
   },
 ];
 
@@ -44,7 +51,7 @@ export default function AccionesPage() {
             {eventCards.map((event, index) => (
               <article
                 key={index}
-                className="flex flex-col items-center justify-center w-120 h-73 bg-gray-300 rounded-3xl shadow-md p-5 m-5 gap-1"
+                className="flex flex-col items-center justify-center w-120 h-auto bg-gray-300 rounded-3xl shadow-md p-5 m-5 gap-1"
               >
                   <h2 className="text-xl mt-5 mb-5 text-custom-blue font-semibold">
                     {event.title}
@@ -69,6 +76,13 @@ export default function AccionesPage() {
                   </Button>
                 </article>
                 </article>
+                <article className="flex items-center gap-x-2 mt-4">
+                  <CalendarIcon  className="text-blue-900"/>
+                  <h3 className="text-sm text-blue-900">
+                    {event.date}
+                  </h3>
+                </article>
+
               </article>
             ))}
           </section>
@@ -97,6 +111,22 @@ export default function AccionesPage() {
             </div>
           </section>
         </section>
+        <footer className="w-full py-4 bg-gray-700 mt-auto">
+          <div className="flex justify-center space-x-8 flex-wrap">
+            <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer">
+              <FaInstagram className="text-white text-2xl hover:text-gray-400" />
+            </a>
+            <a href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer">
+              <FaYoutube className="text-white text-2xl hover:text-gray-400" />
+            </a>
+            <a href="https://wa.me/" target="_blank" rel="noopener noreferrer">
+              <FaWhatsapp className="text-white text-2xl hover:text-gray-400" />
+            </a>
+            <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer">
+              <FaFacebook className="text-white text-2xl hover:text-gray-400" />
+            </a>
+          </div>
+        </footer>
       </main>
     </LandingLayout>
   );

@@ -104,4 +104,3 @@ span {
   height: 100vh; /* Asegura que las secciones ocupen la altura completa de la pantalla */
 }
 
-@import url('leaflet/dist/leaflet.css');
