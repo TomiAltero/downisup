@@ -8,12 +8,8 @@ import PieChart from "@/components/graph";
 import BluePieChart from "@/components/bluegraph";
 
 const Page = () => {
-<<<<<<< HEAD
-  const { id } = useParams(); 
-=======
   const { id } = useParams();
   const router = useRouter(); 
->>>>>>> 40c84eea9bbc7884c0ce9fe52581e08d92ced245
   const [isAuthorized, setIsAuthorized] = useState(true);
   const [showContent, setShowContent] = useState(false);
 
