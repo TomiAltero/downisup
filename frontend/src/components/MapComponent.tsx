@@ -20,7 +20,7 @@ const MapComponent: React.FC = () => {
   }, []);
 
   return (
-    <MapContainer className='rounded-3xl outline-none z-10' center={position} zoom={15} style={{ height: '300px', width: '1500px' }}>
+    <MapContainer className='rounded-3xl outline-none h-[300px] w-full z-10' center={position} zoom={15}>
       <TileLayer
         url={`https://api.mapbox.com/styles/v1/mapbox/streets-v12/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoiZmFjdWIiLCJhIjoiY20wZ3JqNGwxMDNycDJxcTJrczJ0ZzdhZyJ9.u9Cca9Ah-oFVlYlExqmbIQ`}
         attribution='&copy; <a href="https://www.mapbox.com/">Mapbox</a>'
