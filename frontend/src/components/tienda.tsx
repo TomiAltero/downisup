@@ -14,7 +14,7 @@ const products = [
     name: "Calendario", 
     price: "10", 
     image: "/persona.webp",          
-    hoverImage: "/background.png",
+    hoverImage: "/mision.png",
     description: "Producto1" 
   },
   { 
@@ -28,6 +28,14 @@ const products = [
   { 
     id: 3, 
     name: "C", 
+    price: "30", 
+    image: "/persona2.webp", 
+    hoverImage: "/mision.png", 
+    description: "Producto3" 
+  },
+  { 
+    id: 4, 
+    name: "4", 
     price: "30", 
     image: "/persona2.webp", 
     hoverImage: "/mision.png", 
@@ -80,7 +88,6 @@ export default function Tienda() {
                 className="z-[-1]"
               />
               <div className="absolute inset-0 bg-gradient-to-b from-blue-700 to-blue-700 opacity-50 flex items-center justify-center">
-
               </div>
             </SwiperSlide>
           ))}
@@ -97,23 +104,23 @@ export default function Tienda() {
               {products.map(product => (
                 <div
                   key={product.id}
-                  className="border rounded-lg overflow-hidden shadow-md"
+                  className="border rounded-lg overflow-hidden shadow-md transform scale-90 transition-transform hover:scale-95"
                   onMouseEnter={() => handleMouseEnter(product.id)}
                   onMouseLeave={handleMouseLeave}
                 >
                   <Image
                     src={hoveredProductId === product.id ? product.hoverImage : product.image}
                     alt={product.name}
-                    width={300}
-                    height={200}
-                    className="w-full h-48 object-cover"
+                    width={255} // Reducido un 15% de 300px
+                    height={170} // Reducido un 15% de 200px
+                    className="w-full h-40 object-cover"
                   />
-                  <div className="p-4">
-                    <h2 className="text-xl font-semibold text-center mb-2">{product.name}</h2>
-                    <p className="text-gray-700 mb-4 text-left">{product.description}</p>
-                    <p className="text-lg font-bold text-gray-900 mb-4 text-left">${product.price}</p>
+                  <div className="p-3"> {/* Ajusté el padding para que coincida con el tamaño más pequeño */}
+                    <h2 className="text-lg font-semibold text-center mb-2">{product.name}</h2>
+                    <p className="text-gray-700 mb-3 text-left">{product.description}</p>
+                    <p className="text-lg font-bold text-gray-900 mb-3 text-left">${product.price}</p>
                     <div className="text-center">
-                      <button className="bg-blue-900 text-white py-2 px-6 rounded-full shadow-lg transform transition-transform hover:scale-105 hover:bg-blue-700">
+                      <button className="bg-blue-900 text-white py-1.5 px-5 rounded-full shadow-lg transform transition-transform hover:scale-105 hover:bg-blue-700">
                         Comprar
                       </button>
                     </div>
