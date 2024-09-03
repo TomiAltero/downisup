@@ -11,10 +11,10 @@ import LandingLayout from "@/layouts/LandingLayout";
 const products = [
   { 
     id: 1, 
-    name: "A", 
+    name: "Calendario", 
     price: "10", 
-    image: "/persona.webp",          // Imagen por defecto
-    hoverImage: "/persona-hover.webp", // Imagen al pasar el cursor
+    image: "/persona.webp",          
+    hoverImage: "/background.png",
     description: "Producto1" 
   },
   { 
@@ -29,8 +29,8 @@ const products = [
     id: 3, 
     name: "C", 
     price: "30", 
-    image: "/persona3.webp", 
-    hoverImage: "/persona3-hover.webp", 
+    image: "/persona2.webp", 
+    hoverImage: "/mision.png", 
     description: "Producto3" 
   },
   // Agrega más productos aquí con sus respectivas imágenes
@@ -80,10 +80,7 @@ export default function Tienda() {
                 className="z-[-1]"
               />
               <div className="absolute inset-0 bg-gradient-to-b from-blue-700 to-blue-700 opacity-50 flex items-center justify-center">
-                <div className="text-center text-white">
-                  <h2 className="text-xl font-bold">{product.name}</h2>
-                  <p className="text-lg">{product.price}</p>
-                </div>
+
               </div>
             </SwiperSlide>
           ))}
@@ -116,7 +113,7 @@ export default function Tienda() {
                     <p className="text-gray-700 mb-4 text-left">{product.description}</p>
                     <p className="text-lg font-bold text-gray-900 mb-4 text-left">${product.price}</p>
                     <div className="text-center">
-                      <button className="bg-blue-700 text-white py-2 px-6 rounded-full shadow-lg transform transition-transform hover:scale-105 hover:bg-blue-900">
+                      <button className="bg-blue-900 text-white py-2 px-6 rounded-full shadow-lg transform transition-transform hover:scale-105 hover:bg-blue-700">
                         Comprar
                       </button>
                     </div>
