@@ -54,7 +54,7 @@ export default function Home() {
       <style>{styles}</style>
       <div className="flex flex-col min-h-screen">
         <main className="flex-grow">
-          {/* Sección del carrusel de imágenes */}
+          {/* Primera sección */}
           <section className="mt-10 bg-custom-blue relative h-screen w-full flex flex-col justify-center items-center snap-start overflow-hidden">
             <div className="absolute inset-0">
               <Swiper
@@ -117,7 +117,7 @@ export default function Home() {
             </section>
           </section>
 
-          {/* Sección "Nuestra Historia" */}
+          {/* Segunda sección */}
           <section className="min-h-[calc(100vh-100px)] w-full flex flex-col md:flex-row snap-start transition-transform duration-1200 ease-in-out relative fade-in">
             <div className="w-full md:w-4/12 flex flex-col justify-center items-center text-center p-6 md:p-10 z-10 bg-custom-blue md:bg-transparent">
               <Image
@@ -125,7 +125,7 @@ export default function Home() {
                 alt="DownIsUp Córdoba Logo"
                 width={100}
                 height={100}
-                className="mb-4 md:mb-6"
+                className="-mt-30 mb-4 md:mb-6"
               />
               <p className="text-white text-lg md:text-xl leading-relaxed">
                 "LOGRAR LA
@@ -142,7 +142,7 @@ export default function Home() {
             <div className="hidden md:block absolute w-full h-full -inset-x-0 z-0 bg-custom-blue" style={{ clipPath: "polygon(0 0, 38% 0, 25% 100%, 0% 100%)" }}></div>
 
             <div className="w-full md:w-8/12 flex flex-col justify-center items-center p-6 md:p-10 z-10">
-              <h2 className="text-4xl md:text-5xl font-bold text-custom-blue mt-5 mb-5 md:mb-6">NUESTRA HISTORIA</h2>
+              <h2 className="lg:text-4xl md:text-5xl font-bold text-custom-blue mt-5 mb-5 md:mb-6">NUESTRA HISTORIA</h2>
               <p className="text-base md:text-lg text-custom-blue mb-6 md:mb-10">
                 Comenzó en 2015 cuando decidimos comenzar a organizar charlas, acciones y más, trabajando para lograr el cambio que buscábamos. Nos basamos en la existencia de un movimiento nacional llamado Down is Up, con sede en varias provincias, con el fin de satisfacer la necesidad de contención, atención e información sobre el Síndrome de Down.
               </p>
@@ -158,25 +158,111 @@ export default function Home() {
               </button>
             </div>
           </section>
+
+          {/* Pie de página con los íconos de redes sociales */}
+          <footer className="w-full py-5 bg-gray-700 mt-auto fade-in">
+            <div className="flex justify-center space-x-8 flex-wrap">
+              <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer">
+                <FaInstagram className="text-white text-2xl hover:text-gray-400" />
+              </a>
+              <a href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer">
+                <FaYoutube className="text-white text-2xl hover:text-gray-400" />
+              </a>
+              <a href="https://api.whatsapp.com/send/?phone=5493517960194" target="_blank" rel="noopener noreferrer">
+                <FaWhatsapp className="text-white text-2xl hover:text-gray-400" />
+              </a>
+              <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer">
+                <FaFacebook className="text-white text-2xl hover:text-gray-400" />
+              </a>
+            </div>
+          </footer>
+
+          {/* Tercera sección */}
+          <section className="min-h-[calc(100vh-100px)] w-full flex flex-col md:flex-row snap-start transition-transform duration-1200 ease-in-out relative fade-in">
+            {/* Sección de contenido a la izquierda */}
+            <div className="w-full md:w-6/12 flex flex-col justify-center items-center p-6 md:p-10 z-10 bg-white">
+              <Image
+                src="/ubicacionZoom.png"
+                alt="Ubicacion fundacion"
+                width={1000}
+                height={1400}
+                className="mb-4 md:mb-6 rounded-3xl"
+              />
+              <h2 className="text-xl text-custom-blue mt-5 mb-5 md:mb-6">
+              Pérez de Herrera 2053 Cerro de las rosas
+              </h2>
+            </div>
+
+            {/* División diagonal invertida */}
+            <div
+              className="hidden md:block absolute w-full h-full -inset-x-0 z-0 bg-custom-blue"
+              style={{ clipPath: "polygon(50% 0, 100% 0, 100% 100%, 60% 100%)" }}
+            ></div>
+
+            {/* Sección con imagen y texto a la derecha */}
+            <div className="w-full md:w-6/12 flex flex-col justify-center items-center text-center p-6 md:p-10 z-10 bg-custom-blue md:bg-transparent">
+              <h2 className="text-white lg:text-4xl md:text-xl lg:-mt-30 md:mt-0 mb-5 font-semibold leading-relaxed">
+                VENI A CONOCERNOS
+              </h2>
+              <p className="text-white lg:text-xl md:text-lg lg:mx-30 md:mx-10 leading-relaxed">
+                Programas de tratamiento diseñados para mejorar la calidad  de vida y la participación de personas con discapacidad en diversos ámbitos. En los consultorios, se enfocan en trabajar 
+                de manera integral con profesionales y familias para lograr la autonomía de cada paciente, estableciendo objetivos específicos y enfatizando la comunicación y la experiencia como fundamentales para el éxito del tratamiento.
+              </p>
+            </div>
+
+          </section>
+
+          {/* Footer para la tercera sección */}
+          <footer className="w-full py-5 bg-gray-800 mt-auto fade-in">
+            <div className="flex justify-center space-x-8 flex-wrap">
+              {/* © 2024 Fundación DownIsUp. Todos los derechos reservados. */}
+            <p className="text-white lg:text-lg md:text-md text-center">“Sabemos que el potencial de las personas con síndrome de Down no tiene límites.”</p>
+            </div>
+          </footer>
+
+          {/* Cuarta sección */}
+          <section className="min-h-[calc(100vh-100px)] w-full flex flex-col md:flex-row snap-start transition-transform duration-1200 ease-in-out relative fade-in">
+            <div className="w-full md:w-4/12 flex flex-col justify-center items-center lg:-mt-30 md:mt-0 p-6 md:p-10 z-10 bg-custom-blue md:bg-transparent">
+              <Image
+                src="/logo-du.png"
+                alt="DownIsUp Córdoba Logo"
+                width={75}
+                height={75}
+                className="-mt-20 mb-4 md:mb-6"
+              />
+              <div className="items-start">
+                <p className=" text-white text-xl md:text-2xl font-bold leading-relaxed">
+                  INFORMACION DE CONTACTO
+                </p>
+                <p className="text-white text-lg mt-5 mb-5 md:text-xl leading-relaxed">
+                  3517960194
+                </p>
+                <p className="text-white text-lg mt-5 mb-5 md:text-xl leading-relaxed">
+                  fundaciondownisupcba@gmail.com
+                </p>
+                <p className="text-white text-lg mt-5 mb-5 md:text-xl leading-relaxed">
+                  Pérez de Herrera 2053
+                </p>
+              </div>
+            </div>
+
+            {/* División diagonal, solo visible en pantallas medianas y más grandes */}
+            <div className="hidden md:block absolute w-full h-full -inset-x-0 z-0 bg-custom-blue" style={{ clipPath: "polygon(0 0, 38% 0, 25% 100%, 0% 100%)" }}></div>
+
+            <div className="w-full md:w-8/12 flex flex-col justify-center items-center p-6 md:p-10 z-10">
+
+            </div>
+          </section>
+
+          {/* Footer para la cuarta sección */}
+          <footer className="w-full py-5 bg-gray-800 mt-auto fade-in">
+            <div className="flex justify-center space-x-8 flex-wrap">
+            <p className="text-white lg:text-lg md:text-md text-center">© 2024 Fundación DownIsUp. Todos los derechos reservados.</p>
+            </div>
+          </footer>
         </main>
 
-        {/* Pie de página con los íconos de redes sociales */}
-        <footer className="w-full py-4 bg-gray-700 mt-auto fade-in">
-          <div className="flex justify-center space-x-8 flex-wrap">
-            <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer">
-              <FaInstagram className="text-white text-2xl hover:text-gray-400" />
-            </a>
-            <a href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer">
-              <FaYoutube className="text-white text-2xl hover:text-gray-400" />
-            </a>
-            <a href="https://wa.me/" target="_blank" rel="noopener noreferrer">
-              <FaWhatsapp className="text-white text-2xl hover:text-gray-400" />
-            </a>
-            <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer">
-              <FaFacebook className="text-white text-2xl hover:text-gray-400" />
-            </a>
-          </div>
-        </footer>
+
       </div>
     </LandingLayout>
   );
