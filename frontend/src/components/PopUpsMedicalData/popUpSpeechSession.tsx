@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getAll } from "@/lib/utils";
+import { getPsycholgyTherapies } from "@/lib/utils";
 
 const PopUpPsychologycalSession = ({ onClose, hijoId }: { onClose: () => void, hijoId: number }) => {
   const [sessionData, setSessionData] = useState<any>(null);
@@ -8,7 +8,7 @@ const PopUpPsychologycalSession = ({ onClose, hijoId }: { onClose: () => void, h
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const data = await getAll(hijoId);
+        const data = await getPsycholgyTherapies(hijoId);
         console.log("Datos obtenidos de la sesión:", data);
 
         if (data && data.psychologicalTherapies && data.psychologicalTherapies.length > 0) {

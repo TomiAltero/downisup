@@ -36,7 +36,7 @@ export async function getHijoProfile({ token }: { token: string }) {
 }
 
 
-export const getAll = async (hijoId = 1) => {
+export const getPsycholgyTherapies = async (hijoId = 1) => {
   try {
     const token = localStorage.getItem('token'); 
 
@@ -59,7 +59,6 @@ export const getAll = async (hijoId = 1) => {
     throw error;
   }
 };
-
 
 export async function getChildrenAndUser({ token }: { token: string }) {
 try {

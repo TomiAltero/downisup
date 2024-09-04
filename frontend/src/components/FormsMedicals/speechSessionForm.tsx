@@ -1,8 +1,10 @@
 "use client";
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import Toastify from 'toastify-js';
+import 'toastify-js/src/toastify.css';
+import { getUserProfile } from '@/lib/utils';
 
-const PsychologySessionForm = () => {
-  const [idHijo, setIdHijo] = useState('');
+const SpeechSessionForm = ({ hijoId }) => {
   const [idUsuario, setIdUsuario] = useState('');
   const [fecha, setFecha] = useState('');
   const [horaInicio, setHoraInicio] = useState('');
@@ -10,43 +12,119 @@ const PsychologySessionForm = () => {
   const [descripcion, setDescripcion] = useState('');
   const [objetivos, setObjetivos] = useState('');
   const [observaciones, setObservaciones] = useState('');
-  const [duracion, setDuracion] = useState('');
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-
-    try {
-      const response = await fetch('http://localhost:5000/api/medicalData/psychologyTherapies', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          idHijo,
-          idUsuario,
-          fecha,
-          horaInicio,
-          horaFin,
-          descripcion,
-          objetivos,
-          observaciones,
-          duracion,
-        }),
-      });
-
-      const result = await response.json();
-
-      if (response.ok) {
-        console.log('Terapia psicológica agregada:', result);
-      } else {
-        console.error('Error al agregar terapia psicológica:', result);
+  useEffect(() => {
+    const fetchUserProfile = async () => {
+      try {
+        const token = localStorage.getItem('token');
+        if (token) {
+          const userProfile = await getUserProfile({ token });
+          setIdUsuario(userProfile.id);
+        }
+      } catch (error) {
+        console.error('Error al obtener el perfil del usuario:', error);
       }
-    } catch (error) {
-      console.error('Error al enviar datos:', error);
-    }
+    };
+
+    fetchUserProfile();
+  }, []);
+
+  const resetForm = () => {
+    setFecha('');
+    setHoraInicio('');
+    setHoraFin('');
+    setDescripcion('');
+    setObjetivos('');
+    setObservaciones('');
   };
 
-  return (
+const handleSubmit = async (event) => {
+  event.preventDefault();
+
+  if (!hijoId || !idUsuario || !fecha || !horaInicio || !horaFin || !descripcion || !objetivos || !observaciones) {
+    Toastify({
+      text: "Todos los campos son obligatorios.",
+      duration: 5000,
+      position: "right",
+      style: {
+        background: "#FF0000",
+        color: "#FFFFFF",
+        fontSize: "14px",
+        padding: "10px",
+        borderRadius: "4px",
+        fontWeight: "bold",
+      },
+    }).showToast();
+    return;
+  }
+
+  try {
+    const response = await fetch('http://localhost:5000/api/medicalData/speechTherapies', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        hijoId,
+        idUsuario,
+        date: fecha, // Cambia esto
+        description: descripcion, // Cambia esto
+        objectives: objetivos, // Cambia esto
+        observations: observaciones, // Cambia esto
+      }),
+    });
+
+    const result = await response.json();
+
+    if (response.ok) {
+      Toastify({
+        text: "Sesión fonoaudiológica agregada exitosamente.",
+        duration: 5000,
+        position: "right",
+        style: {
+          background: "#009933",
+          color: "#FFFFFF",
+          fontSize: "14px",
+          padding: "10px",
+          borderRadius: "4px",
+          fontWeight: "bold",
+        },
+      }).showToast();
+      console.log('Sesión fonoaudiológica agregada:', result);
+      resetForm();
+    } else {
+      Toastify({
+        text: "Error al agregar la sesión fonoaudiológica.",
+        duration: 5000,
+        position: "right",
+        style: {
+          background: "#FF0000",
+          color: "#FFFFFF",
+          fontSize: "14px",
+          padding: "10px",
+          borderRadius: "4px",
+          fontWeight: "bold",
+        },
+      }).showToast();
+      console.error('Error al agregar la sesión fonoaudiológica:', result);
+    }
+  } catch (error) {
+    Toastify({
+      text: "Error al enviar datos.",
+      duration: 5000,
+      position: "right",
+      style: {
+        background: "#FF0000",
+        color: "#FFFFFF",
+        fontSize: "14px",
+        padding: "10px",
+        borderRadius: "4px",
+        fontWeight: "bold",
+      },
+    }).showToast();
+    console.error('Error al enviar datos:', error);
+  }
+};  return (
     <div className="bg-gray-100 p-10 rounded-lg shadow-lg w-full lg:w-3/4 xl:w-2/3 mx-auto">
       <h2 className="text-2xl font-bold text-blue-900 mb-4 text-center">Formulario Sesión Fonoaudiológica</h2>
       <form onSubmit={handleSubmit} className="flex flex-col justify-center w-full lg:w-full xl:w-full pt-4 lg:pt-8 mx-auto px-4 bg-white rounded-lg">
@@ -135,5 +213,5 @@ const PsychologySessionForm = () => {
   );
 };
 
-export default PsychologySessionForm;
+export default SpeechSessionForm;
 
