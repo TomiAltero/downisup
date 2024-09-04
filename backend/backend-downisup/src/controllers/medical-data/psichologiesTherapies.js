@@ -1,18 +1,13 @@
 const Usuario = require('../../models/users/usuario');
-const UsuarioXHijo = require('../../models/users/usuarioXHijo');
 const PsychologicalTherapies = require('../../models/medical-data/psychologycalTherapies');
 const Hijo = require('../../models/childrens/hijo');
 
 class PsychologicalTherapiesController {
   async addPsychologyTherapy(req, res) {
     try {
-      const defaultHijoId = 2;
-      const defaultUsuarioId = 1;
-
       const {
-        idHijo = defaultHijoId,
-        hijoId = defaultHijoId,
-        idUsuario = defaultUsuarioId,
+        hijoId,
+        idUsuario,
         fecha,
         descripcion,
         objetivos,
@@ -20,12 +15,11 @@ class PsychologicalTherapiesController {
         duracion,
       } = req.body;
 
-      if (!fecha || !descripcion || !objetivos || !observaciones || !duracion) {
+      if (!hijoId || !idUsuario || !fecha || !descripcion || !objetivos || !observaciones || !duracion) {
         return res.status(400).json({ error: "Faltan campos obligatorios" });
       }
 
       const newTherapy = await PsychologicalTherapies.create({
-        idHijo,
         hijoId,
         idUsuario,
         fecha,

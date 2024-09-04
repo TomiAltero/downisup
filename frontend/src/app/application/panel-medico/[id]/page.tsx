@@ -3,9 +3,9 @@
 import { useParams, useRouter} from 'next/navigation';
 import React, { useEffect, useState } from 'react';
 import AppLayout from '@/layouts/AppLayout';
-import PanelMedico from '@/components/panel-medico';
-import PieChart from "@/components/graph";
-import BluePieChart from "@/components/bluegraph";
+import PanelMedico from '@/components/medicalComponents/panel-medico';
+import PieChart from "@/components/graphs/graph";
+import BluePieChart from "@/components/graphs/bluegraph";
 
 const Page = () => {
   const { id } = useParams();
@@ -60,4 +60,3 @@ const Page = () => {
 };
 
 export default Page;
-

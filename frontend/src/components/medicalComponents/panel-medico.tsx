@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import MedicalHistoryCard from "@/components/ui/cardMedical";
-import PopUpPsychologycalSession from './PopUpsMedicalData/popUpPsychologycalSession';
+import PopUpPsychologycalSession from '../PopUpsMedicalData/popUpPsychologycalSession';
 import Typography from "@mui/material/Typography";
 import { getAll } from "@/lib/utils";
 
@@ -72,4 +72,3 @@ export default function PanelMedico({ idHijo }: PanelMedicoProps) {
     </section>
   );
 }
-

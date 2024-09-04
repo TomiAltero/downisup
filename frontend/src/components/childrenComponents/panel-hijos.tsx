@@ -1,4 +1,3 @@
-"use client";
 import React from "react";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
@@ -8,14 +7,22 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Link from "next/link";
 import { Hijo } from "@/types";
-import { getHijoProfile } from "@/lib/utils";
+import { getHijoProfile, getChildrenAndUser } from "@/lib/utils";
 
 export async function PanelHijo({ token }: { token: string }) {
   if (!token) {
     return null;
   }
 
-  const { hijos } = await getHijoProfile({ token });
+  const allChildren = await getChildrenAndUser({ token });
+  
+  const isType2User = allChildren.usuario.tipoUsuarioId === 2;
+
+  const hijosArray = isType2User ? allChildren.hijos : await getHijoProfile({ token });
+
+  const hijosData = Array.isArray(hijosArray) ? hijosArray : hijosArray.hijos;
+
+  console.log("hijosData:", hijosData);
 
   return (
     <div>
@@ -24,15 +31,15 @@ export async function PanelHijo({ token }: { token: string }) {
         component="h1"
         sx={{ mb: 4, textAlign: "left", fontWeight: "bold", ml: 2 }}
       >
-        Mis Hijos
+        {isType2User ? "¿Con quién desea trabajar?" : "Mis Hijos"}
       </Typography>
       <div className="flex flex-wrap" style={{ justifyContent: "flex-start" }}>
-        {hijos.length === 0 ? (
-          <Typography variant="body1" color="text.secondary" sx={{ml:2}}>
+        {hijosData.length === 0 ? (
+          <Typography variant="body1" color="text.secondary" sx={{ ml: 2 }}>
             No tienes hijos registrados.
           </Typography>
         ) : (
-          hijos.map((hijo: Hijo) => (
+          hijosData.map((hijo: Hijo) => (
             <div key={hijo.id} className="mb-4">
               <Card
                 sx={{
@@ -91,10 +98,8 @@ export async function PanelHijo({ token }: { token: string }) {
                   </Typography>
                 </CardContent>
                 <CardActions>
-                  <Link href={`/application/panel-medico/${hijo.id}`} passHref>
-                    <Button size="small">
-                      Ver más
-                    </Button>
+                  <Link href={isType2User ? `/application/formulario-medico/${hijo.id}` : `/application/panel-medico/${hijo.id}`} passHref>
+                    <Button size="small">Ver más</Button>
                   </Link>
                 </CardActions>
               </Card>

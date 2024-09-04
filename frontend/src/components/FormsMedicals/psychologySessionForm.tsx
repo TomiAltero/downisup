@@ -1,17 +1,75 @@
 "use client";
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { getUserProfile } from '@/lib/utils';
+import Toastify from 'toastify-js';
+import 'toastify-js/src/toastify.css';
 
-const FormMedical = () => {
-  const [idHijo, setIdHijo] = useState('');
+const PsychologySessionForm = ({ hijoId }: { hijoId: string }) => {
   const [idUsuario, setIdUsuario] = useState('');
   const [fecha, setFecha] = useState('');
+  const [horaInicio, setHoraInicio] = useState('');
+  const [horaFin, setHoraFin] = useState('');
   const [descripcion, setDescripcion] = useState('');
   const [objetivos, setObjetivos] = useState('');
   const [observaciones, setObservaciones] = useState('');
   const [duracion, setDuracion] = useState('');
 
-  const handleSubmit = async (event) => {
+  useEffect(() => {
+    const fetchUserProfile = async () => {
+      try {
+        const token = localStorage.getItem('token');
+        if (token) {
+          const userProfile = await getUserProfile({ token });
+          setIdUsuario(userProfile.id);
+        }
+      } catch (error) {
+        console.error('Error al obtener el perfil del usuario:', error);
+      }
+    };
+
+    fetchUserProfile();
+  }, []);
+
+  const resetForm = () => {
+    setFecha('');
+    setHoraInicio('');
+    setHoraFin('');
+    setDescripcion('');
+    setObjetivos('');
+    setObservaciones('');
+    setDuracion('');
+  };
+
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+
+    if (!hijoId || !idUsuario || !fecha || !horaInicio || !horaFin || !descripcion || !objetivos || !observaciones || !duracion) {
+      Toastify({
+        text: "Todos los campos son obligatorios.",
+        duration: 5000,
+        position: "right",
+        style: {
+          background: "#FF0000",
+          color: "#FFFFFF",
+          fontSize: "14px",
+          padding: "10px",
+          borderRadius: "4px",
+          fontWeight: "bold",
+        },
+      }).showToast();
+      return;
+    }
+    console.log('Datos a enviar:', {
+      hijoId,
+      idUsuario,
+      fecha,
+      horaInicio,
+      horaFin,
+      descripcion,
+      objetivos,
+      observaciones,
+      duracion,
+    });
 
     try {
       const response = await fetch('http://localhost:5000/api/medicalData/psychologyTherapies', {
@@ -20,9 +78,11 @@ const FormMedical = () => {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          idHijo,
+          hijoId,
           idUsuario,
           fecha,
+          horaInicio,
+          horaFin,
           descripcion,
           objetivos,
           observaciones,
@@ -33,11 +93,52 @@ const FormMedical = () => {
       const result = await response.json();
 
       if (response.ok) {
+        Toastify({
+          text: "Terapia psicológica agregada exitosamente.",
+          duration: 5000,
+          position: "right",
+          style: {
+            background: "#009933",
+            color: "#FFFFFF",
+            fontSize: "14px",
+            padding: "10px",
+            borderRadius: "4px",
+            fontWeight: "bold",
+            marginTop: "70px",
+          },
+        }).showToast();
         console.log('Terapia psicológica agregada:', result);
+        resetForm(); 
       } else {
+        Toastify({
+          text: "Error al agregar terapia psicológica.",
+          duration: 5000,
+          position: "right",
+          style: {
+            background: "#FF0000",
+            color: "#FFFFFF",
+            fontSize: "14px",
+            padding: "10px",
+            borderRadius: "4px",
+            fontWeight: "bold",
+          },
+        }).showToast();
         console.error('Error al agregar terapia psicológica:', result);
       }
     } catch (error) {
+      Toastify({
+        text: "Error al enviar datos.",
+        duration: 5000,
+        position: "right",
+        style: {
+          background: "#FF0000",
+          color: "#FFFFFF",
+          fontSize: "14px",
+          padding: "10px",
+          borderRadius: "4px",
+          fontWeight: "bold",
+        },
+      }).showToast();
       console.error('Error al enviar datos:', error);
     }
   };
@@ -48,22 +149,12 @@ const FormMedical = () => {
       <form onSubmit={handleSubmit} className="flex flex-col justify-center w-full lg:w-full xl:w-full pt-4 lg:pt-8 mx-auto px-4 bg-white rounded-lg">
         <section className="flex flex-col lg:flex-row gap-4 mb-4">
           <article className="flex-1">
-            <label className="block text-xs leading-6 text-blue-900 mb-2 font-semibold">ID del Hijo</label>
+            <label className="block text-xs leading-6 text-blue-900 mb-2 font-semibold">Fecha de la Sesión</label>
             <input
               className="w-full rounded-none border-t-0 border-l-0 border-r-0 border-b-2 border-blue-800 bg-gray-50 outline-none focus:ring-0 focus:border-blue-600 text-gray-500 text-base p-2"
-              type="text"
-              value={idHijo}
-              onChange={(e) => setIdHijo(e.target.value)}
-              required
-            />
-          </article>
-          <article className="flex-1">
-            <label className="block text-xs leading-6 text-blue-900 mb-2 font-semibold">ID del Usuario</label>
-            <input
-              className="w-full rounded-none border-t-0 border-l-0 border-r-0 border-b-2 border-blue-800 bg-gray-50 outline-none focus:ring-0 focus:border-blue-600 text-gray-500 text-base p-2"
-              type="text"
-              value={idUsuario}
-              onChange={(e) => setIdUsuario(e.target.value)}
+              type="date"
+              value={fecha}
+              onChange={(e) => setFecha(e.target.value)}
               required
             />
           </article>
@@ -71,12 +162,22 @@ const FormMedical = () => {
 
         <section className="flex flex-col lg:flex-row gap-4 mb-4">
           <article className="flex-1">
-            <label className="block text-xs leading-6 text-blue-900 mb-2 font-semibold">Fecha de la Sesión</label>
+            <label className="block text-xs leading-6 text-blue-900 mb-2 font-semibold">Hora de Inicio</label>
             <input
               className="w-full rounded-none border-t-0 border-l-0 border-r-0 border-b-2 border-blue-800 bg-gray-50 outline-none focus:ring-0 focus:border-blue-600 text-gray-500 text-base p-2"
-              type="date"
-              value={fecha}
-              onChange={(e) => setFecha(e.target.value)}
+              type="time"
+              value={horaInicio}
+              onChange={(e) => setHoraInicio(e.target.value)}
+              required
+            />
+          </article>
+          <article className="flex-1">
+            <label className="block text-xs leading-6 text-blue-900 mb-2 font-semibold">Hora de Fin</label>
+            <input
+              className="w-full rounded-none border-t-0 border-l-0 border-r-0 border-b-2 border-blue-800 bg-gray-50 outline-none focus:ring-0 focus:border-blue-600 text-gray-500 text-base p-2"
+              type="time"
+              value={horaFin}
+              onChange={(e) => setHoraFin(e.target.value)}
               required
             />
           </article>
@@ -123,10 +224,10 @@ const FormMedical = () => {
 
         <section className="flex flex-col lg:flex-row gap-4 mb-4">
           <article className="flex-1">
-            <label className="block text-xs leading-6 text-blue-900 mb-2 font-semibold">Duración</label>
+            <label className="block text-xs leading-6 text-blue-900 mb-2 font-semibold">Duración (en minutos)</label>
             <input
               className="w-full rounded-none border-t-0 border-l-0 border-r-0 border-b-2 border-blue-800 bg-gray-50 outline-none focus:ring-0 focus:border-blue-600 text-gray-500 text-base p-2"
-              type="text"
+              type="number"
               value={duracion}
               onChange={(e) => setDuracion(e.target.value)}
               required
@@ -144,5 +245,5 @@ const FormMedical = () => {
   );
 };
 
-export default FormMedical;
+export default PsychologySessionForm;
 

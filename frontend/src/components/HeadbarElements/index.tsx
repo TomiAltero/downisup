@@ -3,7 +3,7 @@ import React, { useState, useRef, useEffect, useCallback } from "react";
 import Image from "next/image";
 import { Logout, Setting2, ArrowDown2, ArrowUp2, Profile } from "iconsax-react";
 import axios from "axios";
-import Ajustes from "@/components/ajustes";
+import Ajustes from "@/components/HeadbarElements/settings";
 import { getSpecialityForUser } from "@/lib/utils"; 
 
 interface Usuario {
