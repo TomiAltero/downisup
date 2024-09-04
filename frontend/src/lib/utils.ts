@@ -61,6 +61,27 @@ export const getAll = async (hijoId = 1) => {
 };
 
 
+export async function getChildrenAndUser({ token }: { token: string }) {
+try {
+  const response = await fetch("http://localhost:5000/api/hijos", {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+
+  if (!response.ok) {
+    throw new Error("Error al obtener los hijos");
+  }
+
+  const data = await response.json();
+  return data; 
+} catch (error) {
+  console.error("Error en getChildren:", error);
+  throw error;
+}
+}
+
+
 export async function getSpecialityForUser({ token }: { token: string }) {
   try {
     const response = await fetch("http://localhost:5000/api/usuarios/speciality", {
@@ -81,3 +102,7 @@ export async function getSpecialityForUser({ token }: { token: string }) {
     throw error;
   }
 }
+
+
+
+

@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import Perfil from "@/components/perfil";
+import Perfil from "@/components/profileComponents/perfil";
 import { useRouter } from "next/navigation";
 import AppLayout from "@/layouts/AppLayout";
 import { Suspense } from "react";

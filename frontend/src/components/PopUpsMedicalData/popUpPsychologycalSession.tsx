@@ -12,15 +12,11 @@ const PopUpPsychologycalSession = ({ onClose, hijoId }: { onClose: () => void, h
         console.log("Datos obtenidos de la sesión:", data);
 
         if (data && data.psychologicalTherapies && data.psychologicalTherapies.length > 0) {
-          const [firstTherapy] = data.psychologicalTherapies;
-          setSessionData({
-            ...data,
-            psychologicalTherapy: firstTherapy,
-          });
+          setSessionData(data);
         } else {
           setSessionData({
             ...data,
-            psychologicalTherapy: null,
+            psychologicalTherapies: [],
           });
         }
       } catch (error) {
@@ -43,7 +39,6 @@ const PopUpPsychologycalSession = ({ onClose, hijoId }: { onClose: () => void, h
     );
   }
 
-  const therapy = sessionData?.psychologicalTherapy;
   const hijo = sessionData?.hijo;
 
   return (
@@ -58,32 +53,45 @@ const PopUpPsychologycalSession = ({ onClose, hijoId }: { onClose: () => void, h
         <h2 className="text-3xl font-bold mb-6 text-blue-900">
           Informe de Sesión Psicológica: {hijo?.nombre || "Nombre del paciente no disponible"} {hijo?.apellido || ""}
         </h2>
-        <div className="mt-6 space-y-6 text-left">
-          <div>
-            <h3 className="text-xl font-semibold text-blue-700">Objetivos de la Sesión</h3>
-            <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
-              {therapy?.objetivos || "No hay Objetivos de la Sesion Disponible."}
-            </p>
-          </div>
-          <div>
-            <h3 className="text-xl font-semibold text-blue-700">Descripción de la Sesión</h3>
-            <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
-              {therapy?.descripcion || "No hay Descripcion de la Sesion Disponible."}
-            </p>
-          </div>
-          <div>
-            <h3 className="text-xl font-semibold text-blue-700">Observaciones</h3>
-            <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
-              {therapy?.observaciones || "No Hay Observaciones Disponibles."}
-            </p>
-          </div>
-          <div>
-            <h3 className="text-xl font-semibold text-blue-700">Plan de Acción</h3>
-            <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
-              {therapy?.planAccion || "No hay plan de acción disponible."}
-            </p>
-          </div>
-        </div>
+
+        {sessionData?.psychologicalTherapies?.length > 0 ? (
+          sessionData.psychologicalTherapies.map((therapy: any, index: number) => (
+            <div key={index} className="mt-6 space-y-6 text-left">
+              <div className="mb-4">
+                <p className="text-sm text-gray-500">
+                  {new Date(therapy.fecha).toLocaleDateString()}
+                </p>
+              </div>
+              <div>
+                <h3 className="text-xl font-semibold text-blue-700">Objetivos de la Sesión</h3>
+                <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
+                  {therapy.objetivos || "No hay Objetivos de la Sesion Disponible."}
+                </p>
+              </div>
+              <div>
+                <h3 className="text-xl font-semibold text-blue-700">Descripción de la Sesión</h3>
+                <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
+                  {therapy.descripcion || "No hay Descripcion de la Sesion Disponible."}
+                </p>
+              </div>
+              <div>
+                <h3 className="text-xl font-semibold text-blue-700">Observaciones</h3>
+                <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
+                  {therapy.observaciones || "No Hay Observaciones Disponibles."}
+                </p>
+              </div>
+              <div>
+                <h3 className="text-xl font-semibold text-blue-700">Plan de Acción</h3>
+                <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
+                  {therapy.planAccion || "No hay plan de acción disponible."}
+                </p>
+              </div>
+              {index < sessionData.psychologicalTherapies.length - 1 && <hr className="my-6" />}
+            </div>
+          ))
+        ) : (
+          <p>No hay terapias psicológicas disponibles.</p>
+        )}
       </div>
     </div>
   );

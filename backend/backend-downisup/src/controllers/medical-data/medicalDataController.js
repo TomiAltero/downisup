@@ -5,7 +5,6 @@ class PsychologicalTherapiesController {
   async addPsychologyTherapy(req, res) {
     try {
       const {
-        idHijo,
         hijoId,
         idUsuario,
         fecha,
@@ -20,7 +19,6 @@ class PsychologicalTherapiesController {
       }
 
       const newTherapy = await PsychologicalTherapies.create({
-        idHijo,
         hijoId,
         idUsuario,
         fecha,

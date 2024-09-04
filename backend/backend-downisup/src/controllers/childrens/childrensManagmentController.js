@@ -20,6 +20,32 @@ class ChildrensManagmentController {
     }
   }
 
+
+  async getChildrenAndUser(req, res) {
+    try {
+      const usuario = await Usuario.findByPk(req.userId);
+
+      if (!usuario) {
+        return res.status(404).json({ error: "Usuario no encontrado" });
+      }
+
+      const hijos = await Hijo.findAll();
+
+      if (hijos.length === 0) {
+        return res.status(404).json({ error: "No se encontraron hijos" });
+      }
+
+      res.json({
+        usuario: usuario.toJSON(),
+        hijos: hijos.map((hijo) => hijo.toJSON()),
+      });
+    } catch (error) {
+      console.error("Error al obtener el usuario y todos los hijos:", error);
+      res.status(500).json({ error: "Hubo un error al obtener el usuario y todos los hijos" });
+    }
+  }
+
+
   async getChildrenForUser(req, res) {
     try {
       const usuario = await Usuario.findByPk(req.userId, {
@@ -73,3 +99,4 @@ class ChildrensManagmentController {
 }
 
 module.exports = new ChildrensManagmentController();
+

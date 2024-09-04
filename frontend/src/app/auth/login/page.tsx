@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import { LogIn } from "@/components/log-in";
+import { LogIn } from "@/components/UserForms/log-in";
 
 const Page = () => {
   const router = useRouter();

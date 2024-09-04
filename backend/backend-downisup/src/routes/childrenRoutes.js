@@ -5,6 +5,8 @@ const childrenForUser = require("../controllers/childrens/childrensManagmentCont
 const verificarToken = require("../middlewars/authentification.js");
 
 router.get("/profiles", verificarToken, childrenForUser.getChildrenForUser);
-router.post("/", verificarToken, childrensManagmentController.addChildren);
+router.get('/children', verificarToken, childrensManagmentController.getChildren);
+
+router.get("/", verificarToken, childrensManagmentController.getChildrenAndUser);
 
 module.exports = router;
