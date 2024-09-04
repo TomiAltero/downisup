@@ -57,7 +57,7 @@ const Page = () => {
       ) : userProfile?.specialityId === 3 ? (
         <SpeechSessionForm hijoId={id as string} />  
       ) : userProfile?.specialityId === 4 ? (
-        <PhysiologicalSessionForm />
+        <PhysiologicalSessionForm hijoId={id as string} />
       ) : (
         <div>No tienes permiso para acceder a este formulario.</div>
       )}

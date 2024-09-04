@@ -67,10 +67,10 @@ const handleSubmit = async (event) => {
       body: JSON.stringify({
         hijoId,
         idUsuario,
-        date: fecha, // Cambia esto
-        description: descripcion, // Cambia esto
-        objectives: objetivos, // Cambia esto
-        observations: observaciones, // Cambia esto
+        date: fecha, 
+        description: descripcion, 
+        objectives: objetivos, 
+        observations: observaciones, 
       }),
     });
 
