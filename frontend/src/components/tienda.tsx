@@ -7,46 +7,7 @@ import { Navigation, Autoplay } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import LandingLayout from "@/layouts/LandingLayout";
-import { FaFacebook, FaYoutube, FaInstagram, FaWhatsapp } from 'react-icons/fa'; // Import de íconos
-
-// Componente Footer
-const Footer = () => {
-  return (
-    <footer className="bg-gray-900 text-white py-6">
-      <div className="flex justify-center space-x-8 mb-4">
-        <div className="flex flex-col md:flex-row justify-center items-center space-y-4 md:space-y-0 md:justify-between">
-          <ul className="flex flex-wrap justify-center space-x-6 text-sm">
-            <li><a href="/clubdeamigos" className="hover:underline">Sumate como empresa</a></li>
-            <li><a href="/clubdeamigos" className="hover:underline">Sumate como voluntario</a></li>
-            <li><a href="/donar" className="hover:underline">Doná</a></li>
-          </ul>
-        </div>
-        </div>
-        <div className="flex flex-col items-center mt-6"> 
-        <div className="flex justify-center space-x-8 mb-4">
-            <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer">
-              <FaInstagram className="text-white text-2xl hover:text-gray-400" />
-            </a>
-            <a href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer">
-              <FaYoutube className="text-white text-2xl hover:text-gray-400" />
-            </a>
-            <a href="https://wa.me/" target="_blank" rel="noopener noreferrer">
-              <FaWhatsapp className="text-white text-2xl hover:text-gray-400" />
-            </a>
-            <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer">
-              <FaFacebook className="text-white text-2xl hover:text-gray-400" />
-            </a>
-          </div>
-
-        <div className="mt-4 text-center text-sm">
-          <p className='text-white'>DownIsUp Cordoba,Argentina / Perez de Herrera 2053 (X5009HWC) / Provincia de Cordoba</p>
-          <p className="text-white">(+54 9) 351 796-0194/ fundaciondownisupcbacba@gmail.com</p>
-        </div>
-      </div>
-    </footer>
-  );
-};
-
+import { FooterWithLinks } from "@/components/footerLinks";
 
 
 const products = [
@@ -173,8 +134,8 @@ export default function Tienda() {
         </main>
       </div>
 
-      {/* Footer agregado aquí */}
-      <Footer />
+      <FooterWithLinks />
+
     </LandingLayout>
   );
 }

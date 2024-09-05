@@ -103,7 +103,7 @@ const Donar = () => {
           <h1 className="text-custom-blue text-4xl font-semibold mb-5">
             Como podes ayudar?
           </h1>
-          <p className="text-gray-600 text-sm">
+          <p className="text-gray-600 text-base">
             También podés acercar tu donación por Mercado Pago. Solo tenés que hacer click en el botón que está más abajo y colocar el monto de tu donación, la plataforma te va a guiar en todo el proceso.
           </p>
         </div>
@@ -117,7 +117,7 @@ const Donar = () => {
         </div>
 
         <div className="w-8/12 ml-4 text-left"> {/* Cambiado de text-center a text-left */}
-          <p className="text-gray-600 text-sm">
+          <p className="text-gray-600 text-base">
             También, ya sea que realices una donación mensual o una donación única, te brindamos estos medios de contribución directamente en nuestro sitio web. Podés donar con tarjeta de crédito, débito bancario o mediante Pago Fácil y Rapipago. Para administrar tu donación a través de nuestro sitio web, seleccioná la frecuencia que prefieras y seguí todos los pasos indicados:
           </p>
         </div>

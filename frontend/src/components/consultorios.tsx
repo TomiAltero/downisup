@@ -9,6 +9,7 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import { Navigation, Autoplay } from 'swiper/modules';
 import dynamic from 'next/dynamic';
+import { Footer } from "../components/footer";
 
 
 const MapComponent = dynamic(() => import('../components/MapComponent'), {
@@ -89,7 +90,7 @@ const Consultorios = () => {
         </Swiper>
       </section>
 
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto px-4 mb-10">
         <div className="mb-8">
 
           <h1 className="text-center text-xl md:text-md font-semibold text-blue-900 mb-10 lg:mx-70 md:10">
@@ -136,6 +137,8 @@ const Consultorios = () => {
           </div>
         </motion.div>
       </div>
+
+      <Footer/>
     </section>
   );
 };

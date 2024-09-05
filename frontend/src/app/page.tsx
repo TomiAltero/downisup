@@ -10,7 +10,9 @@ import { Navigation, Autoplay } from 'swiper/modules'; // Importamos Autoplay pa
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/autoplay'; // Importamos CSS de autoplay
-import { FaInstagram, FaYoutube, FaWhatsapp, FaFacebook } from "react-icons/fa";
+import { Footer } from "../components/footer";
+import { FooterWithLinks } from "@/components/footerLinks";
+import { PhoneIconSvg, MessageIconSvg, PinIconSvg} from "@/components/ui/icons"
 
 // CSS para las animaciones
 const styles = `
@@ -152,33 +154,17 @@ export default function Home() {
                 <Image src="/tick.png" alt="Tick" className="inline-block mr-2" width={16} height={16} /> Fomentar la vida independiente y la autonomía de las personas con síndrome de Down.
               </p>
               <button className="mt-6 mb-10 md:mt-10 px-4 text-base md:text-lg py-2 bg-pink-600 text-white font-semibold rounded-full hover:bg-pink-700">
-                <Link href="/quienessomos/">
+                <a href="/quienessomos/">
                   Ver más
-                </Link>
+                </a>
               </button>
             </div>
           </section>
 
-          {/* Pie de página con los íconos de redes sociales */}
-          <footer className="w-full py-5 bg-gray-700 mt-auto fade-in">
-            <div className="flex justify-center space-x-8 flex-wrap">
-              <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer">
-                <FaInstagram className="text-white text-2xl hover:text-gray-400" />
-              </a>
-              <a href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer">
-                <FaYoutube className="text-white text-2xl hover:text-gray-400" />
-              </a>
-              <a href="https://api.whatsapp.com/send/?phone=5493517960194" target="_blank" rel="noopener noreferrer">
-                <FaWhatsapp className="text-white text-2xl hover:text-gray-400" />
-              </a>
-              <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer">
-                <FaFacebook className="text-white text-2xl hover:text-gray-400" />
-              </a>
-            </div>
-          </footer>
+          <Footer/>
 
           {/* Tercera sección */}
-          <section className="min-h-[calc(100vh-100px)] w-full flex flex-col md:flex-row snap-start transition-transform duration-1200 ease-in-out relative fade-in">
+          <section className="min-h-[calc(100vh-120px)] w-full flex flex-col md:flex-row snap-start transition-transform duration-1200 ease-in-out relative fade-in">
             {/* Sección de contenido a la izquierda */}
             <div className="w-full md:w-6/12 flex flex-col justify-center items-center p-6 md:p-10 z-10 bg-white">
               <Image
@@ -221,27 +207,20 @@ export default function Home() {
           </footer>
 
           {/* Cuarta sección */}
-          <section className="min-h-[calc(100vh-100px)] w-full flex flex-col md:flex-row snap-start transition-transform duration-1200 ease-in-out relative fade-in">
+          <section className="h-screen w-full flex flex-col md:flex-row snap-start transition-transform duration-1200 ease-in-out relative fade-in">
             <div className="w-full md:w-4/12 flex flex-col justify-center items-center lg:-mt-30 md:mt-0 p-6 md:p-10 z-10 bg-custom-blue md:bg-transparent">
-              <Image
-                src="/logo-du.png"
-                alt="DownIsUp Córdoba Logo"
-                width={75}
-                height={75}
-                className="-mt-20 mb-4 md:mb-6"
-              />
               <div className="items-start">
-                <p className=" text-white text-xl md:text-2xl font-bold leading-relaxed">
+                <p className=" text-white text-xl md:text-2xl text-center font-bold leading-relaxed">
                   INFORMACION DE CONTACTO
                 </p>
                 <p className="text-white text-lg mt-5 mb-5 md:text-xl leading-relaxed">
-                  3517960194
+                  <PhoneIconSvg />3517960194
                 </p>
                 <p className="text-white text-lg mt-5 mb-5 md:text-xl leading-relaxed">
-                  fundaciondownisupcba@gmail.com
+                  <MessageIconSvg />fundaciondownisupcba@gmail.com
                 </p>
                 <p className="text-white text-lg mt-5 mb-5 md:text-xl leading-relaxed">
-                  Pérez de Herrera 2053
+                  <PinIconSvg />Pérez de Herrera 2053
                 </p>
               </div>
             </div>
@@ -255,10 +234,8 @@ export default function Home() {
           </section>
 
           {/* Footer para la cuarta sección */}
-          <footer className="w-full py-5 bg-gray-800 mt-auto fade-in">
-            <div className="flex justify-center space-x-8 flex-wrap">
-            <p className="text-white lg:text-lg md:text-md text-center">© 2024 Fundación DownIsUp. Todos los derechos reservados.</p>
-            </div>
+          <footer className="w-full mt-auto fade-in">
+            <FooterWithLinks />
           </footer>
         </main>
 
