@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import MedicalHistoryCard from "@/components/ui/cardMedical";
 import PopUpPsychologycalSession from '../PopUpsMedicalData/popUpPsychologycalSession';
 import Typography from "@mui/material/Typography";
-import { getAll } from "@/lib/utils";
+import { getPsycholgyTherapies} from "@/lib/utils";
 
 interface PanelMedicoProps {
   idHijo: number; 
@@ -15,7 +15,7 @@ export default function PanelMedico({ idHijo }: PanelMedicoProps) {
   useEffect(() => {
     const fetchUserData = async () => {
       try {
-        const userData = await getAll(idHijo); 
+        const userData = await getPsycholgyTherapies(idHijo); 
         console.log("Datos del usuario:", userData);
 
         setUserName(`${userData.hijo?.nombre || "Nombre no disponible"} ${userData.hijo?.apellido || "Apellido no disponible"}`);
