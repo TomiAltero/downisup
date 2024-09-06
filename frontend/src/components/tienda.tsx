@@ -15,23 +15,23 @@ const products = [
     id: 1, 
     name: "Calendario", 
     price: "10", 
-    image: "/persona.webp",          
-    hoverImage: "/mision.png",
+    image: "/background.png",          
+    hoverImage: "/chicosPlaza.jpg",
     description: "Producto1" 
   },
   { 
     id: 2, 
     name: "B", 
     price: "20", 
-    image: "/persona2.webp", 
-    hoverImage: "/persona2-hover.webp", 
+    image: "/background.png", 
+    hoverImage: "/mision.png", 
     description: "Producto2" 
   },
   { 
     id: 3, 
     name: "C", 
     price: "30", 
-    image: "/persona2.webp", 
+    image: "/background.png", 
     hoverImage: "/mision.png", 
     description: "Producto3" 
   },
@@ -39,7 +39,7 @@ const products = [
     id: 4, 
     name: "4", 
     price: "30", 
-    image: "/persona2.webp", 
+    image: "/background.png", 
     hoverImage: "/mision.png", 
     description: "Producto3" 
   },
