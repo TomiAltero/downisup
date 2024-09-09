@@ -1,5 +1,4 @@
-"use client";
-
+'use client';
 import React, { useState } from 'react';
 import Image from "next/image";
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -8,30 +7,30 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import LandingLayout from "@/layouts/LandingLayout";
 import { FooterWithLinks } from "@/components/footerLinks";
-
+import { ProductCard } from "./ProductCard";  // Asegúrate de que la ruta esté correcta
 
 const products = [
   { 
     id: 1, 
     name: "Calendario", 
     price: "10", 
-    image: "/persona.webp",          
-    hoverImage: "/mision.png",
+    image: "/background.png",          
+    hoverImage: "/chicosPlaza.jpg",
     description: "Producto1" 
   },
   { 
     id: 2, 
     name: "B", 
     price: "20", 
-    image: "/persona2.webp", 
-    hoverImage: "/persona2-hover.webp", 
+    image: "/background.png", 
+    hoverImage: "/mision.png", 
     description: "Producto2" 
   },
   { 
     id: 3, 
     name: "C", 
     price: "30", 
-    image: "/persona2.webp", 
+    image: "/background.png", 
     hoverImage: "/mision.png", 
     description: "Producto3" 
   },
@@ -39,7 +38,7 @@ const products = [
     id: 4, 
     name: "4", 
     price: "30", 
-    image: "/persona2.webp", 
+    image: "/background.png", 
     hoverImage: "/mision.png", 
     description: "Producto3" 
   },
@@ -98,36 +97,24 @@ export default function Tienda() {
 
       <div className="flex justify-center">
         {/* Contenedor Principal con ancho limitado */}
-        <main className="p-4 max-w-5xl mx-auto w-full">
+        <main className="p-4 w-full mx-40">
           {/* Sección de productos en la tienda */}
-          <section className="p-8">
-            <h1 className="text-3xl font-bold text-center mb-8">Productos destacados</h1>
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+          <section className="gap-20 py-10">
+            <h1 className="text-3xl text-custom-blue font-bold text-center mb-8">Productos destacados</h1>
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10">
               {products.map(product => (
-                <div
+                <ProductCard
                   key={product.id}
-                  className="border rounded-lg overflow-hidden shadow-md transform scale-90 transition-transform hover:scale-95"
-                  onMouseEnter={() => handleMouseEnter(product.id)}
-                  onMouseLeave={handleMouseLeave}
-                >
-                  <Image
-                    src={hoveredProductId === product.id ? product.hoverImage : product.image}
-                    alt={product.name}
-                    width={255} // Reducido un 15% de 300px
-                    height={170} // Reducido un 15% de 200px
-                    className="w-full h-40 object-cover"
-                  />
-                  <div className="p-3"> {/* Ajusté el padding para que coincida con el tamaño más pequeño */}
-                    <h2 className="text-lg font-semibold text-center mb-2">{product.name}</h2>
-                    <p className="text-gray-700 mb-3 text-left">{product.description}</p>
-                    <p className="text-lg font-bold text-gray-900 mb-3 text-left">${product.price}</p>
-                    <div className="text-center">
-                      <button className="bg-blue-900 text-white py-1.5 px-5 rounded-full shadow-lg transform transition-transform hover:scale-105 hover:bg-blue-700">
-                        Comprar
-                      </button>
-                    </div>
-                  </div>
-                </div>
+                  id={product.id}
+                  name={product.name}
+                  price={product.price}
+                  image={product.image}
+                  hoverImage={product.hoverImage}
+                  description={product.description}
+                  hovered={hoveredProductId === product.id}
+                  onHover={handleMouseEnter}
+                  onLeave={handleMouseLeave}
+                />
               ))}
             </div>
           </section>
