@@ -36,9 +36,8 @@ function HeadBar() {
           }
         );
         setUsuario(response.data.usuario);
-        // Obtener la especialización del usuario
         const specialityResponse = await getSpecialityForUser({ token });
-        setSpeciality(specialityResponse.speciality.name); // Ajusta según la estructura de respuesta
+        setSpeciality(specialityResponse.speciality.name); 
       }
     } catch (error) {
       setError("Error al obtener el perfil del usuario");
@@ -87,7 +86,7 @@ function HeadBar() {
   const handleLogout = () => {
     localStorage.removeItem("token");
     setUsuario(null);
-    setSpeciality(null); // Limpiar especialización al cerrar sesión
+    setSpeciality(null); 
     setLoading(true);
     setIsDropdownOpen(false);
     setShowAjustes(false);

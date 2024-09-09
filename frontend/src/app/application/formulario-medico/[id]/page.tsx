@@ -51,7 +51,7 @@ const Page = () => {
   return (
     <AppLayout>
       {userProfile?.specialityId === 1 ? (
-        <NeurologicalSessionForm />
+        <NeurologicalSessionForm idHijo={id as string} />
       ) : userProfile?.specialityId === 2 ? (
         <PsychologySessionForm hijoId={id as string} />
       ) : userProfile?.specialityId === 3 ? (

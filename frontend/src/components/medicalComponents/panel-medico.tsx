@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from "react";
 import MedicalHistoryCard from "@/components/ui/cardMedical";
 import PopUpPsychologycalSession from '../PopUpsMedicalData/popUpPsychologycalSession';
+import PopUpSpeechTherapySession from '../PopUpsMedicalData/popUpSpeechSession';
+import PopUpPhysiologycalTherapies from "../PopUpsMedicalData/popUpPhysiologicalSession";
+import PopUpNeurologicalTherapies from "../PopUpsMedicalData/popUpNeurologicalSession";
 import Typography from "@mui/material/Typography";
-import { getPsycholgyTherapies} from "@/lib/utils";
+import { getPsycholgyTherapies } from "@/lib/utils";
 
 interface PanelMedicoProps {
   idHijo: number; 
@@ -10,6 +13,7 @@ interface PanelMedicoProps {
 
 export default function PanelMedico({ idHijo }: PanelMedicoProps) {
   const [showInfoMedical, setShowInfoMedical] = useState(false);
+  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [userName, setUserName] = useState<string>("");
 
   useEffect(() => {
@@ -28,13 +32,14 @@ export default function PanelMedico({ idHijo }: PanelMedicoProps) {
     fetchUserData();
   }, [idHijo]);
 
-  const handleViewMoreClick = () => {
-    console.log("Ver más clickeado");
+  const handleViewMoreClick = (category: string) => {
+    setSelectedCategory(category); 
     setShowInfoMedical(true);
   };
 
   const handleCloseAjustes = () => {
     setShowInfoMedical(false);
+    setSelectedCategory(null); 
   };
 
   return (
@@ -49,26 +54,39 @@ export default function PanelMedico({ idHijo }: PanelMedicoProps) {
       <div className="flex justify-between">
         <MedicalHistoryCard
           date="Evaluaciones Psicológicas"
-          onViewMoreClick={handleViewMoreClick}
+          onViewMoreClick={() => handleViewMoreClick("psychological")}
           category="Ultima actualizacion: 12/08/2024"
         />
         <MedicalHistoryCard
           date="Evaluaciones Fonoaudiólogicas"
-          onViewMoreClick={handleViewMoreClick}
+          onViewMoreClick={() => handleViewMoreClick("speech")}
           category="Ultima actualizacion: 12/08/2024"
         />
         <MedicalHistoryCard
           date="Evaluaciones Fisiológicas"
-          onViewMoreClick={handleViewMoreClick}
+          onViewMoreClick={() => handleViewMoreClick("physiological")}
           category="Ultima actualizacion: 12/08/2024"
         />
         <MedicalHistoryCard
           date="Evaluaciones Neurológicas"
-          onViewMoreClick={handleViewMoreClick}
+          onViewMoreClick={() => handleViewMoreClick("neurological")}
           category="Ultima actualizacion: 12/08/2024"
         />
       </div>
-      {showInfoMedical && <PopUpPsychologycalSession onClose={handleCloseAjustes} hijoId={idHijo} />}
+
+      {showInfoMedical && selectedCategory === "psychological" && (
+        <PopUpPsychologycalSession onClose={handleCloseAjustes} hijoId={idHijo} />
+      )}
+      {showInfoMedical && selectedCategory === "speech" && (
+        <PopUpSpeechTherapySession onClose={handleCloseAjustes} hijoId={idHijo} />
+      )}
+      {showInfoMedical && selectedCategory === "physiological" && (
+        <PopUpPhysiologycalTherapies onClose={handleCloseAjustes} hijoId={idHijo} />
+      )}
+      {showInfoMedical && selectedCategory === "neurological" && (
+        <PopUpNeurologicalTherapies onClose={handleCloseAjustes} hijoId={idHijo} />
+      )}
     </section>
   );
 }
+

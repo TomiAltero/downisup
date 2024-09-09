@@ -59,6 +59,31 @@ export const getPsycholgyTherapies = async (hijoId = 1) => {
     throw error;
   }
 };
+export const getSpeechTherapies = async (hijoId = 1) => {
+  try {
+    const token = localStorage.getItem('token'); 
+
+    const response = await fetch(`http://localhost:5000/api/medicalData/${hijoId}/speechTherapies`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`, 
+      },
+    });
+
+    if (!response.ok) {
+      throw new Error('Error al obtener las terapias fonoaudiológicas');
+    }
+
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error("Error en getAll:", error);
+    throw error;
+  }
+};
+
+
 
 export async function getChildrenAndUser({ token }: { token: string }) {
 try {

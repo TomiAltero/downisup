@@ -1,4 +1,4 @@
-const PhysiologyTherapies = require('../../models/medical-data/speechTherapies');
+const PhysiologyTherapies = require('../../models/medical-data/physiologycalTherapies');
 
 class PhysiologyTherapiesController {
   async addPhysiologyTherapie(req, res) {

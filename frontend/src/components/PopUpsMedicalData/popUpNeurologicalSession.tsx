@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { getSpeechTherapies } from "@/lib/utils";
 
-const PopUpPhysiologycalTherapies = ({ onClose, hijoId }: { onClose: () => void, hijoId: number }) => {
+const PopUpNeurologicalTherapies = ({ onClose, hijoId }: { onClose: () => void, hijoId: number }) => {
   const [sessionData, setSessionData] = useState<any>(null);
   const [loading, setLoading] = useState(true);
 
@@ -56,7 +56,7 @@ const PopUpPhysiologycalTherapies = ({ onClose, hijoId }: { onClose: () => void,
           ✕
         </button>
         <h2 className="text-3xl font-bold mb-6 text-blue-900">
-          Informe de Sesión Fisiológica: {hijo?.nombre || "Nombre del paciente no disponible"} {hijo?.apellido || ""}
+          Informe de Sesión Neurológica: {hijo?.nombre || "Nombre del paciente no disponible"} {hijo?.apellido || ""}
         </h2>
         <div className="mt-6 space-y-6 text-left">
           <div>
@@ -89,5 +89,5 @@ const PopUpPhysiologycalTherapies = ({ onClose, hijoId }: { onClose: () => void,
   );
 };
 
-export default PopUpPhysiologycalTherapies;
+export default PopUpNeurologicalTherapies;
 
