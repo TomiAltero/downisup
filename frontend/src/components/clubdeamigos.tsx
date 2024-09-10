@@ -2,7 +2,6 @@
 import { useEffect, useState } from 'react';
 import { motion, useAnimation } from 'framer-motion';
 import Image from 'next/image';
-import ubicacionImage from '../../public/ubicacion.png';
 import { useInView } from 'react-intersection-observer';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
@@ -333,7 +332,7 @@ const Clubdeamigos = () => {
             </h2>
 
             {showFormEmpresa && (
-              <form onSubmit={handleSubmitEmpresa} className="flex flex-col w-full pt-4 mx-auto px-4 bg-white rounded-lg">
+              <form onSubmit={handleSubmitEmpresa} className="flex flex-col w-full pt-4 mx-auto px-4 bg-white rounded-lg mt-10">
                 <section className="flex flex-col lg:flex-row gap-4 mb-4">
                   <article className="flex-1">
                     <label className="block text-xs leading-6 text-blue-900 mb-2 font-semibold">

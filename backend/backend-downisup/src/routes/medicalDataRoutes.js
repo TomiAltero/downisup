@@ -4,6 +4,7 @@ const psychologyTherapieController = require('../controllers/medical-data/psicho
 const tokenVerify = require('../middlewars/authentification');
 const speechTherapies = require('../controllers/medical-data/speechTherapies');
 const physiologyTherapies = require('../controllers/medical-data/physiologyTherapies');
+const neurologyTherapies = require('../controllers/medical-data/neurologyTherapies');
 
 
 router.get(
@@ -12,10 +13,25 @@ router.get(
   psychologyTherapieController.getPsychologyTherapiesForChildren
 );
 
+router.get(
+  '/:hijoId/speechTherapies',
+  tokenVerify,
+  speechTherapies.getSpeechTherapiesForChildren
+);
+
+router.get(
+  '/:hijoId/physiologyTherapies',
+  tokenVerify,
+  physiologyTherapies.getPhysiologyTherapiesForChildren
+);
+
+
+
 
 router.post('/psychologyTherapies', psychologyTherapieController.addPsychologyTherapy);
 router.post('/speechTherapies', speechTherapies.addSpeechTherapies);
-router.post('/physiologicalTherapies', physiologyTherapies.addPhysiologyTherapie)
+router.post('/physiologicalTherapies', physiologyTherapies.addPhysiologyTherapie);
+router.post('/neurologicalTherapies', neurologyTherapies.addNeurologyTherapie);
 
 
 module.exports = router;
