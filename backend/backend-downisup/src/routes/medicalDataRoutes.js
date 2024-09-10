@@ -8,7 +8,7 @@ const neurologyTherapies = require('../controllers/medical-data/neurologyTherapi
 const medicalDataGeneral = require('../controllers/medical-data/dataMedicalController')
 
 
-router.get('/specialities',tokenVerify, medicalDataGeneral.getAllSpecialities);
+router.get('/specialities', medicalDataGeneral.getAllSpecialities);
 
 router.get(
   '/:hijoId/psychologyTherapies',
