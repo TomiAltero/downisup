@@ -94,7 +94,7 @@ const Consultorios = () => {
         <div className="mb-8">
 
           <h1 className="text-center text-xl md:text-md font-semibold text-blue-900 mb-10 lg:mx-70 md:10">
-          "Arrancamos con este proyecto que nos llena de felicidad ya que es la base para comenzar a diagramar la vivienda de apoyo de la Fundación Down is up Cba."</h1>
+          &quot;Arrancamos con este proyecto que nos llena de felicidad ya que es la base para comenzar a diagramar la vivienda de apoyo de la Fundación Down is up Cba.&quot;</h1>
 
           <div className="flex justify-center">          
             <Image
@@ -104,7 +104,6 @@ const Consultorios = () => {
             layout=""
           />
           </div>
-
 
           <h1 className="text-sm mt-2 mb-5 text-center">Pérez de herrera 2053 B° Cerro de las Rosas</h1>
 

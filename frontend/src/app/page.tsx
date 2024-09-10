@@ -148,15 +148,9 @@ export default function Home() {
                 height={100}
                 className="-mt-30 mb-4 md:mb-6"
               />
-              <p className="text-white text-lg md:text-xl leading-relaxed">
-                "LOGRAR LA
-              </p>
-              <p className="text-white text-xl md:text-2xl font-extrabold leading-relaxed">
-                AUTONOMÍA Y VIDA INDEPENDIENTE
-              </p>
-              <p className="text-white text-lg md:text-xl leading-relaxed">
-                ES UN DESAFÍO Y UN RETO, TANTO PARA LA PERSONA, COMO PARA SU ENTORNO"
-              </p>
+              <p className="text-white text-lg md:text-xl leading-relaxed">&quot;LOGRAR LA</p>
+              <p className="text-white text-xl md:text-2xl font-extrabold leading-relaxed">AUTONOMÍA Y VIDA INDEPENDIENTE</p>
+              <p className="text-white text-lg md:text-xl leading-relaxed">ES UN DESAFÍO Y UN RETO, TANTO PARA LA PERSONA, COMO PARA SU ENTORNO&quot;</p>
             </div>
 
             {/* División diagonal, solo visible en pantallas medianas y más grandes */}
