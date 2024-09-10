@@ -1,5 +1,5 @@
 import React from "react";
-import { FormChildren } from "@/components/agregar-hijo";
+import { FormChildren } from "@/components/childrenComponents/agregar-hijo";
 import AppLayout from "@/layouts/AppLayout";
 const Page = () => {
   return (

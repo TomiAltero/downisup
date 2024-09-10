@@ -12,7 +12,7 @@ import 'swiper/css/navigation';
 import 'swiper/css/autoplay'; // Importamos CSS de autoplay
 import { Footer } from "../components/footer";
 import { FooterWithLinks } from "@/components/footerLinks";
-import { PhoneIconSvg, MessageIconSvg, PinIconSvg} from "@/components/ui/icons"
+import { PhoneIconSvg, MessageIconSvg, PinIconSvg, CalendarIcon} from "@/components/ui/icons"
 
 // CSS para las animaciones
 const styles = `
@@ -27,6 +27,25 @@ const styles = `
     transform: translateY(0);
   }
 `;
+
+const eventCards = [
+  {
+    title: "Ponemos casa en valle escondido",
+    shortDescription: "Short description for Event 1",
+    longDescription: "Long description for Event 1",
+    image: "/chicasPlaza.jpg",
+    date : "Martes 3 de Septiembre"
+  },
+  {
+    title: "Event 2",
+    shortDescription: "Short description for Event 2",
+    longDescription: "Long description for Event 2",
+    image: "/chicasPlaza.jpg",
+    date : "Martes 3 de Septiembre"
+
+  },
+];
+
 
 // Función para manejar las animaciones al hacer scroll
 const handleScrollAnimations = () => {
@@ -129,15 +148,9 @@ export default function Home() {
                 height={100}
                 className="-mt-30 mb-4 md:mb-6"
               />
-              <p className="text-white text-lg md:text-xl leading-relaxed">
-                "LOGRAR LA
-              </p>
-              <p className="text-white text-xl md:text-2xl font-extrabold leading-relaxed">
-                AUTONOMÍA Y VIDA INDEPENDIENTE
-              </p>
-              <p className="text-white text-lg md:text-xl leading-relaxed">
-                ES UN DESAFÍO Y UN RETO, TANTO PARA LA PERSONA, COMO PARA SU ENTORNO"
-              </p>
+              <p className="text-white text-lg md:text-xl leading-relaxed">&quot;LOGRAR LA</p>
+              <p className="text-white text-xl md:text-2xl font-extrabold leading-relaxed">AUTONOMÍA Y VIDA INDEPENDIENTE</p>
+              <p className="text-white text-lg md:text-xl leading-relaxed">ES UN DESAFÍO Y UN RETO, TANTO PARA LA PERSONA, COMO PARA SU ENTORNO&quot;</p>
             </div>
 
             {/* División diagonal, solo visible en pantallas medianas y más grandes */}
@@ -209,27 +222,64 @@ export default function Home() {
           {/* Cuarta sección */}
           <section className="h-screen w-full flex flex-col md:flex-row snap-start transition-transform duration-1200 ease-in-out relative fade-in">
             <div className="w-full md:w-4/12 flex flex-col justify-center items-center lg:-mt-30 md:mt-0 p-6 md:p-10 z-10 bg-custom-blue md:bg-transparent">
-              <div className="items-start">
-                <p className=" text-white text-xl md:text-2xl text-center font-bold leading-relaxed">
-                  INFORMACION DE CONTACTO
-                </p>
-                <p className="text-white text-lg mt-5 mb-5 md:text-xl leading-relaxed">
-                  <PhoneIconSvg />3517960194
-                </p>
-                <p className="text-white text-lg mt-5 mb-5 md:text-xl leading-relaxed">
-                  <MessageIconSvg />fundaciondownisupcba@gmail.com
-                </p>
-                <p className="text-white text-lg mt-5 mb-5 md:text-xl leading-relaxed">
-                  <PinIconSvg />Pérez de Herrera 2053
-                </p>
+                <div className="items-start">
+                  <p className=" text-white text-xl md:text-2xl text-center font-bold leading-relaxed">
+                    INFORMACION DE CONTACTO
+                  </p>
+                  <p className="text-white text-lg mt-5 mb-5 md:text-xl leading-relaxed">
+                    <PhoneIconSvg />3517960194
+                  </p>
+                  <p className="text-white text-lg mt-5 mb-5 md:text-xl leading-relaxed">
+                    <MessageIconSvg />fundaciondownisupcba@gmail.com
+                  </p>
+                  <p className="text-white text-lg mt-5 mb-5 md:text-xl leading-relaxed">
+                    <PinIconSvg />Pérez de Herrera 2053
+                  </p>
+                </div>
               </div>
-            </div>
 
-            {/* División diagonal, solo visible en pantallas medianas y más grandes */}
-            <div className="hidden md:block absolute w-full h-full -inset-x-0 z-0 bg-custom-blue" style={{ clipPath: "polygon(0 0, 38% 0, 25% 100%, 0% 100%)" }}></div>
+              {/* División diagonal, solo visible en pantallas medianas y más grandes */}
+              <div className="hidden md:block absolute w-full h-full -inset-x-0 z-0 bg-custom-blue" style={{ clipPath: "polygon(0 0, 38% 0, 25% 100%, 0% 100%)" }}></div>
 
-            <div className="w-full md:w-8/12 flex flex-col justify-center items-center p-6 md:p-10 z-10">
+              <div className="w-full md:w-8/12 flex flex-col justify-center items-center p-6 md:p-10 z-10">
+          
+              {eventCards.map((event, index) => (
+                <article
+                  key={index}
+                  className="flex flex-col items-center justify-center w-120 h-auto bg-gray-300 rounded-3xl shadow-md p-5 m-5 gap-1"
+                >
+                    <h2 className="text-xl mt-5 mb-5 text-custom-blue font-semibold">
+                      {event.title}
+                    </h2>
+                    
+                  <article className="flex gap-x-4">
+                  <Image
+                    src={event.image}
+                    alt="Event"
+                    className="object-cover rounded-3xl"
+                    width={250}
+                    height={250}
+                  />
+                  <article className="flex flex-col justify-between py-10">
+                    <p className="text-sm text-center text-gray-700">
+                      {event.shortDescription}
+                    </p>
+                    <Button
+                      className="mt-5 bg-custom-blue text-white px-5 py-2 rounded-lg"
+                    >
+                      <a href="/acciones">Ver más</a>
+                    </Button>
+                  </article>
+                  </article>
+                  <article className="flex items-center gap-x-2 mt-4">
+                    <CalendarIcon  className="text-blue-900"/>
+                    <h3 className="text-sm text-blue-900">
+                      {event.date}
+                    </h3>
+                  </article>
 
+                </article>
+              ))}
             </div>
           </section>
 
