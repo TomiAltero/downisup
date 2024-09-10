@@ -37,7 +37,7 @@ const Page = () => {
       <main className={`flex flex-col items-center h-full p-4 space-y-4 ${showContent ? 'fade-in' : 'initial'}`}>
         <div className="w-full max-w-screen-xl mb-8">
           <div className="bg-gray-50 p-6 rounded-md">
-            <PanelMedico idHijo={id as string} /> 
+            <PanelMedico idHijo={id} /> 
           </div>
         </div>
         <div className="w-full max-w-screen-xl flex justify-start space-x-8 mt-16">

@@ -11,7 +11,7 @@ const Page = () => {
     const token = localStorage.getItem("token");
     if (!token) {
       setIsAuthorized(false);
-      router.push("/notfound");
+      router.push("/");
     }
   }, [router]);
 

@@ -10,6 +10,7 @@ import { Hijo } from "@/types";
 import { getHijoProfile, getChildrenAndUser } from "@/lib/utils";
 
 export async function PanelHijo({ token }: { token: string }) {
+  
   if (!token) {
     return null;
   }
