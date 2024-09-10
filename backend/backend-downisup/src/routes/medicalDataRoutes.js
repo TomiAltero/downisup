@@ -5,7 +5,10 @@ const tokenVerify = require('../middlewars/authentification');
 const speechTherapies = require('../controllers/medical-data/speechTherapies');
 const physiologyTherapies = require('../controllers/medical-data/physiologyTherapies');
 const neurologyTherapies = require('../controllers/medical-data/neurologyTherapies');
+const medicalDataGeneral = require('../controllers/medical-data/dataMedicalController')
 
+
+router.get('/specialities',tokenVerify, medicalDataGeneral.getAllSpecialities);
 
 router.get(
   '/:hijoId/psychologyTherapies',
@@ -23,6 +26,12 @@ router.get(
   '/:hijoId/physiologyTherapies',
   tokenVerify,
   physiologyTherapies.getPhysiologyTherapiesForChildren
+);
+
+router.get(
+  '/:hijoId/neurologicalTherapies',
+  tokenVerify,
+  neurologyTherapies.getNeurologicalForChildren
 );
 
 
