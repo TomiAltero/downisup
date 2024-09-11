@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getSpeechTherapies } from "@/lib/utils";
+import { getNeurologicalTherapies } from "@/lib/utils";
 
 const PopUpNeurologicalTherapies = ({ onClose, hijoId }: { onClose: () => void, hijoId: number }) => {
   const [sessionData, setSessionData] = useState<any>(null);
@@ -8,19 +8,19 @@ const PopUpNeurologicalTherapies = ({ onClose, hijoId }: { onClose: () => void, 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const data = await getSpeechTherapies(hijoId);
+        const data = await getNeurologicalTherapies(hijoId);
         console.log("Datos obtenidos de la sesión:", data);
 
-        if (data && data.speechTherapies && data.speechTherapies.length > 0) {
-          const [firstTherapy] = data.speechTherapies;
+        if (data && data.neurologicalTherapies && data.neurologicalTherapies.length > 0) {
+          const [firstTherapy] = data.neurologicalTherapies;
           setSessionData({
             ...data,
-            speechTherapies: firstTherapy,
+            neurologicalTherapies: firstTherapy,
           });
         } else {
           setSessionData({
             ...data,
-            speechTherapies: null,
+            neurologicalTherapies: null,
           });
         }
       } catch (error) {
@@ -43,7 +43,7 @@ const PopUpNeurologicalTherapies = ({ onClose, hijoId }: { onClose: () => void, 
     );
   }
 
-  const therapy = sessionData?.psychologicalTherapy;
+  const therapy = sessionData?.neurologicalTherapies;
   const hijo = sessionData?.hijo;
 
   return (
@@ -62,7 +62,7 @@ const PopUpNeurologicalTherapies = ({ onClose, hijoId }: { onClose: () => void, 
           <div>
             <h3 className="text-xl font-semibold text-blue-700">Objetivos de la Sesión</h3>
             <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
-              {therapy?.objetives || "No hay Objetivos de la Sesion Disponible."}
+              {therapy?.objectives || "No hay Objetivos de la Sesion Disponible."}
             </p>
           </div>
           <div>
