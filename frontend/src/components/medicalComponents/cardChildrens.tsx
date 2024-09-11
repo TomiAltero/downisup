@@ -16,7 +16,7 @@ export async function CardChildren({ token }: { token: string }) {
   const hijosData = Array.isArray(hijosArray) ? hijosArray : hijosArray.hijos;
 
   return (
-    <Card className="w-125">
+    <Card className="w-125 h-90">
       <CardBody>
         <div className="mb-4 flex items-center justify-between">
           <Typography variant="h5" color="blue-gray" className="">
