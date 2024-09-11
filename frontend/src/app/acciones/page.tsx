@@ -62,7 +62,7 @@ export default function AccionesPage() {
                   src={event.image}
                   alt="Event"
                   className="object-cover rounded-3xl"
-                  width={250}
+                  width={300}
                   height={250}
                 />
                 <article className="flex flex-col justify-between py-10">

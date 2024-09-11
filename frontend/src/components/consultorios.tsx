@@ -38,7 +38,7 @@ const Consultorios = () => {
   return (
     <section className="bg-white">
 
-      <section className="relative w-full h-screen mb-10" style={{ height: "300px" }}>
+      <section className="relative w-full h-screen mb-10" style={{ height: "250px" }}>
 
         <div className="absolute inset-0 z-10 flex items-center justify-center">
           <h1 className="text-white text-4xl font-bold mt-10">CONSULTORIOS</h1>
