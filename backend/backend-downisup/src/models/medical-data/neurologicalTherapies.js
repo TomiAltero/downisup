@@ -38,7 +38,7 @@ NeurologicalTherapies.init(
   {
     sequelize,
     modelName: "NeurologicalTherapies",
-    tableName: "neurological_therapies",
+    tableName: "neurological_therapie",
     timestamps: false,
   }
 );

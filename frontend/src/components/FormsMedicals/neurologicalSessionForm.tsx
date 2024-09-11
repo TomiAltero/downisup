@@ -4,7 +4,7 @@ import { getUserProfile } from '@/lib/utils';
 import Toastify from 'toastify-js';
 import 'toastify-js/src/toastify.css';
 
-const NeurologicalSessionForm = ({ idHijo }: { idHijo: string }) => {
+const NeurologicalSessionForm = ({ hijoId }: { hijoId: string }) => {
   const [idUsuario, setIdUsuario] = useState('');
   const [fecha, setFecha] = useState('');
   const [horaInicio, setHoraInicio] = useState('');
@@ -12,7 +12,6 @@ const NeurologicalSessionForm = ({ idHijo }: { idHijo: string }) => {
   const [descripcion, setDescripcion] = useState('');
   const [objetivos, setObjetivos] = useState('');
   const [observaciones, setObservaciones] = useState('');
-  const [duracion, setDuracion] = useState('');
 
   useEffect(() => {
     const fetchUserProfile = async () => {
@@ -37,13 +36,12 @@ const NeurologicalSessionForm = ({ idHijo }: { idHijo: string }) => {
     setDescripcion('');
     setObjetivos('');
     setObservaciones('');
-    setDuracion('');
   };
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    if (!idHijo || !idUsuario || !fecha || !horaInicio || !horaFin || !descripcion || !objetivos || !observaciones) {
+    if (!hijoId || !idUsuario || !fecha || !horaInicio || !horaFin || !descripcion || !objetivos || !observaciones) {
       Toastify({
         text: "Todos los campos son obligatorios.",
         duration: 5000,
@@ -66,7 +64,7 @@ const NeurologicalSessionForm = ({ idHijo }: { idHijo: string }) => {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          idHijo,
+          hijoId,
           idUsuario,
           date: fecha,
           description: descripcion,

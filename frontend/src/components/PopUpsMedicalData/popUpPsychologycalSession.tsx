@@ -91,7 +91,7 @@ const PopUpPsychologycalSession = ({ onClose, hijoId }: { onClose: () => void, h
           ))
         ) : (
             <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
-            No hay terapias fisiológicas disponibles.
+            No hay terapias Psicológicas disponibles.
             </p>        
           )}
       </div>

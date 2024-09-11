@@ -5,21 +5,21 @@ const Usuario = require('../../models/users/usuario');
 class NeurologicalTherapiesController {
   async addNeurologyTherapie(req, res) {
     try {
-      const { date, description, objectives, observations, idUsuario, idHijo } = req.body;
+      const { date, description, objectives, observations, idUsuario, hijoId } = req.body;
 
       if (!date || !idUsuario) {
         return res.status(400).json({ message: "Date and idUsuario are required" });
       }
 
       const newTherapie = await NeurologicalTherapies.create({
-        idHijo,
+        hijoId,
         idUsuario,
         date,
         description,
         objectives,
         observations,
         idUsuario,
-        idHijo,
+        hijoId,
       });
 
       return res.status(201).json({ message: "Neurological therapy added successfully", data: newTherapie });

@@ -6,7 +6,7 @@ import PopUpPhysiologycalTherapies from "../PopUpsMedicalData/popUpPhysiological
 import PopUpNeurologicalTherapies from "../PopUpsMedicalData/popUpNeurologicalSession";
 import Typography from "@mui/material/Typography";
 import { getPsycholgyTherapies } from "@/lib/utils";
-import {RiMentalHealthFill, RiUserVoiceFill, RiBodyScanFill, RiBrainFill} from  "react-icons/ri";
+import { RiMentalHealthFill, RiUserVoiceFill, RiBodyScanFill, RiBrainFill } from "react-icons/ri";
 
 interface PanelMedicoProps {
   idHijo: number;
@@ -16,6 +16,7 @@ export default function PanelMedico({ idHijo }: PanelMedicoProps) {
   const [showInfoMedical, setShowInfoMedical] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [userName, setUserName] = useState<string>("");
+  const [loading, setLoading] = useState(true); // Estado de carga
 
   useEffect(() => {
     const fetchUserData = async () => {
@@ -27,6 +28,8 @@ export default function PanelMedico({ idHijo }: PanelMedicoProps) {
       } catch (error) {
         console.error("Error al obtener los datos del usuario:", error);
         setUserName("Usuario desconocido");
+      } finally {
+        setLoading(false); // Finaliza el estado de carga
       }
     };
 
@@ -42,6 +45,10 @@ export default function PanelMedico({ idHijo }: PanelMedicoProps) {
     setShowInfoMedical(false);
     setSelectedCategory(null);
   };
+
+  if (loading) {
+    return <div>Loading...</div>; // O puedes usar un spinner de carga
+  }
 
   return (
     <section>
