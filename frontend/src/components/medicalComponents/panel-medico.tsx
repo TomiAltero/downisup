@@ -16,7 +16,7 @@ export default function PanelMedico({ idHijo }: PanelMedicoProps) {
   const [showInfoMedical, setShowInfoMedical] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [userName, setUserName] = useState<string>("");
-  const [loading, setLoading] = useState(true); // Estado de carga
+  const [loading, setLoading] = useState(true); 
 
   useEffect(() => {
     const fetchUserData = async () => {
@@ -29,7 +29,7 @@ export default function PanelMedico({ idHijo }: PanelMedicoProps) {
         console.error("Error al obtener los datos del usuario:", error);
         setUserName("Usuario desconocido");
       } finally {
-        setLoading(false); // Finaliza el estado de carga
+        setLoading(false); 
       }
     };
 
@@ -47,7 +47,7 @@ export default function PanelMedico({ idHijo }: PanelMedicoProps) {
   };
 
   if (loading) {
-    return <div>Loading...</div>; // O puedes usar un spinner de carga
+    return <div>Loading...</div>; 
   }
 
   return (
