@@ -72,7 +72,7 @@ export function FooterWithLinks() {
           variant="small"
           className="text-center text-gray-400 text-lg md:text-md"
         >
-          &copy; {currentYear} Material Tailwind. All Rights Reserved.
+          &copy; {currentYear} DownIsUp Cordoba. All Rights Reserved.
         </Typography>
         
         <div className="flex space-x-4">

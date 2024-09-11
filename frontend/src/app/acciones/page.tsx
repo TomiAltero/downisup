@@ -77,7 +77,7 @@ export default function AccionesPage() {
                 </article>
                 </article>
                 <article className="flex items-center gap-x-2 mt-4">
-                  <CalendarIcon  className="text-blue-900"/>
+                  <CalendarIcon  className=" size-8 text-blue-900"/>
                   <h3 className="text-sm text-blue-900">
                     {event.date}
                   </h3>

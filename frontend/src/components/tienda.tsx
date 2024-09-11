@@ -88,7 +88,7 @@ export default function Tienda() {
                 objectFit="cover"
                 className="z-[-1]"
               />
-              <div className="absolute inset-0 bg-gradient-to-b from-blue-900 to-blue-900 opacity-50 flex items-center justify-center">
+              <div className="absolute inset-0 bg-gradient-to-b from-blue-700 to-blue-700 opacity-50 flex items-center justify-center">
               </div>
             </SwiperSlide>
           ))}

@@ -245,9 +245,9 @@ export default function Home() {
               {eventCards.map((event, index) => (
                 <article
                   key={index}
-                  className="flex flex-col items-center justify-center w-full max-w-md bg-gray-200 rounded-3xl shadow-md p-5 m-5 gap-1"
+                  className="flex flex-col items-center justify-center w-full max-w-md bg-gray-200 rounded-3xl shadow-md p-4 m-5 gap-2"
                 >
-                  <h2 className="text-xl mt-5 mb-5 text-custom-blue font-semibold text-center">
+                  <h2 className="text-xl mt-4 mb-4 text-custom-blue font-semibold text-center">
                     {event.title}
                   </h2>
 
@@ -256,27 +256,28 @@ export default function Home() {
                       src={event.image}
                       alt="Event"
                       className="object-cover rounded-3xl"
-                      width={250}
-                      height={250}
+                      width={200}
+                      height={200}
                     />
-                    <div className="flex flex-col justify-between py-10">
+                    <div className="flex flex-col justify-between py-6">
                       <p className="text-sm text-center text-gray-700">
                         {event.shortDescription}
                       </p>
-                      <Button className="mt-5 bg-custom-blue text-white px-5 py-2 rounded-lg">
+                      <Button className="mt-4 bg-custom-blue text-white px-4 py-2 rounded-lg">
                         <a href="/acciones">Ver más</a>
                       </Button>
                     </div>
                   </div>
 
                   <div className="flex items-center gap-x-2 mt-4">
-                    <CalendarIcon className="text-blue-900" />
+                    <CalendarIcon className="text-sm size-7 text-blue-900" />
                     <h3 className="text-sm text-blue-900">{event.date}</h3>
                   </div>
                 </article>
               ))}
             </div>
           </section>
+
 
           {/* Footer para la cuarta sección */}
           <footer className="hidden md:block w-full mt-auto fade-in">
