@@ -7,9 +7,9 @@ import '../page.css';
 
 const Page = () => {
   const router = useRouter();
-  const [isAuthorized, setIsAuthorized] = useState(true);
+  const [isAuthorized, setIsAuthorized] = useState<boolean>(true);
   const [token, setToken] = useState<string>("");
-  const [showContent, setShowContent] = useState(false);
+  const [showContent, setShowContent] = useState<boolean>(false);
 
   useEffect(() => {
     const token = localStorage.getItem("token");

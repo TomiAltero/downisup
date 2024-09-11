@@ -43,7 +43,7 @@ const NeurologicalSessionForm = ({ idHijo }: { idHijo: string }) => {
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    if (!idHijo || !idUsuario || !fecha || !horaInicio || !horaFin || !descripcion || !objetivos || !observaciones || !duracion) {
+    if (!idHijo || !idUsuario || !fecha || !horaInicio || !horaFin || !descripcion || !objetivos || !observaciones) {
       Toastify({
         text: "Todos los campos son obligatorios.",
         duration: 5000,
@@ -206,20 +206,6 @@ const NeurologicalSessionForm = ({ idHijo }: { idHijo: string }) => {
             ></textarea>
           </article>
         </section>
-
-        <section className="flex flex-col lg:flex-row gap-4 mb-4">
-          <article className="flex-1">
-            <label className="block text-xs leading-6 text-blue-900 mb-2 font-semibold">Duración (en minutos)</label>
-            <input
-              className="w-full rounded-none border-t-0 border-l-0 border-r-0 border-b-2 border-blue-800 bg-gray-50 outline-none focus:ring-0 focus:border-blue-600 text-gray-500 text-base p-2"
-              type="number"
-              value={duracion}
-              onChange={(e) => setDuracion(e.target.value)}
-              required
-            />
-          </article>
-        </section>
-
         <div className="flex justify-start">
           <button className="bg-blue-900 text-white px-6 py-3 rounded shadow hover:bg-blue-800 text-xs mb-7" type="submit">
             Enviar Datos

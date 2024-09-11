@@ -15,3 +15,9 @@ export interface Hijo {
     dni: string;
     imagen: string | null;
 }
+export interface Especialidad {
+  id: number;
+  name: string;
+  description: string | null;
+  route : string;
+}

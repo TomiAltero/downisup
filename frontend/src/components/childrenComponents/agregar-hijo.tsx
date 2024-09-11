@@ -54,7 +54,7 @@ export function FormChildren() {
       setApellido("");
       setEdad("");
       setDni("");
-      setNacimiento("");
+      // setNacimiento("");
     } catch (error: any) {
       console.error(
         "Error registrando el usuario:",

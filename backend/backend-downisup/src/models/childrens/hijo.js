@@ -3,6 +3,7 @@ const sequelize = require("../../config/database");
 const PsychologycalTherapies = require('../medical-data/psychologycalTherapies');
 const speechTherapies = require('../medical-data/speechTherapies');
 const PhysiologicalTherapies = require('../medical-data/physiologycalTherapies');
+const NeurologicalTherapies = require("../medical-data/neurologicalTherapies");
 
 class Hijo extends Model {}
 
@@ -67,6 +68,11 @@ Hijo.hasMany(speechTherapies, {
 Hijo.hasMany(PhysiologicalTherapies, {
   foreignKey: "hijoId",
   as: "PhysiologicalTherapies", 
+});
+
+Hijo.hasMany(NeurologicalTherapies, {
+  foreignKey: "hijoId",
+  as: "NeurologicalTherapies", 
 });
 
 
