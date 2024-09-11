@@ -59,7 +59,7 @@ export default function Tienda() {
   return (
     <LandingLayout>
       {/* Sección del carrusel de productos destacados - sin límite de ancho */}
-      <section className="relative w-fullscreen pt-16" style={{ height: "300px" }}>
+      <section className="relative w-fullscreen pt-16" style={{ height: "250px" }}>
         {/* Título sobre el carrusel */}
         <div className="absolute inset-0 z-10 flex items-center justify-center">
           <h1 className="text-white text-4xl font-bold mt-10">Nuestra Tienda</h1>
@@ -97,12 +97,12 @@ export default function Tienda() {
 
       <div className="flex justify-center">
         {/* Contenedor Principal con ancho limitado */}
-        <main className="p-4 w-full mx-40">
+        <main className="p-4 w-full max-w-screen-xl mx-auto">
           {/* Sección de productos en la tienda */}
-          <section className="gap-20 py-10">
+          <section className="gap-10 py-10">
             <h1 className="text-3xl text-custom-blue font-bold text-center mb-8">Productos destacados</h1>
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10">
-              {products.map(product => (
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 lg:gap-10">
+              {products.map((product) => (
                 <ProductCard
                   key={product.id}
                   id={product.id}
@@ -120,6 +120,7 @@ export default function Tienda() {
           </section>
         </main>
       </div>
+
 
       <FooterWithLinks />
 

@@ -91,9 +91,7 @@ const Clubdeamigos = () => {
   return (
     <section className="bg-white">
       <section
-        className="relative w-full h-screen mb-10"
-        style={{ height: "300px" }}
-      >
+        className="relative w-full h-screen mb-10" style={{ height: "250px" }} >
         <div className="absolute inset-0 z-10 flex items-center justify-center">
           <h1 className="text-white text-4xl font-bold mt-10">
             CLUB DE AMIGOS
@@ -172,7 +170,7 @@ const Clubdeamigos = () => {
                       Nombre
                     </label>
                     <input
-                      className="w-full rounded-none border-b-2 border-blue-800 bg-gray-50 outline-none focus:border-blue-600 p-2 text-black"
+                      className="w-full rounded-none border-b-2 border-blue-800 bg-gray-50 outline-none focus:border-blue-600 p-2 text-base text-black"
                       type="text"
                       name="nombre"
                       value={formDataVoluntario.nombre}
@@ -185,7 +183,7 @@ const Clubdeamigos = () => {
                       Apellido
                     </label>
                     <input
-                      className="w-full rounded-none border-b-2 border-blue-800 bg-gray-50 outline-none focus:border-blue-600 p-2 text-black"
+                      className="w-full rounded-none border-b-2 border-blue-800 bg-gray-50 outline-none focus:border-blue-600 p-2 text-base text-black"
                       type="text"
                       name="apellido"
                       value={formDataVoluntario.apellido}
@@ -201,7 +199,7 @@ const Clubdeamigos = () => {
                       DNI
                     </label>
                     <input
-                      className="w-full rounded-none border-b-2 border-blue-800 bg-gray-50 outline-none focus:border-blue-600 p-2 text-black"
+                      className="w-full rounded-none border-b-2 border-blue-800 bg-gray-50 outline-none focus:border-blue-600 p-2 text-base text-black"
                       type="text"
                       name="dni"
                       value={formDataVoluntario.dni}
@@ -214,7 +212,7 @@ const Clubdeamigos = () => {
                       Email
                     </label>
                     <input
-                      className="w-full rounded-none border-b-2 border-blue-800 bg-gray-50 outline-none focus:border-blue-600 p-2 text-black"
+                      className="w-full rounded-none border-b-2 border-blue-800 bg-gray-50 outline-none focus:border-blue-600 p-2 text-base text-black"
                       type="email"
                       name="email"
                       value={formDataVoluntario.email}
@@ -230,7 +228,7 @@ const Clubdeamigos = () => {
                       Teléfono
                     </label>
                     <input
-                      className="w-full rounded-none border-b-2 border-blue-800 bg-gray-50 outline-none focus:border-blue-600 p-2 text-black"
+                      className="w-full rounded-none border-b-2 border-blue-800 bg-gray-50 outline-none focus:border-blue-600 p-2 text-base text-black"
                       type="tel"
                       name="telefono"
                       value={formDataVoluntario.telefono}
@@ -243,7 +241,7 @@ const Clubdeamigos = () => {
                       Estudios
                     </label>
                     <input
-                      className="w-full rounded-none border-b-2 border-blue-800 bg-gray-50 outline-none focus:border-blue-600 p-2 text-black"
+                      className="w-full rounded-none border-b-2 border-blue-800 bg-gray-50 outline-none focus:border-blue-600 p-2 text-base text-black"
                       type="text"
                       name="estudios"
                       value={formDataVoluntario.estudios}
@@ -259,7 +257,7 @@ const Clubdeamigos = () => {
                       Empresa
                     </label>
                     <input
-                      className="w-full rounded-none border-b-2 border-blue-800 bg-gray-50 outline-none focus:border-blue-600 p-2 text-black"
+                      className="w-full rounded-none border-b-2 border-blue-800 bg-gray-50 outline-none focus:border-blue-600 p-2 text-base text-black"
                       type="text"
                       name="empresa"
                       value={formDataVoluntario.empresa}
@@ -271,7 +269,7 @@ const Clubdeamigos = () => {
                       Fecha de Nacimiento
                     </label>
                     <input
-                      className="w-full rounded-none border-b-2 border-blue-800 bg-gray-50 outline-none focus:border-blue-600 p-2 text-black"
+                      className="w-full rounded-none border-b-2 border-blue-800 bg-gray-50 outline-none focus:border-blue-600 p-2 text-base text-black"
                       type="date"
                       name="fechaNacimiento"
                       value={formDataVoluntario.fechaNacimiento}
@@ -285,7 +283,7 @@ const Clubdeamigos = () => {
                     ¿Cómo conociste a la fundación?
                   </label>
                   <input
-                    className="w-full rounded-none border-b-2 border-blue-800 bg-gray-50 outline-none focus:border-blue-600 p-2 text-black"
+                    className="w-full rounded-none border-b-2 border-blue-800 bg-gray-50 outline-none focus:border-blue-600 p-2 text-base text-black"
                     type="text"
                     name="comoConociste"
                     value={formDataVoluntario.comoConociste}
@@ -298,7 +296,7 @@ const Clubdeamigos = () => {
                     Horarios
                   </label>
                   <input
-                    className="w-full rounded-none border-b-2 border-blue-800 bg-gray-50 outline-none focus:border-blue-600 p-2 text-black"
+                    className="w-full rounded-none border-b-2 border-blue-800 bg-gray-50 outline-none focus:border-blue-600 p-2 text-base text-black"
                     type="text"
                     name="horarios"
                     value={formDataVoluntario.horarios}
@@ -311,7 +309,7 @@ const Clubdeamigos = () => {
                     Comentario
                   </label>
                   <textarea
-                    className="w-full rounded-none border-b-2 border-blue-800 bg-gray-50 outline-none focus:border-blue-600 p-2 text-black"
+                    className="w-full rounded-none border-b-2 border-blue-800 bg-gray-50 outline-none focus:border-blue-600 p-2 text-base text-black"
                     name="comentario"
                     value={formDataVoluntario.comentario}
                     onChange={handleChangeVoluntario}
@@ -339,7 +337,7 @@ const Clubdeamigos = () => {
                       Nombre de la Empresa
                     </label>
                     <input
-                      className="w-full rounded-none border-b-2 border-blue-800 bg-gray-50 outline-none focus:border-blue-600 p-2 text-black"
+                      className="w-full rounded-none border-b-2 border-blue-800 bg-gray-50 outline-none focus:border-blue-600 p-2 text-base text-black"
                       type="text"
                       name="nombreEmpresa"
                       value={formDataEmpresa.nombreEmpresa}
@@ -352,7 +350,7 @@ const Clubdeamigos = () => {
                       Contacto
                     </label>
                     <input
-                      className="w-full rounded-none border-b-2 border-blue-800 bg-gray-50 outline-none focus:border-blue-600 p-2 text-black"
+                      className="w-full rounded-none border-b-2 border-blue-800 bg-gray-50 outline-none focus:border-blue-600 p-2 text-base text-black"
                       type="text"
                       name="contacto"
                       value={formDataEmpresa.contacto}
@@ -368,7 +366,7 @@ const Clubdeamigos = () => {
                       Email
                     </label>
                     <input
-                      className="w-full rounded-none border-b-2 border-blue-800 bg-gray-50 outline-none focus:border-blue-600 p-2 text-black"
+                      className="w-full rounded-none border-b-2 border-blue-800 bg-gray-50 outline-none focus:border-blue-600 p-2 text-base text-black"
                       type="email"
                       name="email"
                       value={formDataEmpresa.email}
@@ -381,7 +379,7 @@ const Clubdeamigos = () => {
                       Teléfono
                     </label>
                     <input
-                      className="w-full rounded-none border-b-2 border-blue-800 bg-gray-50 outline-none focus:border-blue-600 p-2 text-black"
+                      className="w-full rounded-none border-b-2 border-blue-800 bg-gray-50 outline-none focus:border-blue-600 p-2 text-base text-black"
                       type="tel"
                       name="telefono"
                       value={formDataEmpresa.telefono}
@@ -397,7 +395,7 @@ const Clubdeamigos = () => {
                       Dirección
                     </label>
                     <input
-                      className="w-full rounded-none border-b-2 border-blue-800 bg-gray-50 outline-none focus:border-blue-600 p-2 text-black"
+                      className="w-full rounded-none border-b-2 border-blue-800 bg-gray-50 outline-none focus:border-blue-600 p-2 text-base text-black"
                       type="text"
                       name="direccion"
                       value={formDataEmpresa.direccion}
@@ -409,7 +407,7 @@ const Clubdeamigos = () => {
                       CUIT
                     </label>
                     <input
-                      className="w-full rounded-none border-b-2 border-blue-800 bg-gray-50 outline-none focus:border-blue-600 p-2 text-black"
+                      className="w-full rounded-none border-b-2 border-blue-800 bg-gray-50 outline-none focus:border-blue-600 p-2 text-base text-black"
                       type="text"
                       name="cuit"
                       value={formDataEmpresa.cuit}
@@ -423,7 +421,7 @@ const Clubdeamigos = () => {
                     Actividad
                   </label>
                   <input
-                    className="w-full rounded-none border-b-2 border-blue-800 bg-gray-50 outline-none focus:border-blue-600 p-2 text-black"
+                    className="w-full rounded-none border-b-2 border-blue-800 bg-gray-50 outline-none focus:border-blue-600 p-2 text-base text-black"
                     type="text"
                     name="actividad"
                     value={formDataEmpresa.actividad}
@@ -436,7 +434,7 @@ const Clubdeamigos = () => {
                     Horarios
                   </label>
                   <input
-                    className="w-full rounded-none border-b-2 border-blue-800 bg-gray-50 outline-none focus:border-blue-600 p-2 text-black"
+                    className="w-full rounded-none border-b-2 border-blue-800 bg-gray-50 outline-none focus:border-blue-600 p-2 text-base text-black"
                     type="text"
                     name="horarios"
                     value={formDataEmpresa.horarios}
@@ -449,7 +447,7 @@ const Clubdeamigos = () => {
                     Comentario
                   </label>
                   <textarea
-                    className="w-full rounded-none border-b-2 border-blue-800 bg-gray-50 outline-none focus:border-blue-600 p-2 text-black"
+                    className="w-full rounded-none border-b-2 border-blue-800 bg-gray-50 outline-none focus:border-blue-600 p-2 text-base text-black"
                     name="comentario"
                     value={formDataEmpresa.comentario}
                     onChange={handleChangeEmpresa}

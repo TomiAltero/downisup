@@ -86,7 +86,7 @@ export default function QuienesSomos() {
     <LandingLayout>
       <main className="flex flex-col justify-center">
           {/* Sección del carrusel de imágenes */}
-          <section className="relative w-full h-screen mb-22" style={{ height: "300px" }}>
+          <section className="relative w-full h-screen mb-22" style={{ height: "250px" }}>
             {/* Título sobre el carrusel */}
             <div className="absolute inset-0 z-10 flex items-center justify-center">
               <h1 className="text-white text-4xl font-bold mt-10">QUIENES SOMOS</h1>
@@ -104,7 +104,7 @@ export default function QuienesSomos() {
               loop={true} // Vuelve a la primera imagen después de la última
               navigation={false} // Habilita las flechas de navegación
               allowTouchMove={false} // Deshabilita el arrastre manual
-              className="h-full w-full"
+              className="h-full w-auto"
             >
               <SwiperSlide  className="relative h-screen">
                 <Image
