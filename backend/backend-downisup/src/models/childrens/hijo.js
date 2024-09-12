@@ -4,6 +4,7 @@ const PsychologycalTherapies = require('../medical-data/psychologycalTherapies')
 const speechTherapies = require('../medical-data/speechTherapies');
 const PhysiologicalTherapies = require('../medical-data/physiologycalTherapies');
 const NeurologicalTherapies = require("../medical-data/neurologicalTherapies");
+const Appointment = require('../appointment/appointment');
 
 class Hijo extends Model {}
 
@@ -74,6 +75,11 @@ Hijo.hasMany(NeurologicalTherapies, {
   foreignKey: "hijoId",
   as: "NeurologicalTherapies", 
 });
+
+Hijo.hasMany(Appointment, {
+    foreignKey: 'hijoId',
+    as: "Appointment"
+})
 
 
 
