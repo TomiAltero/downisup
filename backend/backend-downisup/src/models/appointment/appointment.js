@@ -1,7 +1,6 @@
 const {DataTypes, Model} = require("sequelize");
 const sequelize = require("../../config/database");
 
-
 class Appointment extends Model {}
 
 
@@ -32,6 +31,11 @@ Appointment.init(
       type: DataTypes.DATE,
       allowNull: false,
     },
+
+    stateName: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
     
     idUsuario: {
       type: DataTypes.INTEGER,
@@ -60,6 +64,7 @@ Appointment.associate = (models) => {
     foreignKey: "idHijo",
     as: "Hijos",
   });
+
 };
 
 module.exports = Appointment;
