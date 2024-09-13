@@ -1,21 +1,21 @@
 {
   "development": {
-    "username": "tomialtero",
-    "password": "T29092005a#",
+    "username": "facu",
+    "password": "facu",
     "database": "downisupDB",
     "host": "127.0.0.1",
     "dialect": "mysql"
   },
   "test": {
-    "username": "tomialtero",
-    "password": "T29092005a#",
+    "username": "facu",
+    "password": "facu",
     "database": "downisupDB",
     "host": "127.0.0.1",
     "dialect": "mysql"
   },
   "production": {
-    "username": "tomialtero",
-    "password": "T29092005a#",
+    "username": "facu",
+    "password": "facu",
     "database": "downisupDB",
     "host": "127.0.0.1",
     "dialect": "mysql"
