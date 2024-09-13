@@ -33,7 +33,7 @@ const eventCards = [
     title: "Día internacional del Síndrome de Down",
     shortDescription: "Todos somos iguales, pero diferentes",
     longDescription: "Long description for Event 1",
-    image: "/DiaInternacional.jpg",
+    image: "/DiaInternacional.webp",
     date : "Martes 3 de Septiembre"
   },
   {
