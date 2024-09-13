@@ -30,17 +30,17 @@ const styles = `
 
 const eventCards = [
   {
-    title: "Ponemos casa en valle escondido",
-    shortDescription: "Short description for Event 1",
+    title: "Día internacional del Síndrome de Down",
+    shortDescription: "Todos somos iguales, pero diferentes",
     longDescription: "Long description for Event 1",
-    image: "/chicasPlaza.jpg",
+    image: "/DiaInternacional.jpg",
     date : "Martes 3 de Septiembre"
   },
   {
-    title: "Event 2",
-    shortDescription: "Short description for Event 2",
+    title: "2das Jornadas sobre el Síndrome de Down",
+    shortDescription: "Educar hijos en el camino a la autonomia.",
     longDescription: "Long description for Event 2",
-    image: "/chicasPlaza.jpg",
+    image: "/Jornadas.jpg",
     date : "Martes 3 de Septiembre"
 
   },
@@ -185,7 +185,7 @@ export default function Home() {
                 height={1400}
                 className="mb-4 md:mb-6 rounded-3xl"
               />
-              <h2 className="text-lg text-custom-blue mt-5 mb-5 md:mb-6">
+              <h2 className="text-md lg:text-sm text-custom-blue mt-5 mb-5 md:mb-6">
               Pérez de Herrera 2053 Cerro de las rosas
               </h2>
             </div>
@@ -198,10 +198,10 @@ export default function Home() {
 
             {/* Sección con imagen y texto a la derecha */}
             <div className="w-full md:w-6/12 flex flex-col justify-center items-center text-center p-6 md:p-10 z-10 bg-custom-blue md:bg-transparent">
-              <h2 className="text-white lg:text-4xl md:text-md lg:-mt-30 md:mt-0 mb-5 font-semibold leading-relaxed">
+              <h2 className="text-white lg:text-4xl md:text-lg lg:-mt-30 md:mt-0 mb-5 font-semibold leading-relaxed">
                 VENI A CONOCERNOS
               </h2>
-              <p className="text-white text-xl lg:text-xl md:text-base lg:mx-30 md:mx-10 leading-relaxed">
+              <p className="text-white text-base lg:mx-30 md:mx-10 leading-relaxed">
                 Programas de tratamiento diseñados para mejorar la calidad  de vida y la participación de personas con discapacidad en diversos ámbitos. En los consultorios, se enfocan en trabajar 
                 de manera integral con profesionales y familias para lograr la autonomía de cada paciente, estableciendo objetivos específicos y enfatizando la comunicación y la experiencia como fundamentales para el éxito del tratamiento.
               </p>
@@ -224,13 +224,13 @@ export default function Home() {
                 <p className="text-white text-xl md:text-2xl text-center font-bold leading-relaxed">
                   INFORMACIÓN DE CONTACTO
                 </p>
-                <p className="text-white text-lg mt-5 mb-5 md:text-xl leading-relaxed flex items-center">
+                <p className="text-white text-lg mt-5 mb-5 leading-relaxed flex items-center">
                   <PhoneIconSvg /> 3517960194
                 </p>
-                <p className="text-white text-lg mt-5 mb-5 md:text-xl leading-relaxed flex items-center">
+                <p className="text-white text-lg mt-5 mb-5 leading-relaxed flex items-center">
                   <MessageIconSvg /> fundaciondownisupcba@gmail.com
                 </p>
-                <p className="text-white text-lg mt-5 mb-5 md:text-xl leading-relaxed flex items-center">
+                <p className="text-white text-lg mt-5 mb-5 leading-relaxed flex items-center">
                   <PinIconSvg /> Pérez de Herrera 2053
                 </p>
               </div>
@@ -243,7 +243,7 @@ export default function Home() {
               {eventCards.map((event, index) => (
                 <article
                   key={index}
-                  className="flex flex-col items-center justify-center w-full max-w-md bg-gray-200 rounded-3xl shadow-md p-4 m-5 gap-2"
+                  className="flex flex-col items-center justify-center w-full max-w-md bg-gray-200 rounded-3xl shadow-md p-4 m-4 gap-2"
                 >
                   <h2 className="text-xl mt-4 mb-4 text-custom-blue font-semibold text-center">
                     {event.title}
@@ -268,7 +268,7 @@ export default function Home() {
                   </div>
 
                   <div className="flex items-center gap-x-2 mt-4">
-                    <CalendarIcon className="text-sm size-7 text-blue-900" />
+                    <CalendarIcon className="text-sm size-5 text-blue-900" />
                     <h3 className="text-sm text-blue-900">{event.date}</h3>
                   </div>
                 </article>
