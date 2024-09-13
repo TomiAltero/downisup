@@ -5,18 +5,23 @@ import { DefaultTable } from '../../components/medicalComponents/workShiftTable'
 import PieChart from "@/components/graphs/graph";
 import { useRouter } from "next/navigation";
 import AppLayout from "@/layouts/AppLayout";
+import ClipLoader from "react-spinners/ClipLoader";
 
 const Page = () => {
   const router = useRouter();
   const [isAuthorized, setIsAuthorized] = useState(true);
   const [token, setToken] = useState<string>("");
   const [showContent, setShowContent] = useState(false);
+  const [loading, setLoading] = useState(true); 
 
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (token) {
       setToken(token);
-      setTimeout(() => setShowContent(true), 100); 
+      setTimeout(() => {
+        setShowContent(true);
+        setLoading(false); 
+      }, 100); 
     } else {
       setIsAuthorized(false);
       router.push("/notfound");
@@ -27,10 +32,19 @@ const Page = () => {
     return null;
   }
 
+  if (loading) {
+    return (
+      <div className="flex justify-center items-center h-screen">
+        <ClipLoader color={'#123abc'} loading={loading} size={150} />
+      </div>
+    );
+  }
+
   return (
     <AppLayout>
       <main className={`h-full ${showContent ? 'fade-in' : 'initial'} flex flex-col items-center p-4`}>
         <div className="w-full max-w-screen-xl mb-8 bg-gray-50 p-6 rounded-md">
+          <h1 className="text-3xl font-bold mb-6 self-start">Inicio</h1> 
           <div className="flex gap-4">
             <Suspense fallback={<p>Cargando...</p>}>
               <CardChildren token={token} />

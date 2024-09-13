@@ -1,41 +1,37 @@
 import { Card, Typography } from "@material-tailwind/react";
- 
-const TABLE_HEAD = ["Name", "Job", "Employed", ""];
- 
+
+const TABLE_HEAD = ["Padre", "Hijo", "Fecha Turno", "Fecha Solicitacion", "Área"];
+
 const TABLE_ROWS = [
   {
-    name: "John Michael",
-    job: "Manager",
-    date: "23/04/18",
+    name: "Tomas Altero",
+    job: "Tomas Altero",
+    date: "19/09/2024",
+    solicitation: "10/09/2024",
+    area: "Fonoaudiología",
   },
   {
-    name: "Alexa Liras",
-    job: "Developer",
-    date: "23/04/18",
+    name: "Tomas Altero",
+    job: "Tomas Altero",
+    date: "19/09/2024",
+    solicitation: "10/09/2024",
+    area: "Fonoaudiología",
   },
   {
-    name: "Laurent Perrier",
-    job: "Executive",
-    date: "19/09/17",
-  },
-  {
-    name: "Michael Levi",
-    job: "Developer",
-    date: "24/12/08",
-  },
-  {
-    name: "Richard Gran",
-    job: "Manager",
-    date: "04/10/21",
+    name: "Tomas Altero",
+    job: "Tomas Altero",
+    date: "19/09/2024",
+    solicitation: "10/09/2024",
+    area: "Fonoaudiología",
   },
 ];
- 
+
 export function DefaultTable() {
   return (
     <Card className="w-full h-90">
       <div className="p-4">
         <Typography variant="h5" color="blue-gray" className="mb-4 font-bold">
-          Turnos Registrados para Mateo Ravetti 
+          Turnos Registrados
         </Typography>
         <table className="w-full table-auto text-left">
           <thead>
@@ -57,12 +53,12 @@ export function DefaultTable() {
             </tr>
           </thead>
           <tbody>
-            {TABLE_ROWS.map(({ name, job, date }, index) => {
+            {TABLE_ROWS.map(({ name, job, date, solicitation, area }, index) => {
               const isLast = index === TABLE_ROWS.length - 1;
               const classes = isLast ? "p-4" : "p-4 border-b border-blue-gray-50";
- 
+
               return (
-                <tr key={name}>
+                <tr key={index}>
                   <td className={classes}>
                     <Typography
                       variant="small"
@@ -88,6 +84,24 @@ export function DefaultTable() {
                       className="font-normal"
                     >
                       {date}
+                    </Typography>
+                  </td>
+                  <td className={classes}>
+                    <Typography
+                      variant="small"
+                      color="blue-gray"
+                      className="font-normal"
+                    >
+                      {solicitation}
+                    </Typography>
+                  </td>
+                  <td className={classes}>
+                    <Typography
+                      variant="small"
+                      color="blue-gray"
+                      className="font-normal"
+                    >
+                      {area}
                     </Typography>
                   </td>
                 </tr>
