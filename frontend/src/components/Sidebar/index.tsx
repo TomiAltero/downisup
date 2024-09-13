@@ -125,7 +125,7 @@ function Sidebar() {
                 {isDropdownOpen && (
                   <div className="pl-10 mt-2 space-y-2">
                     <Link
-                      href="/application/datos-medicos/ver"
+                      href="/application/datos-medicos"
                       className={`block ${
                         pathname === "/application/datos-medicos/ver" ? "text-blue-700" : ""
                       } hover:text-blue-700 duration-200 py-1 transition-all ease-in-out`}

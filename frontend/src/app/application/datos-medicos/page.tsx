@@ -1,10 +1,11 @@
 "use client";
 import React, { useEffect, useState, Suspense } from "react";
-import { CardChildren } from '../../components/medicalComponents/cardChildrens';
-import { DefaultTable } from '../../components/medicalComponents/workShiftTable';
+import { CardChildren } from '../../../components/medicalComponents/cardChildrens';
+import { DefaultTable } from '../../../components/medicalComponents/workShiftTable';
 import PieChart from "@/components/graphs/graph";
 import { useRouter } from "next/navigation";
 import AppLayout from "@/layouts/AppLayout";
+import '../page.css'; 
 
 const Page = () => {
   const router = useRouter();
