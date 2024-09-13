@@ -30,17 +30,17 @@ const styles = `
 
 const eventCards = [
   {
-    title: "Ponemos casa en valle escondido",
-    shortDescription: "Short description for Event 1",
+    title: "Día internacional del Síndrome de Down",
+    shortDescription: "Todos somos iguales, pero diferentes",
     longDescription: "Long description for Event 1",
-    image: "/chicasPlaza.jpg",
+    image: "/DiaInternacional.jpg",
     date : "Martes 3 de Septiembre"
   },
   {
-    title: "Event 2",
-    shortDescription: "Short description for Event 2",
+    title: "2das Jornadas sobre el Síndrome de Down",
+    shortDescription: "Educar hijos en el camino a la autonomia.",
     longDescription: "Long description for Event 2",
-    image: "/chicasPlaza.jpg",
+    image: "/Jornadas.jpg",
     date : "Martes 3 de Septiembre"
 
   },

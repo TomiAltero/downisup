@@ -12,35 +12,24 @@ import { ProductCard } from "./ProductCard";  // Asegúrate de que la ruta esté
 const products = [
   { 
     id: 1, 
-    name: "Calendario", 
-    price: "10", 
-    image: "/background.png",          
-    hoverImage: "/chicosPlaza.jpg",
-    description: "Producto1" 
+    name: "CALENDARIO 2024", 
+    price: "4000,00", 
+    image: "/calendario2024.png",          
+    hoverImage: "/chicosPlaza.jpg", 
   },
   { 
     id: 2, 
-    name: "B", 
-    price: "20", 
-    image: "/background.png", 
-    hoverImage: "/mision.png", 
-    description: "Producto2" 
+    name: "MEDIAS DE LA FUNDACION", 
+    price: "6999,99", 
+    image: "/medias.png", 
+    hoverImage: "/mision.png",  
   },
   { 
     id: 3, 
     name: "C", 
     price: "30", 
     image: "/background.png", 
-    hoverImage: "/mision.png", 
-    description: "Producto3" 
-  },
-  { 
-    id: 4, 
-    name: "4", 
-    price: "30", 
-    image: "/background.png", 
-    hoverImage: "/mision.png", 
-    description: "Producto3" 
+    hoverImage: "/mision.png",  
   },
   // Agrega más productos aquí con sus respectivas imágenes
 ];
