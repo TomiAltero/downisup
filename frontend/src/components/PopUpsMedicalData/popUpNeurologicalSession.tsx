@@ -58,32 +58,39 @@ const PopUpNeurologicalTherapies = ({ onClose, hijoId }: { onClose: () => void, 
         <h2 className="text-3xl font-bold mb-6 text-blue-900">
           Informe de Sesión Neurológica: {hijo?.nombre || "Nombre del paciente no disponible"} {hijo?.apellido || ""}
         </h2>
-        <div className="mt-6 space-y-6 text-left">
-          <div>
-            <h3 className="text-xl font-semibold text-blue-700">Objetivos de la Sesión</h3>
-            <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
-              {therapy?.objectives || "No hay Objetivos de la Sesion Disponible."}
-            </p>
+
+        {therapy ? (
+          <div className="mt-6 space-y-6 text-left">
+            <div>
+              <h3 className="text-xl font-semibold text-blue-700">Objetivos de la Sesión</h3>
+              <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
+                {therapy?.objectives || "No hay Objetivos de la Sesion Disponible."}
+              </p>
+            </div>
+            <div>
+              <h3 className="text-xl font-semibold text-blue-700">Descripción de la Sesión</h3>
+              <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
+                {therapy?.description || "No hay Descripcion de la Sesion Disponible."}
+              </p>
+            </div>
+            <div>
+              <h3 className="text-xl font-semibold text-blue-700">Observaciones</h3>
+              <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
+                {therapy?.observations || "No Hay Observaciones Disponibles."}
+              </p>
+            </div>
+            <div>
+              <h3 className="text-xl font-semibold text-blue-700">Plan de Acción</h3>
+              <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
+                {therapy?.planAccion || "No hay plan de acción disponible."}
+              </p>
+            </div>
           </div>
-          <div>
-            <h3 className="text-xl font-semibold text-blue-700">Descripción de la Sesión</h3>
-            <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
-              {therapy?.description || "No hay Descripcion de la Sesion Disponible."}
-            </p>
+        ) : (
+          <div className="mt-6 text-gray-700 dark:text-gray-300">
+            <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">No hay terapias neurológicas disponibles.</p>
           </div>
-          <div>
-            <h3 className="text-xl font-semibold text-blue-700">Observaciones</h3>
-            <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
-              {therapy?.observations || "No Hay Observaciones Disponibles."}
-            </p>
-          </div>
-          <div>
-            <h3 className="text-xl font-semibold text-blue-700">Plan de Acción</h3>
-            <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
-              {therapy?.planAccion || "No hay plan de acción disponible."}
-            </p>
-          </div>
-        </div>
+        )}
       </div>
     </div>
   );

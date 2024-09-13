@@ -10,28 +10,34 @@ export async function CardChildren({ token }: { token: string }) {
   }
 
   const allChildren = await getChildrenAndUser({ token });
+  const isType1User = allChildren.usuario.tipoUsuarioId === 1;
   const isType2User = allChildren.usuario.tipoUsuarioId === 2;
 
   const hijosArray = isType2User ? allChildren.hijos : await getHijoProfile({ token });
   const hijosData = Array.isArray(hijosArray) ? hijosArray : hijosArray.hijos;
 
+  const numberOfRows = hijosData.length;
+  const cardClass = numberOfRows <= 4 ? "h-auto" : "h-90";
+
   return (
-    <Card className="w-125 h-90">
+    <Card className={`w-150 ${cardClass}`}>
       <CardBody>
         <div className="mb-4 flex items-center justify-between">
-          <Typography variant="h5" color="blue-gray" className="">
-          Pacientes 
+          <Typography variant="h5" color="blue-gray">
+            {isType1User ? "Mis hijos" : "Pacientes"}
           </Typography>
-          <Link href="/application/all-children" passHref>
-            <Typography as="a" variant="small" className="font-bold text-blue-900">
-              Ver todos
-            </Typography>
-          </Link>
+          {!isType1User && (
+            <Link href="/application/all-children" passHref>
+              <Typography as="a" variant="small" className="font-bold text-blue-900">
+                Ver todos
+              </Typography>
+            </Link>
+          )}
         </div>
         <div className="divide-y divide-gray-200">
           {hijosData.length === 0 ? (
             <Typography variant="body1" color="text.secondary" className="text-center">
-              No hay pacientes Registrados
+              No hay pacientes registrados
             </Typography>
           ) : (
             hijosData.map((hijo: Hijo) => (
@@ -57,11 +63,17 @@ export async function CardChildren({ token }: { token: string }) {
                     </Typography>
                   </div>
                 </div>
-                <Link href={isType2User ? `/application/formulario-medico/${hijo.id}` : `/application/panel-medico/${hijo.id}`} passHref>
-                  <Typography as="a" variant="small" className="font-bold text-blue-900">
-                    Ver más
-                  </Typography>
-                </Link>
+                <div className="flex gap-x-4">
+                  <Link href={isType2User ? `/application/formulario-medico/${hijo.id}` : `/application/panel-medico/${hijo.id}`} passHref>
+                    <Typography
+                      as="a"
+                      variant="small"
+                      className="font-bold text-blue-900 hover:underline"
+                    >
+                      {isType2User ? 'Agregar Datos' : 'Ver Datos'}
+                    </Typography>
+                  </Link>
+                </div>
               </div>
             ))
           )}

@@ -1,4 +1,4 @@
-"use client";
+'use client';
 import { useParams, useRouter} from 'next/navigation';
 import React, { useEffect, useState } from 'react';
 import AppLayout from '@/layouts/AppLayout';

@@ -47,7 +47,6 @@ const eventCards = [
 ];
 
 
-// Función para manejar las animaciones al hacer scroll
 const handleScrollAnimations = () => {
   const observer = new IntersectionObserver(
     (entries) => {
@@ -75,7 +74,6 @@ export default function Home() {
       <style>{styles}</style>
       <div className="flex flex-col min-h-screen">
         <main className="flex-grow">
-          {/* Primera sección */}
           <section className="mt-10 bg-custom-blue relative h-screen w-full flex flex-col justify-center items-center snap-start overflow-hidden">
             <div className="absolute inset-0">
               <Swiper
