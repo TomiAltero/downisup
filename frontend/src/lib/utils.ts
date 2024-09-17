@@ -107,6 +107,33 @@ export const getPhysiologyTherapies = async (hijoId = 1) => {
   }
 };
 
+<<<<<<< HEAD
+=======
+export const getNeurologicalTherapies = async (hijoId = 1) => {
+  try {
+    const token = localStorage.getItem('token'); 
+
+    const response = await fetch(`http://localhost:5000/api/medicalData/${hijoId}/neurologicalTherapies`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`, 
+      },
+    });
+
+    if (!response.ok) {
+      throw new Error('Error al obtener las terapias Neurologicas');
+    }
+
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error("Error en getAll:", error);
+    throw error;
+  }
+};
+
+>>>>>>> d95c66628ed8034264e3621c33dbd8ee95bfd2c4
 
 
 export async function getChildrenAndUser({ token }: { token: string }) {
@@ -143,7 +170,6 @@ export async function getSpecialityForUser({ token }: { token: string }) {
     }
 
     const data = await response.json();
-    console.log("Especialidad del Usuario", data);
     return data;
   } catch (error) {
     console.error("Error en getSpecialityForUser:", error);
@@ -151,6 +177,18 @@ export async function getSpecialityForUser({ token }: { token: string }) {
   }
 }
 
+export async function getAllSpecialities() {                                              
+  try {
+    const response = await fetch("http://localhost:5000/api/medicalData/specialities")
 
+    if (!response.ok) {
+      throw new Error('Error al obtener las especialidades');
+    }
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error("Error en getSpecialityForUser:", error);
+    throw error;
+  }
 
-
+}

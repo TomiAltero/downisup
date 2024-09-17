@@ -1,23 +1,17 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Pie } from 'react-chartjs-2';
 import { Chart as ChartJS, Title, Tooltip, Legend, ArcElement } from 'chart.js';
 import PopUpPsychologycalSession from '@/components/PopUpsMedicalData/popUpPsychologycalSession'; 
+import { getChildrenAndUser } from '@/lib/utils';  // Import the API function
 
 ChartJS.register(Title, Tooltip, Legend, ArcElement);
 
 const PieChart = () => {
   const [showInfoMedical, setShowInfoMedical] = useState(false);
   const [hijoId, setHijoId] = useState(1); 
-
-  const handleClick = (event: React.MouseEvent) => {
-    setShowInfoMedical(true);
-  };
-
-  const handleClose = () => {
-    setShowInfoMedical(false);
-  };
-
-  const data = {
+  const [tipoUsuarioId, setTipoUsuarioId] = useState<number | null>(null);
+  const [chartTitle, setChartTitle] = useState('Asistencia Pacientes');
+  const [data, setData] = useState({
     labels: ['Presencia', 'Ausencia'],
     datasets: [
       {
@@ -34,12 +28,42 @@ const PieChart = () => {
         borderWidth: 1,
       },
     ],
+  });
+
+  useEffect(() => {
+    const fetchUserData = async () => {
+      const token = localStorage.getItem('token');
+      if (token) {
+        const allChildren = await getChildrenAndUser({ token });
+        const userTipo = allChildren.usuario.tipoUsuarioId;
+        setTipoUsuarioId(userTipo);
+        
+        // Update chart title and data based on tipoUsuarioId
+        if (userTipo === 1) {
+          setChartTitle('Asistencia Hijos');
+          // Optionally, update data here if needed
+        } else if (userTipo === 2) {
+          setChartTitle('Asistencia Pacientes');
+          // Optionally, update data here if needed
+        }
+      }
+    };
+
+    fetchUserData();
+  }, []);
+
+  const handleClick = (event: React.MouseEvent) => {
+    setShowInfoMedical(true);
+  };
+
+  const handleClose = () => {
+    setShowInfoMedical(false);
   };
 
   return (
     <div className="relative flex justify-center">
       <div style={{ width: '100%', maxWidth: '260px' }}>
-        <h2 className="text-center mb-1">7/10 Asistencia</h2>
+        <h2 className="text-center">{chartTitle} 7/10</h2>
         <Pie
           data={data}
           onClick={handleClick}
@@ -48,7 +72,7 @@ const PieChart = () => {
           }}
         />
       </div>
-      {showInfoMedical && <PopUpPsychologycalSession  onClose={handleClose} hijoId={hijoId} />}
+      {showInfoMedical && <PopUpPsychologycalSession onClose={handleClose} hijoId={hijoId} />}
     </div>
   );
 };

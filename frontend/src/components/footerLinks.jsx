@@ -35,7 +35,7 @@ export function FooterWithLinks() {
     <footer className="relative w-full bg-gray-700 p-6">
       <div className="container mx-auto flex flex-wrap justify-between">
         <div className="w-full md:w-1/3 mb-6 md:mb-0">
-          <Typography as="a" href="#" variant="h5" className="text-white font-bold text-3xl">
+          <Typography as="a" href="#" variant="h5" className="text-white font-bold text-2xl">
             DownIsUp
           </Typography>
         </div>
@@ -70,9 +70,9 @@ export function FooterWithLinks() {
       <div className="mt-8 border-t border-gray-600 pt-4 flex justify-between">
         <Typography
           variant="small"
-          className="text-center text-gray-400 text-lg md:text-md"
+          className="text-center text-gray-400 text-lg md:text-sm"
         >
-          &copy; {currentYear} Material Tailwind. All Rights Reserved.
+          &copy; {currentYear} DownIsUp Cordoba. All Rights Reserved.
         </Typography>
         
         <div className="flex space-x-4">

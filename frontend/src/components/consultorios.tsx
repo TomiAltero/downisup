@@ -38,7 +38,7 @@ const Consultorios = () => {
   return (
     <section className="bg-white">
 
-      <section className="relative w-full h-screen mb-10" style={{ height: "300px" }}>
+      <section className="relative w-full h-screen mb-10" style={{ height: "250px" }}>
 
         <div className="absolute inset-0 z-10 flex items-center justify-center">
           <h1 className="text-white text-4xl font-bold mt-10">CONSULTORIOS</h1>
@@ -94,7 +94,7 @@ const Consultorios = () => {
         <div className="mb-8">
 
           <h1 className="text-center text-xl md:text-md font-semibold text-blue-900 mb-10 lg:mx-70 md:10">
-          "Arrancamos con este proyecto que nos llena de felicidad ya que es la base para comenzar a diagramar la vivienda de apoyo de la Fundación Down is up Cba."</h1>
+          &quotArrancamos con este proyecto que nos llena de felicidad ya que es la base para comenzar a diagramar la vivienda de apoyo de la Fundación Down is up Cba.&quot</h1>
 
           <div className="flex justify-center">          
             <Image
@@ -104,7 +104,6 @@ const Consultorios = () => {
             layout=""
           />
           </div>
-
 
           <h1 className="text-sm mt-2 mb-5 text-center">Pérez de herrera 2053 B° Cerro de las Rosas</h1>
 

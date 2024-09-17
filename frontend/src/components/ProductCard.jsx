@@ -51,7 +51,7 @@ export function ProductCard({
         <Button
           ripple={false}
           fullWidth={true}
-          className="bg-gray-100 text-base text-blue-gray-900 shadow-none hover:scale-105 hover:shadow-none focus:scale-105 focus:shadow-none active:scale-100"
+          className="bg-blue-100 text-base text-blue-gray-900 shadow-none hover:scale-105 hover:shadow-none focus:scale-105 focus:shadow-none active:scale-100"
         >
           Añadir al carrito
         </Button>

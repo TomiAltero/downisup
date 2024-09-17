@@ -1,6 +1,5 @@
 const { DataTypes, Model } = require('sequelize');
 const sequelize = require('../../config/database');
-const Usuario = require('../users/usuario');
 
 class Specialities extends Model {}
 
@@ -22,12 +21,6 @@ Specialities.init(
     timestamps: false,
   }
 );
-
-Specialities.associate = (models) => {
-Specialities.hasMany(Usuario, {
-  foreignKey: 'specialityId',
-  as: 'Usuarios',
-});};
 
 module.exports = Specialities;
 
