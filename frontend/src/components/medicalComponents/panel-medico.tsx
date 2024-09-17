@@ -6,11 +6,8 @@ import PopUpPhysiologycalTherapies from "../PopUpsMedicalData/popUpPhysiological
 import PopUpNeurologicalTherapies from "../PopUpsMedicalData/popUpNeurologicalSession";
 import Typography from "@mui/material/Typography";
 import { getPsycholgyTherapies } from "@/lib/utils";
-<<<<<<< HEAD
-import {RiMentalHealthFill, RiUserVoiceFill, RiBodyScanFill, RiBrainFill} from  "react-icons/ri";
-=======
 import { RiMentalHealthFill, RiUserVoiceFill, RiBodyScanFill, RiBrainFill } from "react-icons/ri";
->>>>>>> d95c66628ed8034264e3621c33dbd8ee95bfd2c4
+import { RiMentalHealthFill, RiUserVoiceFill, RiBodyScanFill, RiBrainFill } from "react-icons/ri";
 
 interface PanelMedicoProps {
   idHijo: number;

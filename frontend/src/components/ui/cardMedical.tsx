@@ -24,7 +24,10 @@ const MedicalHistoryCard: React.FC<MedicalHistoryCardProps> = ({
     <Card className="mt-6 w-96 relative">
       <CardBody>
 <<<<<<< HEAD
+<<<<<<< HEAD
         {/* Ícono en la parte superior derecha */}
+=======
+>>>>>>> d95c66628ed8034264e3621c33dbd8ee95bfd2c4
 =======
 >>>>>>> d95c66628ed8034264e3621c33dbd8ee95bfd2c4
         {icon && (
