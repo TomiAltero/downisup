@@ -66,7 +66,7 @@ Hijo.hasMany(speechTherapies, {
 
 Hijo.hasMany(PhysiologicalTherapies, {
   foreignKey: "hijoId",
-  as: "physiological_therapies", 
+  as: "PhysiologicalTherapies", 
 });
 
 

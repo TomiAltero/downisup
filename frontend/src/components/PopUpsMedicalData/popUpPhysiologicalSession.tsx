@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getSpeechTherapies } from "@/lib/utils";
+import { getPhysiologyTherapies } from "@/lib/utils";
 
 const PopUpPhysiologycalTherapies = ({ onClose, hijoId }: { onClose: () => void, hijoId: number }) => {
   const [sessionData, setSessionData] = useState<any>(null);
@@ -8,19 +8,15 @@ const PopUpPhysiologycalTherapies = ({ onClose, hijoId }: { onClose: () => void,
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const data = await getSpeechTherapies(hijoId);
+        const data = await getPhysiologyTherapies(hijoId);
         console.log("Datos obtenidos de la sesión:", data);
 
-        if (data && data.speechTherapies && data.speechTherapies.length > 0) {
-          const [firstTherapy] = data.speechTherapies;
-          setSessionData({
-            ...data,
-            speechTherapies: firstTherapy,
-          });
+        if (data && data.physiologicalTherapies && data.physiologicalTherapies.length > 0) {
+          setSessionData(data);
         } else {
           setSessionData({
             ...data,
-            speechTherapies: null,
+            physiologicalTherapies: [],
           });
         }
       } catch (error) {
@@ -43,7 +39,6 @@ const PopUpPhysiologycalTherapies = ({ onClose, hijoId }: { onClose: () => void,
     );
   }
 
-  const therapy = sessionData?.psychologicalTherapy;
   const hijo = sessionData?.hijo;
 
   return (
@@ -58,32 +53,47 @@ const PopUpPhysiologycalTherapies = ({ onClose, hijoId }: { onClose: () => void,
         <h2 className="text-3xl font-bold mb-6 text-blue-900">
           Informe de Sesión Fisiológica: {hijo?.nombre || "Nombre del paciente no disponible"} {hijo?.apellido || ""}
         </h2>
-        <div className="mt-6 space-y-6 text-left">
-          <div>
-            <h3 className="text-xl font-semibold text-blue-700">Objetivos de la Sesión</h3>
-            <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
-              {therapy?.objetives || "No hay Objetivos de la Sesion Disponible."}
-            </p>
-          </div>
-          <div>
-            <h3 className="text-xl font-semibold text-blue-700">Descripción de la Sesión</h3>
-            <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
-              {therapy?.description || "No hay Descripcion de la Sesion Disponible."}
-            </p>
-          </div>
-          <div>
-            <h3 className="text-xl font-semibold text-blue-700">Observaciones</h3>
-            <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
-              {therapy?.observations || "No Hay Observaciones Disponibles."}
-            </p>
-          </div>
-          <div>
-            <h3 className="text-xl font-semibold text-blue-700">Plan de Acción</h3>
-            <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
-              {therapy?.planAccion || "No hay plan de acción disponible."}
-            </p>
-          </div>
-        </div>
+
+        {sessionData?.physiologicalTherapies?.length > 0 ? (
+          sessionData.physiologicalTherapies.map((therapy: any, index: number) => (
+            <div key={index} className="mt-6 space-y-6 text-left">
+              <div className="mb-4">
+                <p className="text-sm text-gray-500">
+                  {new Date(therapy.date).toLocaleDateString()}
+                </p>
+              </div>
+              <div>
+                <h3 className="text-xl font-semibold text-blue-700">Objetivos de la Sesión</h3>
+                <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
+                  {therapy.objectives || "No hay Objetivos de la Sesion Disponible."}
+                </p>
+              </div>
+              <div>
+                <h3 className="text-xl font-semibold text-blue-700">Descripción de la Sesión</h3>
+                <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
+                  {therapy.description || "No hay Descripcion de la Sesion Disponible."}
+                </p>
+              </div>
+              <div>
+                <h3 className="text-xl font-semibold text-blue-700">Observaciones</h3>
+                <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
+                  {therapy.observations || "No Hay Observaciones Disponibles."}
+                </p>
+              </div>
+              <div>
+                <h3 className="text-xl font-semibold text-blue-700">Plan de Acción</h3>
+                <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
+                  {therapy.planAccion || "No hay plan de acción disponible."}
+                </p>
+              </div>
+              {index < sessionData.physiologicalTherapies.length - 1 && <hr className="my-6" />}
+            </div>
+          ))
+        ) : (
+          <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
+            No hay terapias fisiológicas disponibles.
+          </p>
+        )}
       </div>
     </div>
   );

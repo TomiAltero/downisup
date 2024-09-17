@@ -6,9 +6,10 @@ import PopUpPhysiologycalTherapies from "../PopUpsMedicalData/popUpPhysiological
 import PopUpNeurologicalTherapies from "../PopUpsMedicalData/popUpNeurologicalSession";
 import Typography from "@mui/material/Typography";
 import { getPsycholgyTherapies } from "@/lib/utils";
+import {RiMentalHealthFill, RiUserVoiceFill, RiBodyScanFill, RiBrainFill} from  "react-icons/ri";
 
 interface PanelMedicoProps {
-  idHijo: number; 
+  idHijo: number;
 }
 
 export default function PanelMedico({ idHijo }: PanelMedicoProps) {
@@ -19,7 +20,7 @@ export default function PanelMedico({ idHijo }: PanelMedicoProps) {
   useEffect(() => {
     const fetchUserData = async () => {
       try {
-        const userData = await getPsycholgyTherapies(idHijo); 
+        const userData = await getPsycholgyTherapies(idHijo);
         console.log("Datos del usuario:", userData);
 
         setUserName(`${userData.hijo?.nombre || "Nombre no disponible"} ${userData.hijo?.apellido || "Apellido no disponible"}`);
@@ -33,13 +34,13 @@ export default function PanelMedico({ idHijo }: PanelMedicoProps) {
   }, [idHijo]);
 
   const handleViewMoreClick = (category: string) => {
-    setSelectedCategory(category); 
+    setSelectedCategory(category);
     setShowInfoMedical(true);
   };
 
   const handleCloseAjustes = () => {
     setShowInfoMedical(false);
-    setSelectedCategory(null); 
+    setSelectedCategory(null);
   };
 
   return (
@@ -51,26 +52,30 @@ export default function PanelMedico({ idHijo }: PanelMedicoProps) {
       >
         Panel Médico - {userName}
       </Typography>
-      <div className="flex justify-between">
+      <div className="flex justify-between gap-8">
         <MedicalHistoryCard
-          date="Evaluaciones Psicológicas"
           onViewMoreClick={() => handleViewMoreClick("psychological")}
-          category="Ultima actualizacion: 12/08/2024"
+          date="Ultima actualizacion: 12/08/2024"
+          category="Evaluaciones Psicológicas"
+          icon={<RiMentalHealthFill />}
         />
         <MedicalHistoryCard
-          date="Evaluaciones Fonoaudiólogicas"
           onViewMoreClick={() => handleViewMoreClick("speech")}
-          category="Ultima actualizacion: 12/08/2024"
+          date="Ultima Actualizacion: 12/08/2024"
+          category="Evaluaciones Fonoaudiólogicas"
+          icon={<RiUserVoiceFill />}
         />
         <MedicalHistoryCard
-          date="Evaluaciones Fisiológicas"
           onViewMoreClick={() => handleViewMoreClick("physiological")}
-          category="Ultima actualizacion: 12/08/2024"
+          date="Ultima actualizacion: 12/08/2024"
+          category="Evaluaciones Fisiológicas"
+          icon={<RiBodyScanFill />}
         />
         <MedicalHistoryCard
-          date="Evaluaciones Neurológicas"
           onViewMoreClick={() => handleViewMoreClick("neurological")}
-          category="Ultima actualizacion: 12/08/2024"
+          date="Ultima actualizacion: 12/08/2024"
+          category="Evaluaciones Neurológicas"
+          icon={<RiBrainFill />}
         />
       </div>
 
