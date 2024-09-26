@@ -9,6 +9,7 @@ import 'swiper/css/navigation';
 import { Navigation, Autoplay } from 'swiper/modules';
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import Footer from "@/components/footer";
 
 const Clubdeamigos = () => {
   const controls = useAnimation();
@@ -462,6 +463,15 @@ const Clubdeamigos = () => {
           </div>
         </motion.div>
       </div>
+      
+      {showFormVoluntario || showFormEmpresa ? (
+        <Footer />
+      ) : (
+        <div className="absolute inset-x-0 bottom-0">
+          <Footer />
+        </div>
+      )}
+
     </section>
   );
 };

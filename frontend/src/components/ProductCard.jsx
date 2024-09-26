@@ -14,7 +14,6 @@ export function ProductCard({
   price,
   image,
   hoverImage,
-  description,
   hovered,
   onHover,
   onLeave,
@@ -44,7 +43,6 @@ export function ProductCard({
           color="gray"
           className="font-normal opacity-75"
         >
-          {description}
         </Typography>
       </CardBody>
       <CardFooter className="pt-0">

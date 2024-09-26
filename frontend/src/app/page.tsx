@@ -2,6 +2,7 @@
 import { useEffect } from "react";
 import { opensans, poppins } from "@/components/ui/fonts";
 import { Button } from "@/components/ui/button";
+import { ButtonHome, ButtonShowMore } from "@/components/Button";
 import Link from "next/link";
 import Image from "next/image";
 import LandingLayout from "@/layouts/LandingLayout";
@@ -128,11 +129,7 @@ export default function Home() {
               </article>
             </section>
             <section className="flex flex-col items-center z-10">
-              <Link href="/contactanos">
-                <Button className="bg-custom-white text-black text-base px-4 py-2 font-semibold font-raleway hover:text-white hover:bg-custom-blue">
-                  Contáctanos
-                </Button>
-              </Link>
+                <div className="bg-custom-blue rounded-lg"><ButtonHome /></div>
             </section>
           </section>
 
@@ -164,11 +161,7 @@ export default function Home() {
                 <Image src="/tick.png" alt="Tick" className="inline-block mr-2" width={16} height={16} /> Visibilizar el Síndrome de Down, mediante acciones de educación, formación y actividades sociales y culturales, fortaleciendo la convivencia.<br />
                 <Image src="/tick.png" alt="Tick" className="inline-block mr-2" width={16} height={16} /> Fomentar la vida independiente y la autonomía de las personas con síndrome de Down.
               </p>
-              <button className="mt-6 mb-10 md:mt-10 px-4 text-base md:text-lg py-2 bg-pink-600 text-white font-semibold rounded-full hover:bg-pink-700">
-                <a href="/quienessomos/">
-                  Ver más
-                </a>
-              </button>
+              <div className="bg-pink-600 rounded-lg"><ButtonShowMore /></div>
             </div>
           </section>
 
@@ -230,9 +223,7 @@ export default function Home() {
                 <p className="text-white text-lg mt-5 mb-5 leading-relaxed flex items-center">
                   <MessageIconSvg /> fundaciondownisupcba@gmail.com
                 </p>
-                <p className="text-white text-lg mt-5 mb-5 leading-relaxed flex items-center">
-                  <PinIconSvg /> Pérez de Herrera 2053
-                </p>
+                <a href="https://maps.app.goo.gl/cpvhnUq2XH37BnCi8" className="text-white text-lg mt-5 mb-5 leading-relaxed flex items-center hover:underline"><PinIconSvg />Pérez de Herrera 2053</a>
               </div>
             </div>
 

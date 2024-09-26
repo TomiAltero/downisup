@@ -76,16 +76,16 @@ export function FooterWithLinks() {
         </Typography>
         
         <div className="flex space-x-4">
-          <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white">
+          <a href="https://www.instagram.com/downisupcba/" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white">
                 <FaInstagram />
           </a>
-          <a href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white">
+          <a href="https://www.youtube.com/@downisupcordoba2759" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white">
                 <FaYoutube />
           </a>
-          <a href="https://api.whatsapp.com/send/?phone=5493517960194/" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white">
+          <a href="https://api.whatsapp.com/send/?phone=5493517960194" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white">
                 <FaWhatsapp />
           </a>
-          <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white">
+          <a href="https://www.facebook.com/downisupcba?locale=es_LA" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white">
                 <FaFacebook />
           </a>
         </div>

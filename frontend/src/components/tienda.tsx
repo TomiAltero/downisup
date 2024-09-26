@@ -24,13 +24,6 @@ const products = [
     image: "/medias.png", 
     hoverImage: "/mision.png",  
   },
-  { 
-    id: 3, 
-    name: "C", 
-    price: "30", 
-    image: "/background.png", 
-    hoverImage: "/mision.png",  
-  },
   // Agrega más productos aquí con sus respectivas imágenes
 ];
 
@@ -51,7 +44,7 @@ export default function Tienda() {
       <section className="relative w-fullscreen pt-16" style={{ height: "250px" }}>
         {/* Título sobre el carrusel */}
         <div className="absolute inset-0 z-10 flex items-center justify-center">
-          <h1 className="text-white text-4xl font-bold mt-10">Nuestra Tienda</h1>
+          <h1 className="text-white text-4xl font-bold mt-10">NUESTRA TIENDA</h1>
         </div>
 
         {/* Carrusel de productos */}
@@ -99,7 +92,6 @@ export default function Tienda() {
                   price={product.price}
                   image={product.image}
                   hoverImage={product.hoverImage}
-                  description={product.description}
                   hovered={hoveredProductId === product.id}
                   onHover={handleMouseEnter}
                   onLeave={handleMouseLeave}
