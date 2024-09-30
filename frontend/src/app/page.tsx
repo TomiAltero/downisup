@@ -161,7 +161,7 @@ export default function Home() {
                 <Image src="/tick.png" alt="Tick" className="inline-block mr-2" width={16} height={16} /> Visibilizar el Síndrome de Down, mediante acciones de educación, formación y actividades sociales y culturales, fortaleciendo la convivencia.<br />
                 <Image src="/tick.png" alt="Tick" className="inline-block mr-2" width={16} height={16} /> Fomentar la vida independiente y la autonomía de las personas con síndrome de Down.
               </p>
-              <div className="bg-pink-600 rounded-lg"><ButtonShowMore /></div>
+              <div className="bg-pink-600 rounded-lg "><ButtonShowMore /></div>
             </div>
           </section>
 

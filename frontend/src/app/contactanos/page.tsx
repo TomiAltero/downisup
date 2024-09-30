@@ -40,21 +40,21 @@ export default function ContactUsPage() {
             <section className="flex flex-col lg:flex-row gap-6">
               <article>
                 <Label className={`block text-xs leading-6 text-blue-900 ${poppins.className}`}>Nombre</Label>
-                <Input className="rounded-none border-t-0 border-l-0 border-r-0 border-b-2 border-blue-800 outline-none focus:ring-0 focus:border-blue-600 mb-6" type="text" />
+                <Input className="rounded-none border-t-0 border-l-0 border-r-0 border-b-2 border-blue-800 outline-none focus:ring-0 focus:border-blue-600 mb-6" type="text" placeholder="Ingresa tu nombre"/>
               </article>
               <article>
                 <Label className={`block text-xs leading-6 text-blue-900 ${poppins.className}`}>Apellido</Label>
-                <Input className="rounded-none border-t-0 border-l-0 border-r-0 border-b-2 border-blue-800 outline-none focus:ring-0 focus:border-blue-600 mb-6" type="text" />
+                <Input className="rounded-none border-t-0 border-l-0 border-r-0 border-b-2 border-blue-800 outline-none focus:ring-0 focus:border-blue-600 mb-6" type="text" placeholder="Ingresa tu apellido"/>
               </article>
             </section>
             <section className="flex flex-col lg:flex-row gap-6">
               <article>
                 <Label className={`block text-xs leading-6 text-blue-900 ${poppins.className}`}>Email</Label>
-                <Input className="rounded-none border-t-0 border-l-0 border-r-0 border-b-2 border-blue-800 outline-none focus:ring-0 focus:border-blue-600 mb-6" type="email" />
+                <Input className="rounded-none border-t-0 border-l-0 border-r-0 border-b-2 border-blue-800 outline-none focus:ring-0 focus:border-blue-600 mb-6" type="email" placeholder="Ingresa tu email"/>
               </article>
               <article>
                 <Label className={`block text-xs leading-6 text-blue-900 ${poppins.className}`}>Teléfono</Label>
-                <Input className="rounded-none border-t-0 border-l-0 border-r-0 border-b-2 border-blue-800 outline-none focus:ring-0 focus:border-blue-600 mb-6" type="number" />
+                <Input className="rounded-none border-t-0 border-l-0 border-r-0 border-b-2 border-blue-800 outline-none focus:ring-0 focus:border-blue-600 mb-6" type="number" placeholder="Ingresa tu teléfono"/>
               </article>
             </section>
             <article className="mt-5">
