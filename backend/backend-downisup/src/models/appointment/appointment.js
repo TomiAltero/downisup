@@ -17,29 +17,46 @@ Appointment.init(
       allowNull: false,
     },
 
-    startTime: {
+    beginHour: {
       type: DataTypes.TIME,
       allowNull: false,
     },
 
-    EndTime: {
+    endHour: {
       type: DataTypes.TIME,
       allowNull: false,
     },
 
-    solicitationDate: {
+    requestDate: {
       type: DataTypes.DATE,
       allowNull: false,
     },
 
-    stateName: {
+    state: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    
-    idUsuario: {
+
+    idHijo: {
       type: DataTypes.INTEGER,
-      allowNull: false,
+      allowNull: true,
+      references: {
+        model: "Hijos", 
+        key: "id", 
+      },
+    },
+    idUsuarioPadre: {
+      type: DataTypes.INTEGER,
+      allowNull: true,
+      references: {
+        model: "Usuarios", 
+        key: "id", 
+      },
+    },
+
+    idUsuarioEspecialista: {
+      type: DataTypes.INTEGER,
+      allowNull: true,
       references: {
         model: "Usuarios", 
         key: "id", 

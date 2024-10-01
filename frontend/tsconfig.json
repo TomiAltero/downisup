@@ -1,5 +1,5 @@
 {
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/lib/types.d.ts", "src/layouts/AuthLayout.", "src/app/application/panel-medico/[id]/page.jsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/lib/types.d.ts", "src/layouts/AuthLayout.", "src/app/application/panel-medico/[id]/page.jsx", "src/lib/utils.tss", "src/components/Calendar.jsx"],
   "compilerOptions": {
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
