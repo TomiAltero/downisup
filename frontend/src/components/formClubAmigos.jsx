@@ -15,10 +15,16 @@ import {
   Select,
   Option,
 } from "@material-tailwind/react";
+import { LockClosedIcon } from "@heroicons/react/24/solid";
 
 export default function RegisterForm() {
   const { countries } = useCountries();
   const [formType, setFormType] = React.useState("volunteer");
+
+  function formatNumber(value) {
+    // Elimina cualquier cosa que no sea un número
+    return value.replace(/[^0-9]/g, "");
+  }
 
   return (
     <Card className="w-full shadow-2xl max-w-[30rem] mx-auto mb-10">
@@ -83,6 +89,7 @@ export default function RegisterForm() {
                   type="tel"
                   placeholder="123-456-7890"
                   aria-required="true"
+                  onChange={(e) => e.target.value = formatNumber(e.target.value)}
                 />
 
                 {/* Date Input */}
@@ -100,6 +107,7 @@ export default function RegisterForm() {
                   type="number"
                   placeholder="12345678"
                   aria-required="true"
+                  onChange={(e) => e.target.value = formatNumber(e.target.value)}
                 />
 
                 {/* Country Input */}
@@ -132,6 +140,14 @@ export default function RegisterForm() {
                 <Button type="submit" variant="gradient" className="mt-6 bg-custom-blue">
                 Registrate como Voluntario
                 </Button>
+                <Typography
+                  variant="small"
+                  color="black"
+                  className="flex items-center justify-center gap-2 font-medium opacity-60"
+                >
+                  <LockClosedIcon className="-mt-0.5 h-4 w-4" /> Informacion
+                  segura y encriptada
+                </Typography>
               </form>
             </TabPanel>
 
@@ -167,6 +183,7 @@ export default function RegisterForm() {
                   type="tel"
                   placeholder="123-456-7890"
                   aria-required="true"
+                  onChange={(e) => e.target.value = formatPhoneNumber(e.target.value)}
                 />
 
                 {/* Country Input */}
@@ -217,6 +234,14 @@ export default function RegisterForm() {
                 <Button type="submit" variant="gradient" className="mt-6 bg-custom-blue">
                   Registrate como Compañía
                 </Button>
+                <Typography
+                  variant="small"
+                  color="black"
+                  className="flex items-center justify-center gap-2 font-medium opacity-60"
+                >
+                  <LockClosedIcon className="-mt-0.5 h-4 w-4" /> Informacion
+                  segura y encriptada
+                </Typography>
               </form>
             </TabPanel>
           </TabsBody>
