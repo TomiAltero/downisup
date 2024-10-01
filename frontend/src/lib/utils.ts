@@ -107,11 +107,6 @@ export const getPhysiologyTherapies = async (hijoId = 1) => {
   }
 };
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-=======
->>>>>>> d95c66628ed8034264e3621c33dbd8ee95bfd2c4
 export const getNeurologicalTherapies = async (hijoId = 1) => {
   try {
     const token = localStorage.getItem('token'); 
@@ -135,11 +130,6 @@ export const getNeurologicalTherapies = async (hijoId = 1) => {
     throw error;
   }
 };
-
-<<<<<<< HEAD
->>>>>>> d95c66628ed8034264e3621c33dbd8ee95bfd2c4
-=======
->>>>>>> d95c66628ed8034264e3621c33dbd8ee95bfd2c4
 
 
 export async function getChildrenAndUser({ token }: { token: string }) {
