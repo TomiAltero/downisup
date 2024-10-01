@@ -50,7 +50,7 @@ export default function PanelMedico({ idHijo }: PanelMedicoProps) {
   if (loading) {
     return <div>Loading...</div>; 
   }
-
+  
   return (
     <section>
       <Typography
