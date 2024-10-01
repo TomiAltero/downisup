@@ -2,7 +2,7 @@
 import { useEffect } from 'react';
 import { motion, useAnimation } from 'framer-motion';
 import Image from 'next/image';
-import ubicacionImage from '../../public/ubicacion.png'; // Ajusta la ruta según sea necesario
+import solaridad from '../../public/solaridad.png';
 import { useInView } from 'react-intersection-observer';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
@@ -10,6 +10,7 @@ import 'swiper/css/navigation';
 import { Navigation, Autoplay } from 'swiper/modules';
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import Footer from "../components/footer";
 
 const Donar = () => {
   const controls = useAnimation();
@@ -33,10 +34,9 @@ const Donar = () => {
   return (
     <section className="bg-white">
 
-      <section className="relative w-full h-screen mb-10" style={{ height: "300px" }}>
-
+      <section className="relative w-full h-[250px] mb-10 lg:h-[500px]" style={{ height: "250px" }}> {/* Cambia el tamaño según la pantalla */}
         <div className="absolute inset-0 z-10 flex items-center justify-center">
-          <h1 className="text-white text-4xl font-bold mt-10">DONAR</h1>
+          <h1 className="text-white text-4xl font-bold mt-10">DONAR</h1> {/* Texto más grande en pantallas grandes */}
         </div>
 
         <Swiper
@@ -44,44 +44,44 @@ const Donar = () => {
           spaceBetween={30}
           centeredSlides={true}
           autoplay={{
-            delay: 3000, // Cambia cada 3 segundos
+            delay: 3000,
             disableOnInteraction: false,
           }}
-          loop={true} // Vuelve a la primera imagen después de la última
-          navigation={false} // Habilita las flechas de navegación
-          allowTouchMove={false} // Deshabilita el arrastre manual
+          loop={true}
+          navigation={false}
+          allowTouchMove={false}
           className="h-full w-full"
         >
-          <SwiperSlide className="relative h-screen">
+          <SwiperSlide className="relative h-full">
             <Image
-              src="/background.png" // Cambia estas rutas por las imágenes que desees usar
+              src="/background.png"
               alt="Background 1"
               layout="fill"
               objectFit="cover"
               className="z-[-1]"
-            />      
+            />
             <div className="absolute inset-0 bg-gradient-to-b from-blue-700 to-blue-700 opacity-50"></div>
           </SwiperSlide>
 
-          <SwiperSlide className="relative h-screen">
+          <SwiperSlide className="relative h-full">
             <Image
               src="/chicasPlaza.jpg"
               alt="Background 2"
               layout="fill"
               objectFit="cover"
               className="z-[-1]"
-            />      
+            />
             <div className="absolute inset-0 bg-gradient-to-b from-blue-700 to-blue-700 opacity-50"></div>
           </SwiperSlide>
 
-          <SwiperSlide className="relative h-screen">
+          <SwiperSlide className="relative h-full">
             <Image
               src="/chicos.jpeg"
               alt="Background 3"
               layout="fill"
               objectFit="cover"
               className="z-[-1]"
-            />      
+            />
             <div className="absolute inset-0 bg-gradient-to-b from-blue-700 to-blue-700 opacity-50"></div>
           </SwiperSlide>
         </Swiper>
@@ -99,16 +99,34 @@ const Donar = () => {
       </div>
 
       <div className="flex flex-col items-center justify-center w-full">
-        <div className="w-8/12 ml-4 text-left"> {/* Cambiado de text-center a text-left */}
-          <h1 className="text-custom-blue text-4xl font-semibold mb-5">
-            Como podes ayudar?
+          <div className="w-full lg:w-8/12"> {/* Ajusta el ancho según la pantalla */}
+            <h1 className='text-custom-blue text-3xl lg:text-4xl text-center font-semibold mb-5'>
+              La solidaridad empieza en casa, ¿te sumás?
+            </h1>
+              <p className="text-gray-600 text-center px-4 text-base lg:text-lg">
+                En Downisup creemos firmemente que la solidaridad empieza en casa. Se aprende y se cultiva a través de la práctica de la entrega generosa, por eso te invitamos a acompañarnos en esta causa.
+              </p>
+          </div>
+
+          <div className="flex justify-center mt-5">          
+            <Image
+              src={solaridad}
+              alt="solaridad"
+              className="items-center justify-center rounded-3xl h-40 w-40 lg:h-72 lg:w-72"
+              layout="responsive"
+            />
+          </div>
+
+        <div className="w-full lg:w-8/12 mt-5 text-center px-5"> {/* Ajustado para diferentes pantallas */}
+          <h1 className="text-custom-blue text-2xl lg:text-4xl font-semibold mb-5">
+            ¿Cómo podés ayudar?
           </h1>
-          <p className="text-gray-600 text-base">
-            También podés acercar tu donación por Mercado Pago. Solo tenés que hacer click en el botón que está más abajo y colocar el monto de tu donación, la plataforma te va a guiar en todo el proceso.
+          <p className="text-gray-600 text-sm lg:text-base mb-2">
+            Podés acercar tu donación por Mercado Pago. Solo hacé click en el botón más abajo y colocá el monto de tu donación, la plataforma te guiará en el proceso.
           </p>
         </div>
 
-        <div className="text-blue-700 text-4xl font-semibold mb-5 mt-2">
+        <div className="text-blue-700 text-2xl lg:text-4xl font-semibold mb-5 mt-2">
           <Link href="https://link.mercadopago.com.ar/downisup">
             <Button className="rounded-full text-white px-4 py-2 font-semibold bg-custom-blue hover:bg-blue-700">
               MercadoPago
@@ -116,19 +134,21 @@ const Donar = () => {
           </Link>
         </div>
 
-        <div className="w-8/12 ml-4 text-left"> {/* Cambiado de text-center a text-left */}
-          <p className="text-gray-600 text-base">
-            También, ya sea que realices una donación mensual o una donación única, te brindamos estos medios de contribución directamente en nuestro sitio web. Podés donar con tarjeta de crédito, débito bancario o mediante Pago Fácil y Rapipago. Para administrar tu donación a través de nuestro sitio web, seleccioná la frecuencia que prefieras y seguí todos los pasos indicados:
+        <div className="w-full lg:w-8/12 text-center px-4">
+          <p className="text-gray-600 px-10 text-sm lg:text-base mb-2">
+          También, ya sea que realices una donación mensual o una donación única, te brindamos estos medios de contribución directamente en nuestro sitio web. Podés donar con tarjeta de crédito, débito bancario o mediante Pago Fácil y Rapipago. Para administrar tu donación a través de nuestro sitio web, seleccioná la frecuencia que prefieras y seguí todos los pasos indicados:
           </p>
         </div>
 
-        <div className="text-blue-700 text-4xl font-semibold mb-5 mt-2">
+        <div className="text-blue-700 text-2xl lg:text-4xl font-semibold mb-20 mt-2">
           <Link href="">
             <Button className="rounded-full text-white px-4 py-2 font-semibold bg-custom-blue hover:bg-blue-700">
-              Donacion Mensual
+              Donación Mensual
             </Button>
           </Link>
         </div>
+
+        <Footer />
       </div>
     </section>
   );

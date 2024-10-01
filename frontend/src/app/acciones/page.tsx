@@ -4,7 +4,7 @@ import { CalendarIcon } from "@/components/ui/icons"
 import { poppins } from "@/components/ui/fonts";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
-import { FaInstagram, FaYoutube, FaWhatsapp, FaFacebook } from "react-icons/fa"; 
+import Footer from "@/components/footer";
 
 const diaSemana = ["Lun", "Mar", "Mie", "Jue", "Vie", "Sab", "Dom"];
 const diaMes = 31;
@@ -120,22 +120,9 @@ export default function AccionesPage() {
             </div>
           </section>
         </section>
-        <footer className="w-full py-4 bg-gray-700 mt-auto">
-          <div className="flex justify-center space-x-8 flex-wrap">
-            <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer">
-              <FaInstagram className="text-white text-2xl hover:text-gray-400" />
-            </a>
-            <a href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer">
-              <FaYoutube className="text-white text-2xl hover:text-gray-400" />
-            </a>
-            <a href="https://wa.me/" target="_blank" rel="noopener noreferrer">
-              <FaWhatsapp className="text-white text-2xl hover:text-gray-400" />
-            </a>
-            <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer">
-              <FaFacebook className="text-white text-2xl hover:text-gray-400" />
-            </a>
-          </div>
-        </footer>
+
+        <Footer />
+
       </main>
     </LandingLayout>
   );
