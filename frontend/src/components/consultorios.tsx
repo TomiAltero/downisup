@@ -10,6 +10,7 @@ import 'swiper/css/navigation';
 import { Navigation, Autoplay } from 'swiper/modules';
 import dynamic from 'next/dynamic';
 import { Footer } from "../components/footer";
+import { FooterWithLinks } from './footerLinks';
 
 
 const MapComponent = dynamic(() => import('../components/MapComponent'), {
@@ -41,7 +42,7 @@ const Consultorios = () => {
       <section className="relative w-full h-screen mb-10" style={{ height: "250px" }}>
 
         <div className="absolute inset-0 z-10 flex items-center justify-center">
-          <h1 className="text-white text-4xl font-bold mt-10">CONSULTORIOS</h1>
+          <h1 className="text-white text-4xl font-bold mt-10">CONSULTORIO </h1>
         </div>
 
         <Swiper
@@ -105,7 +106,16 @@ const Consultorios = () => {
           />
           </div>
 
-          <h1 className="text-sm mt-2 mb-5 text-center">Pérez de herrera 2053 B° Cerro de las Rosas</h1>
+          <h1 className="text-sm mt-2 mb-5 text-center">
+            <a
+              href="https://www.google.com.ar/maps/place/P%C3%A9rez+de+Herrera+2053,+X5009HWC+C%C3%B3rdoba/@-31.376337,-64.2270197,17z/data=!3m1!4b1!4m6!3m5!1s0x9432992702a83aab:0x60730d3b22c95476!8m2!3d-31.376337!4d-64.2270197!16s%2Fg%2F11jxsym5zd?entry=ttu&g_ep=EgoyMDI0MTAwMi4xIKXMDSoASAFQAw%3D%3D"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-blue-900 hover:underline"
+            >
+              Pérez de Herrera 2053 B° Cerro de las Rosas
+            </a>
+          </h1>
 
           <MapComponent />
 
@@ -137,7 +147,7 @@ const Consultorios = () => {
         </motion.div>
       </div>
 
-      <Footer/>
+      <FooterWithLinks/>
     </section>
   );
 };
