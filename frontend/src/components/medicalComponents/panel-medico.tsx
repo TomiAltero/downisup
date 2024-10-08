@@ -1,13 +1,17 @@
 import React, { useState, useEffect } from "react";
 import MedicalHistoryCard from "@/components/ui/cardMedical";
-import PopUpPsychologycalSession from '../PopUpsMedicalData/popUpPsychologycalSession';
-import PopUpSpeechTherapySession from '../PopUpsMedicalData/popUpSpeechSession';
+import PopUpPsychologycalSession from "../PopUpsMedicalData/popUpPsychologycalSession";
+import PopUpSpeechTherapySession from "../PopUpsMedicalData/popUpSpeechSession";
 import PopUpPhysiologycalTherapies from "../PopUpsMedicalData/popUpPhysiologicalSession";
 import PopUpNeurologicalTherapies from "../PopUpsMedicalData/popUpNeurologicalSession";
 import Typography from "@mui/material/Typography";
 import { getPsycholgyTherapies } from "@/lib/utils";
-import { RiMentalHealthFill, RiUserVoiceFill, RiBodyScanFill, RiBrainFill } from "react-icons/ri";
-import { RiMentalHealthFill, RiUserVoiceFill, RiBodyScanFill, RiBrainFill } from "react-icons/ri";
+import {
+  RiMentalHealthFill,
+  RiUserVoiceFill,
+  RiBodyScanFill,
+  RiBrainFill,
+} from "react-icons/ri";
 
 interface PanelMedicoProps {
   idHijo: number;
@@ -17,7 +21,7 @@ export default function PanelMedico({ idHijo }: PanelMedicoProps) {
   const [showInfoMedical, setShowInfoMedical] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [userName, setUserName] = useState<string>("");
-  const [loading, setLoading] = useState(true); 
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchUserData = async () => {
@@ -25,12 +29,14 @@ export default function PanelMedico({ idHijo }: PanelMedicoProps) {
         const userData = await getPsycholgyTherapies(idHijo);
         console.log("Datos del usuario:", userData);
 
-        setUserName(`${userData.hijo?.nombre || "Nombre no disponible"} ${userData.hijo?.apellido || "Apellido no disponible"}`);
+        setUserName(
+          `${userData.hijo?.nombre || "Nombre no disponible"} ${userData.hijo?.apellido || "Apellido no disponible"}`,
+        );
       } catch (error) {
         console.error("Error al obtener los datos del usuario:", error);
         setUserName("Usuario desconocido");
       } finally {
-        setLoading(false); 
+        setLoading(false);
       }
     };
 
@@ -48,7 +54,7 @@ export default function PanelMedico({ idHijo }: PanelMedicoProps) {
   };
 
   if (loading) {
-    return <div>Loading...</div>; 
+    return <div>Loading...</div>;
   }
   
   return (
@@ -88,18 +94,29 @@ export default function PanelMedico({ idHijo }: PanelMedicoProps) {
       </div>
 
       {showInfoMedical && selectedCategory === "psychological" && (
-        <PopUpPsychologycalSession onClose={handleCloseAjustes} hijoId={idHijo} />
+        <PopUpPsychologycalSession
+          onClose={handleCloseAjustes}
+          hijoId={idHijo}
+        />
       )}
       {showInfoMedical && selectedCategory === "speech" && (
-        <PopUpSpeechTherapySession onClose={handleCloseAjustes} hijoId={idHijo} />
+        <PopUpSpeechTherapySession
+          onClose={handleCloseAjustes}
+          hijoId={idHijo}
+        />
       )}
       {showInfoMedical && selectedCategory === "physiological" && (
-        <PopUpPhysiologycalTherapies onClose={handleCloseAjustes} hijoId={idHijo} />
+        <PopUpPhysiologycalTherapies
+          onClose={handleCloseAjustes}
+          hijoId={idHijo}
+        />
       )}
       {showInfoMedical && selectedCategory === "neurological" && (
-        <PopUpNeurologicalTherapies onClose={handleCloseAjustes} hijoId={idHijo} />
+        <PopUpNeurologicalTherapies
+          onClose={handleCloseAjustes}
+          hijoId={idHijo}
+        />
       )}
     </section>
   );
 }
-
