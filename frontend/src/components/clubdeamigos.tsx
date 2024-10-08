@@ -4,8 +4,8 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import { Navigation, Autoplay } from 'swiper/modules';
-import Footer from "@/components/footer";
 import RegisterForm from "@/components/formClubAmigos";
+import { FooterWithLinks } from './footerLinks';
 
 const Clubdeamigos = () => {
 
@@ -69,12 +69,17 @@ const Clubdeamigos = () => {
 
       <section className="container mx-auto px-4">
           <h1 className="text-3xl font-bold mb-4 text-center text-custom-blue">SUMATE A NUESTRO CLUB!!</h1>
-          <p className=" text-xl text-center mb-10">Completa algun formulario y un miembro de nuestro equipo se pondrán en contacto contigo para ser parte de DOWN IS UP CBA</p>
+          <p className=" text-lg text-center mb-5">Para llevar a cabo nuestro sueño, buscamos empresas o voluntarios que tengan el mismo compromiso 
+                                                    por la inclusión y el cambio de mirada sobre la discapacidad. Que nos acompañen en este camino, nos ayudará 
+                                                    a que nuestros programas se fortalezcan y sigan creciendo.
+                                                    Los lazos creados harán que la vida independiente de las personas con Síndrome de Down deje de ser un sueño 
+                                                    y sea una realidad.</p>
+          <p className=" text-xl text-center mb-10">"Completa el formulario según tu perfil y un miembro de nuestro equipo se pondrá en contacto contigo para que formes parte del Club de Amigos de Down Is Up CBA. Juntos, podemos seguir creando un espacio inclusivo y de apoyo para personas con síndrome de Down y sus familias."</p>
 
           <RegisterForm />
       </section>
       <section/>
-      <Footer />
+      <FooterWithLinks/>
 
     </section>
   );

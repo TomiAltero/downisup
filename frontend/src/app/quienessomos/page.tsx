@@ -9,7 +9,7 @@ import { Navigation, Autoplay } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import LandingLayout from "@/layouts/LandingLayout";
-import Footer from "@/components/footer";
+import {FooterWithLinks} from "@/components/footerLinks"
 
 export default function QuienesSomos() {
 
@@ -133,7 +133,7 @@ export default function QuienesSomos() {
             </div>
           </section>
         </section>
-        <Footer />
+        <FooterWithLinks />
       </main>
     </LandingLayout>
   );

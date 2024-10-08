@@ -6,6 +6,7 @@ import { Input } from "@/components/ui/input";
 import Footer from "@/components/footer";
 import { PhoneIconSvg, MessageIconSvg, PinIconSvg} from "@/components/ui/icons"
 import { Button } from "@material-tailwind/react";
+import { FooterWithLinks } from "@/components/footerLinks";
 
 export default function ContactUsPage() {
   return (
@@ -69,7 +70,7 @@ export default function ContactUsPage() {
         </div>
         
         {/* Pie de página con redes sociales */}
-        <Footer />
+        <FooterWithLinks/>
       </main>
     </LandingLayout>
   );
