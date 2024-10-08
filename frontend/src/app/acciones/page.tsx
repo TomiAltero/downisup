@@ -4,7 +4,7 @@ import { CalendarIcon } from "@/components/ui/icons"
 import { poppins } from "@/components/ui/fonts";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
-import Footer from "@/components/footer";
+import { FooterWithLinks } from "@/components/footerLinks";
 
 const diaSemana = ["Lun", "Mar", "Mie", "Jue", "Vie", "Sab", "Dom"];
 const diaMes = 31;
@@ -83,7 +83,7 @@ export default function AccionesPage() {
                 </article>
                 <article className="flex items-center gap-x-2 mt-4">
                   <CalendarIcon className="size-8 text-blue-900" />
-                  <h3 className="text-sm text-blue-900">
+                  <h3 className="text-sm text-black">
                     {event.date}
                   </h3>
                 </article>
@@ -121,7 +121,7 @@ export default function AccionesPage() {
           </section>
         </section>
 
-        <Footer />
+        <FooterWithLinks />
 
       </main>
     </LandingLayout>

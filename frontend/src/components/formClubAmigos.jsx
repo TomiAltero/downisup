@@ -1,6 +1,5 @@
 
 import React from "react";
-import { useCountries } from "use-react-countries";
 import {
   Card,
   CardHeader,
@@ -19,7 +18,6 @@ import {
 import { LockClosedIcon } from "@heroicons/react/24/solid";
 
 export default function RegisterForm() {
-  const { countries } = useCountries();
   const [formType, setFormType] = React.useState("volunteer");
 
   function formatNumber(value) {
@@ -46,7 +44,7 @@ export default function RegisterForm() {
               Voluntario
             </Tab>
             <Tab value="company" onClick={() => setFormType("company")}>
-              Compañía
+              Empresa
             </Tab>
           </TabsHeader>
           <TabsBody
@@ -121,7 +119,7 @@ export default function RegisterForm() {
                 />
 
                 {/* Como conociste Input */}
-              <label className="text-sm font-medium mt-3 text-blue-gray-700">¿Cómo conociste a Down Is Up cba?</label>
+              <label className="text-sm font-medium mt-3 text-blue-gray-700">¿Cómo conociste a DOWN IS UP CÓRDOBA?</label>
                 <Input
                   className="rounded-md border-t-0 border-l-0 border-r-0 border-b-2 border-blue-800 outline-none focus:ring-0 focus:border-blue-600 mb-6"
                   type="text"
@@ -206,20 +204,11 @@ export default function RegisterForm() {
                 />
 
                 {/* Company Como conociste Input */}
-                <label className="text-sm font-medium mt-3 text-blue-gray-700">¿Cómo conociste a Down Is Up cba?</label>
+                <label className="text-sm font-medium mt-3 text-blue-gray-700">¿Cómo conociste a DOWN IS UP CÓRDOBA?</label>
                 <Input
                   className="rounded-md border-t-0 border-l-0 border-r-0 border-b-2 border-blue-800 outline-none focus:ring-0 focus:border-blue-600 mb-6"
                   type="text"
                   placeholder="Google"
-                  aria-required="true"
-                />
-
-                {/* Company Description Input */}
-                <label className="text-sm font-medium text-blue-gray-700">Descripción</label>
-                <Input
-                  className="rounded-md border-t-0 border-l-0 border-r-0 border-b-2 border-blue-800 outline-none focus:ring-0 focus:border-blue-600 mb-6"
-                  type="text"
-                  placeholder="Description"
                   aria-required="true"
                 />
 
