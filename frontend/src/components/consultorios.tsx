@@ -93,6 +93,9 @@ const Consultorios = () => {
 
       <div className="container mx-auto px-4 mb-10">
         <div className="mb-8">
+        <h1 className="text-center text-xl md:text-md  text-black mb-10 lg:mx-70 md:10">
+            Nos hemos “aventurado” en este camino de crear un equipo terapéutico interdisciplinario que contará con profesionales de una gran trayectoria y amplia formación en cada una de las áreas en las cuales se fueron formando con el objetivo y el deseo de acompañar el desarrollo y crecimiento de las personas con síndrome de Down y de cada familia desde la niñez a la adultez, teniendo como eje el trabajo desde la infancia para la vida independiente.</h1>
+
 
           <h1 className="text-center text-xl md:text-md font-semibold text-blue-900 mb-10 lg:mx-70 md:10">
             &quot;Arrancamos con este proyecto que nos llena de felicidad ya que es la base para comenzar a diagramar la vivienda de apoyo de la Fundación Down is up Cba.&quot;</h1>
