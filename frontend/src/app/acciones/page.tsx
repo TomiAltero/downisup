@@ -50,6 +50,9 @@ export default function AccionesPage() {
         <h1 className="text-4xl mt-22 mb-5 text-custom-blue font-semibold">
           Acciones
         </h1>
+
+        <h2 className="text-xl mt-3 mb-5 text-custom-blue text-center mx-10 font-semibold">En esta sección encontrarás los eventos y actividades que hemos realizado a lo largo de los años y un calendario con los proximos eventos pendientes, con el objetivo de compartir, informar y disfrutar junto a todos los miembros de nuestra fundación.</h2>
+
         <section className="flex w-full px-10">
           <section className="grid grid-cols-2 w-full items-center">
             {eventCards.map((event, index) => (
@@ -82,7 +85,7 @@ export default function AccionesPage() {
                   </article>
                 </article>
                 <article className="flex items-center gap-x-2 mt-4">
-                  <CalendarIcon className="size-8 text-blue-900" />
+                  <CalendarIcon className="size-8 text-black" />
                   <h3 className="text-sm text-black">
                     {event.date}
                   </h3>
@@ -99,7 +102,7 @@ export default function AccionesPage() {
               Septiembre
             </h3>
             <div className="calendar-container">
-              <div className="grid grid-cols-7 gap-2 text-center text-sm font-medium text-blue-900">
+              <div className="grid grid-cols-7 gap-2 text-center text-sm font-medium text-black">
                 {diaSemana.map((dia) => (
                   <div key={dia}>{dia}</div>
                 ))}

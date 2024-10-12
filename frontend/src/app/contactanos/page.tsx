@@ -62,7 +62,7 @@ export default function ContactUsPage() {
               <input type="text" className="w-full rounded-3xl bg-gray-400 border-2 placeholder:text-sm text-sm p-6 placeholder:text-white focus:ring-0 " placeholder="Ingrese un mensaje" />
             </article>
             <div>
-              <button className="bg-blue-900 mt-5 hover:bg-blue-700 text-base text-white py-2 px-4 rounded-xl">
+              <button className="bg-blue-500 shadow-lg shadow-blue-500/50 text-base text-white mt-4 py-2 px-4 rounded-xl">
                       Enviar
               </button>
             </div>
@@ -70,7 +70,9 @@ export default function ContactUsPage() {
         </div>
         
         {/* Pie de página con redes sociales */}
-        <FooterWithLinks/>
+        <div className="absolute inset-x-0 bottom-0">
+          <FooterWithLinks/>
+        </div>
       </main>
     </LandingLayout>
   );

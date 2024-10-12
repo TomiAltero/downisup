@@ -93,7 +93,7 @@ const Consultorios = () => {
 
       <div className="container mx-auto px-4 mb-10">
         <div className="mb-8">
-        <h1 className="text-center text-xl md:text-md  text-black mb-10 lg:mx-70 md:10">
+        <h1 className="text-xl mt-3 mb-5 text-custom-blue text-center mx-10">
             Nos hemos “aventurado” en este camino de crear un equipo terapéutico interdisciplinario que contará con profesionales de una gran trayectoria y amplia formación en cada una de las áreas en las cuales se fueron formando con el objetivo y el deseo de acompañar el desarrollo y crecimiento de las personas con síndrome de Down y de cada familia desde la niñez a la adultez, teniendo como eje el trabajo desde la infancia para la vida independiente.</h1>
 
 
@@ -138,7 +138,7 @@ const Consultorios = () => {
             </p>
           </div>
           <div className="lg:w-1/2 py-8">
-            <h3 className="text-xl font-semibold text-blue-900 mb-2">Profesionales que nos acompañan</h3>
+            <h3 className="text-xl font-semibold text-blue-900 mb-2">Especialidades</h3>
             <ul className="list-disc list-inside text-base md:px-4 text-gray-700 space-y-1">
               <li>Cecilia Cedrola: Lic. en Psicopedagogía / Magister en atención a personas con síndrome de Down.</li>
               <li>Laura Legeren: Lic. en Psicología / Posgrado en Psicoterapia cognitivo conductual.</li>

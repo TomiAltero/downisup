@@ -129,7 +129,7 @@ export default function Home() {
               </article>
             </section>
             <section className="flex flex-col items-center z-10">
-                <div className="bg-custom-blue rounded-lg"><ButtonHome /></div>
+                <div className="bg-custom-blue shadow-lg shadow-indigo-500/50 rounded-lg"><ButtonHome /></div>
             </section>
           </section>
 
@@ -161,7 +161,7 @@ export default function Home() {
                 <Image src="/tick.png" alt="Tick" className="inline-block mr-2" width={16} height={16} /> Visibilizar el Síndrome de Down, mediante acciones de educación, formación y actividades sociales y culturales, fortaleciendo la convivencia.<br />
                 <Image src="/tick.png" alt="Tick" className="inline-block mr-2" width={16} height={16} /> Fomentar la vida independiente y la autonomía de las personas con síndrome de Down.
               </p>
-              <div className="bg-pink-600 rounded-lg "><ButtonShowMore /></div>
+              <div className="bg-pink-600 shadow-lg shadow-pink-500/50 rounded-lg "><ButtonShowMore /></div>
             </div>
           </section>
 
@@ -259,8 +259,8 @@ export default function Home() {
                   </div>
 
                   <div className="flex items-center gap-x-2 mt-4">
-                    <CalendarIcon className="text-sm size-5 text-blue-900" />
-                    <h3 className="text-sm text-blue-900">{event.date}</h3>
+                    <CalendarIcon className="text-sm size-5 text-black" />
+                    <h3 className="text-sm">{event.date}</h3>
                   </div>
                 </article>
               ))}
