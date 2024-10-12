@@ -264,6 +264,14 @@ export default function RegisterForm() {
                 <Button type="submit" className="w-full bg-blue-600 mt-6">
                   Enviar
                 </Button>
+                <Typography
+                  variant="small"
+                  color="black"
+                  className="flex items-center justify-center gap-2 font-medium opacity-60"
+                >
+                  <LockClosedIcon className="-mt-0.5 h-4 w-4" /> Informacion
+                  segura y encriptada
+                </Typography>
               </form>
             </TabPanel>
             <TabPanel value="company" className="p-0">
@@ -389,6 +397,14 @@ export default function RegisterForm() {
                 <Button type="submit" className="w-full bg-blue-600 mt-6">
                   Enviar
                 </Button>
+                <Typography
+                  variant="small"
+                  color="black"
+                  className="flex items-center justify-center gap-2 font-medium opacity-60"
+                >
+                  <LockClosedIcon className="-mt-0.5 h-4 w-4" /> Informacion
+                  segura y encriptada
+                </Typography>
               </form>
             </TabPanel>
           </TabsBody>
