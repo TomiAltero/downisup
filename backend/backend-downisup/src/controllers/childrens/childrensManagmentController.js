@@ -20,7 +20,6 @@ class ChildrensManagmentController {
     }
   }
 
-
   async getChildrenAndUser(req, res) {
     try {
       const usuario = await Usuario.findByPk(req.userId);
@@ -41,10 +40,13 @@ class ChildrensManagmentController {
       });
     } catch (error) {
       console.error("Error al obtener el usuario y todos los hijos:", error);
-      res.status(500).json({ error: "Hubo un error al obtener el usuario y todos los hijos" });
+      res
+        .status(500)
+        .json({
+          error: "Hubo un error al obtener el usuario y todos los hijos",
+        });
     }
   }
-
 
   async getChildrenForUser(req, res) {
     try {
@@ -99,4 +101,3 @@ class ChildrensManagmentController {
 }
 
 module.exports = new ChildrensManagmentController();
-
