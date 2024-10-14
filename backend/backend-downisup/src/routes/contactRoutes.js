@@ -15,8 +15,8 @@ router.post("/send-email", async (req, res) => {
 
   const mailOptions = {
     from: email,
-    to: "facubisio433@gmail.com", // The email where you want to receive the form data
-    subject: `New Contact Form Submission from ${name} ${surname}`,
+    to: "tomasaltero@gmail.com", // The email where you want to receive the form data
+    subject: `Nueva consulta DownIsUp - ${name} ${surname}`,
     text: `Name: ${name}\nSurname: ${surname}\nEmail: ${email}\nPhone: ${phone}\nMessage: ${message}`,
   };
 

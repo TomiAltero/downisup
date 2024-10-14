@@ -32,6 +32,7 @@ export default function ContactUsPage() {
   
       if (response.ok) {
         alert('Message sent successfully');
+        form.reset();
       } else {
         alert('Failed to send message');
       }
@@ -105,7 +106,7 @@ export default function ContactUsPage() {
         
         {/* Pie de página con redes sociales */}
         <div className="absolute inset-x-0 bottom-0">
-          <FooterWithLinks/>
+          
         </div>
       </main>
     </LandingLayout>
