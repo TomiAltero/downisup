@@ -30,7 +30,7 @@ export default function RegisterForm() {
 
   const validate = () => {
     const errors = {};
-
+    
     // Nombre completo
     if (!formData.fullName.trim()) {
       errors.fullName = "El nombre completo es obligatorio.";
@@ -79,19 +79,16 @@ export default function RegisterForm() {
     const age = today.getFullYear() - birthdate.getFullYear();
     const monthDiff = today.getMonth() - birthdate.getMonth();
     const dayDiff = today.getDate() - birthdate.getDate();
-
-    if (
-      age < 16 ||
-      (age === 16 && (monthDiff < 0 || (monthDiff === 0 && dayDiff < 0)))
-    ) {
+  
+    if (age < 16 || (age === 16 && (monthDiff < 0 || (monthDiff === 0 && dayDiff < 0)))) {
       setFormErrors((prevErrors) => ({
         ...prevErrors,
-        birthdate: "Debes ser mayor de 16 años.",
+        birthdate: 'Debes ser mayor de 16 años.',
       }));
     } else {
       setFormErrors((prevErrors) => ({
         ...prevErrors,
-        birthdate: "",
+        birthdate: '',
       }));
     }
   };
@@ -145,10 +142,7 @@ export default function RegisterForm() {
           >
             {/* Formulario de Voluntario */}
             <TabPanel value="volunteer" className="p-0">
-              <form
-                className="mt-6 flex flex-col gap-4"
-                onSubmit={handleSubmit}
-              >
+              <form className="mt-6 flex flex-col gap-4" onSubmit={handleSubmit}>
                 <Typography
                   variant="small"
                   color="blue-gray"
@@ -172,9 +166,7 @@ export default function RegisterForm() {
                   error={formErrors.fullName ? true : undefined}
                 />
                 {formErrors.fullName && (
-                  <Typography className="text-red text-sm font-bold">
-                    {formErrors.fullName}
-                  </Typography>
+                  <Typography className="text-red text-sm font-bold">{formErrors.fullName}</Typography>
                 )}
 
                 {/* Email Input */}
@@ -193,9 +185,7 @@ export default function RegisterForm() {
                   error={formErrors.email ? true : undefined}
                 />
                 {formErrors.email && (
-                  <Typography className="text-red text-sm font-bold">
-                    {formErrors.email}
-                  </Typography>
+                  <Typography className="text-red text-sm font-bold">{formErrors.email}</Typography>
                 )}
 
                 {/* Phone Input */}
@@ -213,9 +203,7 @@ export default function RegisterForm() {
                   error={formErrors.phone ? true : undefined}
                 />
                 {formErrors.phone && (
-                  <Typography className="text-red text-sm font-bold">
-                    {formErrors.phone}
-                  </Typography>
+                  <Typography className="text-red text-sm font-bold">{formErrors.phone}</Typography>
                 )}
 
                 {/* Date Input */}
@@ -233,9 +221,7 @@ export default function RegisterForm() {
                   error={formErrors.dob ? true : undefined}
                 />
                 {formErrors.dob && (
-                  <Typography className="text-red text-sm font-bold">
-                    {formErrors.dob}
-                  </Typography>
+                  <Typography className="text-red text-sm font-bold">{formErrors.dob}</Typography>
                 )}
 
                 {/* DNI Input */}
@@ -253,9 +239,7 @@ export default function RegisterForm() {
                   error={formErrors.dni ? true : undefined}
                 />
                 {formErrors.dni && (
-                  <Typography className="text-red text-sm font-bold">
-                    {formErrors.dni}
-                  </Typography>
+                  <Typography className="text-red text-sm font-bold">{formErrors.dni}</Typography>
                 )}
 
                 {/* Propuesta */}
@@ -273,9 +257,7 @@ export default function RegisterForm() {
                   error={formErrors.proposal ? true : undefined}
                 />
                 {formErrors.proposal && (
-                  <Typography className="text-red text-sm font-bold">
-                    {formErrors.proposal}
-                  </Typography>
+                  <Typography className="text-red text-sm font-bold">{formErrors.proposal}</Typography>
                 )}
 
                 {/* Submit */}
@@ -293,10 +275,7 @@ export default function RegisterForm() {
               </form>
             </TabPanel>
             <TabPanel value="company" className="p-0">
-              <form
-                className="mt-6 flex flex-col gap-4"
-                onSubmit={handleSubmit}
-              >
+              <form className="mt-6 flex flex-col gap-4" onSubmit={handleSubmit}>
                 <Typography
                   variant="small"
                   color="blue-gray"
@@ -320,9 +299,7 @@ export default function RegisterForm() {
                   error={formErrors.companyName ? true : undefined}
                 />
                 {formErrors.companyName && (
-                  <Typography className="text-red text-sm font-bold">
-                    {formErrors.companyName}
-                  </Typography>
+                  <Typography className="text-red text-sm font-bold">{formErrors.companyName}</Typography>
                 )}
 
                 {/* Email Input */}
@@ -341,9 +318,7 @@ export default function RegisterForm() {
                   error={formErrors.email ? true : undefined}
                 />
                 {formErrors.email && (
-                  <Typography className="text-red text-sm font-bold">
-                    {formErrors.email}
-                  </Typography>
+                  <Typography className="text-red text-sm font-bold">{formErrors.email}</Typography>
                 )}
 
                 {/* Contact Person Input */}
@@ -361,9 +336,7 @@ export default function RegisterForm() {
                   error={formErrors.contactPerson ? true : undefined}
                 />
                 {formErrors.contactPerson && (
-                  <Typography className="text-red text-sm font-bold">
-                    {formErrors.contactPerson}
-                  </Typography>
+                  <Typography className="text-red text-sm font-bold">{formErrors.contactPerson}</Typography>
                 )}
 
                 {/* Phone Input */}
@@ -381,9 +354,7 @@ export default function RegisterForm() {
                   error={formErrors.phone ? true : undefined}
                 />
                 {formErrors.phone && (
-                  <Typography className="text-red text-sm font-bold">
-                    {formErrors.phone}
-                  </Typography>
+                  <Typography className="text-red text-sm font-bold">{formErrors.phone}</Typography>
                 )}
 
                 {/* Company Address Input */}
@@ -401,9 +372,7 @@ export default function RegisterForm() {
                   error={formErrors.companyAddress ? true : undefined}
                 />
                 {formErrors.companyAddress && (
-                  <Typography className="text-red text-sm font-bold">
-                    {formErrors.companyAddress}
-                  </Typography>
+                  <Typography className="text-red text-sm font-bold">{formErrors.companyAddress}</Typography>
                 )}
 
                 {/* Company Proposal */}
@@ -421,9 +390,7 @@ export default function RegisterForm() {
                   error={formErrors.proposal ? true : undefined}
                 />
                 {formErrors.proposal && (
-                  <Typography className="text-red text-sm font-bold">
-                    {formErrors.proposal}
-                  </Typography>
+                  <Typography className="text-red text-sm font-bold">{formErrors.proposal}</Typography>
                 )}
 
                 {/* Submit */}

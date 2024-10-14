@@ -10,6 +10,7 @@ import 'swiper/css/navigation';
 import { Navigation, Autoplay } from 'swiper/modules';
 import dynamic from 'next/dynamic';
 import { Footer } from "../components/footer";
+import { FooterWithLinks } from './footerLinks';
 
 
 const MapComponent = dynamic(() => import('../components/MapComponent'), {
@@ -41,7 +42,7 @@ const Consultorios = () => {
       <section className="relative w-full h-screen mb-10" style={{ height: "250px" }}>
 
         <div className="absolute inset-0 z-10 flex items-center justify-center">
-          <h1 className="text-white text-4xl font-bold mt-10">CONSULTORIOS</h1>
+          <h1 className="text-white text-4xl font-bold mt-10">CONSULTORIO </h1>
         </div>
 
         <Swiper
@@ -92,6 +93,9 @@ const Consultorios = () => {
 
       <div className="container mx-auto px-4 mb-10">
         <div className="mb-8">
+        <h1 className="text-xl mt-3 mb-5 text-custom-blue text-center mx-10">
+            Nos hemos “aventurado” en este camino de crear un equipo terapéutico interdisciplinario que contará con profesionales de una gran trayectoria y amplia formación en cada una de las áreas en las cuales se fueron formando con el objetivo y el deseo de acompañar el desarrollo y crecimiento de las personas con síndrome de Down y de cada familia desde la niñez a la adultez, teniendo como eje el trabajo desde la infancia para la vida independiente.</h1>
+
 
           <h1 className="text-center text-xl md:text-md font-semibold text-blue-900 mb-10 lg:mx-70 md:10">
             &quot;Arrancamos con este proyecto que nos llena de felicidad ya que es la base para comenzar a diagramar la vivienda de apoyo de la Fundación Down is up Cba.&quot;</h1>
@@ -105,7 +109,16 @@ const Consultorios = () => {
           />
           </div>
 
-          <h1 className="text-sm mt-2 mb-5 text-center">Pérez de herrera 2053 B° Cerro de las Rosas</h1>
+          <h1 className="text-sm mt-2 mb-5 text-center">
+            <a
+              href="https://www.google.com.ar/maps/place/P%C3%A9rez+de+Herrera+2053,+X5009HWC+C%C3%B3rdoba/@-31.376337,-64.2270197,17z/data=!3m1!4b1!4m6!3m5!1s0x9432992702a83aab:0x60730d3b22c95476!8m2!3d-31.376337!4d-64.2270197!16s%2Fg%2F11jxsym5zd?entry=ttu&g_ep=EgoyMDI0MTAwMi4xIKXMDSoASAFQAw%3D%3D"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-blue-900 hover:underline"
+            >
+              Pérez de Herrera 2053 B° Cerro de las Rosas
+            </a>
+          </h1>
 
           <MapComponent />
 
@@ -125,7 +138,7 @@ const Consultorios = () => {
             </p>
           </div>
           <div className="lg:w-1/2 py-8">
-            <h3 className="text-xl font-semibold text-blue-900 mb-2">Profesionales que nos acompañan</h3>
+            <h3 className="text-xl font-semibold text-blue-900 mb-2">Especialidades</h3>
             <ul className="list-disc list-inside text-base md:px-4 text-gray-700 space-y-1">
               <li>Cecilia Cedrola: Lic. en Psicopedagogía / Magister en atención a personas con síndrome de Down.</li>
               <li>Laura Legeren: Lic. en Psicología / Posgrado en Psicoterapia cognitivo conductual.</li>
@@ -137,7 +150,7 @@ const Consultorios = () => {
         </motion.div>
       </div>
 
-      <Footer/>
+      <FooterWithLinks/>
     </section>
   );
 };

@@ -13,6 +13,10 @@ Specialities.init(
       type: DataTypes.TEXT,
       allowNull: true,
     },
+    route: {
+      type: DataTypes.TEXT,
+      allowNull: false,
+    },
   },
   {
     sequelize,

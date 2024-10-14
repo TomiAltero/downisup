@@ -11,7 +11,7 @@ const routes = [
   { name: "Inicio", route: "/" },
   { name: "Quienes Somos", route: "/quienessomos" },
   { name: "Club De Amigos", route: "/clubdeamigos" },
-  { name: "Consultorios", route: "/consultorios" },
+  { name: "Consultorio", route: "/consultorios" },
   { name: "Contactanos", route: "/contactanos" },
   { name: "Acciones", route: "/acciones" },
   { name: "Tienda", route: "/tienda" }

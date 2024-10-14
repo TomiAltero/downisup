@@ -6,6 +6,7 @@ const sequelize = require("./config/database");
 const usersRoutes = require("./routes/usersRoutes");
 const childrenRoutes = require("./routes/childrenRoutes");
 const medicalData = require("./routes/medicalDataRoutes")
+const sendEmail = require("./routes/contactRoutes");
 const cors = require("cors");
 
 const app = express();
@@ -27,6 +28,7 @@ app.get("/", (req, res) => {
 app.use("/api/usuarios", usersRoutes);
 app.use("/api/hijos", childrenRoutes);
 app.use("/api/medicalData",medicalData);
+app.use("/api/mail", sendEmail)
 
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 

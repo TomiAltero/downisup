@@ -3,7 +3,7 @@ import { FaInstagram, FaYoutube, FaWhatsapp, FaFacebook } from "react-icons/fa";
 
 const LINKS = [
   {
-    title: "About Us",
+    title: "Sobre Nosotros",
     items: [
       { name: "Quienes somos", href: "/quienessomos" },
       { name: "Como comenzamos", href: "/quienessomos" },
@@ -11,7 +11,7 @@ const LINKS = [
     ],
   },
   {
-    title: "Contact Us",
+    title: "Contacto",
     items: [
       { name: "Contacto", href: "/contactanos" },
       { name: "Enviar email", href: "/contactanos" },
@@ -36,7 +36,7 @@ export function FooterWithLinks() {
       <div className="container mx-auto flex flex-wrap justify-between">
         <div className="w-full md:w-1/3 mb-6 md:mb-0">
           <Typography as="a" href="#" variant="h5" className="text-white font-bold text-2xl">
-            DownIsUp
+            Down Is Up
           </Typography>
         </div>
 
