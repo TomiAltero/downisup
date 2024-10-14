@@ -17,7 +17,7 @@ router.post("/send-email", async (req, res) => {
     from: email,
     to: "tomasaltero@gmail.com", // The email where you want to receive the form data
     subject: `Nueva consulta DownIsUp - ${name} ${surname}`,
-    text: `Name: ${name}\nSurname: ${surname}\nEmail: ${email}\nPhone: ${phone}\nMessage: ${message}`,
+    text: `${name} quiere contactarnos, estos son sus datos:\n Nombre: ${name}\Apellido: ${surname}\nEmail: ${email}\Telefono: ${phone}\nMensaje: ${message}`,
   };
 
   try {
