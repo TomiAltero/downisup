@@ -17,14 +17,14 @@ router.post("/send-email", async (req, res) => {
     from: email,
     to: "facubisio433@gmail.com", // The email where you want to receive the form data
     subject: `Nueva consulta DownIsUp - ${name} ${surname}`,
-    text: `${name} quiere contactarnos, estos son sus datos:\n Nombre: ${name}\nApellido: ${surname}\nEmail: ${email}\Telefono: ${phone}\nMensaje: ${message}`,
+    text: `${name} quiere contactarnos, estos son sus datos:\n Nombre: ${name}\nApellido: ${surname}\nEmail: ${email}\nTeléfono: ${phone}\nMensaje: ${message}`,
   };
 
   try {
     await transporter.sendMail(mailOptions);
-    res.status(200).send("Message sent successfully");
+    res.status(200).send(" Mensaje enviado con exito.");
   } catch (error) {
-    res.status(500).send("Error sending message");
+    res.status(500).send(" Error sending message");
   }
 });
 

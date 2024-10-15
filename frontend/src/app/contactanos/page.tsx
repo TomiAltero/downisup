@@ -39,11 +39,11 @@ export default function ContactUsPage() {
       });
 
       if (response.ok) {
-        setAlertMessage('Message sent successfully!'); // Set the success alert message
+        setAlertMessage(' Mensaje enviado con exito!'); // Set the success alert message
         setIsError(false); // No error, success
         form.reset();
       } else {
-        setAlertMessage('Failed to send message. Please try again.');
+        setAlertMessage('Error al enviar el mensaje. Por favor, intente nuevamente.');
         setIsError(true);  // Mark it as an error
       }
     } catch (error) {

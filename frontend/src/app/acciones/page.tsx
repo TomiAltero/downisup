@@ -48,7 +48,7 @@ export default function AccionesPage() {
         className={`h-screen flex flex-col items-center ${poppins.className}`}
       >
         <h1 className="text-4xl mt-22 mb-5 text-custom-blue font-semibold">
-          Acciones
+          ACCIONES QUE REALIZAMOS
         </h1>
 
         <h2 className="text-xl mt-3 mb-5 text-custom-blue text-center mx-10 font-semibold">En esta sección encontrarás los eventos y actividades que hemos realizado a lo largo de los años y un calendario con los proximos eventos pendientes, con el objetivo de compartir, informar y disfrutar junto a todos los miembros de nuestra fundación.</h2>
