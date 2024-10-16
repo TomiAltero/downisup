@@ -64,5 +64,5 @@ export function AlertCustomStylesRojo({ message }: { message: string }) {
 
 // Spinner component
 export function LoadingSpinner() {
-  return <Spinner onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined} />;
+  return <Spinner className="text-custom-blue" onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined} />;
 }

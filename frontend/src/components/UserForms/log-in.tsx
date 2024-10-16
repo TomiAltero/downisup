@@ -1,4 +1,5 @@
 "use client";
+import { signIn } from "next-auth/react"; // Importa la función de NextAuth
 import React, { useState, FormEvent } from "react";
 import axios from "axios";
 import { CardTitle, CardHeader, CardContent, Card } from "@/components/ui/card";
@@ -13,6 +14,10 @@ import Link from "next/link";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
 import { ArrowLeftIconSvg } from "@/components/ui/icons";
+
+const handleGoogleLogin = () => {
+  signIn("google", { callbackUrl: "/application" });
+};
 
 export function LogIn() {
   const [usernameOrEmail, setUsernameOrEmail] = useState("");
@@ -228,6 +233,7 @@ export function LogIn() {
                 <Button
                   className="-mt-2 w-full rounded-2xl bg-white border px-3 py-2 text-sm font-semi bold text-gray-700 shadow-sm hover:bg-gray-100 focus:outline-none flex items-center justify-center"
                   type="button"
+                  onClick={handleGoogleLogin}
                 >
                   <FcGoogle className="mr-2" size={20} />
                   Continuar con Google

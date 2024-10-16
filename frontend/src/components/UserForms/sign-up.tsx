@@ -1,4 +1,5 @@
 "use client";
+import { signIn } from "next-auth/react"; // Importa la función de NextAuth
 import { CardTitle, CardHeader, CardContent, Card } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
 import "toastify-js/src/toastify.css";
@@ -13,6 +14,10 @@ import Link from "next/link";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
 import { ArrowLeftIconSvg } from "@/components/ui/icons";
+
+const handleGoogleSignup = () => {
+  signIn("google", { callbackUrl: "/application" });
+};
 
 export function SignUp() {
   const [showPassword, setShowPassword] = useState<boolean>(false);
@@ -342,6 +347,7 @@ export function SignUp() {
               <Button
                 className="-mt-2 w-full rounded-2xl bg-white border px-3 py-2 text-sm font-semi bold text-gray-700 shadow-sm hover:bg-gray-100 focus:outline-none flex items-center justify-center"
                 type="button"
+                onClick={handleGoogleSignup}
               >
                 <FcGoogle className="mr-2" size={20} />
                 Registrarse con Google
