@@ -13,8 +13,7 @@ import { AlertCustomStyles, AlertCustomStylesRojo, LoadingSpinner } from "@/comp
 export default function ContactUsPage() {
   const [isLoading, setIsLoading] = useState(false); // State for spinner
   const [alertMessage, setAlertMessage] = useState(''); // State for alert message
-  const [isError, setIsError] = useState(false); // State to track if the message is an error
-
+  const [isError, setIsError] = useState(false); // State to track if the message is an error  
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     setIsLoading(true);  // Show spinner while sending
