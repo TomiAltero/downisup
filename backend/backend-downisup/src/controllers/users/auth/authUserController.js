@@ -38,6 +38,37 @@ class AuthUserController {
       res.status(500).json({ error: "Hubo un error en el login" });
     }
   }
+  async logInUserAfterReset(req, res) {
+    const { email: UserEmail } = req.body;
+    try {
+      const usuario = await Usuario.findOne({
+        where: {
+          email: UserEmail,
+        },
+      });
+
+      if (!usuario) {
+        return res.status(404).json({ error: "Usuario no encontrado" });
+      }
+
+      const token = jwt.sign({ id: usuario.id }, process.env.TOKEN_SECRET, {
+        expiresIn: "1d",
+      });
+
+      return res.json({
+        message: "Inicio de sesión exitoso",
+        token,
+        usuario: {
+          id: usuario.id,
+          username: usuario.username,
+          email: usuario.email,
+        },
+      });
+    } catch (error) {
+      console.error("Error en el login:", error);
+      res.status(500).json({ error: "Hubo un error en el login" });
+    }
+  }
 }
 
 module.exports = new AuthUserController();

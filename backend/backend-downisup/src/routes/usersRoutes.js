@@ -22,6 +22,8 @@ router.post("/", validationDataUser, async (req, res, next) => {
 });
 
 router.post("/login", usuarioAuth.loginUsuario);
+router.post("/logInUserAfterReset", usuarioAuth.logInUserAfterReset);
+
 router.get("/perfil", verificarToken, userProfile.getProfileUser);
 
 router.get("/speciality", verificarToken, userSpeciality.getSpecialityForUser);

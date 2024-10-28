@@ -12,6 +12,7 @@ import {
   LoadingSpinner,
 } from "@/components/materialComponent";
 import { generateVerificationCode } from "@/lib/utils";
+import { redirect } from "next/navigation";
 
 export default function ResetPage() {
   const [isLoading, setIsLoading] = useState(false);
@@ -68,7 +69,7 @@ export default function ResetPage() {
           setTimeout(() => {
             setShowContent(true);
             setAlertMessage("");
-          }, 1500);
+          }, 1000);
           form.reset();
         } else {
           setAlertMessage(
@@ -105,14 +106,33 @@ export default function ResetPage() {
         ).value.toUpperCase(),
       )
       .join("");
+    
+    try
+    {
+      const response = await fetch("http://localhost:5000/api/usuarios/logInUserAfterReset", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email: email }),
+      });
 
-    if (enteredCode === resetCode) {
-      setAlertMessage("Código verificado con éxito!");
-      setIsError(false);
-    } else {
-      setAlertMessage(
-        "El código ingresado es incorrecto. Por favor, intente nuevamente.",
-      );
+      const data = await response.json();
+      const { token } = data;
+
+      localStorage.setItem("token", token);
+      
+      if (enteredCode === resetCode) {
+        setAlertMessage("Código verificado con éxito!");
+        
+        setIsError(false);
+        setTimeout(() => {
+          window.location.href = "/application/";
+        }, 1500);
+      }
+    }
+    catch (error) {
+      setAlertMessage("Error verificando el código. Por favor, intente nuevamente.");
       setIsError(true);
     }
   };
@@ -243,4 +263,3 @@ export default function ResetPage() {
     </div>
   );
 }
-
