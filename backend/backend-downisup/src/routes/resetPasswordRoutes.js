@@ -3,9 +3,8 @@ const nodemailer = require("nodemailer");
 const router = express.Router();
 
 router.post("/send-reset-code", async (req, res) => {
-  const { email } = req.body;
-
-  
+  const { email, reset_code } = req.body;
+333
   const transporter = nodemailer.createTransport({
     service: "gmail",
     auth: {
@@ -17,8 +16,8 @@ router.post("/send-reset-code", async (req, res) => {
   const mailOptions = {
     from: "facubisio433@gmail.com",
     to: email, // The email where you want to receive the form data
-    subject: `Reincio de contraseña para la cuaenta ${email}`,
-    text: `Se ha solicitado un reinicio de contraseña para la cuenta ${email}. \nSi no has sido tú, ignora este mensaje. Si has sido tú, ingresa el siguiente código en la aplicación: 123456`,
+    subject: `Reinicio de contraseña para la cuenta ${email}`,
+    text: `Se ha solicitado un reinicio de contraseña para la cuenta ${email}. \nSi no has sido tú, ignora este mensaje. Si has sido tú, ingresa el siguiente código en la aplicación: ${reset_code}`,
   };
 
   try {

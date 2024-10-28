@@ -1,4 +1,4 @@
-import { Lusitana, Nunito, Open_Sans, Playfair_Display, Poppins ,} from "next/font/google";
+import { Lusitana, Nunito, Open_Sans, Playfair_Display, Poppins} from "next/font/google";
 
 export const lusitana = Lusitana({
     subsets: ['latin'],
