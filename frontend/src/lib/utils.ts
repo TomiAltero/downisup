@@ -5,8 +5,6 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
 }
 
-
-
 export async function getUserProfile( { token }: { token: string }) {
   try {
   const profile = await fetch("http://localhost:5000/api/usuarios/perfil", {
@@ -14,7 +12,6 @@ export async function getUserProfile( { token }: { token: string }) {
       Authorization: `Bearer ${token}`,
     }})
   const data = await profile.json()
-  console.log("Usuario Logeado", data)
   return data.usuario
   } catch (error) {
     throw new Error("Error al obtener el perfil del usuario")
@@ -191,3 +188,14 @@ export async function getAllSpecialities() {
   }
 
 }
+
+export function generateVerificationCode() {
+  const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+  let code = '';
+  for (let i = 0; i < 6; i++) {
+      const randomIndex = Math.floor(Math.random() * characters.length);
+      code += characters[randomIndex];
+  }
+  return code;
+}
+
