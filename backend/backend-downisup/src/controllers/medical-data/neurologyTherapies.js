@@ -25,12 +25,10 @@ class NeurologicalTherapiesController {
         hijoId,
       });
 
-      return res
-        .status(201)
-        .json({
-          message: "Neurological therapy added successfully",
-          data: newTherapie,
-        });
+      return res.status(201).json({
+        message: "Neurological therapy added successfully",
+        data: newTherapie,
+      });
     } catch (error) {
       return res
         .status(500)

@@ -5,8 +5,9 @@ const usuarioAuth = require("../controllers/users/auth/authUserController.js");
 const userProfile = require("../controllers/users/userManagment/profileController.js");
 const verificarToken = require("../middlewars/authentification.js");
 const { validationResult } = require("express-validator");
-const validationDataUser = require("../middlewars/validations.js").validateUserRegistration;
-const userSpeciality = require('../controllers/users/userManagment/specilistsController.js');
+const validationDataUser =
+  require("../middlewars/validations.js").validateUserRegistration;
+const userSpeciality = require("../controllers/users/userManagment/specilistsController.js");
 
 router.post("/", validationDataUser, async (req, res, next) => {
   const errors = validationResult(req);
@@ -23,8 +24,8 @@ router.post("/", validationDataUser, async (req, res, next) => {
 router.post("/login", usuarioAuth.loginUsuario);
 router.get("/perfil", verificarToken, userProfile.getProfileUser);
 
+router.get("/speciality", verificarToken, userSpeciality.getSpecialityForUser);
 
-
-router.get('/speciality', verificarToken, userSpeciality.getSpecialityForUser);
+router.post("/verifyEmail", usuarioManagment.verifyEmail);
 
 module.exports = router;

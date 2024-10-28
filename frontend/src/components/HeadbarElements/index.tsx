@@ -4,7 +4,6 @@ import Image from "next/image";
 import { Logout, Setting2, ArrowDown2, ArrowUp2, Profile } from "iconsax-react";
 import axios from "axios";
 import Ajustes from "@/components/HeadbarElements/settings";
-import { getSpecialityForUser } from "@/lib/utils"; 
 
 interface Usuario {
   nombre: string;
@@ -19,7 +18,6 @@ function HeadBar() {
   const dropdownRef = useRef<HTMLDivElement>(null);
   const ajustesRef = useRef<HTMLDivElement>(null);
   const [usuario, setUsuario] = useState<Usuario | null>(null);
-  const [speciality, setSpeciality] = useState<string | null>(null); // Nuevo estado para la especialización
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -33,14 +31,15 @@ function HeadBar() {
             headers: {
               Authorization: `Bearer ${token}`,
             },
-          }
+          },
         );
-        setUsuario(response.data.usuario);
-        const specialityResponse = await getSpecialityForUser({ token });
-        setSpeciality(specialityResponse.speciality.name); 
+        const usuarioData = response.data.usuario;
+        setUsuario(usuarioData);
+        console.log("Usuario data:", usuarioData);
       }
     } catch (error) {
-      setError("Error al obtener el perfil del usuario");
+      console.error("Error al obtener el perfil:", error);
+      setError("Error al obtener el perfil del usuario.");
     } finally {
       setLoading(false);
     }
@@ -86,7 +85,6 @@ function HeadBar() {
   const handleLogout = () => {
     localStorage.removeItem("token");
     setUsuario(null);
-    setSpeciality(null); 
     setLoading(true);
     setIsDropdownOpen(false);
     setShowAjustes(false);
@@ -140,7 +138,8 @@ function HeadBar() {
             <div className="ml-2">
               <p
                 className={`text-sm font-semibold ${
-                  usuario && (usuario.tipoUsuarioId === 3 || usuario.tipoUsuarioId === 2)
+                  usuario &&
+                  (usuario.tipoUsuarioId === 3 || usuario.tipoUsuarioId === 2)
                     ? "text-blue-900"
                     : "text-gray-800"
                 }`}
@@ -149,16 +148,8 @@ function HeadBar() {
                   ? `${usuario.nombre} ${usuario.apellido}`
                   : "Cargando..."}
               </p>
-              <p
-                className={`text-xs font-medium ${
-                  usuario && usuario.tipoUsuarioId === 2
-                    ? "text-blue-900"
-                    : "text-gray-500"
-                }`}
-              >
-                {usuario && usuario.tipoUsuarioId === 2 && speciality
-                  ? speciality
-                  : usuario ? usuario.username : ""}
+              <p className="text-xs font-medium text-gray-500">
+                {usuario ? usuario.username : ""}
               </p>
             </div>
             <div className="ml-2">
@@ -191,7 +182,7 @@ function HeadBar() {
                         <span className="ml-2">{item.text}</span>
                       </div>
                     </div>
-                  )
+                  ),
                 )}
               </div>
             </div>
@@ -208,4 +199,3 @@ function HeadBar() {
 }
 
 export default HeadBar;
-

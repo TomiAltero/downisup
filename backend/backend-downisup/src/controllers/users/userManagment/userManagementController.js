@@ -102,6 +102,22 @@ class UserManagementController {
       res.status(500).json({ error: "Hubo un error al eliminar usuario" });
     }
   }
+
+  async verifyEmail(req, res) {
+    const { email } = req.body;
+    const user = await Usuario.findOne({
+      where: { email },
+    });
+    if (user) {
+      return res
+        .status(400)
+        .json({ error: "El mensaje se envió correctamente" });
+    }
+    return res.status(200).json({
+      message:
+        "La dirección de correo electrónico no pertenece a un usuario del sistema.",
+    });
+  }
 }
 
 module.exports = new UserManagementController();
