@@ -48,7 +48,7 @@ function Sidebar() {
 
   return (
     <div className="w-60 shrink-0 md:block h-screen sticky top-0 overflow-hidden">
-      <div className="w-full h-full bg-white border-r">
+      <div className="w-full h-full bg-custom-blue bg-opacity-10 border-r">
         <Link href="/application">
           <div className="p-3 md:p-6 flex cursor-pointer group items-center gap-2 h-1/8">
             <div>
@@ -217,14 +217,25 @@ function Sidebar() {
             </Link>
 
             <Link
+              href="/application/horarios"
+              className={`flex ${
+                pathname === "/application/horarios" ? "text-blue-700" : ""
+              } hover:text-blue-700 duration-200 px-6 py-2 items-center gap-2 transition-all ease-in-out`}
+            >
+              <Calendar size={16} />
+              Horarios
+            </Link>
+
+            <Link
               href="/application/chat"
               className={`flex ${
-                pathname === "/app/documents" ? "text-blue-700" : ""
+                pathname === "/application/chat" ? "text-blue-700" : ""
               } hover:text-blue-700 duration-200 px-6 py-2 items-center gap-2 transition-all ease-in-out`}
             >
               <Document size={16} />
-              Chats
+              Chat
             </Link>
+
           </div>
 
           <div>

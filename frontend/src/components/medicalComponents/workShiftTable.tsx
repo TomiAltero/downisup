@@ -28,7 +28,7 @@ const TABLE_ROWS = [
 
 export function DefaultTable() {
   return (
-    <Card className="w-full h-90">
+    <Card className="w-full h-auto">
       <div className="p-4">
         <Typography variant="h5" color="blue-gray" className="mb-4 font-bold">
           Turnos Registrados

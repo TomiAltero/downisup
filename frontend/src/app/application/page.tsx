@@ -44,7 +44,7 @@ const Page = () => {
     <AppLayout>
       <main className={`h-full ${showContent ? 'fade-in' : 'initial'} flex flex-col items-center p-4`}>
         <div className="w-full max-w-screen-xl mb-8 bg-gray-50 p-6 rounded-md">
-          <h1 className="text-3xl font-bold mb-6 self-start">Inicio</h1> 
+          <h1 className="text-3xl font-bold mb-6 self-start"></h1> 
           <div className="flex gap-4">
             <Suspense fallback={<p>Cargando...</p>}>
               <CardChildren token={token} />
