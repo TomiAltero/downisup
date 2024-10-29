@@ -32,7 +32,7 @@ export default function Tienda() {
   const [hoveredProductId, setHoveredProductId] = useState<number | null>(null);
   const [cart, setCart] = useState<any[]>([]);
   const [total, setTotal] = useState<number>(0);
-
+  
   const handleMouseEnter = (productId: number) => {
     setHoveredProductId(productId);
   };
@@ -58,6 +58,7 @@ export default function Tienda() {
     setTotal((prevTotal) => prevTotal + parseFloat(product.price));
   };
 
+  
   const removeFromCart = (productId: number, price: string) => {
     setCart((prevCart) => {
       const existingProduct = prevCart.find(item => item.id === productId);
@@ -155,6 +156,10 @@ export default function Tienda() {
                 <div className="text-right text-xl text-custom-blue font-bold">
                   Total: ${total.toFixed(2)}
                 </div>
+                <button className="bg-black">
+                  <a className="bg-custom-blue text-white px-4 py-2 rounded-lg mt-4 w-full text-center hover:bg-blue-700 transition duration-300" 
+                    href="/application/form-checkout">Finalizar Compra</a>
+                </button>
               </>
             )}
           </section>
