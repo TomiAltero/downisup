@@ -8,6 +8,7 @@ const childrenRoutes = require("./routes/childrenRoutes");
 const medicalData = require("./routes/medicalDataRoutes")
 const sendEmail = require("./routes/contactRoutes");
 const sendResetCode = require("./routes/resetPasswordRoutes");
+const turnosRoute = require('./routes/turnos');
 
 const cors = require("cors");
 
@@ -30,8 +31,9 @@ app.get("/", (req, res) => {
 app.use("/api/usuarios", usersRoutes);
 app.use("/api/hijos", childrenRoutes);
 app.use("/api/medicalData",medicalData);
-app.use("/api/mail", sendEmail)  
-app.use("/api/mail/reset-password", sendResetCode)
+app.use("/api/mail", sendEmail);
+app.use("/api/mail/reset-password", sendResetCode);
+app.use('/api/turnos', turnosRoute);
 
 
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));

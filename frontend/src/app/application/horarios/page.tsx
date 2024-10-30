@@ -1,8 +1,10 @@
 'use client'
+import React from 'react';
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import AppLayout from "@/layouts/AppLayout";
-import ChatBotComponent from '@/components/ChatBotComponent';
+import HorariosComponent from '@/components/HorariosComponent';
+
 
 export default function Page() {
   const router = useRouter();
@@ -22,7 +24,7 @@ export default function Page() {
 
   return (
     <AppLayout>
-      <ChatBotComponent />
+        <HorariosComponent />
     </AppLayout>
   );
 }

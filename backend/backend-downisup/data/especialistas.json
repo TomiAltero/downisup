@@ -1,0 +1,15 @@
+[
+    {
+      "nombre": "Dr. Pérez",
+      "especialidad": "Pediatría",
+      "diasDisponibles": [1, 3, 5],
+      "horarios": { "inicio": "07:00", "fin": "15:00" }
+    },
+    {
+      "nombre": "Dra. García",
+      "especialidad": "Neurología",
+      "diasDisponibles": [2, 4],
+      "horarios": { "inicio": "08:00", "fin": "13:00" }
+    }
+  ]
+  

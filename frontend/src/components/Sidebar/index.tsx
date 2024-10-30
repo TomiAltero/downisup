@@ -113,7 +113,7 @@ function Sidebar() {
                 <button
                   onClick={() => setIsDropdownOpen(!isDropdownOpen)}
                   className={`flex justify-between items-center ${
-                    pathname.startsWith("/application/datos-medicos") ? "text-blue-700" : ""
+                    pathname?.startsWith("/application/datos-medicos") ? "text-blue-700" : ""
                   } hover:text-blue-700 duration-200 px-6 py-2 w-full transition-all ease-in-out`}
                 >
                   <div className="flex items-center gap-2">
@@ -181,7 +181,7 @@ function Sidebar() {
                   <button
                     onClick={() => setIsMedicosDropdownOpen(!isMedicosDropdownOpen)}
                     className={`flex justify-between items-center ${
-                      pathname.startsWith("/application/datos-medicos") ? "text-blue-700" : ""
+                      pathname?.startsWith("/application/datos-medicos") ? "text-blue-700" : ""
                     } hover:text-blue-700 duration-200 px-6 py-2 w-full transition-all ease-in-out`}
                   >
                     <div className="flex items-center gap-2">
