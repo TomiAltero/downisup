@@ -109,7 +109,7 @@ const ChatBotComponent = () => {
             )
           )}
 
-      <div className="mt-4 bg-white text-lg shadow-xl border-2 rounded-lg p-6 max-h-[500px] max-w-2xl mx-auto overflow-y-auto">
+      <div className="mt-4 bg-white text-base shadow-xl border-2 rounded-lg p-6 max-h-[500px] max-w-2xl mx-auto overflow-y-auto">
         <h2 className="text-center text-2xl font-semibold mb-4 text-black">Chat Turnero</h2>
   
         {step > 1 && (
