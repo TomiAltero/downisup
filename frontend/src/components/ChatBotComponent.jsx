@@ -1,7 +1,11 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import { AlertCustomStyles, AlertCustomStylesRojo, LoadingSpinner } from './materialComponent';
-
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import {
+  AlertCustomStyles,
+  AlertCustomStylesRojo,
+  LoadingSpinner,
+} from "./materialComponent";
+import { getHijoProfile } from "@/lib/utils";
 
 const ChatBotComponent = () => {
   const [especialistas, setEspecialistas] = useState([]);
@@ -10,14 +14,31 @@ const ChatBotComponent = () => {
   const [diasDisponibles, setDiasDisponibles] = useState([]);
   const [selectedDia, setSelectedDia] = useState(null);
   const [horarios, setHorarios] = useState([]);
-  const [nombrePaciente, setNombrePaciente] = useState('');
-
-  const [alertMessage, setAlertMessage] = useState('');
+  const [nombrePaciente, setNombrePaciente] = useState(""); // Inicializado como vacío
+  const [perfilHijo, setPerfilHijo] = useState([]);
+  const [alertMessage, setAlertMessage] = useState("");
   const [isError, setIsError] = useState(false);
 
   useEffect(() => {
+    const fetchHijoProfile = async () => {
+      try {
+        const token = localStorage.getItem("token");
+        if (token) {
+          const profile = await getHijoProfile({ token });
+          console.log(profile.hijos);
+          setPerfilHijo(profile.hijos);
+        }
+      } catch (error) {
+        console.error("Error al obtener el perfil del hijo:", error);
+      }
+    };
+
+    fetchHijoProfile();
+
     const fetchEspecialistas = async () => {
-      const response = await axios.get('http://localhost:5000/api/turnos/especialistas');
+      const response = await axios.get(
+        "http://localhost:5000/api/turnos/especialistas",
+      );
       setEspecialistas(response.data);
     };
     fetchEspecialistas();
@@ -27,24 +48,27 @@ const ChatBotComponent = () => {
     if (selectedEspecialista && selectedDia) {
       const fetchHorarios = async () => {
         try {
-          const response = await axios.get(`http://localhost:5000/api/turnos/disponibilidad/${selectedEspecialista.nombre}/${selectedDia}`);
+          const response = await axios.get(
+            `http://localhost:5000/api/turnos/disponibilidad/${selectedEspecialista.nombre}/${selectedDia}`,
+          );
           setHorarios(response.data.disponibilidad);
         } catch (error) {
-          console.error('Error al obtener horarios disponibles:', error);
-          alert('Error al obtener horarios disponibles. Verifica que el backend esté funcionando y los datos sean correctos.');
+          console.error("Error al obtener horarios disponibles:", error);
+          alert(
+            "Error al obtener horarios disponibles. Verifica que el backend esté funcionando y los datos sean correctos.",
+          );
         }
       };
       fetchHorarios();
     }
   }, [selectedEspecialista, selectedDia]);
 
-  // Ocultar la alerta después de 3 segundos
   useEffect(() => {
     if (alertMessage) {
       const timer = setTimeout(() => {
-        setAlertMessage('');
+        setAlertMessage("");
       }, 3000);
-      return () => clearTimeout(timer); // Limpieza del temporizador si el componente se desmonta o el mensaje cambia
+      return () => clearTimeout(timer);
     }
   }, [alertMessage]);
 
@@ -61,36 +85,35 @@ const ChatBotComponent = () => {
 
   const handleGuardarTurno = async (horario) => {
     if (!nombrePaciente) {
-      setAlertMessage('El nombre del paciente es obligatorio');
+      setAlertMessage("El nombre del paciente es obligatorio");
       setIsError(true);
       return;
     }
-  
+
     const turno = {
       especialista: selectedEspecialista.nombre,
       dia: selectedDia,
       horario,
       nombrePaciente,
     };
-  
+
     try {
-      await axios.post('http://localhost:5000/api/turnos/guardar/', turno);
-      setAlertMessage('Turno guardado exitosamente');
+      await axios.post("http://localhost:5000/api/turnos/guardar/", turno);
+      setAlertMessage("Turno guardado exitosamente");
       setIsError(false);
       resetState();
       setStep(1);
     } catch (error) {
-      setAlertMessage('Error al guardar el turno. Inténtalo nuevamente');
+      setAlertMessage("Error al guardar el turno. Inténtalo nuevamente");
       setIsError(true);
     }
   };
-  
 
   const resetState = () => {
     setSelectedEspecialista(null);
     setSelectedDia(null);
     setHorarios([]);
-    setNombrePaciente('');
+    setNombrePaciente("");
   };
 
   const volverPasoAnterior = () => {
@@ -100,18 +123,18 @@ const ChatBotComponent = () => {
 
   return (
     <div className="">
-        
-          {alertMessage && (
-            isError ? (
-              <AlertCustomStylesRojo message={alertMessage} />
-            ) : (
-              <AlertCustomStyles message={alertMessage} />
-            )
-          )}
+      {alertMessage &&
+        (isError ? (
+          <AlertCustomStylesRojo message={alertMessage} />
+        ) : (
+          <AlertCustomStyles message={alertMessage} />
+        ))}
 
       <div className="mt-4 bg-white text-base shadow-xl border-2 rounded-lg p-6 max-h-[500px] max-w-2xl mx-auto overflow-y-auto">
-        <h2 className="text-center text-2xl font-semibold mb-4 text-black">Chat Turnero</h2>
-  
+        <h2 className="text-center text-2xl font-semibold mb-4 text-black">
+          Chat Turnero
+        </h2>
+
         {step > 1 && (
           <button
             onClick={volverPasoAnterior}
@@ -145,7 +168,17 @@ const ChatBotComponent = () => {
                 onClick={() => handleDiaSelect(dia)}
                 className="border border-custom-blue text-custom-blue py-2 px-4 rounded-lg m-2 hover:bg-custom-blue hover:text-white"
               >
-                {["Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"][dia]}
+                {
+                  [
+                    "Domingo",
+                    "Lunes",
+                    "Martes",
+                    "Miércoles",
+                    "Jueves",
+                    "Viernes",
+                    "Sábado",
+                  ][dia]
+                }
               </button>
             ))}
           </div>
@@ -160,8 +193,8 @@ const ChatBotComponent = () => {
                 onClick={() => !h.ocupado && handleGuardarTurno(h.horario)}
                 className={`border border-gray-500 py-2 px-4 rounded-lg m-2 ${
                   h.ocupado
-                    ? 'bg-red text-white cursor-not-allowed'
-                    : 'text-gray-700 hover:bg-gray-200'
+                    ? "bg-red text-white cursor-not-allowed"
+                    : "text-gray-700 hover:bg-gray-200"
                 }`}
                 disabled={h.ocupado}
               >
@@ -173,15 +206,22 @@ const ChatBotComponent = () => {
 
         {step === 3 && (
           <div className="text-center mt-4">
-            <p className="mb-2 text-black">Ingrese el nombre del paciente:</p>
-            <input
-              type="text"
-              value={nombrePaciente}
-              onChange={(e) => setNombrePaciente(e.target.value)}
-              className="border border-gray-300 text-black rounded-lg p-2 mb-4 w-full text-center"
-              placeholder="Nombre del Paciente"
-              required
-            />
+            <p className="mb-2 text-black">
+              Haz click y selecciona el hijo que requiera turno:
+            </p>
+            {perfilHijo.map((hijo) => (
+              <button
+                key={hijo.id}
+                onClick={() => setNombrePaciente(hijo.nombre)}
+                className={`border border-custom-blue text-custom-blue py-2 px-4 rounded-lg m-2 ${
+                  nombrePaciente === hijo.nombre
+                    ? "bg-custom-blue text-white"
+                    : "hover:bg-custom-blue hover:text-white"
+                }`}
+              >
+                {hijo.nombre} {hijo.apellido}
+              </button>
+            ))}
           </div>
         )}
       </div>

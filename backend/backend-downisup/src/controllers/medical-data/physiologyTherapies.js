@@ -1,21 +1,18 @@
-const PhysiologyTherapies = require('../../models/medical-data/physiologycalTherapies');
-const Usuario = require('../../models/users/usuario');
-const Hijo = require('../../models/childrens/hijo');
+const PhysiologyTherapies = require("../../models/medical-data/physiologycalTherapies");
+const Usuario = require("../../models/users/usuario");
+const Hijo = require("../../models/childrens/hijo");
+const SpeechTherapies = require("../../models/medical-data/speechTherapies");
 
 class PhysiologyTherapiesController {
   async addPhysiologyTherapie(req, res) {
     try {
-      const { 
-        date, 
-        description, 
-        objectives, 
-        observations, 
-        idUsuario, 
-        hijoId 
-      } = req.body;
+      const { date, description, objectives, observations, idUsuario, hijoId } =
+        req.body;
 
       if (!date || !idUsuario || !hijoId) {
-        return res.status(400).json({ message: 'Date, idUsuario, and idHijo are required.' });
+        return res
+          .status(400)
+          .json({ message: "Date, idUsuario, and idHijo are required." });
       }
 
       const newSpeechTherapy = await PhysiologyTherapies.create({
@@ -30,17 +27,17 @@ class PhysiologyTherapiesController {
       });
 
       return res.status(201).json({
-        message: 'Speech therapy session created successfully.',
+        message: "Speech therapy session created successfully.",
         speechTherapy: newSpeechTherapy,
       });
     } catch (error) {
       return res.status(500).json({
-        message: 'Failed to create speech therapy session.',
+        message: "Failed to create speech therapy session.",
         error: error.message,
       });
     }
   }
-  
+
   async getPhysiologyTherapiesForChildren(req, res) {
     try {
       const { hijoId } = req.params;
@@ -78,13 +75,15 @@ class PhysiologyTherapiesController {
           nombre: hijo.nombre,
           apellido: hijo.apellido,
           edad: hijo.edad,
-          dni: hijo.dni
+          dni: hijo.dni,
         },
         physiologicalTherapies: hijo.PhysiologicalTherapies,
       });
     } catch (error) {
       console.error("Error al obtener las terapias psicológicas:", error);
-      res.status(500).json({ error: "Hubo un error al obtener las terapias psicológicas" });
+      res
+        .status(500)
+        .json({ error: "Hubo un error al obtener las terapias psicológicas" });
     }
   }
 
@@ -125,19 +124,17 @@ class PhysiologyTherapiesController {
           nombre: hijo.nombre,
           apellido: hijo.apellido,
           edad: hijo.edad,
-          dni: hijo.dni
+          dni: hijo.dni,
         },
         speechTherapies: hijo.SpeechTherapies,
       });
     } catch (error) {
       console.error("Error al obtener las terapias psicológicas:", error);
-      res.status(500).json({ error: "Hubo un error al obtener las terapias psicológicas" });
+      res
+        .status(500)
+        .json({ error: "Hubo un error al obtener las terapias psicológicas" });
     }
   }
-
-
 }
 
 module.exports = new PhysiologyTherapiesController();
-
-

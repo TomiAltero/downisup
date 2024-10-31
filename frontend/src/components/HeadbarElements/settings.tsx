@@ -51,6 +51,7 @@ const Ajustes = ({ onClose }: { onClose: () => void }) => {
           </div>
           <div className="flex justify-between items-center">
             <label className="block text-base font-medium text-black dark:text-white">
+              Notificaciones
             </label>
             <button
               onClick={toggleNotifications}

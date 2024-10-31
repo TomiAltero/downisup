@@ -4,5 +4,41 @@
     "dia": 3,
     "horario": "11:30",
     "nombrePaciente": "facu"
+  },
+  {
+    "especialista": "Dra. García",
+    "dia": 4,
+    "horario": "09:00",
+    "nombrePaciente": "Facu"
+  },
+  {
+    "especialista": "Dra. García",
+    "dia": 2,
+    "horario": "11:00",
+    "nombrePaciente": "a"
+  },
+  {
+    "especialista": "Dr. Pérez",
+    "dia": 1,
+    "horario": "07:30",
+    "nombrePaciente": "Facundo"
+  },
+  {
+    "especialista": "Dra. García",
+    "dia": 2,
+    "horario": "12:00",
+    "nombrePaciente": "Facundo"
+  },
+  {
+    "especialista": "Dr. Pérez",
+    "dia": 3,
+    "horario": "12:30",
+    "nombrePaciente": "Francisco"
+  },
+  {
+    "especialista": "Dr. Pérez",
+    "dia": 1,
+    "horario": "14:00",
+    "nombrePaciente": "Francisco"
   }
 ]
