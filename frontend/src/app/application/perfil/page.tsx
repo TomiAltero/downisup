@@ -26,7 +26,7 @@ export default function Page() {
 
   return (
     <AppLayout>
-      <main className="flex items-center justify-center h-full">
+      <main className="flex items-center justify-center h-full dark:bg-gray-700">
         <Suspense
           fallback={
             <div className="flex items-center justify-center h-screen">

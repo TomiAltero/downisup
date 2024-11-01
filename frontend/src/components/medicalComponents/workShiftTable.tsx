@@ -28,12 +28,12 @@ const TABLE_ROWS = [
 
 export function DefaultTable() {
   return (
-    <Card className="w-full h-auto">
+    <Card className="w-full h-auto dark:bg-gray-900 dark:text-white">
       <div className="p-4">
-        <Typography variant="h5" color="blue-gray" className="mb-4 font-bold">
+        <Typography variant="h5" color="blue-gray" className="mb-4 font-bold dark:bg-gray-900 dark:text-white">
           Turnos Registrados
         </Typography>
-        <table className="w-full table-auto text-left">
+        <table className="w-full table-auto text-left dark:text-white">
           <thead>
             <tr>
               {TABLE_HEAD.map((head) => (
@@ -44,7 +44,7 @@ export function DefaultTable() {
                   <Typography
                     variant="small"
                     color="blue-gray"
-                    className="font-normal leading-none opacity-70"
+                    className="font-normal leading-none opacity-70 dark:text-white"
                   >
                     {head}
                   </Typography>
@@ -63,7 +63,7 @@ export function DefaultTable() {
                     <Typography
                       variant="small"
                       color="blue-gray"
-                      className="font-normal"
+                      className="font-normal dark:text-white"
                     >
                       {name}
                     </Typography>
@@ -72,7 +72,7 @@ export function DefaultTable() {
                     <Typography
                       variant="small"
                       color="blue-gray"
-                      className="font-normal"
+                      className="font-normal dark:text-white"
                     >
                       {job}
                     </Typography>
@@ -81,7 +81,7 @@ export function DefaultTable() {
                     <Typography
                       variant="small"
                       color="blue-gray"
-                      className="font-normal"
+                      className="font-normal dark:text-white"
                     >
                       {date}
                     </Typography>
@@ -90,7 +90,7 @@ export function DefaultTable() {
                     <Typography
                       variant="small"
                       color="blue-gray"
-                      className="font-normal"
+                      className="font-normal dark:text-white"
                     >
                       {solicitation}
                     </Typography>
@@ -99,7 +99,7 @@ export function DefaultTable() {
                     <Typography
                       variant="small"
                       color="blue-gray"
-                      className="font-normal"
+                      className="font-normal dark:text-white"
                     >
                       {area}
                     </Typography>

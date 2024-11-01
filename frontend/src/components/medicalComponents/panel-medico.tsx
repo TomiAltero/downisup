@@ -63,6 +63,7 @@ export default function PanelMedico({ idHijo }: PanelMedicoProps) {
         variant="h4"
         component="h2"
         sx={{ mb: 4, textAlign: "left", fontWeight: "bold", ml: 2 }}
+        className=" dark:text-white"
       >
         Panel Médico - {userName}
       </Typography>

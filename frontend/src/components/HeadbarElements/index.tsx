@@ -93,7 +93,7 @@ function HeadBar() {
 
   const dropdownItems = [
     {
-      icon: <Profile size={20} className="text-gray-600" />,
+      icon: <Profile size={20} className="text-gray-600 dark:text-gray-300" />,
       text: "Mi perfil",
       onClick: () => {
         setIsDropdownOpen(false);
@@ -102,13 +102,13 @@ function HeadBar() {
       },
     },
     {
-      icon: <Setting2 size={20} className="text-gray-600" />,
+      icon: <Setting2 size={20} className="text-gray-600 dark:text-gray-300" />,
       text: "Ajustes",
       onClick: toggleAjustes,
     },
     { divider: true },
     {
-      icon: <Logout size={20} className="text-gray-600" />,
+      icon: <Logout size={20} className="text-gray-600 dark:text-gray-300" />,
       text: "Cerrar sesión",
       onClick: handleLogout,
     },
@@ -141,14 +141,14 @@ function HeadBar() {
                   usuario &&
                   (usuario.tipoUsuarioId === 3 || usuario.tipoUsuarioId === 2)
                     ? "text-blue-900"
-                    : "text-gray-800"
+                    : "text-gray-800 dark:text-gray-300"
                 }`}
               >
                 {usuario
                   ? `${usuario.nombre} ${usuario.apellido}`
                   : "Cargando..."}
               </p>
-              <p className="text-xs font-medium text-gray-500">
+              <p className="text-xs font-medium text-gray-500 dark:text-gray-200">
                 {usuario ? usuario.username : ""}
               </p>
             </div>
@@ -163,7 +163,7 @@ function HeadBar() {
           {usuario && isDropdownOpen && (
             <div
               ref={dropdownRef}
-              className="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none z-10 transition-transform duration-200 ease-in-out"
+              className="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg dark:bg-gray-800 dark:text-white bg-white ring-1 ring-black ring-opacity-5 focus:outline-none z-10 transition-transform duration-200 ease-in-out"
             >
               <div className="py-2">
                 {dropdownItems.map((item, index) =>
@@ -172,14 +172,14 @@ function HeadBar() {
                   ) : (
                     <div
                       key={index}
-                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 cursor-pointer"
+                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:bg-gray-800 dark:hover:bg-gray-700 dark:text-white hover:text-gray-900 cursor-pointer"
                       onClick={() => {
                         if (item.onClick) item.onClick();
                       }}
                     >
                       <div className="flex items-center">
                         {item.icon}
-                        <span className="ml-2">{item.text}</span>
+                        <span className="ml-2 dark:text-white">{item.text}</span>
                       </div>
                     </div>
                   ),

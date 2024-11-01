@@ -47,27 +47,27 @@ function Sidebar() {
   }, []);
 
   return (
-    <div className="w-60 shrink-0 md:block h-screen sticky top-0 overflow-hidden">
-      <div className="w-full h-full bg-custom-blue bg-opacity-10 border-r">
+    <div className="w-60 shrink-0 md:block h-screen sticky top-0 overflow-hidden bg-white dark:bg-gray-900">
+      <div className="w-full h-full bg-custom-blue bg-opacity-10 border-r dark:border-gray-800">
         <Link href="/application">
           <div className="p-3 md:p-6 flex cursor-pointer group items-center gap-2 h-1/8">
             <div>
-              <h1 className="text-xl font-bold text-blue-800 text-center mx-5">
+              <h1 className="text-xl font-bold text-blue-800 dark:text-white text-center mx-5">
                 DownIsUpApp
               </h1>
             </div>
           </div>
         </Link>
 
-        <hr className="bg-gray-400 mx-4" />
+        <hr className="bg-gray-400 dark:bg-gray-700 mx-4" />
 
         <div className="flex flex-col h-full justify-between">
-          <div className="pt-6 text-gray-500 font-medium space-y-2 md:px-2 text-sm">
+          <div className="pt-6 text-gray-500 dark:text-gray-300 font-medium space-y-2 md:px-2 text-sm">
             <Link
               href="/application"
               className={`flex ${
-                pathname === "/application" ? "text-blue-700" : ""
-              } hover:text-blue-700 duration-200 px-6 py-2 items-center gap-2 transition-all ease-in-out`}
+                pathname === "/application" ? "text-blue-700 dark:text-blue-300" : ""
+              } hover:text-blue-700 dark:hover:text-blue-300 duration-200 px-6 py-2 items-center gap-2 transition-all ease-in-out`}
             >
               <Home variant="Outline" size={16} />
               Inicio
@@ -78,8 +78,8 @@ function Sidebar() {
                 <button
                   onClick={() => setIsDropdownOpen(!isDropdownOpen)}
                   className={`flex justify-between items-center ${
-                    pathname === "/app/pacientes" ? "text-blue-700" : ""
-                  } hover:text-blue-700 duration-200 px-6 py-2 w-full transition-all ease-in-out`}
+                    pathname === "/app/pacientes" ? "text-blue-700 dark:text-blue-300" : ""
+                  } hover:text-blue-700 dark:hover:text-blue-300 duration-200 px-6 py-2 w-full transition-all ease-in-out`}
                 >
                   <div className="flex items-center gap-2">
                     <Profile2User size={16} />
@@ -92,16 +92,16 @@ function Sidebar() {
                     <Link
                       href="/ver-pacientes"
                       className={`block ${
-                        pathname === "/ver-pacientes" ? "text-blue-700" : ""
-                      } hover:text-blue-700 duration-200 py-1 transition-all ease-in-out`}
+                        pathname === "/ver-pacientes" ? "text-blue-700 dark:text-blue-300" : ""
+                      } hover:text-blue-700 dark:hover:text-blue-300 duration-200 py-1 transition-all ease-in-out`}
                     >
                       Ver Pacientes
                     </Link>
                     <Link
                       href="/application/agregar-paciente"
                       className={`block ${
-                        pathname === "/agregar-paciente" ? "text-blue-700" : ""
-                      } hover:text-blue-700 duration-200 py-1 transition-all ease-in-out`}
+                        pathname === "/agregar-paciente" ? "text-blue-700 dark:text-blue-300" : ""
+                      } hover:text-blue-700 dark:hover:text-blue-300 duration-200 py-1 transition-all ease-in-out`}
                     >
                       Agregar Paciente
                     </Link>
@@ -113,8 +113,8 @@ function Sidebar() {
                 <button
                   onClick={() => setIsDropdownOpen(!isDropdownOpen)}
                   className={`flex justify-between items-center ${
-                    pathname?.startsWith("/application/datos-medicos") ? "text-blue-700" : ""
-                  } hover:text-blue-700 duration-200 px-6 py-2 w-full transition-all ease-in-out`}
+                    pathname?.startsWith("/application/datos-medicos") ? "text-blue-700 dark:text-blue-300" : ""
+                  } hover:text-blue-700 dark:hover:text-blue-300 duration-200 px-6 py-2 w-full transition-all ease-in-out`}
                 >
                   <div className="flex items-center gap-2">
                     <Profile2User size={16} />
@@ -127,24 +127,24 @@ function Sidebar() {
                     <Link
                       href="/application/datos-medicos"
                       className={`block ${
-                        pathname === "/application/datos-medicos/ver" ? "text-blue-700" : ""
-                      } hover:text-blue-700 duration-200 py-1 transition-all ease-in-out`}
+                        pathname === "/application/datos-medicos/ver" ? "text-blue-700 dark:text-blue-300" : ""
+                      } hover:text-blue-700 dark:hover:text-blue-300 duration-200 py-1 transition-all ease-in-out`}
                     >
                       Ver Datos Médicos
                     </Link>
                     <Link
                       href="/application/formulario-medico"
                       className={`block ${
-                        pathname === "/application/datos-medicos/agregar" ? "text-blue-700" : ""
-                      } hover:text-blue-700 duration-200 py-1 transition-all ease-in-out`}
+                        pathname === "/application/datos-medicos/agregar" ? "text-blue-700 dark:text-blue-300" : ""
+                      } hover:text-blue-700 dark:hover:text-blue-300 duration-200 py-1 transition-all ease-in-out`}
                     >
                       Agregar Datos Médicos
                     </Link>
                     <Link
                       href="/application/datos-medicos/editar"
                       className={`block ${
-                        pathname === "/application/datos-medicos/editar" ? "text-blue-700" : ""
-                      } hover:text-blue-700 duration-200 py-1 transition-all ease-in-out`}
+                        pathname === "/application/datos-medicos/editar" ? "text-blue-700 dark:text-blue-300" : ""
+                      } hover:text-blue-700 dark:hover:text-blue-300 duration-200 py-1 transition-all ease-in-out`}
                     >
                       Editar Datos Médicos
                     </Link>
@@ -156,8 +156,8 @@ function Sidebar() {
                 <button
                   onClick={() => setIsDropdownOpen(!isDropdownOpen)}
                   className={`flex justify-between items-center ${
-                    pathname === "/app/teams" ? "text-blue-700" : ""
-                  } hover:text-blue-700 duration-200 px-6 py-2 w-full transition-all ease-in-out`}
+                    pathname === "/app/teams" ? "text-blue-700 dark:text-blue-300" : ""
+                  } hover:text-blue-700 dark:hover:text-blue-300 duration-200 px-6 py-2 w-full transition-all ease-in-out`}
                 >
                   <div className="flex items-center gap-2">
                     <Profile2User size={16} />
@@ -170,8 +170,8 @@ function Sidebar() {
                     <Link
                       href="/application/panel-hijos"
                       className={`block ${
-                        pathname === "/panel-hijos" ? "text-blue-700" : ""
-                      } hover:text-blue-700 duration-200 py-1 transition-all ease-in-out`}
+                        pathname === "/panel-hijos" ? "text-blue-700 dark:text-blue-300" : ""
+                      } hover:text-blue-700 dark:hover:text-blue-300 duration-200 py-1 transition-all ease-in-out`}
                     >
                       Ver Hijos
                     </Link>
@@ -181,8 +181,8 @@ function Sidebar() {
                   <button
                     onClick={() => setIsMedicosDropdownOpen(!isMedicosDropdownOpen)}
                     className={`flex justify-between items-center ${
-                      pathname?.startsWith("/application/datos-medicos") ? "text-blue-700" : ""
-                    } hover:text-blue-700 duration-200 px-6 py-2 w-full transition-all ease-in-out`}
+                      pathname?.startsWith("/application/datos-medicos") ? "text-blue-700 dark:text-blue-300" : ""
+                    } hover:text-blue-700 dark:hover:text-blue-300 duration-200 px-6 py-2 w-full transition-all ease-in-out`}
                   >
                     <div className="flex items-center gap-2">
                       <Profile2User size={16} />
@@ -195,8 +195,8 @@ function Sidebar() {
                       <Link
                         href="/application/panel-medico"
                         className={`block ${
-                          pathname === "/application/datos-medicos/ver-panel" ? "text-blue-700" : ""
-                        } hover:text-blue-700 duration-200 py-1 transition-all ease-in-out`}
+                          pathname === "/application/datos-medicos/ver-panel" ? "text-blue-700 dark:text-blue-300" : ""
+                        } hover:text-blue-700 dark:hover:text-blue-300 duration-200 py-1 transition-all ease-in-out`}
                       >
                         Ver Panel
                       </Link>
@@ -209,8 +209,8 @@ function Sidebar() {
             <Link
               href="/application/terapias"
               className={`flex ${
-                pathname === "/app/calendar" ? "text-blue-700" : ""
-              } hover:text-blue-700 duration-200 px-6 py-2 items-center gap-2 transition-all ease-in-out`}
+                pathname === "/app/calendar" ? "text-blue-700 dark:text-blue-300" : ""
+              } hover:text-blue-700 dark:hover:text-blue-300 duration-200 px-6 py-2 items-center gap-2 transition-all ease-in-out`}
             >
               <Calendar size={16} />
               Calendario Terapias
@@ -219,8 +219,8 @@ function Sidebar() {
             <Link
               href="/application/horarios"
               className={`flex ${
-                pathname === "/application/horarios" ? "text-blue-700" : ""
-              } hover:text-blue-700 duration-200 px-6 py-2 items-center gap-2 transition-all ease-in-out`}
+                pathname === "/application/horarios" ? "text-blue-700 dark:text-blue-300" : ""
+              } hover:text-blue-700 dark:hover:text-blue-300 duration-200 px-6 py-2 items-center gap-2 transition-all ease-in-out`}
             >
               <Calendar size={16} />
               Horarios
@@ -229,17 +229,16 @@ function Sidebar() {
             <Link
               href="/application/chat"
               className={`flex ${
-                pathname === "/application/chat" ? "text-blue-700" : ""
-              } hover:text-blue-700 duration-200 px-6 py-2 items-center gap-2 transition-all ease-in-out`}
+                pathname === "/application/chat" ? "text-blue-700 dark:text-blue-300" : ""
+              } hover:text-blue-700 dark:hover:text-blue-300 duration-200 px-6 py-2 items-center gap-2 transition-all ease-in-out`}
             >
               <Document size={16} />
               Agendar turno
             </Link>
-
           </div>
 
           <div>
-            <hr className="bg-gray-400 mx-4 my-4" />
+            <hr className="bg-gray-400 dark:bg-gray-700 mx-4 my-4" />
           </div>
         </div>
       </div>
@@ -248,4 +247,3 @@ function Sidebar() {
 }
 
 export default Sidebar;
-

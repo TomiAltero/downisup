@@ -61,9 +61,9 @@ const PieChart = () => {
   };
 
   return (
-    <div className="relative flex justify-center">
+    <div className="relative flex justify-center dark:text-white">
       <div style={{ width: '100%', maxWidth: '260px' }}>
-        <h2 className="text-center">{chartTitle} 7/10</h2>
+        <h2 className="text-center dark:text-white">{chartTitle} 7/10</h2>
         <Pie
           data={data}
           onClick={handleClick}

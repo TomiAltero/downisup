@@ -22,10 +22,10 @@ export async function CardChildren({ token }: { token: string }) {
   const cardClass = numberOfRows <= 4 ? "h-auto" : "h-96"; // Fixed height for overflow
 
   return (
-    <Card className={`w-150 ${cardClass}`}>
+    <Card className={`w-150 ${cardClass} dark:bg-gray-800`}>
       <CardBody>
         <div className="mb-4 flex items-center justify-between">
-          <Typography variant="h5" color="blue-gray">
+          <Typography variant="h5" color="blue-gray" className="font-bold  dark:text-white">
             {isType1User ? "Mis hijos" : "Pacientes"}
           </Typography>
           {!isType1User && (
@@ -41,7 +41,7 @@ export async function CardChildren({ token }: { token: string }) {
           )}
         </div>
         {/* Ocultar la barra de scroll */}
-        <div className="divide-y divide-gray-200 overflow-y-auto max-h-72 pr-3 scrollbar-hide">
+        <div className="divide-y divide-gray-200 overflow-y-auto max-h-72 pr-3 scrollbar-hide dark:bg-gray-800 dark:text-white">
           {hijosData.length === 0 ? (
             <Typography
               variant="body1"
@@ -62,15 +62,16 @@ export async function CardChildren({ token }: { token: string }) {
                       size="sm"
                       src={hijo.imagen ? hijo.imagen : "/no-photo.webp"}
                       alt={`${hijo.nombre} ${hijo.apellido}`}
+                      className="rounded-full"
                     />
                     <div>
-                      <Typography color="blue-gray" variant="h6">
+                      <Typography color="blue-gray" variant="h6" className="dark:bg-gray-800 dark:text-white">
                         {hijo.nombre} {hijo.apellido}
                       </Typography>
-                      <Typography variant="small" color="gray">
+                      <Typography variant="small" color="gray" className="dark:bg-gray-800 dark:text-gray-300">
                         Edad: {hijo.edad} años
                       </Typography>
-                      <Typography variant="small" color="gray">
+                      <Typography variant="small" color="gray" className="dark:bg-gray-800 dark:text-gray-300">
                         DNI: {hijo.dni}
                       </Typography>
                     </div>
@@ -87,7 +88,7 @@ export async function CardChildren({ token }: { token: string }) {
                       <Typography
                         as="a"
                         variant="small"
-                        className="font-bold text-blue-900 hover:underline"
+                        className="font-bold text-custom-blue dark:text-blue-500 hover:underline"
                       >
                         {isType2User ? "Agregar Datos" : "Ver Datos"}
                       </Typography>
@@ -99,7 +100,7 @@ export async function CardChildren({ token }: { token: string }) {
                 <Typography
                   variant="small"
                   color="blue-gray"
-                  className="italic"
+                  className="italic dark:text-gray-300"
                 >
                   {isType2User
                     ? "No hay más pacientes registrados"

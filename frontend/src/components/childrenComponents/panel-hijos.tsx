@@ -31,12 +31,13 @@ export async function PanelHijo({ token }: { token: string }) {
         variant="h4"
         component="h1"
         sx={{ mb: 4, textAlign: "left", fontWeight: "bold", ml: 2 }}
+        className="dark:text-white"
       >
         {isType2User ? "¿Con quién desea trabajar?" : "Mis Hijos"}
       </Typography>
       <div className="flex flex-wrap" style={{ justifyContent: "flex-start" }}>
         {hijosData.length === 0 ? (
-          <Typography variant="body1" color="text.secondary" sx={{ ml: 2 }}>
+          <Typography variant="body1" color="text.secondary" sx={{ ml: 2 }} className="dark:text-white">
             No tienes hijos registrados.
           </Typography>
         ) : (
@@ -51,6 +52,7 @@ export async function PanelHijo({ token }: { token: string }) {
                   flexDirection: "column",
                   height: "400px",
                 }}
+                className="dark:bg-gray-800 dark:text-white"
               >
                 <div
                   style={{
@@ -88,19 +90,19 @@ export async function PanelHijo({ token }: { token: string }) {
                   )}
                 </div>
                 <CardContent sx={{ flexGrow: 1 }}>
-                  <Typography gutterBottom variant="h5" component="div">
+                  <Typography gutterBottom variant="h5" component="div" className="dark:text-white">
                     {hijo.nombre} {hijo.apellido}
                   </Typography>
-                  <Typography variant="body2" color="text.secondary">
+                  <Typography variant="body2" color="text.secondary" className="dark:text-gray-300">
                     Edad: {hijo.edad} años
                   </Typography>
-                  <Typography variant="body2" color="text.secondary">
+                  <Typography variant="body2" color="text.secondary" className="dark:text-gray-300">
                     DNI: {hijo.dni}
                   </Typography>
                 </CardContent>
                 <CardActions>
                   <Link href={isType2User ? `/application/formulario-medico/${hijo.id}` : `/application/panel-medico/${hijo.id}`} passHref>
-                    <Button size="small">Ver más</Button>
+                    <Button size="small" className="dark:text-blue-500">Ver más</Button>
                   </Link>
                 </CardActions>
               </Card>

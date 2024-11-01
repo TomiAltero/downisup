@@ -42,23 +42,23 @@ const Page = () => {
 
   return (
     <AppLayout>
-      <main className={`h-full ${showContent ? 'fade-in' : 'initial'} flex flex-col items-center p-4`}>
-        <div className="w-full max-w-screen-xl mb-8 bg-gray-50 p-6 rounded-md">
-          <h1 className="text-3xl font-bold mb-6 self-start"></h1> 
-          <div className="flex gap-4">
-            <Suspense fallback={<p>Cargando...</p>}>
+      <main className={`h-full ${showContent ? 'fade-in' : 'initial'} dark:bg-gray-700 flex flex-col items-center p-4`}>
+        <div className="w-full max-w-screen-xl mb-8 bg-white dark:bg-gray-900 p-6 rounded-md">
+          <h1 className="text-3xl font-bold mb-6 self-start text-black dark:text-white"></h1> 
+          <div className="flex flex-col lg:flex-row gap-4">
+            <Suspense fallback={<p className="text-black dark:text-white">Cargando...</p>}>
               <CardChildren token={token} />
             </Suspense>
-            <div className="flex-1 bg-gray-50 p-4 rounded-md">
-              <Suspense fallback={<p>Cargando...</p>}>
+            <div className="flex-1 bg-white dark:bg-gray-900 p-4 rounded-md">
+              <Suspense fallback={<p className="text-black dark:text-white">Cargando...</p>}>
                 <PieChart />
               </Suspense>
             </div>
           </div>
         </div>
         <div className="w-full max-w-screen-xl flex justify-start gap-4 mt-8">
-          <div className="bg-gray-50 p-4 rounded-md flex-1">
-            <Suspense fallback={<p>Cargando...</p>}>
+          <div className="bg-white dark:bg-gray-900 p-4 rounded-md flex-1">
+            <Suspense fallback={<p className="text-black dark:text-white">Cargando...</p>}>
               <DefaultTable />
             </Suspense>
           </div>
@@ -69,4 +69,3 @@ const Page = () => {
 };
 
 export default Page;
-

@@ -1,14 +1,25 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const Ajustes = ({ onClose }: { onClose: () => void }) => {
-  const [darkMode, setDarkMode] = useState(false);
+  const [darkMode, setDarkMode] = useState(() => {
+    return localStorage.getItem('theme') === 'dark';
+  });
   const [notificationsEnabled, setNotificationsEnabled] = useState(false);
   const [language, setLanguage] = useState("es");
 
+  useEffect(() => {
+    // Aplica la clase 'dark' a nivel global en el <html> para habilitar el tema oscuro
+    if (darkMode) {
+      document.documentElement.classList.add('dark');
+      localStorage.setItem('theme', 'dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+      localStorage.setItem('theme', 'light');
+    }
+  }, [darkMode]);
+
   const toggleDarkMode = () => {
-    const body = document.body;
     setDarkMode(!darkMode);
-    body.classList.toggle("dark-mode", !darkMode);
   };
 
   const toggleNotifications = () => {
@@ -21,14 +32,14 @@ const Ajustes = ({ onClose }: { onClose: () => void }) => {
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
-      <div className="bg-white dark:bg-boxdark p-4 rounded-lg shadow-lg w-96">
+      <div className="bg-white dark:bg-gray-800 p-4 rounded-lg shadow-lg w-96">
         <button
           className="top-2 ml-80 text-gray-600 dark:text-gray-400 bg-red-500 rounded-full p-1"
           onClick={onClose}
         >
           ✕
         </button>
-        <h2 className="text-xl font-semibold -mt-4 mb-4 text-blue-900">
+        <h2 className="text-xl font-semibold -mt-4 mb-4 text-blue-900 dark:text-white">
           Ajustes
         </h2>
         <div className="mt-2 space-y-4 text-left items-center">
