@@ -44,7 +44,7 @@ export function AlertCustomStyles({ message }: { message: string }) {
   return (
     <Alert
       icon={<Icon />}
-      className="rounded-none border-l-4 border-[#2ec946] bg-[#2ec946]/10 font-medium text-[#2ec946]"
+      className="rounded-none border-l-4 border-[#2ec946] bg-[#2ec946]/10 font-bold text-[#2ec946]"
     >
       {message}
     </Alert>
@@ -55,7 +55,7 @@ export function AlertCustomStylesRojo({ message }: { message: string }) {
     return (
       <Alert
         icon={<IconRojo />}
-        className="rounded-none border-l-4 border-[#c9332e] bg-red/10 font-medium text-[#c9332e]"
+        className="rounded-none border-l-4 border-[#e62b25] bg-red/10 font-bold text-[#e62b25]"
       >
         {message}
       </Alert>

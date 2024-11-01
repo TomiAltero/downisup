@@ -44,7 +44,7 @@ const HorariosComponent = () => {
 
   return (
     <div className="max-w-4xl mx-auto p-4">
-      <div className="bg-white dark:bg-gray-900 text-black dark:text-white shadow-lg rounded-lg p-6">
+      <div className="bg-white dark:bg-gray-800 text-black dark:text-white shadow-lg rounded-lg p-6">
         <h2 className="text-center border-2 border-custom-blue bg-custom-blue dark:bg-blue-900 text-white rounded-lg text-2xl font-semibold mb-4">
           Horarios Disponibles
         </h2>

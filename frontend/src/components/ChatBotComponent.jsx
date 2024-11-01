@@ -14,7 +14,7 @@ const ChatBotComponent = () => {
   const [diasDisponibles, setDiasDisponibles] = useState([]);
   const [selectedDia, setSelectedDia] = useState(null);
   const [horarios, setHorarios] = useState([]);
-  const [nombrePaciente, setNombrePaciente] = useState(""); // Inicializado como vacío
+  const [nombrePaciente, setNombrePaciente] = useState("");
   const [perfilHijo, setPerfilHijo] = useState([]);
   const [alertMessage, setAlertMessage] = useState("");
   const [isError, setIsError] = useState(false);
@@ -25,7 +25,6 @@ const ChatBotComponent = () => {
         const token = localStorage.getItem("token");
         if (token) {
           const profile = await getHijoProfile({ token });
-          console.log(profile.hijos);
           setPerfilHijo(profile.hijos);
         }
       } catch (error) {
@@ -37,7 +36,7 @@ const ChatBotComponent = () => {
 
     const fetchEspecialistas = async () => {
       const response = await axios.get(
-        "http://localhost:5000/api/turnos/especialistas",
+        "http://localhost:5000/api/turnos/especialistas"
       );
       setEspecialistas(response.data);
     };
@@ -49,14 +48,12 @@ const ChatBotComponent = () => {
       const fetchHorarios = async () => {
         try {
           const response = await axios.get(
-            `http://localhost:5000/api/turnos/disponibilidad/${selectedEspecialista.nombre}/${selectedDia}`,
+            `http://localhost:5000/api/turnos/disponibilidad/${selectedEspecialista.nombre}/${selectedDia}`
           );
           setHorarios(response.data.disponibilidad);
         } catch (error) {
           console.error("Error al obtener horarios disponibles:", error);
-          alert(
-            "Error al obtener horarios disponibles. Verifica que el backend esté funcionando y los datos sean correctos.",
-          );
+          alert("Error al obtener horarios disponibles.");
         }
       };
       fetchHorarios();
@@ -122,7 +119,7 @@ const ChatBotComponent = () => {
   };
 
   return (
-    <div className="">
+    <div className=" dark:text-white">
       {alertMessage &&
         (isError ? (
           <AlertCustomStylesRojo message={alertMessage} />
@@ -130,19 +127,19 @@ const ChatBotComponent = () => {
           <AlertCustomStyles message={alertMessage} />
         ))}
 
-      <h1 className="text-center text-xl  mb-4 text-black">
-        Completa el formulario paso a paso para Agenda tu turno con un especialista de la fundación
-      </h1>
+      <h2 className="text-center text-xl mb-4 text-black dark:text-white">
+        Completa el formulario paso a paso para agendar tu turno
+      </h2>
 
-      <div className="mt-4 bg-white text-base shadow-xl border-2 rounded-lg p-6 max-h-[500px] max-w-2xl mx-auto overflow-y-auto">
-        <h2 className="text-center text-2xl font-semibold mb-4 text-black">
+      <div className="mt-4 bg-gray-100 dark:bg-gray-800 text-base shadow-xl dark:border-gray-800 border-2 rounded-lg p-6 max-h-[500px] max-w-2xl mx-auto overflow-y-auto">
+        <h1 className="text-center text-2xl font-semibold mb-4 text-black dark:text-white">
           Turnero
-        </h2>
+        </h1>
 
         {step > 1 && (
           <button
             onClick={volverPasoAnterior}
-            className="border py-1 px-4 rounded-lg mb-4 border-red text-red hover:bg-rose-100"
+            className="border py-1 px-4 rounded-lg mb-4 border-red text-red hover:bg-rose-100 dark:hover:bg-rose-900 dark:hover:text-white"
           >
             Volver
           </button>
@@ -150,12 +147,14 @@ const ChatBotComponent = () => {
 
         {step === 1 && (
           <div className="text-center">
-            <p className="mb-2 text-black">Seleccione el especialista con el que te quieras tratar:</p>
+            <p className="mb-2 text-black dark:text-gray-300">
+              Seleccione el especialista con el que te quieras tratar:
+            </p>
             {especialistas.map((especialista) => (
               <button
                 key={especialista.nombre}
                 onClick={() => handleEspecialistaSelect(especialista)}
-                className="border border-custom-blue text-custom-blue py-2 px-4 rounded-lg m-2 hover:bg-custom-blue hover:text-white"
+                className="border border-custom-blue text-custom-blue dark:border-blue-300 dark:text-blue-300 py-2 px-4 rounded-lg m-2 hover:bg-custom-blue hover:text-white dark:hover:bg-blue-700 dark:hover:text-white"
               >
                 {especialista.nombre} - {especialista.especialidad}
               </button>
@@ -165,12 +164,14 @@ const ChatBotComponent = () => {
 
         {step === 2 && (
           <div className="text-center">
-            <p className="mb-2 -mt-11 mx-20 text-black">Seleccione el día disponible que quieres tratar con su especialista:</p>
+            <p className="mb-2 -mt-11 mx-20 text-black dark:text-gray-300">
+              Seleccione el día disponible:
+            </p>
             {diasDisponibles.map((dia) => (
               <button
                 key={dia}
                 onClick={() => handleDiaSelect(dia)}
-                className="border border-custom-blue text-custom-blue py-2 px-4 rounded-lg m-2 hover:bg-custom-blue hover:text-white"
+                className="border border-custom-blue text-custom-blue dark:border-blue-300 dark:text-blue-300 py-2 px-4 rounded-lg m-2 hover:bg-custom-blue hover:text-white dark:hover:bg-blue-700 dark:hover:text-white"
               >
                 {
                   [
@@ -190,15 +191,17 @@ const ChatBotComponent = () => {
 
         {step === 3 && (
           <div className="text-center">
-            <p className="mb-5 -mt-11 text-black">Seleccione un horario disponible:</p>
+            <p className="mb-5 -mt-11 text-black dark:text-gray-300">
+              Seleccione un horario disponible:
+            </p>
             {horarios.map((h, index) => (
               <button
                 key={index}
                 onClick={() => !h.ocupado && handleGuardarTurno(h.horario)}
                 className={`border border-gray-500 py-2 px-4 rounded-lg m-2 ${
                   h.ocupado
-                    ? "border-red text-red bg-rose-100 cursor-not-allowed"
-                    : "text-gray-700 hover:bg-gray-200"
+                    ? "border-red text-red bg-rose-100 dark:bg-rose-900 cursor-not-allowed"
+                    : "text-gray-700 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-600"
                 }`}
                 disabled={h.ocupado}
               >
@@ -210,17 +213,17 @@ const ChatBotComponent = () => {
 
         {step === 3 && (
           <div className="text-center mt-4">
-            <p className="mb-2 text-black">
+            <p className="mb-2 text-black dark:text-gray-300">
               Haz click y selecciona el hijo que requiera turno:
             </p>
             {perfilHijo.map((hijo) => (
               <button
                 key={hijo.id}
                 onClick={() => setNombrePaciente(hijo.nombre)}
-                className={`border border-custom-blue text-custom-blue py-2 px-4 rounded-lg m-2 ${
+                className={`border border-custom-blue text-custom-blue dark:border-blue-300 dark:text-blue-300 py-2 px-4 rounded-lg m-2 ${
                   nombrePaciente === hijo.nombre
-                    ? "bg-custom-blue text-white"
-                    : "hover:bg-custom-blue hover:text-white"
+                    ? "bg-custom-blue text-white dark:bg-blue-700"
+                    : "hover:bg-custom-blue hover:text-white dark:hover:bg-blue-700 dark:hover:text-white"
                 }`}
               >
                 {hijo.nombre} {hijo.apellido}
@@ -229,6 +232,9 @@ const ChatBotComponent = () => {
           </div>
         )}
       </div>
+      <p className="mb-2 text-black text-base mt-5 dark:text-gray-300 text-center">
+        NOTA: Los horarios de los especialistas se pueden ver en horarios
+      </p>
     </div>
   );
 };
