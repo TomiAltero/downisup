@@ -130,15 +130,19 @@ const ChatBotComponent = () => {
           <AlertCustomStyles message={alertMessage} />
         ))}
 
+      <h1 className="text-center text-xl  mb-4 text-black">
+        Completa el formulario paso a paso para Agenda tu turno con un especialista de la fundación
+      </h1>
+
       <div className="mt-4 bg-white text-base shadow-xl border-2 rounded-lg p-6 max-h-[500px] max-w-2xl mx-auto overflow-y-auto">
         <h2 className="text-center text-2xl font-semibold mb-4 text-black">
-          Chat Turnero
+          Turnero
         </h2>
 
         {step > 1 && (
           <button
             onClick={volverPasoAnterior}
-            className="border border-red text-red py-1 px-4 rounded-lg mb-4 hover:bg-rose-100"
+            className="border py-1 px-4 rounded-lg mb-4 border-red text-red hover:bg-rose-100"
           >
             Volver
           </button>
@@ -146,7 +150,7 @@ const ChatBotComponent = () => {
 
         {step === 1 && (
           <div className="text-center">
-            <p className="mb-2 text-black">Seleccione un especialista:</p>
+            <p className="mb-2 text-black">Seleccione el especialista con el que te quieras tratar:</p>
             {especialistas.map((especialista) => (
               <button
                 key={especialista.nombre}
@@ -161,7 +165,7 @@ const ChatBotComponent = () => {
 
         {step === 2 && (
           <div className="text-center">
-            <p className="mb-2 text-black">Seleccione un día:</p>
+            <p className="mb-2 -mt-11 mx-20 text-black">Seleccione el día disponible que quieres tratar con su especialista:</p>
             {diasDisponibles.map((dia) => (
               <button
                 key={dia}
@@ -186,14 +190,14 @@ const ChatBotComponent = () => {
 
         {step === 3 && (
           <div className="text-center">
-            <p className="mb-2 text-black">Seleccione un horario disponible:</p>
+            <p className="mb-5 -mt-11 text-black">Seleccione un horario disponible:</p>
             {horarios.map((h, index) => (
               <button
                 key={index}
                 onClick={() => !h.ocupado && handleGuardarTurno(h.horario)}
                 className={`border border-gray-500 py-2 px-4 rounded-lg m-2 ${
                   h.ocupado
-                    ? "bg-red text-white cursor-not-allowed"
+                    ? "border-red text-red bg-rose-100 cursor-not-allowed"
                     : "text-gray-700 hover:bg-gray-200"
                 }`}
                 disabled={h.ocupado}
