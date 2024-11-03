@@ -24,6 +24,15 @@ export default function PanelMedico({ idHijo }: PanelMedicoProps) {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    const theme = localStorage.getItem("theme");
+    if (theme === "dark") {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+  }, []);
+
+  useEffect(() => {
     const fetchUserData = async () => {
       try {
         const userData = await getPsycholgyTherapies(idHijo);

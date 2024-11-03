@@ -21,25 +21,25 @@ const MedicalHistoryCard: React.FC<MedicalHistoryCardProps> = ({
   icon,
 }) => {
   return (
-    <Card className="mt-6 w-96 relative">
+    <Card className="mt-6 w-96 relative bg-gray-200 dark:text-white dark:bg-gray-900">
       <CardBody>
         {/* Ícono en la parte superior derecha */}
         {icon && (
-          <div className="absolute top-4 right-4 h-8 w-8 text-blue-900">
+          <div className="absolute top-4 right-4 h-8 w-8 text-blue-900 dark:text-white dark:bg-gray-900">
             {icon}
           </div>
         )}
-        <Typography variant="h5" color="blue-gray" className="mb-2">
+        <Typography variant="h5" color="blue-gray" className="mb-2 dark:text-white dark:bg-gray-900">
           {category}
         </Typography>
-        <Typography>{date}</Typography>
+        <Typography className="dark:text-gray-300 dark:bg-gray-900">{date}</Typography>
       </CardBody>
       <CardFooter className="pt-0">
         <Button
           size="sm"
           variant="text"
           onClick={onViewMoreClick}
-          className="flex items-center gap-2 text-blue-900"
+          className="flex items-center gap-2 text-blue-900 dark:text-blue-500"
         >
           Ver más
           <svg

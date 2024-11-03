@@ -47,7 +47,7 @@ export default function ChildProfile() {
   }).flat();
 
   return (
-    <div className="relative border-2 p-2 rounded-xl w-full bg-white dark:bg-gray-900">
+    <div className="relative border-2 p-2 rounded-xl w-auto bg-white dark:bg-gray-900">
       <div
         className="flex items-center gap-2 cursor-pointer"
         onClick={toggleDropdown}

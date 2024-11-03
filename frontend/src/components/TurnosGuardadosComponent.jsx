@@ -6,10 +6,23 @@ const TurnosGuardadosComponent = () => {
 
   useEffect(() => {
     const fetchTurnos = async () => {
-      const response = await axios.get('/api/turnos');
-      setTurnos(response.data);
+      try {
+        const response = await axios.get('/api/turnos/turnosGuardados');  // Llama al endpoint que leerá turnos.json
+        setTurnos(response.data);
+      } catch (error) {
+        console.error('Error al cargar turnos:', error);
+      }
     };
     fetchTurnos();
+  }, []);
+
+  useEffect(() => {
+    const theme = localStorage.getItem("theme");
+    if (theme === "dark") {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
   }, []);
 
   return (

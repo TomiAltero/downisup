@@ -27,7 +27,7 @@ const BluePieChart = () => {
   return (
     <div className="flex justify-center mt-2">
       <div style={{ width: '100%', maxWidth: '260px' }}>
-        <h2 className="text-center mb-1">7/10 Comportamiento</h2>
+        <h2 className="text-center mb-1 dark:text-white">7/10 Comportamiento</h2>
         <Pie data={data} />
       </div>
     </div>

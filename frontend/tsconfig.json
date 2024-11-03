@@ -1,5 +1,5 @@
 {
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/lib/types.d.ts", "src/layouts/AuthLayout.", "src/app/application/panel-medico/[id]/page.jsx", "src/lib/utils.tss", "src/components/Calendar.jsx", "src/components/ChatBotComponent.jsx", "src/components/HorariosComponent.jsx", "src/components/TurnosGuardadosComponent.jsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/lib/types.d.ts", "src/layouts/AuthLayout.", "src/app/application/panel-medico/[id]/page.jsx", "src/lib/utils.tss", "src/components/Calendar.jsx", "src/components/ChatBotComponent.jsx", "src/components/HorariosComponent.jsx", "src/components/TurnosGuardadosComponent.jsx", "src/components/Sidebar/index.jsx"],
   "compilerOptions": {
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,

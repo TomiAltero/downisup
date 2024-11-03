@@ -69,6 +69,15 @@ const ChatBotComponent = () => {
     }
   }, [alertMessage]);
 
+  useEffect(() => {
+    const theme = localStorage.getItem("theme");
+    if (theme === "dark") {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+  }, []);
+
   const handleEspecialistaSelect = (especialista) => {
     setSelectedEspecialista(especialista);
     setDiasDisponibles(especialista.diasDisponibles);
@@ -128,7 +137,7 @@ const ChatBotComponent = () => {
         ))}
 
       <h2 className="text-center text-xl mb-4 text-black dark:text-white">
-        Completa el formulario paso a paso para agendar tu turno
+        Completa el formulario paso a paso para agendar un turno médico:
       </h2>
 
       <div className="mt-4 bg-gray-100 dark:bg-gray-800 text-base shadow-xl dark:border-gray-800 border-2 rounded-lg p-6 max-h-[500px] max-w-2xl mx-auto overflow-y-auto">
@@ -148,7 +157,7 @@ const ChatBotComponent = () => {
         {step === 1 && (
           <div className="text-center">
             <p className="mb-2 text-black dark:text-gray-300">
-              Seleccione el especialista con el que te quieras tratar:
+              Seleccionar el especialista:
             </p>
             {especialistas.map((especialista) => (
               <button
@@ -165,7 +174,7 @@ const ChatBotComponent = () => {
         {step === 2 && (
           <div className="text-center">
             <p className="mb-2 -mt-11 mx-20 text-black dark:text-gray-300">
-              Seleccione el día disponible:
+              Seleccionar día disponible:
             </p>
             {diasDisponibles.map((dia) => (
               <button
@@ -233,7 +242,7 @@ const ChatBotComponent = () => {
         )}
       </div>
       <p className="mb-2 text-black text-base mt-5 dark:text-gray-300 text-center">
-        NOTA: Los horarios de los especialistas se pueden ver en horarios
+        NOTA: Los horarios de cada especialista se pueden ver en horarios
       </p>
     </div>
   );

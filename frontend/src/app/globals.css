@@ -2,6 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
+html.dark-mode-loading {
+  background-color: #1a202c; /* Un color oscuro de fondo */
+  color: #fff; /* Color de texto claro */
+}
+
 :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
