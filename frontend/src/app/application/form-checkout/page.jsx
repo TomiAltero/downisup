@@ -23,7 +23,6 @@ export default function FormularioRegistro() {
     telefono: "",
     fechaNacimiento: "",
     dni: "",
-    propuesta: "",
   });
   const [formErrors, setFormErrors] = useState({});
 
@@ -57,11 +56,7 @@ export default function FormularioRegistro() {
     } else if (!/^\d{7,8}$/.test(formData.dni)) {
       errores.dni = "El DNI debe tener entre 7 y 8 dígitos.";
     }
-    // Validación de la propuesta
-    if (!formData.propuesta.trim()) {
-      errores.propuesta = "La propuesta es obligatoria.";
-    }
-
+   
     setFormErrors(errores);
     return Object.keys(errores).length === 0;
   };
@@ -189,24 +184,6 @@ export default function FormularioRegistro() {
                     {formErrors.dni}
                   </Typography>
                 )}
-                
-                <label className="text-sm font-medium text-blue-gray-700">
-                  Propuesta
-                </label>
-                <Input
-                  name="propuesta"
-                  type="text"
-                  placeholder="Propuesta"
-                  value={formData.propuesta}
-                  onChange={manejarCambioInput}
-                  className="rounded-md border-b-2 border-blue-800"
-                />
-                {formErrors.propuesta && (
-                  <Typography className="text-red-500 text-sm">
-                    {formErrors.propuesta}
-                  </Typography>
-                )}
-                
                 <Button type="submit" className="w-full bg-blue-600 mt-6">
                   Enviar
                 </Button>
