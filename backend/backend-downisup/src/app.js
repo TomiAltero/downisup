@@ -9,6 +9,7 @@ const medicalData = require("./routes/medicalDataRoutes")
 const sendEmail = require("./routes/contactRoutes");
 const sendResetCode = require("./routes/resetPasswordRoutes");
 const turnosRoute = require('./routes/turnos');
+const especialistasRoutes = require("./routes/especialistasRoutes");
 
 const cors = require("cors");
 
@@ -34,6 +35,7 @@ app.use("/api/medicalData",medicalData);
 app.use("/api/mail", sendEmail);
 app.use("/api/mail/reset-password", sendResetCode);
 app.use('/api/turnos', turnosRoute);
+app.use("/api/especialistas", especialistasRoutes);
 
 
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));

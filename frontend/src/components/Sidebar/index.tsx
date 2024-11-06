@@ -88,9 +88,9 @@ function Sidebar() {
                   <ArrowDown2 size={16} />
                 </button>
                 {isDropdownOpen && (
-                  <div className="pl-10 mt-2 space-y-2">
+                  <div className="pl-10 mt-2 space-y-2 mb-2">
                     <Link
-                      href="/ver-pacientes"
+                      href="/application/ver-pacientes"
                       className={`block ${
                         pathname === "/ver-pacientes" ? "text-blue-700 dark:text-blue-300" : ""
                       } hover:text-blue-700 dark:hover:text-blue-300 duration-200 py-1 transition-all ease-in-out`}
@@ -106,8 +106,19 @@ function Sidebar() {
                       Agregar Paciente
                     </Link>
                   </div>
+                      
                 )}
+              <div className="div">
+                  <Link
+                    href="/application/administrar-especialista"
+                    className={`flex ${pathname === "/administrar-especialista" ? "text-blue-700 dark:text-blue-300" : ""}
+                    hover:text-blue-700 dark:hover:text-blue-300 duration-200 px-6 py-2 items-center gap-2 transition-all ease-in-out`}
+                  >
+                    <Profile2User size={16} />Admin Especialistas
+                  </Link>
               </div>
+              </div>
+              
             ) : usuario && usuario.tipoUsuarioId === 2 ? (
               <div>
                 <button
