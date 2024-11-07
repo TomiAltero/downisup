@@ -72,33 +72,37 @@ function AdministrarEspecialista() {
 
   return (
     <div className="max-w-4xl mx-auto p-4">
+      {/* Sección de tabla de especialistas */}
       <div className="bg-gray-100 dark:bg-gray-800 text-black text-center text-lg dark:text-white shadow-lg border-2 border-gray-200 dark:border-0 rounded-lg p-6 mb-5">
         <h1 className="text-xl text-custom-blue dark:text-blue-500 font-bold mb-4">Administrar Especialistas</h1>
         <hr className="mb-5" />
-        <table className="table-auto w-full text-base mb-6">
+        <table className="table-auto w-full text-base mb-6 divide-y divide-gray-200 dark:divide-gray-600">
           <thead>
-            <tr>
-              <th>Nombre</th>
-              <th>Especialidad</th>
-              <th>Días Disponibles</th>
-              <th>Horario</th>
-              <th>Acciones</th>
+            <tr className="">
+              <th className="px-4 py-2">Nombre</th>
+              <th className="px-4 py-2">Especialidad</th>
+              <th className="px-4 py-2">Días Disponibles</th>
+              <th className="px-4 py-2">Horario</th>
+              <th className="px-4 py-2">Acciones</th>
             </tr>
           </thead>
           <tbody>
             {especialistas.map((especialista, index) => (
-              <tr key={index}>
-                <td>{especialista.nombre}</td>
-                <td>{especialista.especialidad}</td>
-                <td>
+              <tr
+                key={index}
+                className="hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
+              >
+                <td className="px-4 py-2">{especialista.nombre}</td>
+                <td className="px-4 py-2">{especialista.especialidad}</td>
+                <td className="px-4 py-2">
                   {especialista.diasDisponibles.map((dia) => diasSemana[dia]).join(", ")}
                 </td>
-                <td>
+                <td className="px-4 py-2">
                   {especialista.horarios.inicio} - {especialista.horarios.fin}
                 </td>
-                <td>
+                <td className="px-4 py-2">
                   <button
-                    className="border py-1 px-4 rounded-lg border-red text-red hover:bg-rose-100 dark:hover:bg-rose-900 dark:hover:text-white"
+                    className="border py-1 px-4 rounded-lg border-red text-red hover:bg-rose-100 dark:hover:bg-rose-900 dark:hover:text-white transition-colors"
                     onClick={() => borrarEspecialista(especialista.nombre)}
                   >
                     Borrar
@@ -110,6 +114,7 @@ function AdministrarEspecialista() {
         </table>
       </div>
 
+      {/* Sección para agregar nuevo especialista */}
       <div className="bg-gray-100 dark:bg-gray-800 text-black text-center text-lg dark:text-white shadow-lg border-2 border-gray-200 dark:border-0 rounded-lg p-6">
         <h2 className="text-xl font-bold text-custom-blue dark:text-blue-500 mb-2">Agregar especialista disponible</h2>
         <form
@@ -118,6 +123,7 @@ function AdministrarEspecialista() {
             agregarEspecialista();
           }}
         >
+          {/* Campo Nombre */}
           <label
             className="block text-xs text-left font-bold mt-2 leading-6 dark:text-white"
             htmlFor="nombre"
@@ -135,7 +141,8 @@ function AdministrarEspecialista() {
               setNuevoEspecialista({ ...nuevoEspecialista, nombre: e.target.value })
             }
           />
-          
+
+          {/* Campo Especialidad */}
           <label
             className="block text-xs text-left font-bold mt-2 leading-6 dark:text-white"
             htmlFor="especialidad"
@@ -143,23 +150,29 @@ function AdministrarEspecialista() {
             Especialidad
           </label>
           <Select
-            className="border-t-0 border-l-0 border-r-0 border-b-2 border-blue-800 dark:border-white outline-none focus:ring-0 focus:border-blue-700 w-full"
+            className="border-t-0 border-l-0 border-r-0 border-b-2 border-blue-800 dark:border-white outline-none focus:ring-0 focus:border-blue-700 w-full dark:bg-gray-800 dark:text-white"
             id="especialidad"
             name="especialidad"
-            variant="standard" 
-            placeholder="Especialidad"
+            variant="standard"
             value={nuevoEspecialista.especialidad}
             onChange={(value) =>
               setNuevoEspecialista({ ...nuevoEspecialista, especialidad: value as string })
             }
           >
             {especialidades.map((especialidad) => (
-              <Option className="outline-none focus:ring-2 focus:ring-blue-700 dark:bg-gray-700 mb-2" key={especialidad} value={especialidad}>
+              <Option
+                className="outline-none focus:ring-2 focus:ring-gray-300 focus:bg-gray-300  dark:bg-gray-800 dark:text-white"
+                key={especialidad}
+                value={especialidad}
+              >
+              <div className="-mt-6">
                 {especialidad}
+              </div>
               </Option>
             ))}
           </Select>
 
+          {/* Campo Días Disponibles */}
           <label
             className="block text-xs text-left font-bold mt-2 leading-6 dark:text-white"
             htmlFor="diasDisponibles"
@@ -181,6 +194,7 @@ function AdministrarEspecialista() {
             }
           />
 
+          {/* Campo Hora Inicio */}
           <label
             className="block text-xs text-left font-bold mt-2 leading-6 dark:text-white"
             htmlFor="horarioInicio"
@@ -201,6 +215,7 @@ function AdministrarEspecialista() {
             }
           />
 
+          {/* Campo Hora Fin */}
           <label
             className="block text-xs text-left font-bold mt-2 leading-6 dark:text-white"
             htmlFor="horarioFin"
@@ -221,7 +236,7 @@ function AdministrarEspecialista() {
             }
           />
 
-          <button type="submit" className="border text-base border-custom-blue text-custom-blue dark:border-blue-300 dark:text-blue-300 py-2 px-4 mt-5 rounded-lg m-2 hover:bg-custom-blue hover:text-white dark:hover:bg-blue-700 dark:hover:text-white">
+          <button type="submit" className="border text-base border-custom-blue text-custom-blue dark:border-blue-300 dark:text-blue-300 py-2 px-4 mt-5 rounded-lg m-2 hover:bg-custom-blue hover:text-white dark:hover:bg-blue-700 dark:hover:text-white transition-colors">
             Agregar Especialista
           </button>
         </form>

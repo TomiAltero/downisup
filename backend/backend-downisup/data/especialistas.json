@@ -23,5 +23,17 @@
       "inicio": "08:00",
       "fin": "13:00"
     }
+  },
+  {
+    "nombre": "Dr. Fercho",
+    "especialidad": "Psicología",
+    "diasDisponibles": [
+      2,
+      5
+    ],
+    "horarios": {
+      "inicio": "10:00",
+      "fin": "18:00"
+    }
   }
 ]

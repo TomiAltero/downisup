@@ -68,7 +68,7 @@ export default function ContactUsPage() {
           )
         )}
 
-        <form onSubmit={handleSubmit} className="w-full flex flex-col items-center">
+        <form onSubmit={handleSubmit} className="w-full flex flex-col items-center mb-4">
           {/* Container responsive */}
           <div className="flex flex-col lg:flex-row w-full justify-between px-4 lg:px-40">
             {/* Información de contacto responsive */}
