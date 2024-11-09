@@ -75,6 +75,7 @@ function AdministrarEspecialista() {
       {/* Sección de tabla de especialistas */}
       <div className="bg-gray-100 dark:bg-gray-800 text-black text-center text-lg dark:text-white shadow-lg border-2 border-gray-200 dark:border-0 rounded-lg p-6 mb-5">
         <h1 className="text-xl text-custom-blue dark:text-blue-500 font-bold mb-4">Administrar Especialistas</h1>
+        <p className="text-base text-gray-500 dark:text-gray-300 mb-6">Administra los horarios de los especialistas de esta semana.</p>
         <hr className="mb-5" />
         <table className="table-auto w-full text-base mb-6 divide-y divide-gray-200 dark:divide-gray-600">
           <thead>

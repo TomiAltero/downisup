@@ -10,6 +10,7 @@ const sendEmail = require("./routes/contactRoutes");
 const sendResetCode = require("./routes/resetPasswordRoutes");
 const turnosRoute = require('./routes/turnos');
 const especialistasRoutes = require("./routes/especialistasRoutes");
+const turnosAdminRoutes = require("./routes/turnosRoutes");
 
 const cors = require("cors");
 
@@ -36,6 +37,7 @@ app.use("/api/mail", sendEmail);
 app.use("/api/mail/reset-password", sendResetCode);
 app.use('/api/turnos', turnosRoute);
 app.use("/api/especialistas", especialistasRoutes);
+app.use("/api/turnosAdmin", turnosAdminRoutes);
 
 
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));

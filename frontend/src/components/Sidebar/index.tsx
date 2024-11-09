@@ -16,6 +16,7 @@ function Sidebar() {
   const pathname = usePathname();
   const { setIsSidebarOpen, isSidebarOpen } = useCentralStore();
   const [isDropdownOpen, setIsDropdownOpen] = useState<boolean>(false);
+  const [isAdminDropdownOpen, setIsAdminDropdownOpen] = useState(false);
   const [isMedicosDropdownOpen, setIsMedicosDropdownOpen] = useState<boolean>(false);
   const [usuario, setUsuario] = useState<any>(null);
   const [loading, setLoading] = useState(true);
@@ -93,7 +94,7 @@ function Sidebar() {
                       href="/application/ver-pacientes"
                       className={`block ${
                         pathname === "/ver-pacientes" ? "text-blue-700 dark:text-blue-300" : ""
-                      } hover:text-blue-700 dark:hover:text-blue-300 duration-200 py-1 transition-all ease-in-out`}
+                      } hover:text-blue-700 dark:hover:text-blue-300 duration-200 px-6 py-2 transition-all ease-in-out`}
                     >
                       Ver Pacientes
                     </Link>
@@ -101,22 +102,52 @@ function Sidebar() {
                       href="/application/agregar-paciente"
                       className={`block ${
                         pathname === "/agregar-paciente" ? "text-blue-700 dark:text-blue-300" : ""
-                      } hover:text-blue-700 dark:hover:text-blue-300 duration-200 py-1 transition-all ease-in-out`}
+                      } hover:text-blue-700 dark:hover:text-blue-300 duration-200 px-6 py-2 transition-all ease-in-out`}
                     >
                       Agregar Paciente
                     </Link>
                   </div>
                       
                 )}
-              <div className="div">
-                  <Link
-                    href="/application/administrar-especialista"
-                    className={`flex ${pathname === "/administrar-especialista" ? "text-blue-700 dark:text-blue-300" : ""}
-                    hover:text-blue-700 dark:hover:text-blue-300 duration-200 px-6 py-2 items-center gap-2 transition-all ease-in-out`}
-                  >
-                    <Profile2User size={16} />Admin Especialistas
-                  </Link>
+            {/* Botón Administrar con Dropdown */}
+            <button
+                onClick={() => setIsAdminDropdownOpen(!isAdminDropdownOpen)}
+                className={`flex justify-between items-center ${
+                  pathname && pathname.startsWith("/administrar") ? "text-blue-700 dark:text-blue-300" : ""
+                } hover:text-blue-700 dark:hover:text-blue-300 duration-200 px-6 py-2 w-full transition-all ease-in-out`}
+              >
+              <div className="flex items-center gap-2">
+                <Profile2User size={16} />
+                Administrar
               </div>
+              <ArrowDown2 size={16} />
+            </button>
+
+            {/* Dropdown de Administrar */}
+            {isAdminDropdownOpen && (
+              <div className="pl-10 mt-2 space-y-2 mb-2">
+                <Link
+                  href="/application/administrar-especialista"
+                  className={`block ${
+                    pathname === "/application/administrar-especialista" ? "text-blue-700 dark:text-blue-300" : ""
+                  } hover:text-blue-700 dark:hover:text-blue-300 duration-200 px-6 py-2 transition-all ease-in-out`}
+                >
+                  Admin Especialistas
+                </Link>
+
+                <Link
+                  href="/application/administrar-turnos"
+                  className={`block ${
+                    pathname === "/application/administrar-turnos" ? "text-blue-700 dark:text-blue-300" : ""
+                  } hover:text-blue-700 dark:hover:text-blue-300 duration-200 px-6 py-2 transition-all ease-in-out`}
+                >
+                  Admin Turnos
+                </Link>
+              </div>
+            )}
+
+
+
               </div>
               
             ) : usuario && usuario.tipoUsuarioId === 2 ? (
