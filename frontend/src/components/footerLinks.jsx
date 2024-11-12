@@ -32,7 +32,7 @@ const currentYear = new Date().getFullYear();
 
 export function FooterWithLinks() {
   return (
-    <footer className="relative w-full bg-gray-700 p-6">
+    <footer className="relative w-full text-lg md:text-base bg-gray-700 p-6">
       <div className="container mx-auto flex flex-wrap justify-between">
         <div className="w-full md:w-1/3 mb-6 md:mb-0">
           <Typography as="a" href="#" variant="h5" className="text-white font-bold text-2xl">
@@ -70,7 +70,7 @@ export function FooterWithLinks() {
       <div className="mt-8 border-t border-gray-600 pt-4 flex justify-between">
         <Typography
           variant="small"
-          className="text-center text-gray-400 text-lg md:text-sm"
+          className="text-center text-gray-400 text-sm md:text-sm"
         >
           &copy; {currentYear} DownIsUp Cordoba. All Rights Reserved.
         </Typography>

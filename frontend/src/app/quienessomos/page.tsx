@@ -47,12 +47,12 @@ export default function QuienesSomos() {
             spaceBetween={30}
             centeredSlides={true}
             autoplay={{
-              delay: 3000, // Cambia cada 3 segundos
+              delay: 3000, 
               disableOnInteraction: false,
             }}
-            loop={true} // Vuelve a la primera imagen después de la última
-            navigation={false} // Habilita las flechas de navegación
-            allowTouchMove={false} // Deshabilita el arrastre manual
+            loop={true} 
+            navigation={false} 
+            allowTouchMove={false} 
             className="h-full w-auto"
           >
             <SwiperSlide className="relative h-screen">
@@ -126,7 +126,7 @@ export default function QuienesSomos() {
               <Image
                 width={350}
                 height={350}
-                src="/background.png"
+                src="/fotoquienessomos2.png"
                 alt="Quienes Somos"
                 className="rounded-3xl"
               />

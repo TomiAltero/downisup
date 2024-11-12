@@ -6,6 +6,11 @@ import { poppins } from "@/components/ui/fonts";
 import './contact.css';
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import Image from 'next/image';
+import { Navigation, Autoplay } from 'swiper/modules';
 import { PhoneIconSvg, MessageIconSvg, PinIconSvg } from "@/components/ui/icons";
 import { FooterWithLinks } from "@/components/footerLinks";
 import { AlertCustomStyles, AlertCustomStylesRojo, LoadingSpinner } from "@/components/materialComponent"; // Import custom components
@@ -57,7 +62,57 @@ export default function ContactUsPage() {
   return (
     <LandingLayout>
       <main className={`h-screen flex flex-col justify-start items-center ${poppins.className}`}>
-        <h1 className={`text-4xl mt-22 mb-5 text-custom-blue font-semibold`}>Contáctanos</h1>
+      <section className="relative w-full h-screen mb-10" style={{ height: "250px" }}>
+
+<div className="absolute inset-0 z-10 flex items-center justify-center">
+  <h1 className="text-white text-4xl font-bold mtB-10">CONSULTORIO </h1>
+</div>
+
+<Swiper
+  modules={[Navigation, Autoplay]}
+  spaceBetween={30}
+  centeredSlides={true}
+  autoplay={{
+    delay: 3000, // Cambia cada 3 segundos
+    disableOnInteraction: false,
+  }}
+  loop={true} // Vuelve a la primera imagen después de la última
+  navigation={false} // Habilita las flechas de navegación
+  allowTouchMove={false} // Deshabilita el arrastre manual
+  className="h-full w-full"
+>
+  <SwiperSlide  className="relative h-screen">
+    <Image
+      src="/background.png" // Cambia estas rutas por las imágenes que desees usar
+      alt="Background 1"
+      layout="fill"
+      objectFit="cover"
+      className="z-[-1] "
+    />      <div className="absolute inset-0 bg-gradient-to-b from-blue-700 to-blue-700 opacity-50"></div>
+
+  </SwiperSlide>
+  <SwiperSlide  className="relative h-screen">
+    <Image
+      src="/chicasPlaza.jpg"
+      alt="Background 2"
+      layout="fill"
+      objectFit="cover"
+      className="z-[-1] "
+    />      <div className="absolute inset-0 bg-gradient-to-b from-blue-700 to-blue-700 opacity-50"></div>
+
+  </SwiperSlide>
+  <SwiperSlide  className="relative h-screen">
+    <Image
+      src="/chicos.jpeg"
+      alt="Background 3"
+      layout="fill"
+      objectFit="cover"
+      className="z-[-1] "
+    />      <div className="absolute inset-0 bg-gradient-to-b from-blue-700 to-blue-700 opacity-50"></div>
+
+  </SwiperSlide>
+</Swiper>
+</section>
 
         {/* Display the alert if there's a message */}
         {alertMessage && (
