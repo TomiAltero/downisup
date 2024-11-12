@@ -16,7 +16,7 @@ import {
 import { LockClosedIcon } from "@heroicons/react/24/solid"; 
 
 export default function FormularioRegistro() {
-  const [formType, setFormType] = useState("voluntario");
+  const [formType, setFormType] = useState("Datos de compra"); // Cambiar a "Datos de compra"
   const [formData, setFormData] = useState({
     nombreCompleto: "",
     email: "",
@@ -98,7 +98,6 @@ export default function FormularioRegistro() {
             </Tab>
           </TabsHeader>
           <TabsBody>
-            {/* Formulario de Voluntario */}
             <TabPanel value="Datos de compra">
               <form className="mt-6 flex flex-col gap-4" onSubmit={manejarEnvio}>
                 <label className="text-sm font-medium text-blue-gray-700">

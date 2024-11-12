@@ -6,6 +6,7 @@ import {
   LoadingSpinner,
 } from "./materialComponent";
 import { getHijoProfile } from "@/lib/utils";
+import { now } from "next-auth/client/_utils";
 
 const ChatBotComponent = () => {
   const [especialistas, setEspecialistas] = useState([]);
@@ -16,6 +17,8 @@ const ChatBotComponent = () => {
   const [horarios, setHorarios] = useState([]);
   const [nombrePaciente, setNombrePaciente] = useState("");
   const [perfilHijo, setPerfilHijo] = useState([]);
+  const [padre, setPadre] = useState("Tomas Altero"); // Asignar valor de padre
+  const [fechaTurno, setFechaTurno] = useState("");
   const [alertMessage, setAlertMessage] = useState("");
   const [isError, setIsError] = useState(false);
 
@@ -86,8 +89,9 @@ const ChatBotComponent = () => {
 
   const handleDiaSelect = (dia) => {
     setSelectedDia(dia);
+    setFechaTurno(new Date().toISOString().split('T')[0]); // Asignar la fecha actual en formato fecha
     setStep(3);
-  };
+  }
 
   const handleGuardarTurno = async (horario) => {
     if (!nombrePaciente) {
@@ -101,6 +105,8 @@ const ChatBotComponent = () => {
       dia: selectedDia,
       horario,
       nombrePaciente,
+      padre,
+      fechaTurno,
     };
 
     try {
@@ -241,8 +247,8 @@ const ChatBotComponent = () => {
           </div>
         )}
       </div>
-      <p className="mb-2 text-black text-base mt-5 dark:text-gray-300 text-center">
-        NOTA: Los horarios de cada especialista se pueden ver en horarios
+      <p className="mb-2 text-gray-600 text-sm mt-5 dark:text-gray-300 text-center">
+        * Los horarios de cada especialista se pueden ver en horarios
       </p>
     </div>
   );

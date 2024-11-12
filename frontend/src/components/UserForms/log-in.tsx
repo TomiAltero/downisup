@@ -160,9 +160,11 @@ export function LogIn() {
           <CardHeader className="flex flex-col items-center">
             <section className="relative">
               <Link href={"/"}>
-                  <ArrowLeftIconSvg className={`absolute top-[-7px] right-33 mx-4 text-custom-blue`} />
+                <ArrowLeftIconSvg
+                  className={`absolute top-[-7px] right-33 mx-4 text-custom-blue`}
+                />
               </Link>
-            </section>  
+            </section>
             <Image src="/favicon.ico" width={72} height={50} alt="Logo DiU" />
             <CardTitle className="mt-4 text-xl font-bold text-blue-900">
               Inicio de Sesión

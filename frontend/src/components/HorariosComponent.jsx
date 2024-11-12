@@ -1,20 +1,5 @@
-import React, { useState } from 'react';
-
-// Ejemplo del archivo JSON cargado externamente
-const especialistas = [
-  {
-    "nombre": "Dr. Pérez",
-    "especialidad": "Pediatría",
-    "diasDisponibles": [1, 3, 5],
-    "horarios": { "inicio": "07:00", "fin": "14:00" }
-  },
-  {
-    "nombre": "Dra. García",
-    "especialidad": "Neurología",
-    "diasDisponibles": [2, 4],
-    "horarios": { "inicio": "08:00", "fin": "13:00" }
-  }
-];
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 
 // Utilidad para convertir un número de día en el nombre del día
 const getNombreDia = (numeroDia) => {
@@ -23,8 +8,22 @@ const getNombreDia = (numeroDia) => {
 };
 
 const HorariosComponent = () => {
+  const [especialistas, setEspecialistas] = useState([]);
   const [especialistaSeleccionado, setEspecialistaSeleccionado] = useState(null);
   const [horarios, setHorarios] = useState([]);
+
+  useEffect(() => {
+    // Fetch especialistas desde la API
+    const fetchEspecialistas = async () => {
+      try {
+        const response = await axios.get('http://localhost:5000/api/especialistas');
+        setEspecialistas(response.data.especialistas);
+      } catch (error) {
+        console.error("Error al cargar especialistas:", error);
+      }
+    };
+    fetchEspecialistas();
+  }, []);
 
   const handleEspecialistaChange = (event) => {
     const nombreEspecialista = event.target.value;
@@ -41,7 +40,6 @@ const HorariosComponent = () => {
       setHorarios([]);
     }
   };
-
 
   return (
     <div className="max-w-4xl mx-auto p-4">
@@ -69,15 +67,15 @@ const HorariosComponent = () => {
             <table className="min-w-full bg-white dark:bg-gray-900">
               <thead className="text-left">
                 <tr>
-                  <th className="py-2 px-4 border-b-2 border-gray-200 dark:border-gray-600">Día</th>
-                  <th className="py-2 px-4 border-b-2 border-gray-200 dark:border-gray-600">Horario</th>
+                  <th className="border-b-2 border-gray-200 dark:border-gray-600">Día</th>
+                  <th className="border-b-2 border-gray-200 dark:border-gray-600">Horario</th>
                 </tr>
               </thead>
-              <tbody>
+              <tbody className=''>
                 {horarios.map((horario, index) => (
                   <tr key={index} className="hover:bg-gray-100 dark:hover:bg-gray-700">
-                    <td className="py-2 px-4 border-b border-gray-200 dark:border-gray-600">{horario.dia}</td>
-                    <td className="py-2 px-4 border-b border-gray-200 dark:border-gray-600">{horario.horario}</td>
+                    <td className="border-b border-gray-200 dark:border-gray-600">{horario.dia}</td>
+                    <td className="border-b border-gray-200 dark:border-gray-600">{horario.horario}</td>
                   </tr>
                 ))}
               </tbody>
