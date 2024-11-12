@@ -110,7 +110,7 @@ export default function Home() {
                 </SwiperSlide>
                 <SwiperSlide>
                   <Image
-                    src="/chicos.jpeg"
+                    src="/fotoquienessomos2.png"
                     alt="Background 3"
                     layout="fill"
                     objectFit="cover"
@@ -178,9 +178,7 @@ export default function Home() {
                 height={1400}
                 className="mb-4 md:mb-6 rounded-3xl"
               />
-              <h2 className="text-md lg:text-sm text-custom-blue mt-5 mb-5 md:mb-6">
-              Pérez de Herrera 2053 Cerro de las rosas
-              </h2>
+              <a href="https://maps.app.goo.gl/cpvhnUq2XH37BnCi8" className="text-custom-blue text-lg mt-5 mb-5 leading-relaxed flex items-center hover:underline"><PinIconSvg/>Pérez de Herrera 2053</a>
             </div>
 
             {/* División diagonal invertida */}
@@ -218,10 +216,10 @@ export default function Home() {
                   INFORMACIÓN DE CONTACTO
                 </p>
                 <p className="text-white text-lg mt-5 mb-5 leading-relaxed flex items-center">
-                  <PhoneIconSvg /> 3517960194
+                  <PhoneIconSvg /> <a href="tel:+3517960194" className="text-white text-lg hover:underline">3517960194</a>
                 </p>
                 <p className="text-white text-lg mt-5 mb-5 leading-relaxed flex items-center">
-                  <MessageIconSvg /> fundaciondownisupcba@gmail.com
+                  <MessageIconSvg /><a href="mailto:fundaciondownisupcbacba@gmail.com" className="text-white text-lg hover:underline">fundaciondownisupcbacba@gmail.com</a>
                 </p>
                 <a href="https://maps.app.goo.gl/cpvhnUq2XH37BnCi8" className="text-white text-lg mt-5 mb-5 leading-relaxed flex items-center hover:underline"><PinIconSvg />Pérez de Herrera 2053</a>
               </div>
