@@ -40,7 +40,6 @@ export default function ResetPage() {
           body: JSON.stringify({ email: formEmail }),
         },
       );
-      console.log(verifyResponse.ok);
       // Handle response from the verification
       if (!verifyResponse.ok) {
         const reset_code = generateVerificationCode();
@@ -127,7 +126,7 @@ export default function ResetPage() {
         
         setIsError(false);
         setTimeout(() => {
-          window.location.href = "/application/";
+          window.location.href = "/application/perfil/change-password";
         }, 1500);
       }
     }
@@ -146,7 +145,7 @@ export default function ResetPage() {
           ) : (
             <AlertCustomStyles message={alertMessage} />
           ))}
-      </article>
+      </article>!
       {!showContent ? (
         <Card className="-mt-4 w-[400px] h-auto">
           <CardHeader className="flex flex-col items-center">

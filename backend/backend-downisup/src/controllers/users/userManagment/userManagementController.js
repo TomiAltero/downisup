@@ -15,7 +15,10 @@ class UserManagementController {
   async obtenerUsuarioPorId(req, res) {
     try {
       const { id } = req.params;
+      console.log("id", id);
+
       const usuario = await Usuario.findByPk(id);
+      console.log("usuario", usuario)
       if (!usuario) {
         return res.status(404).json({ error: "Usuario no encontrado" });
       }
@@ -102,7 +105,22 @@ class UserManagementController {
       res.status(500).json({ error: "Hubo un error al eliminar usuario" });
     }
   }
-
+  async cambiarContraseña(req, res) {
+    try {
+      const { id , newPassword } = req.body;
+      const usuario = await Usuario.findByPk(id);
+      if (!usuario) {
+        return res.status(404).json({ error: "Usuario no encontrado" });
+      }
+      const hashedNewPassword = await bcrypt.hash(newPassword, 10);
+      usuario.password = hashedNewPassword;
+      await usuario.save();
+      return res.status(200).json({ message: "Contraseña cambiada correctamente" });
+    } catch (error) {
+      console.error("Error al cambiar contraseña:", error);
+      res.status(500).json({ error: "Hubo un error al cambiar contraseña" });
+    }
+  }
   async verifyEmail(req, res) {
     const { email } = req.body;
     const user = await Usuario.findOne({

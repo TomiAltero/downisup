@@ -35,7 +35,6 @@ function HeadBar() {
         );
         const usuarioData = response.data.usuario;
         setUsuario(usuarioData);
-        console.log("Usuario data:", usuarioData);
       }
     } catch (error) {
       console.error("Error al obtener el perfil:", error);

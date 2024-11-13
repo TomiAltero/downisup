@@ -40,22 +40,22 @@ function IconRojo() {
   }
 
 // Custom Alert component
-export function AlertCustomStyles({ message }: { message: string }) {
+export function AlertCustomStyles({ message, className = "" }: { message: string, className?: string }) {
   return (
     <Alert
       icon={<Icon />}
-      className="rounded-none border-l-4 border-[#2ec946] bg-[#2ec946]/10 font-bold text-[#2ec946]"
+      className={`rounded-none border-l-4 border-[#2ec946] bg-[#2ec946]/10 font-bold text-[#2ec946] ${className}`}
     >
       {message}
     </Alert>
   );
 }
 
-export function AlertCustomStylesRojo({ message }: { message: string }) {
+export function AlertCustomStylesRojo({ message, className = "" }: { message: string, className?: string }) {
     return (
       <Alert
         icon={<IconRojo />}
-        className="rounded-none border-l-4 border-[#e62b25] bg-red/10 font-bold text-[#e62b25]"
+        className={`rounded-none border-l-4 border-[#e62b25] bg-red/10 font-bold text-[#e62b25] ${className}`}
       >
         {message}
       </Alert>

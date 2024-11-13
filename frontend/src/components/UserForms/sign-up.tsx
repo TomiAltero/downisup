@@ -155,19 +155,8 @@ export function SignUp() {
           </CardTitle>
         </CardHeader>
 
-        <CardContent>
-          {errors.length > 0 && (
-            <section className="my-3">
-              {errors.map((error, index) => (
-                <p
-                  key={index}
-                  className="transition-all rounded-2xl border ease-in-out delay-200 text-sm text-center font-bold bg-red-600 p-3 my-2"
-                >
-                  {error.msg}
-                </p>
-              ))}
-            </section>
-          )}
+        <CardContent id="card errores">
+        
           <section className="my-3 -mt-5">
             <section className="flex flex-row space-x-4">
               <article className="space-y-2 my-2">

@@ -121,6 +121,28 @@ const validateUserRegistration = [
   Validator.validate,
 ];
 
+const validateChangePassword = [
+  
+  ...new Validator("newPassword")
+    .isLength(8, 20)
+    .matches(
+      /[A-Z]/,
+      "La contraseña debe contener al menos una letra mayúscula",
+    )
+    .matches(
+      /[a-z]/,
+      "La contraseña debe contener al menos una letra minúscula",
+    )
+    .matches(/[0-9]/, "La contraseña debe contener al menos un número")
+    .matches(
+      /[@$!%*?&#]/,
+      "La contraseña debe contener al menos un carácter especial (@, $, !, %, *, ?, &, #)",
+    )
+    .getValidators(),
+
+  Validator.validate,
+]
 module.exports = {
   validateUserRegistration,
+  validateChangePassword,
 };
