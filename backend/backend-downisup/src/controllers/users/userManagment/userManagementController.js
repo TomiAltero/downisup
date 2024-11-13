@@ -15,10 +15,8 @@ class UserManagementController {
   async obtenerUsuarioPorId(req, res) {
     try {
       const { id } = req.params;
-      console.log("id", id);
 
       const usuario = await Usuario.findByPk(id);
-      console.log("usuario", usuario)
       if (!usuario) {
         return res.status(404).json({ error: "Usuario no encontrado" });
       }

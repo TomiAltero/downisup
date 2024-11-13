@@ -219,45 +219,9 @@ function Sidebar() {
                     </Link>
                   </div>
                 )}
-                <div className="mt-2">
-                  <button
-                    onClick={() => setIsMedicosDropdownOpen(!isMedicosDropdownOpen)}
-                    className={`flex justify-between items-center ${
-                      pathname?.startsWith("/application/datos-medicos") ? "text-blue-700 dark:text-blue-300" : ""
-                    } hover:text-blue-700 dark:hover:text-blue-300 duration-200 px-6 py-2 w-full transition-all ease-in-out`}
-                  >
-                    <div className="flex items-center gap-2">
-                      <Profile2User size={16} />
-                      Datos Médicos
-                    </div>
-                    <ArrowDown2 size={16} />
-                  </button>
-                  {isMedicosDropdownOpen && (
-                    <div className="pl-10 mt-2 space-y-2">
-                      <Link
-                        href="/application/panel-medico"
-                        className={`block ${
-                          pathname === "/application/datos-medicos/ver-panel" ? "text-blue-700 dark:text-blue-300" : ""
-                        } hover:text-blue-700 dark:hover:text-blue-300 duration-200 py-1 transition-all ease-in-out`}
-                      >
-                        Ver Panel
-                      </Link>
-                    </div>
-                  )}
-                </div>
+                
               </div>
             ) : null}
-
-            <Link
-              href="/application/terapias"
-              className={`flex ${
-                pathname === "/app/calendar" ? "text-blue-700 dark:text-blue-300" : ""
-              } hover:text-blue-700 dark:hover:text-blue-300 duration-200 px-6 py-2 items-center gap-2 transition-all ease-in-out`}
-            >
-              <Calendar size={16} />
-              Calendario Terapias
-            </Link>
-
             <Link
               href="/application/horarios"
               className={`flex ${
