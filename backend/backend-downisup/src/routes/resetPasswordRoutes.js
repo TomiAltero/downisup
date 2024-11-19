@@ -4,20 +4,70 @@ const router = express.Router();
 
 router.post("/send-reset-code", async (req, res) => {
   const { email, reset_code } = req.body;
-333
+  
   const transporter = nodemailer.createTransport({
     service: "gmail",
     auth: {
-      user: "facubisio433@gmail.com", // Replace with your Gmail
-      pass: "clcc eskt sevb gysl", // Replace with your Gmail password or app password
+      user: "downisupapp@gmail.com", // Replace with your Gmail
+      pass: "down1234", // Replace with your Gmail password or app password
     },
   });
 
   const mailOptions = {
-    from: "facubisio433@gmail.com",
+    from: "downisupapp@gmail.com",
     to: email, // The email where you want to receive the form data
     subject: `Reinicio de contraseña para la cuenta ${email}`,
-    text: `Se ha solicitado un reinicio de contraseña para la cuenta ${email}. \nSi no has sido tú, ignora este mensaje. Si has sido tú, ingresa el siguiente código en la aplicación: ${reset_code}`,
+    html: `
+      <div class="netflix-reset-code">
+        <div class="netflix-logo">
+          <img src="netflix-logo.png" alt="Netflix Logo">
+        </div>
+        <div class="reset-code-container">
+          <h2>${reset_code}</h2>
+          <p>Este es el código para el cambio de contraseña</p>
+          <p>Estas recibiendo este código porque vos (o alguien más) ha solicitado cambio de contraseña para la cuenta ${email}</p>
+          <p>Si no fuiste vos, porfavor ignora este email y tu contraseña permanecerá si cambios</p>
+        </div>
+      </div>
+      <style>
+        .netflix-reset-code {
+          font-family: Arial, sans-serif;
+          background-color: #f3f3f3;
+          padding: 20px;
+          border-radius: 5px;
+          max-width: 400px;
+          margin: 0 auto;
+        }
+
+        .netflix-logo {
+          text-align: center;
+          margin-bottom: 20px;
+        }
+
+        .netflix-logo img {
+          max-width: 150px;
+        }
+
+        .reset-code-container {
+          background-color: white;
+          padding: 20px;
+          border-radius: 5px;
+          box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .reset-code-container h2 {
+          font-size: 32px;
+          color: #e50914;
+          margin-bottom: 10px;
+        }
+
+        .reset-code-container p {
+          font-size: 14px;
+          color: #333;
+          margin-bottom: 10px;
+        }
+      </style>
+    `,
   };
 
   try {
