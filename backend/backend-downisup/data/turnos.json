@@ -10,44 +10,9 @@
   {
     "especialista": "Dr. Pérez",
     "dia": 3,
-<<<<<<< HEAD
-    "horario": "10:00",
-    "nombrePaciente": "Ana",
-    "padre": "Luis Fernandez",
-    "fechaTurno": "2024-09-20"
-=======
-    "horario": "12:30",
-    "nombrePaciente": "Francisco"
-  },
-  {
-    "especialista": "Dr. Pérez",
-    "dia": 1,
-    "horario": "14:00",
-    "nombrePaciente": "Francisco"
-  },
-  {
-    "especialista": "Dr. Pérez",
-    "dia": 1,
-    "horario": "14:30",
-    "nombrePaciente": "Facundo"
-  },
-  {
-    "especialista": "Dr. Pérez",
-    "dia": 1,
-    "horario": "11:00",
-    "nombrePaciente": "Francisco"
-  },
-  {
-    "especialista": "Dr. Pérez",
-    "dia": 1,
-    "horario": "10:30",
-    "nombrePaciente": "Francisco"
-  },
-  {
-    "especialista": "Dra. García",
-    "dia": 2,
-    "horario": "09:00",
-    "nombrePaciente": "Facundo"
->>>>>>> 03ce6087c94ae5e49ddfcd30787c45520980bfdf
+    "horario": "09:30",
+    "nombrePaciente": "Héctor",
+    "padre": "Tomas Altero",
+    "fechaTurno": "2024-11-19"
   }
 ]

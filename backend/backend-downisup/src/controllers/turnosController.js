@@ -1,7 +1,7 @@
 const fs = require("fs");
 const path = require("path");
 
-const turnosFilePath = path.resolve(__dirname, "../data/turnos.json");
+const turnosFilePath = path.resolve(__dirname, "../../data/turnos.json");
 
 // Obtener todos los turnos desde el archivo JSON
 const getTurnos = (req, res) => {

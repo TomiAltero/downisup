@@ -7,6 +7,8 @@ import {
   Home,
   ArrowDown2,
 } from "iconsax-react";
+import { Dialog, Transition } from "@headlessui/react";
+import { XMarkIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useCentralStore } from "@/Store";
@@ -48,7 +50,9 @@ function Sidebar() {
   }, []);
 
   return (
-    <div className="w-60 shrink-0 md:block h-screen sticky top-0 overflow-hidden bg-white dark:bg-gray-900">
+    <main>
+    <div className="w-60 shrink-0 h-screen sticky top-0 overflow-hidden bg-white dark:bg-gray-900 md:block hidden">
+
       <div className="w-full h-full bg-custom-blue bg-opacity-10 border-r dark:border-gray-800">
         <Link href="/application">
           <div className="p-3 md:p-6 flex cursor-pointer group items-center gap-2 h-1/8">
@@ -249,6 +253,73 @@ function Sidebar() {
         </div>
       </div>
     </div>
+    {/* Botón para abrir el sidebar */}
+    <button
+    className="mx-1 py-1 p-1 mt-1 text-lg text-gray-600 bg-gray-200 border-gray-600 shadow-md border-spacing-2 rounded-md md:hidden"
+    onClick={() => setIsSidebarOpen(true)}
+  >
+    <XMarkIcon className="h-6 w-6" />
+  </button>
+
+  {/* Sidebar responsivo */}
+  <Transition show={isSidebarOpen}>
+    <Dialog
+      as="div"
+      className="fixed inset-0 z-40 flex"
+      onClose={() => setIsSidebarOpen(false)}
+    >
+      {/* Fondo oscuro */}
+      <div className="fixed inset-0 bg-black bg-opacity-50 transition-opacity" />
+
+      {/* Panel del sidebar */}
+      <Transition.Child
+        enter="transform transition-transform ease-in-out duration-300"
+        enterFrom="-translate-x-full"
+        enterTo="translate-x-0"
+        leave="transform transition-transform ease-in-out duration-300"
+        leaveFrom="translate-x-0"
+        leaveTo="-translate-x-full"
+      >
+        <Dialog.Panel className="relative bg-white w-64 h-full shadow-lg">
+          {/* Botón para cerrar */}
+          <button
+            className="absolute top-4 right-4 text-gray-600"
+            onClick={() => setIsSidebarOpen(false)}
+          >
+            <XMarkIcon className="h-6 w-6" />
+          </button>
+
+          {/* Contenido del sidebar */}
+          <div className="p-6 space-y-4">
+            <h2 className="text-xl font-bold text-blue-800">DownIsUpApp</h2>
+            <hr className="my-4" />
+
+            <nav className="flex flex-col space-y-2 text-base">
+              <Link
+                href="/application"
+                className="text-gray-700 hover:text-blue-500"
+              >
+                Inicio
+              </Link>
+              <Link
+                href="/application/horarios"
+                className="text-gray-700 hover:text-blue-500"
+              >
+                Horarios
+              </Link>
+              <Link
+                href="/application/chat"
+                className="text-gray-700 hover:text-blue-500"
+              >
+                Agendar Turno
+              </Link>
+            </nav>
+          </div>
+        </Dialog.Panel>
+      </Transition.Child>
+    </Dialog>
+  </Transition>
+  </main>
   );
 }
 
