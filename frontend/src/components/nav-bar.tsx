@@ -28,11 +28,10 @@ export default function NavBar() {
         <div className="flex items-center">
           <Link href="/" className="flex items-center left-full">
             <Image
-              width={50}
-              height={50}
+              width={45}
+              height={45}
               src="/logo-du.png"
               alt="Your Company"
-              className="h-8 w-auto"
             />
           </Link>
         </div>

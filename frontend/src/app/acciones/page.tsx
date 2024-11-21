@@ -17,7 +17,7 @@ const eventCards = [
     title: "Día internacional del Síndrome de Down",
     shortDescription: "La propuesta consistió en entregar a los colegios de Córdoba, pañuelos blancos para ser intervenidos ",
     longDescription: "Long description for Event 1",
-    image: "/DiaInternacional.jpg",
+    image: "/DiaInternacional.webp",
     date : "09/3/2024"
   },
   {
@@ -72,9 +72,8 @@ export default function AccionesPage() {
                     src={event.image}
                     alt="Event"
                     className="object-cover rounded-3xl"
-                    width={300}
-                    height={250}
-                    style={{ width: '300px', height: '250px' }}
+                    width={250}
+                    height={200}
                   />
                   <article className="flex flex-col justify-between py-10">
                     <p className="text-sm text-center text-gray-700">
