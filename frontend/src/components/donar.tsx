@@ -34,8 +34,15 @@ const Donar = () => {
   return (
     <section className="bg-white">
       <section className="relative w-full h-[250px] mb-10 lg:h-[500px]" style={{ height: "250px" }}>
-        <div className="absolute inset-0 z-10 flex items-center justify-center">
-          <h1 className="text-white text-4xl font-bold mt-10">DONAR</h1>
+        <div className="absolute bg-custom-blue inset-0 z-10 flex items-center justify-center">
+           <Image
+            src="/chicasPlaza.jpg"
+            alt="Background 1"
+            layout="fill"
+            objectFit="cover"
+            className="z-[-1] object-[35%_20%] opacity-50"
+          />
+          <h1 className="text-6xl font-satoshi text-white font-extrabold mt-10">Donar</h1>
         </div>
 
         {/* Swiper component inside try-catch */}

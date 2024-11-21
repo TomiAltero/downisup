@@ -86,7 +86,7 @@ export default function NavBar() {
           <Link href="/donar">
             <Button
               variant="destructive"
-              className="rounded-full text-base px-4 py-2 font-semibold hover:bg-red h-full"
+              className="border-2  border-rose-700 bg-rose-500 rounded-full text-base px-4 py-2 font-semibold hover:bg-rose-700 h-full"
             >
               DONAR
             </Button>

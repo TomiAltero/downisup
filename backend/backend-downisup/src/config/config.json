@@ -1,40 +1,22 @@
 {
   "development": {
-<<<<<<< HEAD
-    "username": "octalucero",
-    "password": "12345",
-    "database": "downisupdb",
-=======
-    "username": "tomialtero",
-    "password": "T29092005a#",
+    "username": "octavio",
+    "password": "123456",
     "database": "downisupDB",
->>>>>>> 03ce6087c94ae5e49ddfcd30787c45520980bfdf
     "host": "127.0.0.1",
     "dialect": "mysql"
   },
   "test": {
-<<<<<<< HEAD
-    "username": "octalucero",
-    "password": "12345",
-    "database": "downisupdb",
-=======
-    "username": "tomialtero",
-    "password": "T29092005a#",
+    "username": "octavio",
+    "password": "123456",
     "database": "downisupDB",
->>>>>>> 03ce6087c94ae5e49ddfcd30787c45520980bfdf
     "host": "127.0.0.1",
     "dialect": "mysql"
   },
   "production": {
-<<<<<<< HEAD
-    "username": "octalucero",
-    "password": "12345",
-    "database": "downisupdb",
-=======
-    "username": "tomialtero",
-    "password": "T29092005a#",
+    "username": "octavio",
+    "password": "123456",
     "database": "downisupDB",
->>>>>>> 03ce6087c94ae5e49ddfcd30787c45520980bfdf
     "host": "127.0.0.1",
     "dialect": "mysql"
   }

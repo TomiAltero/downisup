@@ -1,22 +1,22 @@
 {
   "development": {
-    "username": "octalucero",
-    "password": "12345",
-    "database": "downisupdb",
+    "username": "octavio",
+    "password": "123456",
+    "database": "downisupDB",
     "host": "127.0.0.1",
     "dialect": "mysql"
   },
   "test": {
-    "username": "octalucero",
-    "password": "12345",
-    "database": "downisupdb",
+    "username": "octavio",
+    "password": "123456",
+    "database": "downisupDB",
     "host": "127.0.0.1",
     "dialect": "mysql"
   },
   "production": {
-    "username": "octalucero",
-    "password": "12345",
-    "database": "downisupdb",
+    "username": "octavio",
+    "password": "123456",
+    "database": "downisupDB",
     "host": "127.0.0.1",
     "dialect": "mysql"
   }

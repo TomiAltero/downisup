@@ -4,7 +4,7 @@ const router = express.Router();
 
 router.post("/send-reset-code", async (req, res) => {
   const { email, reset_code } = req.body;
-  
+
   const transporter = nodemailer.createTransport({
     service: "gmail",
     auth: {
@@ -32,7 +32,7 @@ router.post("/send-reset-code", async (req, res) => {
       <style>
         .netflix-reset-code {
           font-family: Arial, sans-serif;
-          background-color: #f3f3f3;
+          background-color: #303487;
           padding: 20px;
           border-radius: 5px;
           max-width: 400px;
