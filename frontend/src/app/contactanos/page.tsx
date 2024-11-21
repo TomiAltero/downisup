@@ -12,7 +12,6 @@ import 'swiper/css/navigation';
 import Image from 'next/image';
 import { Navigation, Autoplay } from 'swiper/modules';
 import { PhoneIconSvg, MessageIconSvg, PinIconSvg } from "@/components/ui/icons";
-import { FooterWithLinks } from "@/components/footerLinks";
 import { AlertCustomStyles, AlertCustomStylesRojo, LoadingSpinner } from "@/components/materialComponent"; // Import custom components
 
 export default function ContactUsPage() {
@@ -184,7 +183,6 @@ export default function ContactUsPage() {
 
         {/* Pie de página con redes sociales */}
         <div className="hidden md:block w-full mt-auto">
-          <FooterWithLinks />
         </div>
       </main>
     </LandingLayout>

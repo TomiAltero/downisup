@@ -5,7 +5,6 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import { Navigation, Autoplay } from 'swiper/modules';
 import RegisterForm from "@/components/formClubAmigos";
-import { FooterWithLinks } from './footerLinks';
 
 const Clubdeamigos = () => {
 
@@ -89,7 +88,6 @@ const Clubdeamigos = () => {
           <RegisterForm />
       </section>
       <section/>
-      <FooterWithLinks/>
 
     </section>
   );

@@ -5,9 +5,9 @@ const LINKS = [
   {
     title: "Sobre Nosotros",
     items: [
-      { name: "Quienes somos", href: "/quienessomos" },
-      { name: "Como comenzamos", href: "/quienessomos" },
-      { name: "Objetivos", href: "/quienessomos" },
+      { name: "Quienes somos", href: "/quienessomos#headerTitle" },
+      { name: "Como comenzamos", href: "/quienessomos#comocomenzamos" },
+      { name: "Objetivos", href: "/quienessomos#nuestrosobjectivos" },
     ],
   },
   {
@@ -15,14 +15,13 @@ const LINKS = [
     items: [
       { name: "Contacto", href: "/contactanos" },
       { name: "Enviar email", href: "/contactanos" },
-      { name: "Redes sociales", href: "/contactanos" },
     ],
   },
   {
     title: "Donar",
     items: [
-      { name: "Sumate como empresa", href: "/donar" },
-      { name: "Sumate como voluntario", href: "/donar" },
+      { name: "Sumate como empresa", href: "/clubdeamigos" },
+      { name: "Sumate como voluntario", href: "/clubdeamigos" },
       { name: "Donacion mensual", href: "/donar" },
     ],
   },

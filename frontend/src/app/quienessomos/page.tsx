@@ -9,7 +9,6 @@ import { Navigation, Autoplay } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import LandingLayout from "@/layouts/LandingLayout";
-import {FooterWithLinks} from "@/components/footerLinks"
 
 export default function QuienesSomos() {
 
@@ -37,8 +36,8 @@ export default function QuienesSomos() {
         {/* Sección del carrusel de imágenes */}
         <section className="relative w-full h-[60vh] lg:h-screen mb-22" style={{ height: "250px" }}>
           {/* Título sobre el carrusel */}
-          <div className="absolute inset-0 z-10 flex items-center justify-center">
-            <h1 className="text-white text-4xl font-bold mt-10">QUIENES SOMOS</h1>
+          <div className="absolute inset-0 z-10 flex items-center justify-center" id="headerTitle">
+            <h1 className="text-white text-4xl font-bold mt-10" >QUIENES SOMOS</h1>
           </div>
 
           {/* Carrusel de imágenes */}
@@ -100,7 +99,7 @@ export default function QuienesSomos() {
                 className="rounded-3xl"
               />
             </div>
-            <div className="w-full lg:w-8/12 px-4">
+            <div className="w-full lg:w-8/12 px-4" id="comocomenzamos">
               <h1 className="text-custom-blue text-3xl lg:text-4xl font-semibold mb-5">
                 Como comenzamos?
               </h1>
@@ -111,7 +110,7 @@ export default function QuienesSomos() {
           </section>
 
           {/* Sección: Nuestros objetivos */}
-          <section className="flex flex-col lg:flex-row justify-center items-center mb-22">
+          <section className="flex flex-col lg:flex-row justify-center items-center mb-22" id="nuestrosobjectivos">
             <div className="w-full lg:w-8/12 mr-4 px-4">
               <h1 className="text-custom-blue text-3xl lg:text-4xl mb-5 font-semibold">
                 Nuestros objetivos
@@ -133,7 +132,6 @@ export default function QuienesSomos() {
             </div>
           </section>
         </section>
-        <FooterWithLinks />
       </main>
     </LandingLayout>
   );

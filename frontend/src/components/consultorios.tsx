@@ -9,8 +9,6 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import { Navigation, Autoplay } from 'swiper/modules';
 import dynamic from 'next/dynamic';
-import { Footer } from "../components/footer";
-import { FooterWithLinks } from './footerLinks';
 
 
 const MapComponent = dynamic(() => import('../components/MapComponent'), {
@@ -150,7 +148,6 @@ const Consultorios = () => {
         </motion.div>
       </div>
 
-      <FooterWithLinks/>
     </section>
   );
 };

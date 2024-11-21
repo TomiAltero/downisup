@@ -8,7 +8,6 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import { Navigation, Autoplay } from 'swiper/modules';
-import { FooterWithLinks } from "@/components/footerLinks";
 
 const diaSemana = ["Lun", "Mar", "Mie", "Jue", "Vie", "Sab", "Dom"];
 const diaMes = 31;
@@ -49,7 +48,7 @@ export default function AccionesPage() {
   return (
     <LandingLayout>
       <main
-        className={`h-screen flex flex-col items-center ${poppins.className}`}
+        className={`flex flex-col items-center ${poppins.className}`}
       >
         <h1 className="text-4xl mt-22 mb-5 text-custom-blue font-semibold">
           ACCIONES QUE REALIZAMOS
@@ -127,9 +126,6 @@ export default function AccionesPage() {
             </div>
           </section>
         </section>
-
-        <FooterWithLinks />
-
       </main>
     </LandingLayout>
   );

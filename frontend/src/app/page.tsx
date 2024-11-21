@@ -12,7 +12,6 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/autoplay'; // Importamos CSS de autoplay
 import { Footer } from "../components/footer";
-import { FooterWithLinks } from "@/components/footerLinks";
 import { PhoneIconSvg, MessageIconSvg, PinIconSvg, CalendarIcon} from "@/components/ui/icons"
 
 // CSS para las animaciones
@@ -267,9 +266,7 @@ export default function Home() {
 
 
           {/* Footer para la cuarta sección */}
-          <footer className="hidden md:block w-full mt-auto fade-in">
-            <FooterWithLinks />
-          </footer>
+          
 
         </main>
 
