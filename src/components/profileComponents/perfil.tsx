@@ -6,14 +6,12 @@ import { useEffect } from "react";
 import Link from "next/link";
 
 export default async function Perfil({ token }: { token: string | null}) {
-  useEffect(() => {
     const theme = localStorage.getItem("theme");
     if (theme === "dark") {
       document.documentElement.classList.add("dark");
     } else {
       document.documentElement.classList.remove("dark");
     }
-  }, []);
 
   
   if (!token ) {
