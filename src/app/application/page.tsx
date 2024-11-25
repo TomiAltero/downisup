@@ -47,7 +47,7 @@ const Page = () => {
           <h1 className="text-3xl font-bold mb-6 self-start text-black dark:text-white"></h1> 
           <div className="flex flex-col lg:flex-row gap-4">
             <Suspense fallback={<p className="text-black dark:text-white">Cargando...</p>}>
-              <CardChildren token={token} />
+              // <CardChildren token={token} />
             </Suspense>
             <div className="flex-1 bg-white dark:bg-gray-900 p-4 rounded-md">
               <Suspense fallback={<p className="text-black dark:text-white">Cargando...</p>}>
