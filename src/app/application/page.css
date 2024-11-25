@@ -1,9 +1,0 @@
-.fade-in {
-  opacity: 1;
-  transition: opacity 0.5s ease-in-out;
-}
-
-.initial {
-  opacity: 0;
-}
-
