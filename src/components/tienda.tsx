@@ -7,7 +7,6 @@ import { Navigation, Autoplay } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import { FooterWithLinks } from "@/components/footerLinks";
-import { ProductCard } from "./ProductCard";  
 import { FaTrash } from 'react-icons/fa';
 
 const products = [
