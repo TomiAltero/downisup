@@ -1,0 +1,110 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html.dark-mode-loading {
+  background-color: #1a202c; /* Un color oscuro de fondo */
+  color: #fff; /* Color de texto claro */
+}
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+  --blue: #313887;
+  --white: #fdfdfd;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
+
+html, body {
+  scroll-behavior: smooth;
+}
+html {
+  overflow-y: scroll;
+}
+
+
+body {
+  color: rgb(var(--foreground-rgb));
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+span {
+  color: #000;
+}
+
+@keyframes slideIn {
+  0% {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.slide-in {
+  animation: slideIn 1s ease-in-out forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-on-scroll {
+  opacity: 0;
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.animate-on-scroll.visible {
+  opacity: 1;
+  transform: translateY(0);
+  animation: fadeIn 0.6s forwards;
+}
+
+
+.fade-in-button {
+  animation: fadeIn 1s ease-in-out forwards;
+  animation-delay: 1s; /* Aparece después de 1 segundo */
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 0px;
+  background: transparent; /* para Chrome, Safari y Opera */
+}
+
+.custom-scrollbar {
+  -ms-overflow-style: none;  /* para Internet Explorer y Edge */
+  scrollbar-width: none;  /* para Firefox */
+}
+
+.h-screen {
+  height: 100vh; /* Asegura que las secciones ocupen la altura completa de la pantalla */
+}
