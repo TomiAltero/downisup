@@ -14,7 +14,6 @@ const routes = [
   { name: "Consultorio", route: "/consultorios" },
   { name: "Contactanos", route: "/contactanos" },
   { name: "Acciones", route: "/acciones" },
-  { name: "Tienda", route: "/tienda" }
 ];
 
 export default function NavBar() {
@@ -54,7 +53,11 @@ export default function NavBar() {
                 strokeLinecap="round"
                 strokeLinejoin="round"
                 strokeWidth={2}
-                d={isMobileMenuOpen ? "M6 18L18 6M6 6l12 12" : "M4 6h16M4 12h16m-7 6h7"}
+                d={
+                  isMobileMenuOpen
+                    ? "M6 18L18 6M6 6l12 12"
+                    : "M4 6h16M4 12h16m-7 6h7"
+                }
               />
             </svg>
           </button>
@@ -92,7 +95,9 @@ export default function NavBar() {
             </Button>
           </Link>
           <Link href="/auth/login">
-            <Button className={`bg-custom-white text-black text-base px-4 py-2 font-semibold ${poppins.className} hover:text-blue-900 h-full`}>
+            <Button
+              className={`bg-custom-white text-black text-base px-4 py-2 font-semibold ${poppins.className} hover:text-blue-900 h-full`}
+            >
               Iniciar Sesión
             </Button>
           </Link>
@@ -128,10 +133,16 @@ export default function NavBar() {
 
         {/* Enlaces de Donar e Iniciar Sesión al final */}
         <div className="px-4 py-4 border-t border-blue-800">
-          <Link href="/donar" className="block text-red text-base font-bold mb-2 hover:underline">
+          <Link
+            href="/donar"
+            className="block text-red text-base font-bold mb-2 hover:underline"
+          >
             Donar
           </Link>
-          <Link href="/auth/login" className="block text-white text-base font-bold hover:underline">
+          <Link
+            href="/auth/login"
+            className="block text-white text-base font-bold hover:underline"
+          >
             Iniciar Sesión
           </Link>
         </div>
