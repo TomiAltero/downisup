@@ -23,13 +23,13 @@ html.dark-mode-loading {
   }
 }
 
-html, body {
+html,
+body {
   scroll-behavior: smooth;
 }
 html {
   overflow-y: scroll;
 }
-
 
 body {
   color: rgb(var(--foreground-rgb));
@@ -80,7 +80,9 @@ span {
 
 .animate-on-scroll {
   opacity: 0;
-  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  transition:
+    opacity 0.6s ease-out,
+    transform 0.6s ease-out;
 }
 
 .animate-on-scroll.visible {
@@ -88,7 +90,6 @@ span {
   transform: translateY(0);
   animation: fadeIn 0.6s forwards;
 }
-
 
 .fade-in-button {
   animation: fadeIn 1s ease-in-out forwards;
@@ -101,8 +102,8 @@ span {
 }
 
 .custom-scrollbar {
-  -ms-overflow-style: none;  /* para Internet Explorer y Edge */
-  scrollbar-width: none;  /* para Firefox */
+  -ms-overflow-style: none; /* para Internet Explorer y Edge */
+  scrollbar-width: none; /* para Firefox */
 }
 
 .h-screen {
