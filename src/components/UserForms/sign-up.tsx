@@ -69,14 +69,17 @@ export function SignUp() {
     }
 
     try {
-      const response = await axios.post("http://localhost:5000/api/usuarios", {
-        username,
-        email,
-        dni,
-        password,
-        nombre,
-        apellido,
-      });
+      const response = await axios.post(
+        "https://downisup-api-production.up.railway.app/api/usuarios/",
+        {
+          username,
+          email,
+          dni,
+          password,
+          nombre,
+          apellido,
+        },
+      );
 
       Toastify({
         text: "Usuario registrado exitosamente",
@@ -146,9 +149,11 @@ export function SignUp() {
         <CardHeader className="flex flex-col items-center">
           <section className="relative">
             <Link href={"/"}>
-                <ArrowLeftIconSvg className={`absolute top-[-7px] right-40 mx-4 text-custom-blue`} />
+              <ArrowLeftIconSvg
+                className={`absolute top-[-7px] right-40 mx-4 text-custom-blue`}
+              />
             </Link>
-          </section>  
+          </section>
           <Image src="/favicon.ico" width={72} height={50} alt="Logo DiU" />
           <CardTitle className="-mt-2 my-2 text-xl font-bold text-blue-900">
             Regístrate
@@ -156,7 +161,6 @@ export function SignUp() {
         </CardHeader>
 
         <CardContent id="card errores">
-        
           <section className="my-3 -mt-5">
             <section className="flex flex-row space-x-4">
               <article className="space-y-2 my-2">

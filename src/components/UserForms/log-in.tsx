@@ -31,7 +31,7 @@ export function LogIn() {
 
     try {
       const response = await axios.post(
-        "http://localhost:5000/api/usuarios/login",
+        "https://downisup-api-production.up.railway.app/api/usuarios/login",
         {
           usernameOrEmail,
           password,
