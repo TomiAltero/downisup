@@ -140,7 +140,7 @@ export default function NavBar() {
             Donar
           </Link>
           <Link
-            href="/auth/login"
+            href="/application/auth/login"
             className="block text-white text-base font-bold hover:underline"
           >
             Iniciar Sesión
