@@ -156,7 +156,7 @@ export function LogIn() {
   return (
     <div className="flex items-center justify-center min-h-screen">
       <form onSubmit={handleLogin}>
-        <Card className="-mt-4 w-[400px] h-[570px]">
+        <Card className="-mt-4 w-[400px] h-[530px]">
           <CardHeader className="flex flex-col items-center">
             <section className="relative">
               <Link href={"/"}>
@@ -231,21 +231,12 @@ export function LogIn() {
                   Continuar
                 </Button>
               </article>
-              <article className="flex justify-center w-full mt-4">
-                <Button
-                  className="-mt-2 w-full rounded-2xl bg-white border px-3 py-2 text-sm font-semi bold text-gray-700 shadow-sm hover:bg-gray-100 focus:outline-none flex items-center justify-center"
-                  type="button"
-                  onClick={handleGoogleLogin}
-                >
-                  <FcGoogle className="mr-2" size={20} />
-                  Continuar con Google
-                </Button>
-              </article>
+
               <article className="flex justify-center w-full mt-5">
                 <p className="text-sm text-blue-900">
                   ¿No tienes cuenta?{" "}
                   <Link
-                    href="/auth/signup"
+                    href="/application/auth/signup"
                     className="text-blue-900 font-bold hover:underline"
                   >
                     Regístrate

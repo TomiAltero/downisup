@@ -167,7 +167,7 @@ export function SignUp() {
                   Nombre
                 </Label>
                 <Input
-                  className="rounded-xl border-t-0 border-l-0 border-r-0 border-b-2 border-blue-800 outline-none focus:ring-0 focus:border-blue-700"
+                  className="rounded-xl border-t-0 border-l-0 border-r-0 border-b-2 border-blue-800 outline-none focus:ring-0 focus:border-blue-700 w-full"
                   id="nombre"
                   name="nombre"
                   placeholder="Ingrese su nombre"
@@ -338,7 +338,7 @@ export function SignUp() {
               <p className="text-sm text-blue-900">
                 ¿Ya tienes cuenta?{" "}
                 <Link
-                  href="/auth/login"
+                  href="/application/auth/login"
                   className="text-blue-900 font-bold hover:underline"
                 >
                   Inicia sesión

@@ -146,9 +146,11 @@ export function SignUp() {
         <CardHeader className="flex flex-col items-center">
           <section className="relative">
             <Link href={"/"}>
-                <ArrowLeftIconSvg className={`absolute top-[-7px] right-40 mx-4 text-custom-blue`} />
+              <ArrowLeftIconSvg
+                className={`absolute top-[-7px] right-40 mx-4 text-custom-blue`}
+              />
             </Link>
-          </section>  
+          </section>
           <Image src="/favicon.ico" width={72} height={50} alt="Logo DiU" />
           <CardTitle className="-mt-2 my-2 text-xl font-bold text-blue-900">
             Regístrate
@@ -156,7 +158,6 @@ export function SignUp() {
         </CardHeader>
 
         <CardContent id="card errores">
-        
           <section className="my-3 -mt-5">
             <section className="flex flex-row space-x-4">
               <article className="space-y-2 my-2">
@@ -347,7 +348,7 @@ export function SignUp() {
               <p className="text-sm text-blue-900">
                 ¿Ya tienes cuenta?{" "}
                 <Link
-                  href="/auth/login"
+                  href="/application/auth/login"
                   className="text-blue-900 font-bold hover:underline"
                 >
                   Inicia sesión

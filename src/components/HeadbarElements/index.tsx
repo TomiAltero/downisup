@@ -87,7 +87,7 @@ function HeadBar() {
     setLoading(true);
     setIsDropdownOpen(false);
     setShowAjustes(false);
-    window.location.href = "/auth/login";
+    window.location.href = "/application/auth/login";
   };
 
   const dropdownItems = [
@@ -178,7 +178,9 @@ function HeadBar() {
                     >
                       <div className="flex items-center">
                         {item.icon}
-                        <span className="ml-2 dark:text-white">{item.text}</span>
+                        <span className="ml-2 dark:text-white">
+                          {item.text}
+                        </span>
                       </div>
                     </div>
                   ),
