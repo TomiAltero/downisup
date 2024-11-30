@@ -94,7 +94,7 @@ export default function NavBar() {
               DONAR
             </Button>
           </Link>
-          <Link href="/auth/login">
+          <Link href="/application/auth/signup">
             <Button
               className={`bg-custom-white text-black text-base px-4 py-2 font-semibold ${poppins.className} hover:text-blue-900 h-full`}
             >
