@@ -145,22 +145,18 @@ export function SignUp() {
 
   return (
     <form onSubmit={handleFormSubmit}>
-      <Card className="mt-8 w-[450px]">
-        <CardHeader className="flex flex-col items-center">
-          <section className="relative">
-            <Link href={"/"}>
-              <ArrowLeftIconSvg
-                className={`absolute top-[-7px] right-40 mx-4 text-custom-blue`}
-              />
-            </Link>
-          </section>
+      <Card className="mt-8 w-full max-w-[450px] mx-auto px-6 md:px-0">
+        <CardHeader className="flex flex-col items-center relative">
+          <Link href="/" className="absolute left-4 top-4">
+            <ArrowLeftIconSvg className="text-custom-blue" />
+          </Link>
           <Image src="/favicon.ico" width={72} height={50} alt="Logo DiU" />
           <CardTitle className="-mt-2 my-2 text-xl font-bold text-blue-900">
             Regístrate
           </CardTitle>
         </CardHeader>
 
-        <CardContent id="card errores">
+        <CardContent className="p-4 md:p-6">
           <section className="my-3 -mt-5">
             <section className="flex flex-row space-x-4">
               <article className="space-y-2 my-2">
@@ -219,7 +215,8 @@ export function SignUp() {
                 onChange={(e) => setUsername(e.target.value)}
               />
             </article>
-            <section className="flex flex-row gap-x-2">
+
+            <section className="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4">
               <article className="space-y-2 my-2">
                 <Label
                   className="block text-xs font-bold leading-6 text-blue-900"
@@ -334,16 +331,6 @@ export function SignUp() {
                 type="submit"
               >
                 Continuar
-              </Button>
-            </article>
-            <article className="flex justify-center w-full mt-4">
-              <Button
-                className="-mt-2 w-full rounded-2xl bg-white border px-3 py-2 text-sm font-semi bold text-gray-700 shadow-sm hover:bg-gray-100 focus:outline-none flex items-center justify-center"
-                type="button"
-                onClick={handleGoogleSignup}
-              >
-                <FcGoogle className="mr-2" size={20} />
-                Registrarse con Google
               </Button>
             </article>
 
