@@ -3,7 +3,6 @@ import React, { useEffect, useState, Suspense } from "react";
 import { PanelHijo } from "@/components/childrenComponents/panel-hijos";
 import { useRouter } from "next/navigation";
 import AppLayout from "@/layouts/AppLayout";
-import '../page.css'; 
 
 const Page = () => {
   const router = useRouter();
