@@ -338,7 +338,7 @@ export function SignUp() {
               <p className="text-sm text-blue-900">
                 ¿Ya tienes cuenta?{" "}
                 <Link
-                  href="/application/auth/login"
+                  href="/auth/login"
                   className="text-blue-900 font-bold hover:underline"
                 >
                   Inicia sesión

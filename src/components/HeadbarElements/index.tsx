@@ -26,7 +26,7 @@ function HeadBar() {
       const token = localStorage.getItem("token");
       if (token) {
         const response = await axios.get(
-          "http://localhost:5000/api/usuarios/perfil",
+          "https://downisup-api-production.up.railway.app/api/usuarios/perfil",
           {
             headers: {
               Authorization: `Bearer ${token}`,

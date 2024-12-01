@@ -236,7 +236,7 @@ export function LogIn() {
                 <p className="text-sm text-blue-900">
                   ¿No tienes cuenta?{" "}
                   <Link
-                    href="/application/auth/signup"
+                    href="/auth/signup"
                     className="text-blue-900 font-bold hover:underline"
                   >
                     Regístrate

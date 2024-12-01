@@ -30,7 +30,7 @@ function Sidebar() {
         const token = localStorage.getItem("token");
         if (token) {
           const response = await axios.get(
-            "http://localhost:5000/api/usuarios/perfil",
+            "https://downisup-api-production.up.railway.app/api/usuarios/perfil",
             {
               headers: {
                 Authorization: `Bearer ${token}`,
@@ -255,70 +255,81 @@ function Sidebar() {
     </div>
     {/* Botón para abrir el sidebar */}
     <button
-    className="mx-1 py-1 p-1 mt-1 text-lg text-gray-600 bg-gray-200 border-gray-600 shadow-md border-spacing-2 rounded-md md:hidden"
-    onClick={() => setIsSidebarOpen(true)}
+  className="mx-1 py-1 p-1 mt-4 ml-3 text-lg text-gray-600 bg-gray-200 border-gray-600 shadow-md border-spacing-2 rounded-md md:hidden"
+  onClick={() => setIsSidebarOpen(true)}
+>
+  {/* Icono de hamburguesa con tres líneas completas */}
+  <svg
+    className="h-6 w-6"
+    xmlns="http://www.w3.org/2000/svg"
+    fill="none"
+    viewBox="0 0 24 24"
+    stroke="currentColor"
   >
-    <XMarkIcon className="h-6 w-6" />
-  </button>
+    <path
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth={2}
+      d="M4 6h16M4 12h16M4 18h16"
+    />
+  </svg>
+</button>
+
 
   {/* Sidebar responsivo */}
-  <Transition show={isSidebarOpen}>
-    <Dialog
-      as="div"
-      className="fixed inset-0 z-40 flex"
-      onClose={() => setIsSidebarOpen(false)}
+<Transition show={isSidebarOpen}>
+  <Dialog
+    as="div"
+    className="fixed inset-0 z-40 flex"
+    onClose={() => setIsSidebarOpen(false)}
+  >
+    {/* Fondo oscuro */}
+    <div className="fixed inset-0 bg-black bg-opacity-50 transition-opacity" />
+
+    {/* Panel del sidebar */}
+    <Transition.Child
+      enter="transform transition-transform ease-in-out duration-300"
+      enterFrom="-translate-x-full"
+      enterTo="translate-x-0"
+      leave="transform transition-transform ease-in-out duration-300"
+      leaveFrom="translate-x-0"
+      leaveTo="-translate-x-full"
     >
-      {/* Fondo oscuro */}
-      <div className="fixed inset-0 bg-black bg-opacity-50 transition-opacity" />
+      <Dialog.Panel className="relative bg-white w-64 h-full shadow-lg">
+        {/* Botón para cerrar */}
+        <button
+          className="absolute top-4 right-4 text-gray-600"
+          onClick={() => setIsSidebarOpen(false)}
+        >
+          <XMarkIcon className="h-6 w-6" />
+        </button>
 
-      {/* Panel del sidebar */}
-      <Transition.Child
-        enter="transform transition-transform ease-in-out duration-300"
-        enterFrom="-translate-x-full"
-        enterTo="translate-x-0"
-        leave="transform transition-transform ease-in-out duration-300"
-        leaveFrom="translate-x-0"
-        leaveTo="-translate-x-full"
-      >
-        <Dialog.Panel className="relative bg-white w-64 h-full shadow-lg">
-          {/* Botón para cerrar */}
-          <button
-            className="absolute top-4 right-4 text-gray-600"
-            onClick={() => setIsSidebarOpen(false)}
-          >
-            <XMarkIcon className="h-6 w-6" />
-          </button>
+        {/* Contenido del sidebar */}
+        <div className="p-6 space-y-4">
+          <h2 className="text-xl font-bold text-blue-800">DownIsUpApp</h2>
+          <hr className="my-4" />
 
-          {/* Contenido del sidebar */}
-          <div className="p-6 space-y-4">
-            <h2 className="text-xl font-bold text-blue-800">DownIsUpApp</h2>
-            <hr className="my-4" />
+          {/* Navegación con iconos */}
+          <nav className="flex flex-col space-y-2 text-base">
+            <Link
+              href="/application"
+              onClick={() => setIsSidebarOpen(false)}
+              className={`flex gap-2 ${
+                pathname === "/application" ? "text-blue-700 dark:text-blue-300" : ""
+              } hover:text-blue-700 dark:hover:text-blue-300 duration-200 px-1 py-2 transition-all ease-in-out`}
+            >
+        
+              <Home variant="Outline" size={17} />
+              Inicio
+            </Link>
+            
+          </nav>
+        </div>
+      </Dialog.Panel>
+    </Transition.Child>
+  </Dialog>
+</Transition>
 
-            <nav className="flex flex-col space-y-2 text-base">
-              <Link
-                href="/application"
-                className="text-gray-700 hover:text-blue-500"
-              >
-                Inicio
-              </Link>
-              <Link
-                href="/application/horarios"
-                className="text-gray-700 hover:text-blue-500"
-              >
-                Horarios
-              </Link>
-              <Link
-                href="/application/chat"
-                className="text-gray-700 hover:text-blue-500"
-              >
-                Agendar Turno
-              </Link>
-            </nav>
-          </div>
-        </Dialog.Panel>
-      </Transition.Child>
-    </Dialog>
-  </Transition>
   </main>
   );
 }
