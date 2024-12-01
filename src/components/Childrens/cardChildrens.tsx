@@ -137,7 +137,7 @@ export function CardChildren({ token }: { token: string }) {
                 <Link
                   href={
                     isType2User
-                      ? `/application/formulario-medico/${hijo.id}`
+                      ? `/application/medical-form/${hijo.id}`
                       : `/application/medical-panel/${hijo.id}`
                   }
                   passHref

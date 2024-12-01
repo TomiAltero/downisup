@@ -7,7 +7,7 @@ export function cn(...inputs: ClassValue[]) {
 
 export async function getUserProfile({ token }: { token: string }) {
   try {
-    const profile = await fetch("http://localhost:5000/api/usuarios/perfil", {
+    const profile = await fetch("https://downisup-api-production.up.railway.app/api/usuarios/perfil", {
       headers: {
         Authorization: `Bearer ${token}`,
       },
