@@ -16,13 +16,18 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-  <main className="flex h-screen dark:bg-gray-700">
-    <Sidebar />
-    <div className="flex flex-col w-full">
-      <HeadBar />
-      <div className="flex-grow p-4">{children}</div>
-    </div>
-  </main>
-
+    <main
+      className="flex h-screen dark:bg-gray-700"
+      style={{
+        minHeight: "100vh", // Elimina cualquier espacio blanco
+        backgroundColor: "background.default",
+      }}
+    >
+      <Sidebar />
+      <div className="flex flex-col w-full">
+        <HeadBar />
+        <div className="flex-grow p-4">{children}</div>
+      </div>
+    </main>
   );
 }

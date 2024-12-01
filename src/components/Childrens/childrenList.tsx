@@ -37,10 +37,11 @@ export async function ChildrenList({ token }: { token: string }) {
       >
         {isType2User ? "¿Con quién desea trabajar?" : "Mis Hijos"}
       </Typography>
+
       <Grid
         container
         spacing={2}
-        justifyContent={{ xs: "center", sm: "flex-start" }} 
+        justifyContent={{ xs: "center", sm: "flex-start" }}
       >
         {hijosData.length === 0 ? (
           <Typography
@@ -56,8 +57,8 @@ export async function ChildrenList({ token }: { token: string }) {
             <Grid item xs={12} sm={6} md={4} lg={3} key={hijo.id}>
               <Card
                 sx={{
-                  maxWidth: 350,
-                  margin: { xs: "0 auto", sm: "0" }, 
+                  maxWidth: "100%", // Asegúrate de que no sea fijo
+                  margin: "0 auto",
                   borderRadius: 4,
                   display: "flex",
                   flexDirection: "column",
@@ -129,7 +130,7 @@ export async function ChildrenList({ token }: { token: string }) {
                     href={
                       isType2User
                         ? `/application/formulario-medico/${hijo.id}`
-                        : `/application/panel-medico/${hijo.id}`
+                        : `/application/medical-panel/${hijo.id}`
                     }
                     passHref
                   >

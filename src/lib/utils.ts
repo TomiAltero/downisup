@@ -39,7 +39,7 @@ export const getPsycholgyTherapies = async (hijoId = 1) => {
     const token = localStorage.getItem("token");
 
     const response = await fetch(
-      `http://localhost:5000/api/medicalData/${hijoId}/psychologyTherapies`,
+      `https://downisup-api-production.up.railway.app/api/medicalData/${hijoId}/psychologyTherapies`,
       {
         method: "GET",
         headers: {
@@ -65,7 +65,7 @@ export const getSpeechTherapies = async (hijoId = 1) => {
     const token = localStorage.getItem("token");
 
     const response = await fetch(
-      `http://localhost:5000/api/medicalData/${hijoId}/speechTherapies`,
+      `https://downisup-api-production.up.railway.app/api/medicalData/${hijoId}/speechTherapies`,
       {
         method: "GET",
         headers: {
@@ -92,7 +92,7 @@ export const getPhysiologyTherapies = async (hijoId = 1) => {
     const token = localStorage.getItem("token");
 
     const response = await fetch(
-      `http://localhost:5000/api/medicalData/${hijoId}/physiologyTherapies`,
+      `https://downisup-api-production.up.railway.app/api/medicalData/${hijoId}/physiologyTherapies`,
       {
         method: "GET",
         headers: {
@@ -119,7 +119,7 @@ export const getNeurologicalTherapies = async (hijoId = 1) => {
     const token = localStorage.getItem("token");
 
     const response = await fetch(
-      `http://localhost:5000/api/medicalData/${hijoId}/neurologicalTherapies`,
+      `https://downisup-api-production.up.railway.app/api/medicalData/${hijoId}/neurologicalTherapies`,
       {
         method: "GET",
         headers: {

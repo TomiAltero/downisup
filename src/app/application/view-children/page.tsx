@@ -14,7 +14,7 @@ const Page = () => {
     const token = localStorage.getItem("token");
     if (token) {
       setToken(token);
-      setTimeout(() => setShowContent(true), 100); 
+      setTimeout(() => setShowContent(true), 100);
     } else {
       setIsAuthorized(false);
       router.push("/notfound");
@@ -27,9 +27,9 @@ const Page = () => {
 
   return (
     <AppLayout>
-      <main className={`h-full ${showContent ? 'fade-in' : 'initial'}`}>
+      <main className={`h-full ${showContent ? "fade-in" : "initial"}`}>
         <Suspense fallback={<p>Cargando...</p>}>
-          <ChildrenList token={token}/>
+          <ChildrenList token={token} />
         </Suspense>
       </main>
     </AppLayout>
@@ -37,4 +37,3 @@ const Page = () => {
 };
 
 export default Page;
-

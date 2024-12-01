@@ -14,7 +14,7 @@ const Page = () => {
     const token = localStorage.getItem("token");
     if (token) {
       setToken(token);
-      setTimeout(() => setShowContent(true), 100); 
+      setTimeout(() => setShowContent(true), 100);
     } else {
       setIsAuthorized(false);
       router.push("/notfound");
@@ -27,9 +27,17 @@ const Page = () => {
 
   return (
     <AppLayout>
-      <main className={`h-full ${showContent ? 'fade-in' : 'initial'}`}>
+      <main
+        className={`h-full ${
+          showContent ? "fade-in" : "initial"
+        } dark:bg-gray-900`}
+        style={{
+          backgroundColor: "background.default", // Garantiza fondo oscuro en modo oscuro
+          minHeight: "100vh", // Evita que haya áreas blancas
+        }}
+      >
         <Suspense fallback={<p>Cargando...</p>}>
-          <ChildrenList token={token}/>
+          <ChildrenList token={token} />
         </Suspense>
       </main>
     </AppLayout>

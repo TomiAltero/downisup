@@ -138,7 +138,7 @@ export function CardChildren({ token }: { token: string }) {
                   href={
                     isType2User
                       ? `/application/formulario-medico/${hijo.id}`
-                      : `/application/panel-medico/${hijo.id}`
+                      : `/application/medical-panel/${hijo.id}`
                   }
                   passHref
                 >
