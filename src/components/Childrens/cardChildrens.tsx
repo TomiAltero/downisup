@@ -1,22 +1,32 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Card, CardBody, Typography, Avatar } from "@material-tailwind/react";
 import Link from "next/link";
 import { Hijo } from "@/types";
 import { getHijoProfile, getChildrenAndUser } from "@/lib/utils";
 
-export async function CardChildren({ token }: { token: string }) {
-  if (!token) {
-    return null;
-  }
+export function CardChildren({ token }: { token: string }) {
+  const [hijosData, setHijosData] = useState<Hijo[]>([]);
+  const [isType1User, setIsType1User] = useState(false);
+  const [isType2User, setIsType2User] = useState(false);
 
-  const allChildren = await getChildrenAndUser({ token });
-  const isType1User = allChildren.usuario.tipoUsuarioId === 1;
-  const isType2User = allChildren.usuario.tipoUsuarioId === 2;
+  useEffect(() => {
+    const fetchData = async () => {
+      if (!token) {
+        return;
+      }
+      const allChildren = await getChildrenAndUser({ token });
+      setIsType1User(allChildren.usuario.tipoUsuarioId === 1);
+      setIsType2User(allChildren.usuario.tipoUsuarioId === 2);
 
-  const hijosArray = isType2User
-    ? allChildren.hijos
-    : await getHijoProfile({ token });
-  const hijosData = Array.isArray(hijosArray) ? hijosArray : hijosArray.hijos;
+      const hijosArray = allChildren.usuario.tipoUsuarioId === 2
+        ? allChildren.hijos
+        : await getHijoProfile({ token });
+      
+      setHijosData(Array.isArray(hijosArray) ? hijosArray : hijosArray.hijos);
+    };
+
+    fetchData();
+  }, [token]);
 
   const numberOfRows = hijosData.length;
   const cardClass = numberOfRows <= 4 ? "h-auto" : "h-96"; // Fixed height for overflow
