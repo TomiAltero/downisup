@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect, useState, Suspense } from "react";
-import { PanelHijo } from "@/components/childrenComponents/panel-hijos";
+import { ChildrenList } from "@/components/Childrens/childrenList";
 import { useRouter } from "next/navigation";
 import AppLayout from "@/layouts/AppLayout";
 
@@ -29,7 +29,7 @@ const Page = () => {
     <AppLayout>
       <main className={`h-full ${showContent ? 'fade-in' : 'initial'}`}>
         <Suspense fallback={<p>Cargando...</p>}>
-          <PanelHijo token={token}/>
+          <ChildrenList token={token}/>
         </Suspense>
       </main>
     </AppLayout>
