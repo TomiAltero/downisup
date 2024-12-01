@@ -6,6 +6,7 @@ import {
   Profile2User,
   Home,
   ArrowDown2,
+  Clock,
 } from "iconsax-react";
 import { Dialog, Transition } from "@headlessui/react";
 import { XMarkIcon } from "@heroicons/react/24/outline";
@@ -247,7 +248,7 @@ function Sidebar() {
                 </div>
               ) : null}
               <Link
-                href="/application/horarios"
+                href="/application/schedules"
                 className={`flex ${
                   pathname === "/application/horarios"
                     ? "text-blue-700 dark:text-blue-300"
@@ -353,6 +354,32 @@ function Sidebar() {
                 <Profile2User size={16} />
                 <Link href="/application/medical-panel">Ver Hijos</Link>
               </button>
+
+              <Link
+              href="/application/schedules"
+              onClick={() => setIsSidebarOpen(false)}
+              className={`flex gap-2 ${
+                pathname === "/application/schedules"
+                  ? "text-blue-700 dark:text-blue-300"
+                  : "text-gray-500 dark:text-gray-400"
+              } hover:text-blue-700 dark:hover:text-blue-300 duration-200 px-1 py-2 transition-all ease-in-out`}
+            >
+              <Calendar size={17} />
+              Horarios
+            </Link>
+
+            <Link
+              href="/application/chat"
+              onClick={() => setIsSidebarOpen(false)}
+              className={`flex gap-2 ${
+                pathname === "/application/schedules"
+                  ? "text-blue-700 dark:text-blue-300"
+                  : "text-gray-500 dark:text-gray-400"
+              } hover:text-blue-700 dark:hover:text-blue-300 duration-200 px-1 py-2 transition-all ease-in-out`}
+            >
+              <Clock size={17} />
+              Agendar turno
+            </Link>
             </nav>
           </div>
         </Dialog.Panel>

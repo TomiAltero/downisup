@@ -4,19 +4,30 @@ import {
   AlertCustomStyles,
   AlertCustomStylesRojo,
   LoadingSpinner,
-} from "./materialComponent";
+} from "@/components/ui/materialComponents";
 import { getHijoProfile } from "@/lib/utils";
 import { now } from "next-auth/client/_utils";
 
 const ChatBotComponent = () => {
-  const [especialistas, setEspecialistas] = useState([]);
+  const [especialistas, setEspecialistas] = useState<Especialista[]>([]);
   const [step, setStep] = useState(1);
-  const [selectedEspecialista, setSelectedEspecialista] = useState(null);
-  const [diasDisponibles, setDiasDisponibles] = useState([]);
-  const [selectedDia, setSelectedDia] = useState(null);
-  const [horarios, setHorarios] = useState([]);
+  const [selectedEspecialista, setSelectedEspecialista] = useState<Especialista | null>(null);
+  const [diasDisponibles, setDiasDisponibles] = useState<number[]>([]);
+  const [selectedDia, setSelectedDia] = useState<number | null>(null);
+  interface Horario {
+    horario: string;
+    ocupado: boolean;
+  }
+  
+  const [horarios, setHorarios] = useState<Horario[]>([]);
   const [nombrePaciente, setNombrePaciente] = useState("");
-  const [perfilHijo, setPerfilHijo] = useState([]);
+  interface Hijo {
+    id: number;
+    nombre: string;
+    apellido: string;
+  }
+  
+  const [perfilHijo, setPerfilHijo] = useState<Hijo[]>([]);
   const [padre, setPadre] = useState("Tomas Altero"); // Asignar valor de padre
   const [fechaTurno, setFechaTurno] = useState("");
   const [alertMessage, setAlertMessage] = useState("");
@@ -39,7 +50,7 @@ const ChatBotComponent = () => {
 
     const fetchEspecialistas = async () => {
       const response = await axios.get(
-        "http://localhost:5000/api/turnos/especialistas"
+        "https://downisup-api-production.up.railway.app/api/turnos/especialistas"
       );
       setEspecialistas(response.data);
     };
@@ -51,7 +62,7 @@ const ChatBotComponent = () => {
       const fetchHorarios = async () => {
         try {
           const response = await axios.get(
-            `http://localhost:5000/api/turnos/disponibilidad/${selectedEspecialista.nombre}/${selectedDia}`
+            `https://downisup-api-production.up.railway.app/api/turnos/disponibilidad/${selectedEspecialista.nombre}/${selectedDia}`
           );
           setHorarios(response.data.disponibilidad);
         } catch (error) {
@@ -81,45 +92,60 @@ const ChatBotComponent = () => {
     }
   }, []);
 
-  const handleEspecialistaSelect = (especialista) => {
+interface Especialista {
+    nombre: string;
+    especialidad: string;
+    diasDisponibles: number[];
+}
+
+const handleEspecialistaSelect = (especialista: Especialista) => {
     setSelectedEspecialista(especialista);
     setDiasDisponibles(especialista.diasDisponibles);
     setStep(2);
-  };
+};
 
-  const handleDiaSelect = (dia) => {
+const handleDiaSelect = (dia: number) => {
     setSelectedDia(dia);
     setFechaTurno(new Date().toISOString().split('T')[0]); // Asignar la fecha actual en formato fecha
     setStep(3);
-  }
+};
 
-  const handleGuardarTurno = async (horario) => {
+interface Turno {
+    especialista: string;
+    dia: number | null;
+    horario: string;
+    nombrePaciente: string;
+    padre: string;
+    fechaTurno: string;
+}
+
+const handleGuardarTurno = async (horario: string) => {
     if (!nombrePaciente) {
-      setAlertMessage("El nombre del paciente es obligatorio");
-      setIsError(true);
-      return;
+        setAlertMessage("El nombre del paciente es obligatorio");
+        setIsError(true);
+        return;
     }
 
-    const turno = {
-      especialista: selectedEspecialista.nombre,
-      dia: selectedDia,
-      horario,
-      nombrePaciente,
-      padre,
-      fechaTurno,
+    const turno: Turno = {
+        especialista: selectedEspecialista!.nombre,
+        dia: selectedDia,
+        horario,
+        nombrePaciente,
+        padre,
+        fechaTurno,
     };
 
     try {
-      await axios.post("http://localhost:5000/api/turnos/guardar/", turno);
-      setAlertMessage("Turno guardado exitosamente");
-      setIsError(false);
-      resetState();
-      setStep(1);
+        await axios.post("https://downisup-api-production.up.railway.app/api/turnos/guardar/", turno);
+        setAlertMessage("Turno guardado exitosamente");
+        setIsError(false);
+        resetState();
+        setStep(1);
     } catch (error) {
-      setAlertMessage("Error al guardar el turno. Inténtalo nuevamente");
-      setIsError(true);
+        setAlertMessage("Error al guardar el turno. Inténtalo nuevamente");
+        setIsError(true);
     }
-  };
+};
 
   const resetState = () => {
     setSelectedEspecialista(null);
@@ -205,47 +231,50 @@ const ChatBotComponent = () => {
         )}
 
         {step === 3 && (
-          <div className="text-center">
-            <p className="mb-5 -mt-11 text-black dark:text-gray-300">
-              Seleccione un horario disponible:
+        <div className="text-center">
+            {/* Muestra la lista de hijos primero */}
+            <div className="mt-4">
+            <p className="mb-2 text-black dark:text-gray-300">
+                Haz click y selecciona el hijo que requiera turno:
+            </p>
+            {perfilHijo.map((hijo) => (
+                <button
+                key={hijo.id}
+                onClick={() => setNombrePaciente(hijo.nombre)}
+                className={`border border-custom-blue text-custom-blue dark:border-blue-300 dark:text-blue-300 py-2 px-4 rounded-lg m-2 ${
+                    nombrePaciente === hijo.nombre
+                    ? "bg-custom-blue text-white dark:bg-blue-700"
+                    : "hover:bg-custom-blue hover:text-white dark:hover:bg-blue-700 dark:hover:text-white"
+                }`}
+                >
+                {hijo.nombre} {hijo.apellido}
+                </button>
+            ))}
+            </div>
+
+            {/* Luego muestra los horarios */}
+            <div className="mt-6">
+            <p className="mb-5 text-black dark:text-gray-300">
+                Seleccione un horario disponible:
             </p>
             {horarios.map((h, index) => (
-              <button
+                <button
                 key={index}
                 onClick={() => !h.ocupado && handleGuardarTurno(h.horario)}
                 className={`border border-gray-500 py-2 px-4 rounded-lg m-2 ${
-                  h.ocupado
+                    h.ocupado
                     ? "border-red text-red bg-rose-100 dark:bg-rose-900 cursor-not-allowed"
                     : "text-gray-700 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-600"
                 }`}
                 disabled={h.ocupado}
-              >
+                >
                 {h.horario}
-              </button>
+                </button>
             ))}
-          </div>
+            </div>
+        </div>
         )}
 
-        {step === 3 && (
-          <div className="text-center mt-4">
-            <p className="mb-2 text-black dark:text-gray-300">
-              Haz click y selecciona el hijo que requiera turno:
-            </p>
-            {perfilHijo.map((hijo) => (
-              <button
-                key={hijo.id}
-                onClick={() => setNombrePaciente(hijo.nombre)}
-                className={`border border-custom-blue text-custom-blue dark:border-blue-300 dark:text-blue-300 py-2 px-4 rounded-lg m-2 ${
-                  nombrePaciente === hijo.nombre
-                    ? "bg-custom-blue text-white dark:bg-blue-700"
-                    : "hover:bg-custom-blue hover:text-white dark:hover:bg-blue-700 dark:hover:text-white"
-                }`}
-              >
-                {hijo.nombre} {hijo.apellido}
-              </button>
-            ))}
-          </div>
-        )}
       </div>
       <p className="mb-2 text-gray-600 text-sm mt-5 dark:text-gray-300 text-center">
         * Los horarios de cada especialista se pueden ver en horarios
