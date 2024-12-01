@@ -92,7 +92,7 @@ export function CardChildren({ token }: { token: string }) {
             >
               <div className="flex items-center gap-x-3 w-full sm:w-auto">
                 <Avatar
-                  size="sm"
+                  size="md"
                   src={hijo.imagen ? hijo.imagen : "/no-photo.webp"}
                   alt={`${hijo.nombre} ${hijo.apellido}`}
                   className="rounded-full"
@@ -145,7 +145,7 @@ export function CardChildren({ token }: { token: string }) {
                   <Typography
                     as="a"
                     variant="small"
-                    className="font-bold text-custom-blue dark:text-blue-500 hover:underline"
+                    className="font-bold text-custom-blue dark:text-blue-500 hover:underline ml-15"
                     placeholder=""
                     onPointerEnterCapture={() => {}}
                     onPointerLeaveCapture={() => {}}

@@ -214,7 +214,7 @@ function Sidebar() {
                 {isDropdownOpen && (
                   <div className="pl-10 mt-2 space-y-2">
                     <Link
-                      href="/application/panel-hijos"
+                      href="/application/view-children"
                       className={`block ${
                         pathname === "/panel-hijos" ? "text-blue-700 dark:text-blue-300" : ""
                       } hover:text-blue-700 dark:hover:text-blue-300 duration-200 py-1 transition-all ease-in-out`}
