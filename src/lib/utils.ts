@@ -21,7 +21,7 @@ export async function getUserProfile({ token }: { token: string }) {
 
 export async function getHijoProfile({ token }: { token: string }) {
   try {
-    const profile = await fetch("http://localhost:5000/api/hijos/profiles", {
+    const profile = await fetch("https://downisup-api-production.up.railway.app/api/hijos/profiles", {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -143,7 +143,7 @@ export const getNeurologicalTherapies = async (hijoId = 1) => {
 
 export async function getChildrenAndUser({ token }: { token: string }) {
   try {
-    const response = await fetch("http://localhost:5000/api/hijos", {
+    const response = await fetch("https://downisup-api-production.up.railway.app/api/hijos", {
       headers: {
         Authorization: `Bearer ${token}`,
       },

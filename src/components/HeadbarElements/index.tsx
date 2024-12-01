@@ -87,7 +87,7 @@ function HeadBar() {
     setLoading(true);
     setIsDropdownOpen(false);
     setShowAjustes(false);
-    window.location.href = "/application/auth/login";
+    window.location.href = "/";
   };
 
   const dropdownItems = [
