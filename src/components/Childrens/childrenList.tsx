@@ -134,7 +134,10 @@ export async function ChildrenList({ token }: { token: string }) {
                     }
                     passHref
                   >
-                    <Button size="small" className="dark:text-blue-500">
+                    <Button
+                      size="small"
+                      className="dark:text-blue-900 font-bold"
+                    >
                       Ver más
                     </Button>
                   </Link>
