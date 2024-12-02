@@ -176,44 +176,9 @@ function Sidebar() {
                   >
                     <div className="flex items-center gap-2">
                       <Profile2User size={16} />
-                      Datos Médicos
+                      Ingresar Datos 
                     </div>
-                    <ArrowDown2 size={16} />
                   </button>
-                  {isDropdownOpen && (
-                    <div className="pl-10 mt-2 space-y-2">
-                      <Link
-                        href="/application/datos-medicos"
-                        className={`block ${
-                          pathname === "/application/datos-medicos/ver"
-                            ? "text-blue-700 dark:text-blue-300"
-                            : ""
-                        } hover:text-blue-700 dark:hover:text-blue-300 duration-200 py-1 transition-all ease-in-out`}
-                      >
-                        Ver Datos Médicos
-                      </Link>
-                      <Link
-                        href="/application/formulario-medico"
-                        className={`block ${
-                          pathname === "/application/datos-medicos/agregar"
-                            ? "text-blue-700 dark:text-blue-300"
-                            : ""
-                        } hover:text-blue-700 dark:hover:text-blue-300 duration-200 py-1 transition-all ease-in-out`}
-                      >
-                        Agregar Datos Médicos
-                      </Link>
-                      <Link
-                        href="/application/datos-medicos/editar"
-                        className={`block ${
-                          pathname === "/application/datos-medicos/editar"
-                            ? "text-blue-700 dark:text-blue-300"
-                            : ""
-                        } hover:text-blue-700 dark:hover:text-blue-300 duration-200 py-1 transition-all ease-in-out`}
-                      >
-                        Editar Datos Médicos
-                      </Link>
-                    </div>
-                  )}
                 </div>
               ) : usuario && usuario.tipoUsuarioId === 1 ? (
                 <div>

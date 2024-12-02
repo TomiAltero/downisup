@@ -7,6 +7,19 @@ const Page = () => {
   const router = useRouter();
   const [isAuthorized, setIsAuthorized] = useState(true);
 
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      router.replace("/application");
+    } else {
+      setIsAuthorized(false);
+    }
+  }, [router]);
+
+  if (isAuthorized) {
+    return null;
+  }
+
   return (
     <main className="flex flex-col justify-center items-center h-full">
       <section>
