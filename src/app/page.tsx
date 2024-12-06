@@ -124,14 +124,14 @@ export default function Home() {
               </Swiper>
             </div>
             <section className={`${poppins.className} font-semibold z-10`}>
-              <h1 className="text-center my-4 text-4xl text-white font-raleway">
+              <h1 className="text-center my-4 text-4xl text-white text-playfair">
                 Bienvenidos a
               </h1>
               <article className="text-center text-white">
-                <h1 className="text-6xl mb-4 text-white font-raleway">
+                <h1 className="text-6xl mb-4 text-playfair text-white">
                   DownIsUp
                 </h1>
-                <h1 className="text-6xl text-white font-raleway mb-10">
+                <h1 className="text-6xl text-white text-playfair text-white mb-10">
                   Córdoba
                 </h1>
               </article>

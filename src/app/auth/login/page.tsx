@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { LogIn } from "@/components/UserForms/log-in";
+import { motion } from "framer-motion";
 
 const Page = () => {
   const router = useRouter();
@@ -21,11 +22,15 @@ const Page = () => {
   }
 
   return (
-    <main className="flex flex-col justify-center items-center h-full">
+    <motion.main
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5 }}
+    >
       <section>
         <LogIn />
       </section>
-    </main>
+    </motion.main>
   );
 };
 

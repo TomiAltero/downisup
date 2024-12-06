@@ -12,6 +12,7 @@ import {
   RiBodyScanFill,
   RiBrainFill,
 } from "react-icons/ri";
+import { motion } from "framer-motion";
 
 interface PanelMedicoProps {
   idHijo: number;
@@ -89,14 +90,14 @@ export default function PanelMedico({ idHijo }: PanelMedicoProps) {
           component="p"
           className="text-center text-red-600 dark:text-red-400"
         >
-          El panel medico no es  apto para dispositivos móviles
+          El panel medico no es apto para dispositivos móviles
         </Typography>
       </section>
     );
   }
 
   return (
-    <section>
+    <section className="p-4">
       <Typography
         variant="h4"
         component="h2"
@@ -106,7 +107,7 @@ export default function PanelMedico({ idHijo }: PanelMedicoProps) {
         Panel Médico - {userName}
       </Typography>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 w-full">
-      <MedicalHistoryCard
+        <MedicalHistoryCard
           onViewMoreClick={() => handleViewMoreClick("psychological")}
           date="Ultima actualizacion: 12/08/2024"
           category="Evaluaciones Psicológicas"
@@ -133,28 +134,52 @@ export default function PanelMedico({ idHijo }: PanelMedicoProps) {
       </div>
 
       {showInfoMedical && selectedCategory === "psychological" && (
-        <PopUpPsychologycalSession
-          onClose={handleCloseAjustes}
-          hijoId={idHijo}
-        />
+        <motion.div
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.2 }}
+        >
+          <PopUpPsychologycalSession
+            onClose={handleCloseAjustes}
+            hijoId={idHijo}
+          />
+        </motion.div>
       )}
       {showInfoMedical && selectedCategory === "speech" && (
-        <PopUpSpeechTherapySession
-          onClose={handleCloseAjustes}
-          hijoId={idHijo}
-        />
+        <motion.div
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.2 }}
+        >
+          <PopUpSpeechTherapySession
+            onClose={handleCloseAjustes}
+            hijoId={idHijo}
+          />
+        </motion.div>
       )}
       {showInfoMedical && selectedCategory === "physiological" && (
-        <PopUpPhysiologycalTherapies
-          onClose={handleCloseAjustes}
-          hijoId={idHijo}
-        />
+        <motion.div
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.2 }}
+        >
+          <PopUpPhysiologycalTherapies
+            onClose={handleCloseAjustes}
+            hijoId={idHijo}
+          />
+        </motion.div>
       )}
       {showInfoMedical && selectedCategory === "neurological" && (
-        <PopUpNeurologicalTherapies
-          onClose={handleCloseAjustes}
-          hijoId={idHijo}
-        />
+        <motion.div
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.2 }}
+        >
+          <PopUpNeurologicalTherapies
+            onClose={handleCloseAjustes}
+            hijoId={idHijo}
+          />
+        </motion.div>
       )}
     </section>
   );
