@@ -21,25 +21,40 @@ const MedicalHistoryCard: React.FC<MedicalHistoryCardProps> = ({
   icon,
 }) => {
   return (
-    <Card className="relative w-full max-w-md bg-gray-200 dark:text-white dark:bg-gray-900 sm:max-w-sm md:max-w-md lg:max-w-lg xl:max-w-xl">
-      <CardBody>
-        {/* Ícono en la parte superior derecha */}
+    <Card className="relative w-full max-w-md bg-gray-200 dark:text-white dark:bg-gray-900 sm:max-w-sm md:max-w-md lg:max-w-lg xl:max-w-xl" placeholder="" onPointerEnterCapture={() => {}} onPointerLeaveCapture={() => {}}>
+      <CardBody className="" placeholder="" onPointerEnterCapture={() => {}} onPointerLeaveCapture={() => {}}>
         {icon && (
           <div className="absolute top-4 right-4 h-8 w-8 text-blue-900 dark:text-white">
             {icon}
           </div>
         )}
-        <Typography variant="h5" className="dark:text-gray-300">
+        <Typography
+          variant="h5"
+          className="dark:text-gray-300"
+          placeholder=""
+          onPointerEnterCapture={() => {}}
+          onPointerLeaveCapture={() => {}}
+        >
           {category}
         </Typography>
-        <Typography className="dark:text-gray-300">{date}</Typography>
+        <Typography
+          className="dark:text-gray-300"
+          placeholder=""
+          onPointerEnterCapture={() => {}}
+          onPointerLeaveCapture={() => {}}
+        >
+          {date}
+        </Typography>
       </CardBody>
-      <CardFooter className="pt-0">
+      <CardFooter className="pt-0" placeholder="" onPointerEnterCapture={() => {}} onPointerLeaveCapture={() => {}}>
         <Button
           size="sm"
           variant="text"
           onClick={onViewMoreClick}
           className="flex items-center gap-2 text-blue-900 dark:text-blue-500"
+          placeholder=""
+          onPointerEnterCapture={() => {}}
+          onPointerLeaveCapture={() => {}}
         >
           Ver más
           <svg
